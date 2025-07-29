@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="max-w-[1536px] mx-auto">
       <Navbar />
       <Hero />
       <Footer />
