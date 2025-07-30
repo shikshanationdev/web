@@ -1,9 +1,9 @@
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 
-export const LearningGoalsSection = (): React.ReactElement => {
+const LearningGoalsSection = (): React.ReactElement => {
   // Define the learning goal cards data for easy mapping
   const learningGoals = [
     {
@@ -117,3 +117,4 @@ export const LearningGoalsSection = (): React.ReactElement => {
     </section>
   );
 };
+export default LearningGoalsSection;

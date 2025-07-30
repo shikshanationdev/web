@@ -1,10 +1,6 @@
-import CopyrightSection from "@/components/CopyrightSection";
-import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import { LearningGoalsSection } from "@/components/LearningGoalSection";
 import Navbar from "@/components/Navbar";
-import StatsSection from "@/components/StatsSection";
+import { FeaturesSection, Hero, LearningGoalsSection, StatsSection, CopyrightSection } from "@/components/HomePageSections";
 
 export default function Home() {
   return (

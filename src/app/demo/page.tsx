@@ -1,5 +1,5 @@
-import CourseCard from '@/components/CourseCard'
-import React from 'react'
+import CourseCard from "@/components/ui/CourseCard";
+import React from "react";
 
 const page = () => {
   return (
@@ -10,9 +10,9 @@ const page = () => {
       reviews={120}
       price={99.99}
       instructor="John Doe"
-      enrollLink=''
+      enrollLink=""
     />
-  )
-}
+  );
+};
 
-export default page
+export default page;
