@@ -1,6 +1,7 @@
 import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import { LearningGoalsSection } from "@/components/LearningGoalSection";
 import Navbar from "@/components/Navbar";
 import StatsSection from "@/components/StatsSection";
 
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <StatsSection />
       <FeaturesSection />
+      <LearningGoalsSection />
       <Footer />
     </div>
   );
