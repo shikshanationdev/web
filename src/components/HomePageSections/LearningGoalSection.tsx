@@ -61,7 +61,7 @@ const LearningGoalsSection = (): React.ReactElement => {
   ];
 
   return (
-    <section className="w-full py-16 bg-white">
+    <section className="w-full py-36 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-[40px] font-bold text-[#141219] text-center mb-5 font-['Lexend_Deca',Helvetica]">
           What&apos;s Your Learning Goal
