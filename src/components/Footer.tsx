@@ -18,7 +18,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-4 md:px-8">
+    <footer className="pt-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
@@ -38,10 +38,11 @@ const Footer = () => {
                 <span className="font-semibold text-blue-900">
                   Corporate Office:
                 </span>
-                <br />
-                10th Floor, Tower C, Bhutani
-                <br />
-                62 Avenue, Block-C, Phase 2, Noida, UP 201309
+                <span className="ml-1">
+                  10th Floor, Tower C, Bhutani
+                  <br />
+                  62 Avenue, Block-C, Phase 2, Noida, UP 201309
+                </span>
               </div>
               <div>
                 <span className="font-semibold text-blue-900">Call:</span>{" "}
@@ -52,7 +53,7 @@ const Footer = () => {
                   +91 98211 15117
                 </Link>
               </div>
-              <div>
+              <div className="flex items-center gap-3 flex-wrap">
                 <span className="font-semibold text-blue-900">Email:</span>{" "}
                 <Link
                   href="mailto:Hello@Shikshanation.In"
@@ -60,25 +61,24 @@ const Footer = () => {
                 >
                   Hello@Shikshanation.In
                 </Link>
+                <div className="flex gap-2 ml-2">
+                  {socialLinks.map((s) => {
+                    const IconComponent = s.icon;
+                    return (
+                      <Link
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
+                      >
+                        <IconComponent className="w-4 h-4 text-blue-600" />
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            {/* Social Links */}
-            <div className="flex gap-3 mt-6">
-              {socialLinks.map((s) => {
-                const IconComponent = s.icon;
-                return (
-                  <Link
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
-                  >
-                    <IconComponent className="w-4 h-4 text-blue-600" />
-                  </Link>
-                );
-              })}
             </div>
           </div>
           {/* Right: Columns */}
@@ -179,29 +179,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        {/* Bottom Copyright Section */}
-        <div className="border-t border-blue-200 mt-12 pt-8">
-          <div className="text-center space-y-2 text-sm">
-            <div className="font-semibold text-blue-900">
-              © 2025 All Rights Reserved.
-            </div>
-            <div className="text-gray-700">
-              <span className="font-semibold text-blue-900">
-                Shiksha Nation™
-              </span>{" "}
-              is completely owned & operated by{" "}
-              <span className="font-semibold text-blue-900">
-                Rarepillar Education Services Private Limited
-              </span>
-            </div>
-            <div className="text-gray-600">
-              Designed by{" "}
-              <span className="font-semibold text-blue-700">
-                Generative Crafts
-              </span>
-            </div>
-          </div>
-        </div>
+
       </div>
     </footer>
   );

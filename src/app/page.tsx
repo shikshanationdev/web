@@ -1,3 +1,4 @@
+import CopyrightSection from "@/components/CopyrightSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -14,6 +15,7 @@ export default function Home() {
       <FeaturesSection />
       <LearningGoalsSection />
       <Footer />
+      <CopyrightSection />
     </div>
   );
 }
