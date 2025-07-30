@@ -43,7 +43,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/signup"
-            className="px-7 py-2 bg-sky-600 text-white rounded-full hover:bg-sky-600 transition"
+            className="px-7 py-2 bg-sky-700 text-white rounded-full hover:bg-sky-600 transition"
           >
             Join for Free
           </Link>

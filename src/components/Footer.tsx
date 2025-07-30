@@ -1,155 +1,184 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://facebook.com", icon: "/facebook.svg", label: "Facebook" },
-  { href: "https://instagram.com", icon: "/instagram.svg", label: "Instagram" },
-  { href: "https://linkedin.com", icon: "/linkedin.svg", label: "LinkedIn" },
-  { href: "https://twitter.com", icon: "/twitter.svg", label: "Twitter" },
-  { href: "https://youtube.com", icon: "/youtube.svg", label: "YouTube" },
+  { href: "https://facebook.com", icon: FaFacebookF, label: "Facebook" },
+  { href: "https://instagram.com", icon: FaInstagram, label: "Instagram" },
+  { href: "https://linkedin.com", icon: FaLinkedinIn, label: "LinkedIn" },
+  { href: "https://twitter.com", icon: FaTwitter, label: "Twitter" },
+  { href: "https://youtube.com", icon: FaYoutube, label: "YouTube" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-blue-100 pt-10 pb-4 px-4 md:px-0">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
-        {/* Left: Logo & Contact */}
-        <div className="flex-1 min-w-[260px] flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/file.svg"
-              alt="Shiksha Nation Logo"
-              width={60}
-              height={60}
-            />
-            <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-semibold text-blue-900 tracking-wide">
-                SHIKSHA
-              </span>
-              <span className="text-green-500 text-lg font-medium -mt-1">
-                NATION
-              </span>
+    <footer className="bg-gray-50 border-t border-blue-100 py-12 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Left: Logo & Contact Info */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <Image
+                src="/logo.webp"
+                alt="Shiksha Nation Logo"
+                width={200}
+                height={60}
+                className="h-auto"
+              />
+            </div>
+            
+            <div className="space-y-3 text-sm text-gray-700">
+              <div>
+                <span className="font-semibold text-blue-900">Corporate Office:</span>
+                <br />
+                10th Floor, Tower C, Bhutani
+                <br />
+                62 Avenue, Block-C, Phase 2, Noida, UP 201309
+              </div>
+              
+              <div>
+                <span className="font-semibold text-blue-900">Call:</span>{" "}
+                <Link 
+                  href="tel:+919821115117" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  +91 98211 15117
+                </Link>
+              </div>
+              
+              <div>
+                <span className="font-semibold text-blue-900">Email:</span>{" "}
+                <Link
+                  href="mailto:Hello@Shikshanation.In"
+                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  Hello@Shikshanation.In
+                </Link>
+              </div>
+            </div>
+            
+            {/* Social Links */}
+            <div className="flex gap-3 mt-6">
+              {socialLinks.map((s) => {
+                const IconComponent = s.icon;
+                return (
+                  <Link
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
+                  >
+                    <IconComponent className="w-4 h-4 text-blue-600" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
-          <div className="text-blue-900 text-sm">
-            <span className="font-bold">Corporate Office:</span> 10th Floor,
-            Tower C, Bhutani
-            <br />
-            62 Avenue, Block-C, Phase 2, Noida, UP 201309
-          </div>
-          <div className="text-blue-900 text-sm">
-            <span className="font-bold">Call:</span>{" "}
-            <Link href="tel:+919821115117" className="hover:underline">
-              +91 98211 15117
-            </Link>
-          </div>
-          <div className="text-blue-900 text-sm flex items-center gap-2">
-            <span className="font-bold">Email:</span>
-            <Link
-              href="mailto:Hello@Shikshanation.In"
-              className="hover:underline"
-            >
-              Hello@Shikshanation.In
-            </Link>
-          </div>
-          <div className="flex gap-2 mt-2">
-            {socialLinks.map((s) => (
-              <Link
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener"
-                aria-label={s.label}
-                className="bg-blue-50 rounded p-1.5 hover:bg-blue-100"
-              >
-                <Image src={s.icon} alt={s.label} width={22} height={22} />
-              </Link>
-            ))}
-          </div>
-        </div>
-        {/* Center: Categories & Links */}
-        <div className="flex-[2] grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+          {/* Top Categories */}
           <div>
-            <div className="font-bold text-blue-900 mb-2">Top Categories</div>
-            <ul className="space-y-1 text-blue-700 text-sm">
-              <li>
-                <Link href="#">Class 6</Link>
-              </li>
-              <li>
-                <Link href="#">Class 7</Link>
-              </li>
-              <li>
-                <Link href="#">Class 8</Link>
-              </li>
-              <li>
-                <Link href="#">Class 9</Link>
-              </li>
-              <li>
-                <Link href="#">Class 10</Link>
-              </li>
-              <li>
-                <Link href="#">Test Series</Link>
-              </li>
+            <h3 className="font-semibold text-blue-900 text-lg mb-4">Top Categories</h3>
+            <ul className="space-y-2">
+              {['Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10', 'Test Series'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href="#" 
+                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Useful Links */}
           <div>
-            <div className="font-bold text-blue-900 mb-2">Useful Links</div>
-            <ul className="space-y-1 text-blue-700 text-sm">
+            <h3 className="font-semibold text-blue-900 text-lg mb-4">Useful Links</h3>
+            <ul className="space-y-2">
               <li>
-                <Link href="#">FAQs</Link>
+                <Link 
+                  href="#" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                >
+                  FAQs
+                </Link>
               </li>
               <li className="flex items-center gap-1">
-                <Link href="#">Become Instructor</Link>{" "}
-                <span className="text-lg">→</span>
+                <Link 
+                  href="#" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                >
+                  Become Instructor
+                </Link>
+                <span className="text-blue-600 text-sm">→</span>
               </li>
               <li>
-                <Link href="#">Privacy Policy</Link>
+                <Link 
+                  href="#" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                >
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <Link href="#">Terms & Conditions</Link>
+                <Link 
+                  href="#" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                >
+                  Terms & Conditions
+                </Link>
               </li>
               <li>
-                <Link href="#">Refund Policy</Link>
+                <Link 
+                  href="#" 
+                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                >
+                  Refund Policy
+                </Link>
               </li>
             </ul>
           </div>
+
+          {/* Company */}
           <div>
-            <div className="font-bold text-blue-900 mb-2">Company</div>
-            <ul className="space-y-1 text-blue-700 text-sm">
-              <li>
-                <Link href="#">About Us</Link>
-              </li>
-              <li>
-                <Link href="#">Blog</Link>
-              </li>
-              <li>
-                <Link href="#">Media</Link>
-              </li>
-              <li>
-                <Link href="#">Career</Link>
-              </li>
-              <li>
-                <Link href="#">Contact Us</Link>
-              </li>
+            <h3 className="font-semibold text-blue-900 text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              {['About Us', 'Blog', 'Media', 'Career', 'Contact Us'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href="#" 
+                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-      </div>
-      {/* Bottom: Copyright */}
-      <div className="border-t border-blue-100 mt-8 pt-6 text-center text-blue-800 text-sm">
-        <div className="font-semibold text-blue-900">
-          © 2025 All Rights Reserved.
-        </div>
-        <div className="mt-1">
-          <span className="font-semibold text-blue-900">Shiksha Nation™</span>{" "}
-          is completely owned & operated by{" "}
-          <span className="font-semibold">
-            Rarepillar Education Services Private Limited
-          </span>
-        </div>
-        <div className="mt-1">
-          Designed by{" "}
-          <span className="font-semibold text-blue-700">Generative Crafts</span>
+
+        {/* Bottom Copyright Section */}
+        <div className="border-t border-blue-200 mt-12 pt-8">
+          <div className="text-center space-y-2 text-sm">
+            <div className="font-semibold text-blue-900">
+              © 2025 All Rights Reserved.
+            </div>
+            <div className="text-gray-700">
+              <span className="font-semibold text-blue-900">Shiksha Nation™</span>{" "}
+              is completely owned & operated by{" "}
+              <span className="font-semibold text-blue-900">
+                Rarepillar Education Services Private Limited
+              </span>
+            </div>
+            <div className="text-gray-600">
+              Designed by{" "}
+              <span className="font-semibold text-blue-700">Generative Crafts</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
