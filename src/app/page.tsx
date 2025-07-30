@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { Navbar, Footer } from "@/components";
 import { FeaturesSection, Hero, LearningGoalsSection, StatsSection, CopyrightSection } from "@/components/HomePageSections";
 
 export default function Home() {
