@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import CourseCard from "../ui/CourseCard";
 
 const categories = [
   { label: "All Categories", value: "all" },
@@ -57,61 +58,12 @@ const courses = [
   },
 ];
 
-interface CourseCardProps {
-  title: string;
-  image: string;
-  rating: number;
-  reviews: string;
-  price: number;
-  oldPrice: number;
-  enrollLink: string;
-}
-
-const CourseCard = ({ title, image, rating, reviews, price, oldPrice, enrollLink }: CourseCardProps) => {
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <span
-        key={i}
-        className={`text-lg ${
-          i < rating ? "text-yellow-400" : "text-gray-300"
-        }`}
-      >
-        ★
-      </span>
-    ));
-  };
-
-  return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-xs hover:shadow-lg transition-shadow">
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-5">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">{title}</h3>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex">{renderStars(rating)}</div>
-          <span className="text-gray-500 text-sm">({reviews} Reviews)</span>
-        </div>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-2xl font-bold text-gray-800">₹{price}</span>
-          <span className="text-gray-400 line-through">₹{oldPrice}</span>
-        </div>
-        <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-          Enroll Now
-          <span className="text-lg">→</span>
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [scrollIndex, setScrollIndex] = useState(0);
+  const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const containerRef = useRef(null);
 
   const filteredCourses =
     selectedCategory === "all"
@@ -123,8 +75,53 @@ const CoursesSection = () => {
   const canScrollLeft = scrollIndex > 0;
   const canScrollRight = scrollIndex + 4 < filteredCourses.length;
 
+  // Update indicator position and width when category changes
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeTab = tabRefs.current[selectedCategory];
+      const container = containerRef.current;
+      
+      if (activeTab && container) {
+        // Get the tab's position relative to its parent container
+        const tabOffsetLeft = activeTab.offsetLeft;
+        const tabWidth = activeTab.offsetWidth;
+        
+        setIndicatorStyle({
+          width: tabWidth,
+          left: tabOffsetLeft,
+        });
+      }
+    };
+
+    // Small delay to ensure DOM is updated
+    const timer = setTimeout(updateIndicator, 50);
+    
+    return () => clearTimeout(timer);
+  }, [selectedCategory]);
+
+  // Handle window resize to recalculate positions
+  useEffect(() => {
+    const handleResize = () => {
+      const activeTab = tabRefs.current[selectedCategory];
+      const container = containerRef.current;
+      
+      if (activeTab && container) {
+        const tabOffsetLeft = activeTab.offsetLeft;
+        const tabWidth = activeTab.offsetWidth;
+        
+        setIndicatorStyle({
+          width: tabWidth,
+          left: tabOffsetLeft,
+        });
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [selectedCategory]);
+
   return (
-    <section className="w-full bg-gray-50 py-16">
+    <section className="w-full py-16">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
@@ -135,15 +132,19 @@ const CoursesSection = () => {
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex items-center justify-center mb-12">
-          <div className="flex items-center gap-8 border-b border-gray-200 w-full max-w-4xl">
+        {/* Category Tabs with Sliding Indicator */}
+        <div className="flex items-center justify-center mb-12 overflow-hidden">
+          <div 
+            ref={containerRef}
+            className="relative flex items-center gap-28 border-b border-gray-200 justify-center overflow-visible"
+          >
             {categories.map((cat) => (
               <button
                 key={cat.value}
-                className={`pb-3 text-base font-medium transition-all duration-200 whitespace-nowrap ${
+                ref={(el) => { tabRefs.current[cat.value] = el; }}
+                className={`pb-3 text-2xl font-medium transition-colors duration-300 whitespace-nowrap relative z-10 ${
                   selectedCategory === cat.value
-                    ? "text-green-600 border-b-2 border-green-600"
+                    ? "text-green-600"
                     : "text-gray-500 hover:text-gray-700"
                 }`}
                 onClick={() => {
@@ -154,6 +155,15 @@ const CoursesSection = () => {
                 {cat.label}
               </button>
             ))}
+            
+            {/* Sliding Active Indicator */}
+            <div
+              className="absolute bottom-0 h-0.5 bg-green-600 transition-all duration-500 ease-out z-0 rounded-full"
+              style={{
+                width: `${indicatorStyle.width}px`,
+                left: `${indicatorStyle.left}px`,
+              }}
+            />
           </div>
         </div>
 
