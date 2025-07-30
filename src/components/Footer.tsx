@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 const socialLinks = [
   { href: "https://facebook.com", icon: FaFacebookF, label: "Facebook" },
@@ -12,12 +18,12 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 border-t border-blue-100 py-12 px-4 md:px-8">
+    <footer className="py-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left: Logo & Contact Info */}
-          <div className="lg:col-span-1">
+          <div className="w-full lg:w-1/2 flex-shrink-0">
             <div className="mb-6">
               <Image
                 src="/logo.webp"
@@ -27,26 +33,25 @@ const Footer = () => {
                 className="h-auto"
               />
             </div>
-            
             <div className="space-y-3 text-sm text-gray-700">
               <div>
-                <span className="font-semibold text-blue-900">Corporate Office:</span>
+                <span className="font-semibold text-blue-900">
+                  Corporate Office:
+                </span>
                 <br />
                 10th Floor, Tower C, Bhutani
                 <br />
                 62 Avenue, Block-C, Phase 2, Noida, UP 201309
               </div>
-              
               <div>
                 <span className="font-semibold text-blue-900">Call:</span>{" "}
-                <Link 
-                  href="tel:+919821115117" 
+                <Link
+                  href="tel:+919821115117"
                   className="text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   +91 98211 15117
                 </Link>
               </div>
-              
               <div>
                 <span className="font-semibold text-blue-900">Email:</span>{" "}
                 <Link
@@ -57,7 +62,6 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            
             {/* Social Links */}
             <div className="flex gap-3 mt-6">
               {socialLinks.map((s) => {
@@ -77,90 +81,104 @@ const Footer = () => {
               })}
             </div>
           </div>
-
-          {/* Top Categories */}
-          <div>
-            <h3 className="font-semibold text-blue-900 text-lg mb-4">Top Categories</h3>
-            <ul className="space-y-2">
-              {['Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10', 'Test Series'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href="#" 
+          {/* Right: Columns */}
+          <div className="w-full lg:w-1/2 flex flex-col lg:flex-row gap-8 lg:gap-12">
+            {/* Top Categories */}
+            <div className="flex-1">
+              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+                Top Categories
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  "Class 6",
+                  "Class 7",
+                  "Class 8",
+                  "Class 9",
+                  "Class 10",
+                  "Test Series",
+                ].map((item) => (
+                  <li key={item}>
+                    <Link
+                      href="#"
+                      className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Useful Links */}
+            <div className="flex-1">
+              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+                Useful Links
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="#"
                     className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
                   >
-                    {item}
+                    FAQs
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Useful Links */}
-          <div>
-            <h3 className="font-semibold text-blue-900 text-lg mb-4">Useful Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
-                >
-                  FAQs
-                </Link>
-              </li>
-              <li className="flex items-center gap-1">
-                <Link 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
-                >
-                  Become Instructor
-                </Link>
-                <span className="text-blue-600 text-sm">→</span>
-              </li>
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
-                >
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="#" 
-                  className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
-                >
-                  Refund Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold text-blue-900 text-lg mb-4">Company</h3>
-            <ul className="space-y-2">
-              {['About Us', 'Blog', 'Media', 'Career', 'Contact Us'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href="#" 
+                <li className="flex items-center gap-1">
+                  <Link
+                    href="#"
                     className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
                   >
-                    {item}
+                    Become Instructor
+                  </Link>
+                  <span className="text-blue-600 text-sm">→</span>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                  >
+                    Privacy Policy
                   </Link>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                  >
+                    Terms & Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                  >
+                    Refund Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            {/* Company */}
+            <div className="flex-1">
+              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+                Company
+              </h3>
+              <ul className="space-y-2">
+                {["About Us", "Blog", "Media", "Career", "Contact Us"].map(
+                  (item) => (
+                    <li key={item}>
+                      <Link
+                        href="#"
+                        className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
           </div>
         </div>
-
         {/* Bottom Copyright Section */}
         <div className="border-t border-blue-200 mt-12 pt-8">
           <div className="text-center space-y-2 text-sm">
@@ -168,7 +186,9 @@ const Footer = () => {
               © 2025 All Rights Reserved.
             </div>
             <div className="text-gray-700">
-              <span className="font-semibold text-blue-900">Shiksha Nation™</span>{" "}
+              <span className="font-semibold text-blue-900">
+                Shiksha Nation™
+              </span>{" "}
               is completely owned & operated by{" "}
               <span className="font-semibold text-blue-900">
                 Rarepillar Education Services Private Limited
@@ -176,7 +196,9 @@ const Footer = () => {
             </div>
             <div className="text-gray-600">
               Designed by{" "}
-              <span className="font-semibold text-blue-700">Generative Crafts</span>
+              <span className="font-semibold text-blue-700">
+                Generative Crafts
+              </span>
             </div>
           </div>
         </div>
