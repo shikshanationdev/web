@@ -24,14 +24,14 @@ const Navbar = () => {
           <Image
             src="/logo.webp"
             alt="Shiksha Nation Logo"
-            width={120}
-            height={40}
+            width={180}
+            height={60}
             className="h-auto"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-24">
           <Link href="/" className="text-sky-600 hover:text-sky-700 transition-colors">
             Home
           </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
         `}>
           <div className="flex flex-col h-full pt-20 pb-6 px-6">
             {/* Mobile Navigation Links */}
-            <div className="flex flex-col space-y-6 mb-8">
+            <div className="flex flex-col space-y-16 mb-8">
               <Link 
                 href="/" 
                 className="text-sky-600 hover:text-sky-700 transition-colors text-lg font-medium"
