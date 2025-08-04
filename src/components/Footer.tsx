@@ -1,24 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BsTwitterX } from "react-icons/bs";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaTwitter,
-  FaYoutube,
+  FaYoutube
 } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://facebook.com", icon: FaFacebookF, label: "Facebook" },
-  { href: "https://instagram.com", icon: FaInstagram, label: "Instagram" },
-  { href: "https://linkedin.com", icon: FaLinkedinIn, label: "LinkedIn" },
-  { href: "https://twitter.com", icon: FaTwitter, label: "Twitter" },
-  { href: "https://youtube.com", icon: FaYoutube, label: "YouTube" },
+  { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
+  { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
+  { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X" },
+  { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
+  { href: "https://www.youtube.com/@shikshanation-rl7qo", icon: FaYoutube, label: "YouTube" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="pt-12 px-4 md:px-8">
+    <footer className="pt-12 px-4 md:px-8 text-sky-700">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
@@ -33,9 +33,9 @@ const Footer = () => {
                 className="h-auto"
               />
             </div>
-            <div className="space-y-3 text-sm text-gray-700">
+            <div className="space-y-3 text-sm">
               <div>
-                <span className="font-semibold text-blue-900">
+                <span className="font-semibold">
                   Corporate Office:
                 </span>
                 <span className="ml-1">
@@ -45,21 +45,21 @@ const Footer = () => {
                 </span>
               </div>
               <div>
-                <span className="font-semibold text-blue-900">Call:</span>{" "}
+                <span className="font-semibold">Call:</span>{" "}
                 <Link
                   href="tel:+919821115117"
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  className="hover:underline"
                 >
                   +91 98211 15117
                 </Link>
               </div>
               <div className="flex items-center gap-3 flex-wrap">
-                <span className="font-semibold text-blue-900">Email:</span>{" "}
+                <span className="font-semibold">Email:</span>{" "}
                 <Link
-                  href="mailto:Hello@Shikshanation.In"
-                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                  href="mailto:hello@shikshanation.In"
+                  className="hover:underline"
                 >
-                  Hello@Shikshanation.In
+                  hello@shikshanation.In
                 </Link>
                 <div className="flex gap-2 ml-2">
                   {socialLinks.map((s) => {
@@ -73,7 +73,7 @@ const Footer = () => {
                         aria-label={s.label}
                         className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
                       >
-                        <IconComponent className="w-4 h-4 text-blue-600" />
+                        <IconComponent className="w-4 h-4 text-sky-700" />
                       </Link>
                     );
                   })}
@@ -85,22 +85,15 @@ const Footer = () => {
           <div className="w-full lg:w-1/2 flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* Top Categories */}
             <div className="flex-1">
-              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-4">
                 Top Categories
               </h3>
               <ul className="space-y-2">
-                {[
-                  "Class 6",
-                  "Class 7",
-                  "Class 8",
-                  "Class 9",
-                  "Class 10",
-                  "Test Series",
-                ].map((item) => (
+                {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Test Series"].map((item) => (
                   <li key={item}>
                     <Link
                       href="#"
-                      className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                      className="hover:underline text-sm transition-colors duration-200"
                     >
                       {item}
                     </Link>
@@ -110,14 +103,14 @@ const Footer = () => {
             </div>
             {/* Useful Links */}
             <div className="flex-1">
-              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-4">
                 Useful Links
               </h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="#"
-                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    className="hover:underline text-sm transition-colors duration-200"
                   >
                     FAQs
                   </Link>
@@ -125,16 +118,16 @@ const Footer = () => {
                 <li className="flex items-center gap-1">
                   <Link
                     href="#"
-                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    className="hover:underline text-sm transition-colors duration-200"
                   >
                     Become Instructor
                   </Link>
-                  <span className="text-blue-600 text-sm">→</span>
+                  <span className="text-sm">→</span>
                 </li>
                 <li>
                   <Link
                     href="#"
-                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    className="hover:underline text-sm transition-colors duration-200"
                   >
                     Privacy Policy
                   </Link>
@@ -142,7 +135,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="#"
-                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    className="hover:underline text-sm transition-colors duration-200"
                   >
                     Terms & Conditions
                   </Link>
@@ -150,7 +143,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="#"
-                    className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                    className="hover:underline text-sm transition-colors duration-200"
                   >
                     Refund Policy
                   </Link>
@@ -159,7 +152,7 @@ const Footer = () => {
             </div>
             {/* Company */}
             <div className="flex-1">
-              <h3 className="font-semibold text-blue-900 text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-4">
                 Company
               </h3>
               <ul className="space-y-2">
@@ -168,7 +161,7 @@ const Footer = () => {
                     <li key={item}>
                       <Link
                         href="#"
-                        className="text-blue-600 hover:text-blue-800 hover:underline text-sm transition-colors duration-200"
+                        className="hover:underline text-sm transition-colors duration-200"
                       >
                         {item}
                       </Link>
