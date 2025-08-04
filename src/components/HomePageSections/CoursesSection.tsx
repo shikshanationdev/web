@@ -176,7 +176,7 @@ const CoursesSection = () => {
 
         {/* Explore All Courses Button */}
         <div className="text-center">
-          <button className="inline-flex items-center px-8 py-3 border-2 border-blue-600 rounded-full text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition-all duration-200">
+          <button className="inline-flex items-center px-8 py-3 border-2 border-sky-700 rounded-full text-sky-700 font-semibold hover:bg-sky-800 hover:border-sky-800 hover:text-white transition-all duration-200">
             Explore all courses
           </button>
         </div>

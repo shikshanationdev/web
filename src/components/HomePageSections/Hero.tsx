@@ -47,7 +47,7 @@ const Hero = () => {
           </div>
           <Link
             href="/courses"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-sky-700 text-white rounded-full font-semibold text-lg shadow hover:bg-blue-800 transition"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-sky-700 text-white rounded-full font-semibold text-lg shadow hover:bg-sky-800 transition-all duration-200"
           >
             Explore Courses
             <FaArrowRightLong />

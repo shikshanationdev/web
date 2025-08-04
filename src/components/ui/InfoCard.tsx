@@ -7,18 +7,18 @@ interface InfoCardProps {
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ icon, label }) => (
-  <div className="bg-white rounded-2xl shadow-md flex flex-col min-w-[240px] min-h-[240px] max-w-[280px] mx-auto overflow-hidden" style={{height:'280px'}}>
+  <div className="bg-white rounded-2xl shadow-md flex flex-col min-w-[220px] min-h-[240px] max-w-[260px] mx-auto overflow-hidden" style={{height:'180px'}}>
     {/* Top section: icon and background shape */}
-    <div className="relative flex-1 flex items-center justify-center" style={{flexBasis:'75%', minHeight:'0'}}>
-      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[80px] flex items-center justify-center" style={{zIndex:1}}>
-        <div className="w-20 h-20 relative flex items-center justify-center">
+    <div className="relative flex-1 flex items-center justify-center" style={{flexBasis:'70%', minHeight:'0'}}>
+      <div className="absolute -top-5 -right-5 w-48 h-44 bg-sky-50 rounded-b-full" style={{zIndex:1}}>
+        <div className="absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
           <Image src={icon} alt={label} fill style={{ objectFit: 'contain' }} />
         </div>
       </div>
     </div>
     {/* Bottom section: text */}
-    <div className="flex items-center justify-center h-[25%] bg-transparent">
-      <span className="text-blue-700 font-bold text-2xl text-center whitespace-pre-line">
+    <div className="flex items-center justify-center h-[30%] bg-transparent">
+      <span className="text-sky-700 font-bold text-xl text-center whitespace-pre-line">
         {label}
       </span>
     </div>

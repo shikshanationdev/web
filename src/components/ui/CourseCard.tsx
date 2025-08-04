@@ -41,7 +41,7 @@ const CourseCard = ({ title, image, rating, reviews, price, oldPrice, enrollLink
           <span className="text-2xl font-bold text-gray-800">₹{price}</span>
           <span className="text-gray-400 line-through">₹{oldPrice}</span>
         </div>
-        <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+        <button className="w-full bg-sky-700 text-white py-3 px-4 rounded-lg font-semibold hover:bg-sky-800 transition-all duration-200 flex items-center justify-center gap-2">
           Enroll Now
           <span className="text-lg">→</span>
         </button>
