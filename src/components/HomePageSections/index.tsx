@@ -4,4 +4,7 @@ import FeaturesSection from "./FeaturesSection";
 import LearningGoalsSection from "./LearningGoalSection";
 import StatesSection from "./StatsSection";
 import CopyrightSection from "./CopyrightSection";
-export {Hero, StatsSection, FeaturesSection, LearningGoalsSection, StatesSection, CopyrightSection};
+import CoursesSection from "./CoursesSection";
+import WhatYouGetSection from "./WhatYouGetSection";
+import LearningStatsSection from "./LearningStatsSection";
+export {Hero, StatsSection, FeaturesSection, LearningGoalsSection, StatesSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection};

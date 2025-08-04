@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Custom color extensions using CSS custom properties */
+:root {
+  --color-green-primary: 59 202 67; /* #3BCA43 in RGB format */
+}

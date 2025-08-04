@@ -22,19 +22,19 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section className="relative w-full bg-white py-28 shadow-[0_-8px_16px_rgba(34,197,94,0.10),0_8px_16px_rgba(34,197,94,0.10)]">
-      <div className="max-w-5xl mx-auto flex flex-col items-center justify-center px-4">
+      <div className="max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
           {features.map((feature) => (
             <div key={feature.title} className="flex flex-col items-center">
-              <div className="bg-green-500 rounded-xl p-4 mb-3 flex items-center justify-center shadow-md">
+              <div className="bg-green-600/90 rounded-xl p-4 mb-3 flex items-center justify-center shadow-md">
                 <Image
                   src={feature.icon}
                   alt={feature.title}
-                  width={38}
-                  height={38}
+                  width={64}
+                  height={64}
                 />
               </div>
-              <div className="text-black font-semibold text-base text-center whitespace-pre-line">
+              <div className="text-black font-semibold text-lg text-center whitespace-pre-line">
                 {feature.title}
               </div>
             </div>
