@@ -149,11 +149,10 @@ const Footer = () => {
                   <div className="lg:flex lg:items-center lg:gap-3 lg:flex-wrap">
                     <span className="font-semibold">Email:</span>{" "}
                     <Link
-                      href="mailto:hello@shikshanation.In"
+                      href="mailto:hello@shikshanation.in"
                       className="hover:underline"
                     >
-                      hello@shikshanation.In
-                    </Link>
+                      hello@shikshanation.in                    </Link>
                     <div className="hidden lg:flex gap-2 ml-2">
                       {socialLinks.map((s) => {
                         const IconComponent = s.icon;
