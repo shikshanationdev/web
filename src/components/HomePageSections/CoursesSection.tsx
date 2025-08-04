@@ -116,8 +116,11 @@ const CoursesSection = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    // Only add event listener if window is available (client-side)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, [selectedCategory]);
 
   return (
