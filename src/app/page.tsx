@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "@/components";
-import { FeaturesSection, Hero, LearningGoalsSection, StatsSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection } from "@/components/HomePageSections";
+import { FeaturesSection, Hero, LearningGoalsSection, StatsSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection } from "@/components/HomePageSections";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       <WhatYouGetSection />
       <TestimonialsSection />
       <JoinLearnersSection />
+      <FaqSection />
       <LearningStatsSection />
       <Footer />
       <CopyrightSection />
