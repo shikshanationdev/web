@@ -9,10 +9,10 @@ const GooglePlayBadge: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="162" height="48" viewBox="0 0 162 48">
     <rect width="162" height="48" rx="6" fill="#000"/>
     <g transform="translate(12, 12)">
-      <path d="M14.69,11.02,3.15.56A2.24,2.24,0,0,0,.5,2.4V21.6A2.24,2.24,0,0,0,3.15,23.44l11.54-10.46a2.24,2.24,0,0,0,0-1.96Z" fill="#4CAF50"/>
-      <path d="M.5,2.4l9.8,7.4L.5,18.6Z" fill="#FFC107"/>
-      <path d="M.5,2.4,10.3,9.8,5.4,12Z" fill="#F44336"/>
-      <path d="M.5,21.6,10.3,14.2,5.4,12Z" fill="#2196F3"/>
+        <path fill="#2196F3" d="M8.32 7.68.58 15.42c-.37-.35-.57-.83-.57-1.35V1.93C.01 1.4.22.92.6.56l7.72 7.12z"></path>
+  <path fill="#FFC107" d="M15.01 8c0 .7-.38 1.32-1.01 1.67l-2.2 1.22-2.73-2.52-.75-.69 2.89-2.89L14 6.33c.63.35 1.01.97 1.01 1.67z"></path>
+  <path fill="#4CAF50" d="M8.32 7.68.6.56C.7.46.83.37.96.29 1.59-.09 2.35-.1 3 .26l8.21 4.53-2.89 2.89z"></path>
+  <path fill="#F44336" d="M11.8 10.89 3 15.74c-.31.18-.66.26-1 .26-.36 0-.72-.09-1.04-.29a1.82 1.82 0 0 1-.38-.29l7.74-7.74.75.69 2.73 2.52z"></path>
     </g>
     <g transform="translate(48, 10)">
       <text fill="#FFF" fontSize="10" fontFamily="Roboto, sans-serif" letterSpacing="0.5">
@@ -47,7 +47,7 @@ const AppStoreBadge: React.FC = () => (
 
 const QrAppPromo: React.FC = () => {
   return (
-    <section className="bg-white font-sans">
+    <section className="bg-white ">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -69,24 +69,23 @@ const QrAppPromo: React.FC = () => {
           </div>
 
           {/* Right Section: Text Content & QR Code */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-              Learn <span className="text-sky-600">Anytime, Anywhere</span>
-              <br />
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left ">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Learn <span className="text-sky-600">Anytime, Anywhere </span> 
               with the Shiksha Nation App
             </h1>
             
-            <p className="mt-4 text-lg text-gray-600 max-w-md">
+            <p className="mt-4 text-lg text-gray-700 font-medium max-w-md">
               Access live classes, notes, tests & progress — all in one app.
             </p>
 
             <div className="mt-10 flex flex-col items-center lg:items-start">
               {/* QR Code with decorative border - Using next/image */}
               <div className="relative w-36 h-36">
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-cyan-400 rounded-tl-lg"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-cyan-400 rounded-tr-lg"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-cyan-400 rounded-bl-lg"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-cyan-400 rounded-br-lg"></div>
+                <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-blue-700 rounded-tl-lg"></div>
+                <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-blue-700 rounded-tr-lg"></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-green-400 rounded-bl-lg"></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-green-400 rounded-br-lg"></div>
                 <Image 
                   src="/qr.png" 
                   alt="QR code to download app" 
@@ -101,12 +100,24 @@ const QrAppPromo: React.FC = () => {
               </p>
 
               {/* App Store Buttons */}
-              <div className="mt-5 flex items-center space-x-4">
+              <div className="flex items-center h-44">
                 <a href="#google-play" aria-label="Get it on Google Play" className="transform hover:scale-105 transition-transform">
-                  <GooglePlayBadge />
+                  <Image
+                    src="/get-it-on-playstore.png"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={40}
+                    className="object-contain h-44"
+                  />
                 </a>
                 <a href="#app-store" aria-label="Download on the App Store" className="transform hover:scale-105 transition-transform">
-                  <AppStoreBadge />
+                  <Image
+                    src="/get-it-on-appstore.png"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={40}
+                    className="object-contain h-44"
+                  />
                 </a>
               </div>
             </div>

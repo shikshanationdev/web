@@ -99,13 +99,15 @@ const Navbar = () => {
           {/* Desktop Auth Buttons */}
           <div className="flex items-center gap-4">
             <Link
-              href="/signin"
+              target="_blank"
+              href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=login"
               className="px-6 py-2 border-2 border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-sm font-medium"
             >
               Sign In
             </Link>
             <Link
-              href="/signup"
+            target="_blank"
+              href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=signup"
               className="px-6 py-2 bg-sky-700 text-white rounded-full hover:bg-sky-600 transition-colors text-sm font-medium"
             >
               Join for Free
@@ -155,14 +157,16 @@ const Navbar = () => {
             {/* Bottom Auth Buttons */}
             <div className="mt-auto p-6 space-y-4">
               <Link
-                href="/signin"
+                target="_blank"
+                href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=login"
                 className="w-full py-3 px-6 border border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-center font-medium block"
                 onClick={closeMenu}
               >
                 Sign In
               </Link>
               <Link
-                href="/signup"
+                target="_blank"
+                href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=signup"
                 className="w-full py-3 px-6 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors text-center font-medium block"
                 onClick={closeMenu}
               >

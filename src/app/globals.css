@@ -4,3 +4,21 @@
 :root {
   --color-green-primary: 59 202 67; /* #3BCA43 in RGB format */
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1569F4;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #1569F4 transparent;
+}
