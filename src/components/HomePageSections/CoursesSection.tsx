@@ -136,16 +136,17 @@ const CoursesSection = () => {
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
-        <div className="flex items-center justify-center mb-12 overflow-hidden">
+        <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
           <div 
             ref={containerRef}
-            className="relative flex items-center gap-28 border-b border-gray-200 justify-center overflow-visible"
+            className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
+            style={{overflowX: 'auto'}}
           >
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 ref={(el) => { tabRefs.current[cat.value] = el; }}
-                className={`pb-3 text-2xl font-medium transition-colors duration-300 whitespace-nowrap relative z-10 ${
+                className={`pb-3 text-base sm:text-xl md:text-2xl font-medium transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${
                   selectedCategory === cat.value
                     ? "text-green-600"
                     : "text-gray-500 hover:text-gray-700"
@@ -158,7 +159,6 @@ const CoursesSection = () => {
                 {cat.label}
               </button>
             ))}
-            
             {/* Sliding Active Indicator */}
             <div
               className="absolute bottom-0 h-0.5 bg-green-600 transition-all duration-500 ease-out z-0 rounded-full"
@@ -170,8 +170,17 @@ const CoursesSection = () => {
           </div>
         </div>
 
+        <style jsx>{`
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
         {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 justify-items-center">
           {visibleCourses.map((course) => (
             <CourseCard key={course.id} {...course} />
           ))}

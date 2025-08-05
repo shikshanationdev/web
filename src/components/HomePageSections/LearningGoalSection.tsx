@@ -17,7 +17,6 @@ const LearningGoalsSection = (): React.ReactElement => {
       buttonBgColor: "bg-[#8de561]",
       circleBgColor: "bg-[#eeffe6]",
       iconSrc: "/class-6-12.svg",
-      position: "top-[239px] left-[203px]",
     },
     {
       id: "crack-neet",
@@ -30,7 +29,6 @@ const LearningGoalsSection = (): React.ReactElement => {
       buttonBgColor: "bg-[#4ed6c9]",
       circleBgColor: "bg-[#cdfffa]",
       iconSrc: "/crack-neet.svg",
-      position: "top-[239px] left-[745px]",
     },
     {
       id: "ace-jee",
@@ -43,7 +41,6 @@ const LearningGoalsSection = (): React.ReactElement => {
       buttonBgColor: "bg-[#f37777]",
       circleBgColor: "bg-[#fbe9e9]",
       iconSrc: "/ace-jee.svg",
-      position: "top-[491px] left-[203px]",
     },
     {
       id: "prepare-cuet",
@@ -56,7 +53,6 @@ const LearningGoalsSection = (): React.ReactElement => {
       buttonBgColor: "bg-[#7092d8]",
       circleBgColor: "bg-[#e7eefc]",
       iconSrc: "/prepare-for-cuet.svg",
-      position: "top-[491px] left-[745px]",
     },
   ];
 
@@ -76,38 +72,48 @@ const LearningGoalsSection = (): React.ReactElement => {
           {learningGoals.map((goal) => (
             <Card
               key={goal.id}
-              className={`${goal.bgColor} border-none overflow-hidden h-[202px] relative`}
+              className={`${goal.bgColor} border-none overflow-hidden relative`}
             >
-              <CardContent className="p-8">
-                <h3
-                  className={`${goal.titleColor} text-2xl font-bold font-['Lexend_Deca',Helvetica]`}
-                >
-                  {goal.title}
-                </h3>
+              <CardContent className="p-4 md:px-8 relative z-10">
+                <div className="flex justify-between items-center min-h-[160px] md:min-h-[202px]">
+                  <div className="flex-1 pr-[110px] md:pr-[130px] flex flex-col">
+                    <h3
+                      className={`${goal.titleColor} text-xl md:text-2xl font-bold font-['Lexend_Deca',Helvetica]`}
+                    >
+                      {goal.title}
+                    </h3>
 
-                <p
-                  className={`${goal.descriptionColor} text-base mt-2 max-w-[265px] font-['Lexend_Deca',Helvetica]`}
-                >
-                  {goal.description}
-                </p>
+                    <p
+                      className={`${goal.descriptionColor} text-sm md:text-base mt-2 mb-4 md:mb-6 font-['Lexend_Deca',Helvetica]`}
+                    >
+                      {goal.description}
+                    </p>
 
-                <Button
-                  className={`${goal.buttonBgColor} text-white rounded-xl mt-6 h-[50px] w-[232px] hover:opacity-90`}
-                >
-                  <span className="font-medium text-lg font-['Lexend_Deca',Helvetica]">
-                    {goal.buttonText}
-                  </span>
-                  <FaChevronRight className="ml-2 h-6 w-6" />
-                </Button>
+                    <Button
+                      className={`${goal.buttonBgColor} text-white rounded-xl h-[40px] md:h-[50px] w-full max-w-[200px] md:max-w-[232px] hover:opacity-90 transition-opacity duration-200`}
+                    >
+                      <span className="font-medium text-sm md:text-lg font-['Lexend_Deca',Helvetica]">
+                        {goal.buttonText}
+                      </span>
+                      <FaChevronRight className="ml-1 md:ml-2 h-4 w-4 md:h-6 md:w-6" />
+                    </Button>
+                  </div>
 
-                <div
-                  className={`absolute w-[280px] h-[280px] top-[-39px] right-[-39px] ${goal.circleBgColor} rounded-[140px]`}
-                >
-                  <img
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24"
-                    alt={`${goal.title} icon`}
-                    src={goal.iconSrc}
-                  />
+                  <div className="absolute top-0 right-0 h-full">
+                    <div
+                      className={`w-[100px] md:w-[120px] h-full ${goal.circleBgColor} flex items-center justify-center`}
+                      style={{
+                        borderTopLeftRadius: '60px',
+                        borderBottomLeftRadius: '60px',
+                      }}
+                    >
+                      <img
+                        className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                        alt={`${goal.title} icon`}
+                        src={goal.iconSrc}
+                      />
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
