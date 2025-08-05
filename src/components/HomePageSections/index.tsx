@@ -10,4 +10,5 @@ import LearningStatsSection from "./LearningStatsSection";
 import TestimonialsSection from "./TestimonialsSection";
 import JoinLearnersSection from "./JoinLearnersSection";
 import FaqSection from "./FaqSection";
-export {Hero, StatsSection, FeaturesSection, LearningGoalsSection, StatesSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection};
+import QrAppPromo from "./QrAppPromo";
+export {Hero, StatsSection, FeaturesSection, LearningGoalsSection, StatesSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection, QrAppPromo};
