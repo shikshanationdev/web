@@ -12,8 +12,8 @@ export default function Home() {
       <CoursesSection />
       <WhatYouGetSection />
       <TestimonialsSection />
-      <LearningStatsSection />
       <JoinLearnersSection />
+      <LearningStatsSection />
       <Footer />
       <CopyrightSection />
     </div>
