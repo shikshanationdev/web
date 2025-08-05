@@ -2,11 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlineBars3BottomLeft, HiChevronDown, HiXMark } from "react-icons/hi2";
+
+// Navigation items for the mobile
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Explore Courses", href: "/courses" },
+  // { label: "Skilling", href: "/skilling" },
+  // { label: "All Test Series", href: "/test-series" },
+  // { label: "Exams", href: "/exams" },
+  { label: "Contact", href: "/contact" },
+  // { label: "Media", href: "/media" },
+  { label: "About Us", href: "/about" },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -123,87 +147,30 @@ const Navbar = () => {
 
             {/* Menu Content */}
             <div className="flex flex-col px-6 py-8 space-y-8">
-              <Link 
-                href="/" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                Home
-              </Link>
-              
-              {/* Explore Courses with Dropdown Icon */}
-              <div className="flex items-center justify-between">
+              {navItems.map((item) => (
                 <Link 
-                  href="/courses" 
-                  className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                  onClick={closeMenu}
+                  key={item.label}
+                  href={item.href}
+                 className="text-sky-700 hover:text-sky-800 transition-colors text-lg font-medium"
+                onClick={closeMenu}
                 >
-                  Explore Courses
+                  {item.label}
                 </Link>
-                <HiChevronDown className="w-4 h-4 text-blue-600" />
-              </div>
-
-              <Link 
-                href="/skilling" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                Skilling
-              </Link>
-
-              <Link 
-                href="/test-series" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                All Test Series
-              </Link>
-
-              <Link 
-                href="/exams" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                Exams
-              </Link>
-
-              <Link 
-                href="/contact" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                Contact
-              </Link>
-
-              <Link 
-                href="/media" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                Media
-              </Link>
-
-              <Link 
-                href="/about" 
-                className="text-blue-600 hover:text-blue-700 transition-colors text-lg font-medium"
-                onClick={closeMenu}
-              >
-                About Us
-              </Link>
+              ))}
             </div>
 
             {/* Bottom Auth Buttons */}
             <div className="mt-auto p-6 space-y-4">
               <Link
                 href="/signin"
-                className="w-full py-3 px-6 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition-colors text-center font-medium block"
+                className="w-full py-3 px-6 border border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-center font-medium block"
                 onClick={closeMenu}
               >
                 Sign In
               </Link>
               <Link
                 href="/signup"
-                className="w-full py-3 px-6 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors text-center font-medium block"
+                className="w-full py-3 px-6 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors text-center font-medium block"
                 onClick={closeMenu}
               >
                 Join for Free
