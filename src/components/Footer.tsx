@@ -18,7 +18,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="pt-12 px-4 md:px-8 text-sky-700">
+    <footer className="py-12 px-4 md:px-8 text-sky-700 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
@@ -119,7 +119,7 @@ const Footer = () => {
               <div className="flex-1">
                 <div className="mb-6">
                   <Image
-                    src="/logo.webp"
+                    src="/home/logo.webp"
                     alt="Shiksha Nation Logo"
                     width={200}
                     height={60}

@@ -16,7 +16,7 @@ const LearningGoalsSection = (): React.ReactElement => {
       descriptionColor: "text-[#68c937]",
       buttonBgColor: "bg-[#8de561]",
       circleBgColor: "bg-[#eeffe6]",
-      iconSrc: "/class-6-12.svg",
+      iconSrc: "/home/class-6-12.svg",
     },
     {
       id: "crack-neet",
@@ -28,7 +28,7 @@ const LearningGoalsSection = (): React.ReactElement => {
       descriptionColor: "text-[#03baa8]",
       buttonBgColor: "bg-[#4ed6c9]",
       circleBgColor: "bg-[#cdfffa]",
-      iconSrc: "/crack-neet.svg",
+      iconSrc: "/home/crack-neet.svg",
     },
     {
       id: "ace-jee",
@@ -40,7 +40,7 @@ const LearningGoalsSection = (): React.ReactElement => {
       descriptionColor: "text-[#d95b5b]",
       buttonBgColor: "bg-[#f37777]",
       circleBgColor: "bg-[#fbe9e9]",
-      iconSrc: "/ace-jee.svg",
+      iconSrc: "/home/ace-jee.svg",
     },
     {
       id: "prepare-cuet",
@@ -52,7 +52,7 @@ const LearningGoalsSection = (): React.ReactElement => {
       descriptionColor: "text-[#54678f]",
       buttonBgColor: "bg-[#7092d8]",
       circleBgColor: "bg-[#e7eefc]",
-      iconSrc: "/prepare-for-cuet.svg",
+      iconSrc: "/home/prepare-for-cuet.svg",
     },
   ];
 
