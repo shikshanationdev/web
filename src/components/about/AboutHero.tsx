@@ -3,15 +3,16 @@ import Image from 'next/image';
 
 const AboutHero = () => {
   return (
-    <div className="w-full relative top-0" style={{ minHeight: '1000px' }}>
+    <div className="w-full relative">
       <Image
         src="/about-us/heroSection.svg"
         alt="About Hero Section"
-        fill
-        className="object-contain"
+        width={0}
+        height={0}
+        className="w-full h-auto"
         priority
         sizes="100vw"
-        style={{ objectPosition: 'top', maxHeight: '1000px' }}
+        style={{ width: '100%', height: 'auto' }}
       />
     </div>
   );

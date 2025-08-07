@@ -13,14 +13,14 @@ const LearningStatsSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Left: Content */}
           <div className="w-full lg:w-1/2 text-center lg:text-left md:px-5">
-            <h2 className="text-3xl sm:text-4xl lg:text-[3vw] xl:text-[2.5rem] font-bold text-sky-700 mb-6 lg:mb-8 leading-tight">
+            <h2 className="text-2xl text-left sm:text-4xl lg:text-[3vw] xl:text-[2.5rem] font-bold text-sky-700 mb-6 lg:mb-8 leading-tight">
               Start learning with 67.1k students around the world.
             </h2>
             <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
-              <button className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary))] hover:bg-[rgb(var(--color-green-primary)/0.9)] text-white font-semibold rounded-full text-xs sm:text-sm transition-colors whitespace-nowrap">
+              <button className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary))] hover:bg-[rgb(var(--color-green-primary)/0.9)] text-white font-semibold rounded-full text-xs sm:text-sm transition-colors whitespace-nowrap">
                 Start Learning Now
               </button>
-              <button className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary)/0.1)] text-[rgb(var(--color-green-primary))] font-semibold rounded-full text-xs sm:text-sm transition-colors border-2 border-[rgb(var(--color-green-primary)/0.3)] hover:bg-[rgb(var(--color-green-primary)/0.15)] whitespace-nowrap">
+              <button className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary)/0.1)] text-[rgb(var(--color-green-primary))] font-semibold rounded-full text-xs sm:text-sm transition-colors border-2 border-[rgb(var(--color-green-primary)/0.3)] hover:bg-[rgb(var(--color-green-primary)/0.15)] whitespace-nowrap">
                 Browse All Courses
               </button>
             </div>
