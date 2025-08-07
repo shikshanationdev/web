@@ -4,19 +4,19 @@ import { useRef, useState, useEffect } from "react";
 
 const features = [
   {
-    icon: "/ai-enhanced-live-class.svg",
+    icon: "/home/ai-enhanced-live-class.svg",
     title: "AI-Enhanced\nLive Classes",
   },
   {
-    icon: "/smart-note-concept.svg",
+    icon: "/home/smart-note-concept.svg",
     title: "Smart Notes with\nConcept AI™",
   },
   {
-    icon: "/ai-powerd-video.svg",
+    icon: "/home/ai-powerd-video.svg",
     title: "AI-Powered\nConcept Videos",
   },
   {
-    icon: "/carrer-skill-lader.svg",
+    icon: "/home/carrer-skill-lader.svg",
     title: "Career+ Skilling\nPrograms",
   },
 ];

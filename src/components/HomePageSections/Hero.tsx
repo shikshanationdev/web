@@ -39,7 +39,7 @@ const Hero = () => {
           </div>
           <div className="mb-6 flex justify-center md:justify-start">
             <Image
-              src="/brush_effect.svg"
+              src="/home/brush_effect.svg"
               alt="Brush Effect"
               width={400}
               height={100}
@@ -50,7 +50,7 @@ const Hero = () => {
           {/* Mobile Image - appears between content and button */}
           <div className="md:hidden w-full flex justify-center mb-8">
             <Image
-              src="/hero_section_img.svg"
+              src="/home/hero_section_img.svg"
               alt="Learning Illustration"
               width={340}
               height={340}
@@ -71,7 +71,7 @@ const Hero = () => {
         {/* Right: Illustration - Desktop only */}
         <div className="hidden md:flex basis-[40%] md:max-w-[40%] justify-center">
           <Image
-            src="/hero_section_img.svg"
+            src="/home/hero_section_img.svg"
             alt="Learning Illustration"
             width={340}
             height={340}

@@ -3,31 +3,31 @@ import InfoCard from "../ui/InfoCard";
 
 const features = [
   {
-    icon: "/100+ Courses.svg",
+    icon: "/home/100+ Courses.svg",
     label: "100+ Courses",
   },
   {
-    icon: "/Test Series.svg",
+    icon: "/home/Test Series.svg",
     label: "Test Series",
   },
   {
-    icon: "/Mock Tests & Notes.svg",
+    icon: "/home/Mock Tests & Notes.svg",
     label: "Mock Tests\n& Notes",
   },
   {
-    icon: "/Recorded & Live Lectures.svg",
+    icon: "/home/Recorded & Live Lectures.svg",
     label: "Recorded &\nLive Lectures",
   },
   {
-    icon: "/Organized Learning.svg",
+    icon: "/home/Organized Learning.svg",
     label: "Organized\nLearning",
   },
   {
-    icon: "/Expert Instructions.svg",
+    icon: "/home/Expert Instructions.svg",
     label: "Expert\nInstructions",
   },
   {
-    icon: "/Smart Solutions.svg",
+    icon: "/home/Smart Solutions.svg",
     label: "Smart\nSolutions",
   },
 ];

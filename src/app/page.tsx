@@ -1,5 +1,4 @@
-import { Navbar, Footer } from "@/components";
-import { FeaturesSection, Hero, LearningGoalsSection, StatsSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection, QrAppPromo } from "@/components/HomePageSections";
+import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, LearningGoalsSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection } from "@/components/HomePageSections";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <JoinLearnersSection />
       <FaqSection />
       <QrAppPromo />
-      <LearningStatsSection />
     </div>
   );
 }

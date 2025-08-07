@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lexend_Deca } from "next/font/google";
 import { Navbar } from "@/components";
+
 import { Footer } from "@/components";
 import "./globals.css";
 import CopyrightSection from "@/components/HomePageSections/CopyrightSection";
+import { Toaster } from "react-hot-toast";
+import { LearningStatsSection } from "@/components/HomePageSections";
 
 const lexendDeca = Lexend_Deca({
   variable: "--font-lexend-deca",
@@ -23,11 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${lexendDeca.className}`}
-      >
+      <body className={`${lexendDeca.className}`}>
         <Navbar />
+        <Toaster position="bottom-center" />
         {children}
+        <LearningStatsSection />
         <Footer />
         <CopyrightSection />
       </body>
