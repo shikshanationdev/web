@@ -1,6 +1,7 @@
 
-"use client"; 
+"use client";
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const ContactForm: React.FC = () => {
   const [form, setForm] = useState({
@@ -48,15 +49,18 @@ const ContactForm: React.FC = () => {
       });
       const data = await res.json();
       if (res.ok) {
-        setSuccess('Message sent successfully!');
+        toast.success('Form submitted successfully.');
+        setSuccess('');
         setForm({
           firstName: '', lastName: '', email: '', phone: '', address: '', message: '', agreement: false
         });
       } else {
+        toast.error(data.message || 'Something went wrong.');
         setError(data.message || 'Something went wrong.');
       }
     } catch (err) {
-      setError('Something went wrong.');
+        toast.error('Something went wrong.');
+        setError('Something went wrong.');
     } finally {
       setLoading(false);
     }
@@ -142,8 +146,7 @@ const ContactForm: React.FC = () => {
         >
           {loading ? 'Sending...' : 'Submit'}
         </button>
-        {success && <div className="text-green-600 text-center font-medium">{success}</div>}
-        {error && <div className="text-red-600 text-center font-medium">{error}</div>}
+        {/* Toast notifications will show for success/error */}
       </form>
     </div>
   );
