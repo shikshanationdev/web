@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const features = [
   {
-    icon: "/home/100+ Courses.svg",
+    icon: "/home/100courses.svg",
     label: "100+ Courses",
   },
   {
