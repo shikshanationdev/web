@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { HiOutlineBars3BottomLeft, HiChevronDown, HiXMark } from "react-icons/hi2";
+import { useEffect, useState } from "react";
+import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 
 // Navigation items for the mobile
 const navItems = [

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface CourseCardProps {
   title: string;
   image: string;
@@ -8,7 +10,7 @@ interface CourseCardProps {
   enrollLink: string;
 }
 
-const CourseCard = ({ title, image, rating, reviews, price, oldPrice, enrollLink }: CourseCardProps) => {
+const CourseCard = ({ title, image, rating, reviews, price, oldPrice }: CourseCardProps) => {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <span
@@ -25,9 +27,10 @@ const CourseCard = ({ title, image, rating, reviews, price, oldPrice, enrollLink
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-xs hover:shadow-lg transition-shadow">
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={title}
+          fill
           className="w-full h-full object-cover"
         />
       </div>

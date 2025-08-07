@@ -33,7 +33,7 @@ const LearningStatsSection = () => {
           {/* Right: Stats */}
           <div className="w-full lg:w-1/2">
             <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {stats.map((stat, index) => (
+              {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="text-4xl font-bold text-sky-700 mb-1 sm:mb-2">
                     {stat.value}

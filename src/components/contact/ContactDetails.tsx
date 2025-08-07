@@ -38,7 +38,7 @@ const ContactDetails: React.FC = () => (
         Contact Us
       </h1>
       <p className="text-lg text-gray-600 leading-relaxed">
-        We're here to answer your questions, guide your journey,
+        We&apos;re here to answer your questions, guide your journey,
         and help you get started with confidence.
       </p>
     </div>

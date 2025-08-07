@@ -2,6 +2,7 @@ import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
+import Image from "next/image";
 
 const LearningGoalsSection = (): React.ReactElement => {
   // Define the learning goal cards data for easy mapping
@@ -107,8 +108,9 @@ const LearningGoalsSection = (): React.ReactElement => {
                         borderBottomLeftRadius: '60px',
                       }}
                     >
-                      <img
-                        className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                      <Image
+                        className="w-12 h-12 p-4 md:w-16 md:h-16 object-contain"
+                        fill
                         alt={`${goal.title} icon`}
                         src={goal.iconSrc}
                       />

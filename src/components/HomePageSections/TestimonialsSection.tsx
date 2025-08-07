@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const testimonials = [
   {
@@ -106,9 +106,7 @@ const TestimonialsSection = () => {
           >
             {/* Duplicate testimonials for infinite scroll */}
             {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => {
-              const actualIndex = index % testimonials.length;
               const position = index - currentIndex;
-              const isCenter = position >= 0 && position <= 2;
               const centerCard = position === 1;
               
               return (
