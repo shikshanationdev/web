@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lexendDeca.className}`}>
         <Navbar />
-        <Toaster position="top-right" />
+        <Toaster position="bottom-center" />
         {children}
         <Footer />
         <CopyrightSection />
