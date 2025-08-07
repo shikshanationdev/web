@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lexend_Deca } from "next/font/google";
 import { Navbar } from "@/components";
+import type { Metadata } from "next";
+import { Lexend_Deca } from "next/font/google";
 
 import { Footer } from "@/components";
-import "./globals.css";
+import { LearningStatsSection } from "@/components/HomePageSections";
 import CopyrightSection from "@/components/HomePageSections/CopyrightSection";
 import { Toaster } from "react-hot-toast";
-import { LearningStatsSection } from "@/components/HomePageSections";
+import "./globals.css";
 
 const lexendDeca = Lexend_Deca({
   variable: "--font-lexend-deca",

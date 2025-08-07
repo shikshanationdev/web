@@ -72,8 +72,6 @@ const CoursesSection = () => {
 
   // Slider logic (show 4 at a time)
   const visibleCourses = filteredCourses.slice(scrollIndex, scrollIndex + 4);
-  const canScrollLeft = scrollIndex > 0;
-  const canScrollRight = scrollIndex + 4 < filteredCourses.length;
 
   // Update indicator position and width when category changes
   useEffect(() => {

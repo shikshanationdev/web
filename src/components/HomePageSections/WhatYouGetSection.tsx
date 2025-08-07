@@ -1,5 +1,6 @@
 import { FiArrowRight } from "react-icons/fi";
 import InfoCard from "../ui/InfoCard";
+import Image from "next/image";
 
 const features = [
   {
@@ -54,9 +55,10 @@ const WhatYouGetSection = () => {
               </span>
             </div>
             <div className="absolute right-0 top-0 h-full flex items-center justify-center w-24 rounded-lg rounded-l-4xl bg-blue-50">
-              <img
+              <Image
                 src={feature.icon}
                 alt={feature.label}
+                fill
                 className="w-10 h-10 object-contain"
               />
             </div>
