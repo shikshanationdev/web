@@ -67,7 +67,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="rounded-2xl bg-sky-50 p-8 py-20">
+    <div className="rounded-2xl bg-sky-50/50 p-8 py-20">
       <h2 className="text-4xl font-light text-blue-600 mb-8">Get In Touch</h2>
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
