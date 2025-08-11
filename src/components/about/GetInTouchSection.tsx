@@ -12,7 +12,7 @@ const GetInTouchSection = () => {
           <p className="text-white/70 text-[10px] md:text-lg mb-4 uppercase tracking-wider">
             GET IN TOUCH
           </p>
-          <h2 className="text-white text-[16px] sm:text-xl md:text-4xl font-bold mb-8 leading-tight">
+          <h2 className="text-white text-lg text-wrap pr-20 sm:text-xl md:text-4xl font-bold mb-8 leading-tight">
             For Queries, Feedback or Assistance
           </h2>
           <Link
