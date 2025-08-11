@@ -27,7 +27,7 @@ const FaqSection = () => {
   return (
     <section className="w-full py-16 px-4">
       <div className="max-w-7xl mx-auto md:px-10">
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="text-center text-4xl md:text-4xl font-bold text-gray-900 mb-4">
           Got Questions? We’ve Got Answers
         </h2>
         <p className="text-center text-gray-600 text-lg mb-10">
