@@ -13,14 +13,14 @@ const AboutWhoWeAre = () => {
         {/* Top Section: Left Image + Right Text */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-16">
           {/* Left Image with blue border */}
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-start">
             <div className="rounded-lg overflow-hidden p-1">
               <Image
-                src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+                src="/about-us/whoweare.jpg"
                 alt="Graduation celebration"
-                width={350}
-                height={420}
-                className="object-cover rounded-lg"
+                width={250}
+                height={120}
+                className="object-cover rounded-lg h-64 w-80"
               />
             </div>
           </div>
@@ -67,14 +67,14 @@ const AboutWhoWeAre = () => {
           </div>
 
           {/* Right Image with blue border */}
-          <div className="flex justify-center md:justify-end order-1 md:order-2">
+          <div className="flex justify-end order-1 md:order-2">
             <div className="rounded-lg overflow-hidden p-1">
               <Image
-                src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80"
+                src="/about-us/whoweare2.jpg"
                 alt="Students group"
-                width={350}
-                height={420}
-                className="object-cover rounded-lg"
+                width={250}
+                height={220}
+                className="object-cover rounded-lg h-64 w-80"
               />
             </div>
           </div>

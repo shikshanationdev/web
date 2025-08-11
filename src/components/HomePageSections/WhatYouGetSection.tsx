@@ -59,7 +59,7 @@ const WhatYouGetSection = () => {
                 src={feature.icon}
                 alt={feature.label}
                 fill
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 p-5 md:p-0 object-contain"
               />
             </div>
           </div>
