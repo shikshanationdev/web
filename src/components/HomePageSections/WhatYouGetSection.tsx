@@ -36,7 +36,7 @@ const features = [
 const WhatYouGetSection = () => {
   return (
     <section className="w-full flex flex-col items-center py-16">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-black text-center mb-4">
+      <h2 className="text-4xl sm:text-4xl font-extrabold text-black text-center mb-4">
         What You’ll Get
       </h2>
       <p className="text-gray-600 text-lg max-w-2xl mb-10 px-4 text-center">
@@ -59,7 +59,7 @@ const WhatYouGetSection = () => {
                 src={feature.icon}
                 alt={feature.label}
                 fill
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 p-5 md:p-0 object-contain"
               />
             </div>
           </div>
