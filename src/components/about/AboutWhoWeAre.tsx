@@ -5,7 +5,7 @@ const AboutWhoWeAre = () => {
   return (
     <section className="w-full max-w-4xl mx-auto py-16 px-6">
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
+      <h2 className="text-[26px] md:text-4xl font-bold text-center text-gray-900 mb-5 lg:mb-10">
         Who We Are
       </h2>
 
@@ -14,7 +14,7 @@ const AboutWhoWeAre = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-16">
           {/* Left Image with blue border */}
           <div className="flex justify-center md:justify-start">
-            <div className="border-2 border-blue-500 rounded-lg overflow-hidden p-1">
+            <div className="rounded-lg overflow-hidden p-1">
               <Image
                 src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
                 alt="Graduation celebration"
@@ -50,7 +50,7 @@ const AboutWhoWeAre = () => {
           {/* Left Text Section */}
           <div className="flex flex-col justify-start order-2 md:order-1">
             {/* Green text with left border */}
-            <div className="border-l-4 border-green-500 pl-6 mb-6">
+            <div className="border-l-4 border-green-500 pl-6 mb-6 text-right">
               <p className="text-green-600 text-lg font-medium leading-relaxed">
                 Through live classes, smart notes, skilling programs, and exam prep, we empower 
                 students from Class 6 to 12 and beyond to achieve excellence — not just in marks, 
@@ -58,7 +58,7 @@ const AboutWhoWeAre = () => {
               </p>
             </div>
             
-            <div className="pl-6">
+            <div className="pl-6 text-right">
               <p className="text-green-600 text-lg font-medium leading-relaxed">
                 We're building a nation of confident learners, problem-solvers, and dreamers who are 
                 ready to lead tomorrow.
@@ -68,7 +68,7 @@ const AboutWhoWeAre = () => {
 
           {/* Right Image with blue border */}
           <div className="flex justify-center md:justify-end order-1 md:order-2">
-            <div className="border-2 border-blue-500 rounded-lg overflow-hidden p-1">
+            <div className="rounded-lg overflow-hidden p-1">
               <Image
                 src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80"
                 alt="Students group"
