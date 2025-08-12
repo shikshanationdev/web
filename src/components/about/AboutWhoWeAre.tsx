@@ -60,7 +60,7 @@ const AboutWhoWeAre = () => {
             
             <div className="pl-6 text-right">
               <p className="text-green-600 text-lg font-medium leading-relaxed">
-                We're building a nation of confident learners, problem-solvers, and dreamers who are 
+                We&apos;re building a nation of confident learners, problem-solvers, and dreamers who are 
                 ready to lead tomorrow.
               </p>
             </div>
