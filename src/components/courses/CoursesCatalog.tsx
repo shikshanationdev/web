@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { FiSearch, FiFilter, FiUsers, FiClock, FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdGridView } from "react-icons/md";
+import CourseCard from "../ui/CourseCard";
 
 const CoursesCatalog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
@@ -63,7 +62,7 @@ const CoursesCatalog = () => {
       rating: 4.5,
       reviews: 24,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Beginner",
       students: 156,
       duration: "12 hours",
@@ -78,7 +77,7 @@ const CoursesCatalog = () => {
       rating: 4.8,
       reviews: 18,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Intermediate",
       students: 203,
       duration: "15 hours",
@@ -93,7 +92,7 @@ const CoursesCatalog = () => {
       rating: 4.6,
       reviews: 32,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Advanced",
       students: 89,
       duration: "18 hours",
@@ -108,7 +107,7 @@ const CoursesCatalog = () => {
       rating: 4.7,
       reviews: 15,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Beginner",
       students: 167,
       duration: "10 hours",
@@ -123,7 +122,7 @@ const CoursesCatalog = () => {
       rating: 4.4,
       reviews: 28,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Intermediate",
       students: 234,
       duration: "14 hours",
@@ -138,7 +137,7 @@ const CoursesCatalog = () => {
       rating: 4.9,
       reviews: 42,
       price: 799,
-      originalPrice: 999,
+      oldPrice: 999,
       level: "Advanced",
       students: 178,
       duration: "20 hours",
@@ -289,80 +288,22 @@ const CoursesCatalog = () => {
             {/* Course Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredCourses.map((course) => (
-                <div key={course.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                  {/* Course Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={course.image}
-                      alt={course.title}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                    {course.isPopular && (
-                      <div className="absolute top-3 left-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-                        POPULAR
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Course Content */}
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-                        {course.category}
-                      </span>
-                      <span className="text-xs text-gray-500">{course.level}</span>
-                    </div>
-
-                    <h3 className="font-semibold text-gray-900 mb-1">{course.title}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{course.instructor}</p>
-
-                    {/* Rating */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          i < Math.floor(course.rating) ? (
-                            <AiFillStar
-                              key={i}
-                              className="w-4 h-4 text-yellow-400"
-                            />
-                          ) : (
-                            <AiOutlineStar
-                              key={i}
-                              className="w-4 h-4 text-gray-300"
-                            />
-                          )
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-600">
-                        {course.rating} ({course.reviews} Reviews)
-                      </span>
-                    </div>
-
-                    {/* Course Stats */}
-                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
-                      <div className="flex items-center gap-1">
-                        <FiUsers className="w-3 h-3" />
-                        <span>{course.students} students</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <FiClock className="w-3 h-3" />
-                        <span>{course.duration}</span>
-                      </div>
-                    </div>
-
-                    {/* Price and Button */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-gray-900">₹{course.price}</span>
-                        <span className="text-sm text-gray-500 line-through">₹{course.originalPrice}</span>
-                      </div>
-                      <button className="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
-                        Enroll Now
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <CourseCard
+                  key={course.id}
+                  title={course.title}
+                  image={course.image}
+                  rating={course.rating}
+                  reviews={course.reviews}
+                  price={course.price}
+                  oldPrice={course.oldPrice}
+                  instructor={course.instructor}
+                  level={course.level}
+                  students={course.students}
+                  duration={course.duration}
+                  category={course.category}
+                  isPopular={course.isPopular}
+                  variant="detailed"
+                />
               ))}
             </div>
 
