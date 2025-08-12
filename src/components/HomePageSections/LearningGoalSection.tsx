@@ -65,8 +65,7 @@ const LearningGoalsSection = (): React.ReactElement => {
         </h2>
 
         <p className="text-lg text-[#454648] text-center mb-12 max-w-3xl mx-auto font-['Lexend_Deca',Helvetica]">
-          Lorem ipsum dolor sit amet consectetur. Lorem in volutpat vulputate
-          pellentesque blandit feugiat. Porttitor enim nec vitae viverra id.
+        Choose a learning path that aligns perfectly with your aspirations and career dreams.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">

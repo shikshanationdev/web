@@ -78,12 +78,12 @@ const CoursesSection = () => {
     const updateIndicator = () => {
       const activeTab = tabRefs.current[selectedCategory];
       const container = containerRef.current;
-      
+
       if (activeTab && container) {
         // Get the tab's position relative to its parent container
         const tabOffsetLeft = activeTab.offsetLeft;
         const tabWidth = activeTab.offsetWidth;
-        
+
         setIndicatorStyle({
           width: tabWidth,
           left: tabOffsetLeft,
@@ -93,7 +93,7 @@ const CoursesSection = () => {
 
     // Small delay to ensure DOM is updated
     const timer = setTimeout(updateIndicator, 50);
-    
+
     return () => clearTimeout(timer);
   }, [selectedCategory]);
 
@@ -102,11 +102,11 @@ const CoursesSection = () => {
     const handleResize = () => {
       const activeTab = tabRefs.current[selectedCategory];
       const container = containerRef.current;
-      
+
       if (activeTab && container) {
         const tabOffsetLeft = activeTab.offsetLeft;
         const tabWidth = activeTab.offsetWidth;
-        
+
         setIndicatorStyle({
           width: tabWidth,
           left: tabOffsetLeft,
@@ -128,27 +128,25 @@ const CoursesSection = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Top Courses</h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur. Lorem in volutpat vulputate
-            pellentesque blandit feugiat. Porttitor enim nec vitae viverra id.
+            Our most popular programs, trusted by thousands of learners.
           </p>
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
         <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-          <div 
+          <div
             ref={containerRef}
             className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
-            style={{overflowX: 'auto'}}
+            style={{ overflowX: 'auto' }}
           >
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 ref={(el) => { tabRefs.current[cat.value] = el; }}
-                className={`pb-3 text-base sm:text-xl md:text-2xl font-medium transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${
-                  selectedCategory === cat.value
+                className={`pb-3 text-base sm:text-xl md:text-2xl font-medium transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${selectedCategory === cat.value
                     ? "text-green-600"
                     : "text-gray-500 hover:text-gray-700"
-                }`}
+                  }`}
                 onClick={() => {
                   setSelectedCategory(cat.value);
                   setScrollIndex(0);

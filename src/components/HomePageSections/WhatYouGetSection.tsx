@@ -40,7 +40,7 @@ const WhatYouGetSection = () => {
         What You’ll Get
       </h2>
       <p className="text-gray-600 text-lg max-w-2xl mb-10 px-4 text-center">
-        Get everything you need for online studies: courses, tests, notes, live and recorded lectures, and expert guidance.
+        Everything you need to learn, practice, and master your skills in one place.
       </p>
       {/* Responsive grid layout: 1, 2, or 3 columns based on screen width; switches to row below 500px */}
       <div className="mb-8 w-full max-w-5xl px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 block lg:hidden">
