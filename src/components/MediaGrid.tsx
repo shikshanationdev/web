@@ -15,7 +15,7 @@ const mediaPosts = [
     title: "Why a B2B tech company dropped an album featuring professional artists",
     desc: "Shikshanation’s first studio album hit 1M streams on Spotify and Apple Music in just two months.",
     date: "14 April, 2025",
-    link: "https://www.marketingbrew.com/stories/2025/04/14/b2b-tech-company-album-artists",
+    link: "https://fortune.com/2023/05/02/return-to-office-managers-employees-productivity-definition/",
   },
   {
     logo: "/media/fastcompany.png",
@@ -23,7 +23,7 @@ const mediaPosts = [
     title: "Shikshanation wants to be your AI-powered productivity superhub",
     desc: "Shikshanation’s AI text generation and summary tools are built right into the platform.",
     date: "28 February, 2025",
-    link: "https://www.fastcompany.com/2025/02/28/shikshanation-ai-productivity-superhub",
+    link: "https://fortune.com/2023/05/02/return-to-office-managers-employees-productivity-definition/",
   },
   {
     logo: "/media/tc.png",
@@ -31,7 +31,7 @@ const mediaPosts = [
     title: "Shikshanation raises $400M to scale its all-in-one productivity platform",
     desc: "TechCrunch covers Shikshanation’s massive Series C funding round to expand globally.",
     date: "2 May, 2025",
-    link: "https://techcrunch.com/2025/05/02/shikshanation-raises-400m/",
+    link: "https://fortune.com/2023/05/02/return-to-office-managers-employees-productivity-definition/",
   },
   {
     logo: "/media/business-insider.png",
@@ -39,7 +39,7 @@ const mediaPosts = [
     title: "Inside Shikshanation’s culture of innovation and rapid iteration",
     desc: "A look into how Shikshanation continuously evolves its platform to meet user needs.",
     date: "14 April, 2025",
-    link: "https://www.businessinsider.com/shikshanation-culture-innovation-iteration-2025-04",
+    link: "https://fortune.com/2023/05/02/return-to-office-managers-employees-productivity-definition/",
   },
   {
     logo: "/media/entrepreneur.png",
@@ -47,7 +47,7 @@ const mediaPosts = [
     title: "How Shikshanation is transforming team productivity across industries",
     desc: "Shikshanation’s CEO shares vision for unifying work tools in one seamless experience.",
     date: "28 February, 2025",
-    link: "https://www.entrepreneur.com/article/shikshanation-transforming-productivity-2025-02",
+    link: "https://fortune.com/2023/05/02/return-to-office-managers-employees-productivity-definition/",
   },
 ];
 
