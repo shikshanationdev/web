@@ -8,7 +8,6 @@ import { MdGridView } from "react-icons/md";
 
 const CoursesCatalog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
 
@@ -151,9 +150,7 @@ const CoursesCatalog = () => {
 
   const filteredCourses = courses.filter(course => {
     const matchesCategory = selectedCategory === "All Categories" || course.category === selectedCategory;
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.instructor.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return matchesCategory;
   });
 
   return (
@@ -168,24 +165,10 @@ const CoursesCatalog = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="lg:w-1/4">
-            {/* Search */}
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-              <div className="p-4 border-b border-gray-100">
-                <div className="relative">
-                  <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                  <input
-                    type="text"
-                    placeholder="Search by keyword"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
-                  />
-                </div>
-              </div>
-
+            <div className="bg-white rounded-2xl shadow-lg h-full lg:sticky lg:top-4">
               {/* Categories */}
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2">
                     <MdGridView className="w-4 h-4 text-gray-600" />
                     <h3 className="font-medium text-gray-900">Categories</h3>
@@ -193,72 +176,71 @@ const CoursesCatalog = () => {
                   <FiChevronUp className="w-4 h-4 text-gray-400" />
                 </div>
 
-                <div className="space-y-1">
-                  {categories.map((category) => (
-                    <div key={category.name}>
-                      {/* Main Category */}
-                      <div className="flex items-center justify-between py-2">
-                        <label className="flex items-center cursor-pointer flex-1">
-                          <input
-                            type="radio"
-                            name="category"
-                            value={category.name}
-                            checked={selectedCategory === category.name}
-                            onChange={(e) => setSelectedCategory(e.target.value)}
-                            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                          />
-                          <span className={`ml-3 text-sm ${selectedCategory === category.name
-                              ? 'text-blue-600 font-medium'
-                              : 'text-gray-700'
-                            }`}>
-                            {category.name}
-                          </span>
-                        </label>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-500">({category.count})</span>
-                          {category.subCategories && (
-                            <button
-                              onClick={() => toggleCategory(category.name)}
-                              className="p-1 hover:bg-gray-100 rounded"
-                            >
-                              {expandedCategories.includes(category.name) ? (
-                                <FiChevronUp className="w-3 h-3 text-gray-400" />
-                              ) : (
-                                <FiChevronDown className="w-3 h-3 text-gray-400" />
-                              )}
-                            </button>
-                          )}
-                        </div>
+                <div className="space-y-3">{categories.map((category) => (
+                  <div key={category.name}>
+                    {/* Main Category */}
+                    <div className="flex items-center justify-between py-3">
+                      <label className="flex items-center cursor-pointer flex-1">
+                        <input
+                          type="radio"
+                          name="category"
+                          value={category.name}
+                          checked={selectedCategory === category.name}
+                          onChange={(e) => setSelectedCategory(e.target.value)}
+                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                        />
+                        <span className={`ml-3 text-sm ${selectedCategory === category.name
+                          ? 'text-blue-600 font-medium'
+                          : 'text-gray-700'
+                          }`}>
+                          {category.name}
+                        </span>
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">({category.count})</span>
+                        {category.subCategories && (
+                          <button
+                            onClick={() => toggleCategory(category.name)}
+                            className="p-1 hover:bg-gray-100 rounded"
+                          >
+                            {expandedCategories.includes(category.name) ? (
+                              <FiChevronUp className="w-3 h-3 text-gray-400" />
+                            ) : (
+                              <FiChevronDown className="w-3 h-3 text-gray-400" />
+                            )}
+                          </button>
+                        )}
                       </div>
-
-                      {/* Sub Categories */}
-                      {category.subCategories && expandedCategories.includes(category.name) && (
-                        <div className="ml-7 space-y-1">
-                          {category.subCategories.map((subCategory) => (
-                            <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-1">
-                              <div className="flex items-center">
-                                <input
-                                  type="radio"
-                                  name="category"
-                                  value={subCategory.name}
-                                  checked={selectedCategory === subCategory.name}
-                                  onChange={(e) => setSelectedCategory(e.target.value)}
-                                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                                />
-                                <span className={`ml-3 text-sm ${selectedCategory === subCategory.name
-                                    ? 'text-blue-600 font-medium'
-                                    : 'text-gray-600'
-                                  }`}>
-                                  {subCategory.name}
-                                </span>
-                              </div>
-                              <span className="text-xs text-gray-500">({subCategory.count})</span>
-                            </label>
-                          ))}
-                        </div>
-                      )}
                     </div>
-                  ))}
+
+                    {/* Sub Categories */}
+                    {category.subCategories && expandedCategories.includes(category.name) && (
+                      <div className="ml-7 space-y-2">
+                        {category.subCategories.map((subCategory) => (
+                          <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-2">
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                name="category"
+                                value={subCategory.name}
+                                checked={selectedCategory === subCategory.name}
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                                className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                              />
+                              <span className={`ml-3 text-sm ${selectedCategory === subCategory.name
+                                ? 'text-blue-600 font-medium'
+                                : 'text-gray-600'
+                                }`}>
+                                {subCategory.name}
+                              </span>
+                            </div>
+                            <span className="text-xs text-gray-500">({subCategory.count})</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
                 </div>
               </div>
             </div>
