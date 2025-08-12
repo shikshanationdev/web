@@ -29,7 +29,7 @@ const CoursesHero = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-blue-700 via-green-600 to-green-500 py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-r from-sky-700 via-green-600 to-green-500 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left Content */}
