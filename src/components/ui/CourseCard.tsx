@@ -27,7 +27,6 @@ const CourseCard = ({
   reviews,
   price,
   oldPrice,
-  enrollLink,
   instructor,
   level,
   students,

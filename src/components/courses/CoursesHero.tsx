@@ -54,7 +54,7 @@ const CoursesHero = () => {
           {/* Right Content - Course Cards Grid */}
           <div className="lg:w-1/2 w-full max-w-md mx-auto lg:mx-0">
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {courses.map((course, index) => (
+              {courses.map((course) => (
                 <div
                   key={course.id}
                   className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer h-32 sm:h-36"
