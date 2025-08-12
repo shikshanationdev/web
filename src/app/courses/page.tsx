@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { CoursesHero } from '@/components/courses';
 
 const Courses = () => {
   return (
-    <div className='max-w-[1536px] mx-auto'>Courses</div>
-  )
-}
+    <div>
+      <CoursesHero />
+    </div>
+  );
+};
 
-export default Courses
+export default Courses;
