@@ -1,61 +1,15 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import CourseCard from "../ui/CourseCard";
+import { coursesData, categories, getCoursesByCategory, getPopularCourses } from "@/data/courses";
 
-const categories = [
+const categoryOptions = [
   { label: "All Categories", value: "all" },
   { label: "Class 6th to 12th", value: "class6-12" },
   { label: "JEE", value: "jee" },
   { label: "NEET", value: "neet" },
   { label: "CUET", value: "cuet" },
-  { label: "Skilling", value: "skilling" },
-];
-
-const courses = [
-  {
-    id: 1,
-    title: "Course Name",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop",
-    rating: 3,
-    reviews: "2k",
-    price: 799,
-    oldPrice: 1699,
-    enrollLink: "#",
-    category: "all",
-  },
-  {
-    id: 2,
-    title: "Course Name",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop",
-    rating: 3,
-    reviews: "2k",
-    price: 799,
-    oldPrice: 1699,
-    enrollLink: "#",
-    category: "all",
-  },
-  {
-    id: 3,
-    title: "Course Name",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop",
-    rating: 3,
-    reviews: "2k",
-    price: 799,
-    oldPrice: 1699,
-    enrollLink: "#",
-    category: "all",
-  },
-  {
-    id: 4,
-    title: "Course Name",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop",
-    rating: 3,
-    reviews: "2k",
-    price: 799,
-    oldPrice: 1699,
-    enrollLink: "#",
-    category: "all",
-  },
+  { label: "Skill Development", value: "skilling" },
 ];
 
 const CoursesSection = () => {
@@ -65,10 +19,25 @@ const CoursesSection = () => {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
 
-  const filteredCourses =
-    selectedCategory === "all"
-      ? courses
-      : courses.filter((c) => c.category === selectedCategory);
+  // Get filtered courses based on selected category
+  const getFilteredCourses = () => {
+    if (selectedCategory === "all") {
+      return getPopularCourses(); // Show popular courses for "All Categories"
+    } else if (selectedCategory === "class6-12") {
+      return coursesData.filter(course => course.category.includes("Class"));
+    } else if (selectedCategory === "jee") {
+      return coursesData.filter(course => course.category === "JEE");
+    } else if (selectedCategory === "neet") {
+      return coursesData.filter(course => course.category === "NEET");
+    } else if (selectedCategory === "cuet") {
+      return coursesData.filter(course => course.category === "CUET");
+    } else if (selectedCategory === "skilling") {
+      return coursesData.filter(course => course.category === "Skill Development");
+    }
+    return coursesData;
+  };
+
+  const filteredCourses = getFilteredCourses();
 
   // Slider logic (show 4 at a time)
   const visibleCourses = filteredCourses.slice(scrollIndex, scrollIndex + 4);
@@ -139,13 +108,13 @@ const CoursesSection = () => {
             className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
             style={{ overflowX: 'auto' }}
           >
-            {categories.map((cat) => (
+            {categoryOptions.map((cat) => (
               <button
                 key={cat.value}
                 ref={(el) => { tabRefs.current[cat.value] = el; }}
                 className={`pb-3 text-base sm:text-xl md:text-2xl font-medium transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${selectedCategory === cat.value
-                    ? "text-green-600"
-                    : "text-gray-500 hover:text-gray-700"
+                  ? "text-green-600"
+                  : "text-gray-500 hover:text-gray-700"
                   }`}
                 onClick={() => {
                   setSelectedCategory(cat.value);

@@ -29,12 +29,12 @@ const AboutWhoWeAre = () => {
           <div className="flex flex-col justify-start">
             {/* Horizontal blue line */}
             <div className="w-32 h-1 bg-blue-500 mb-6"></div>
-            
+
             {/* Blue text */}
             <p className="text-blue-600 text-lg leading-relaxed font-medium">
-              At Siksha Nation, we believe that education is the foundation of national progress. 
-              Our bilingual, inclusive, and technology-driven platform bridges urban-rural gaps, 
-              offering personalized learning experiences that are both academically rigorous and 
+              At Siksha Nation, we believe that education is the foundation of national progress.
+              Our bilingual, inclusive, and technology-driven platform bridges urban-rural gaps,
+              offering personalized learning experiences that are both academically rigorous and
               future-ready.
             </p>
           </div>
@@ -52,15 +52,15 @@ const AboutWhoWeAre = () => {
             {/* Green text with left border */}
             <div className="border-l-4 border-green-500 pl-6 mb-6 text-right">
               <p className="text-green-600 text-lg font-medium leading-relaxed">
-                Through live classes, smart notes, skilling programs, and exam prep, we empower 
-                students from Class 6 to 12 and beyond to achieve excellence — not just in marks, 
+                Through live classes, smart notes, skilling programs, and exam prep, we empower
+                students from Class 6 to 12 and beyond to achieve excellence — not just in marks,
                 but in life.
               </p>
             </div>
-            
+
             <div className="pl-6 text-right">
               <p className="text-green-600 text-lg font-medium leading-relaxed">
-                We&apos;re building a nation of confident learners, problem-solvers, and dreamers who are 
+                We&apos;re building a nation of confident learners, problem-solvers, and dreamers who are
                 ready to lead tomorrow.
               </p>
             </div>
