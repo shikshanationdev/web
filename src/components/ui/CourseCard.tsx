@@ -27,6 +27,7 @@ const CourseCard = ({
   reviews,
   price,
   oldPrice,
+  enrollLink,
   instructor,
   level,
   students,
@@ -35,6 +36,12 @@ const CourseCard = ({
   isPopular = false,
   variant = 'default'
 }: CourseCardProps) => {
+  const handleEnrollClick = () => {
+    if (enrollLink && enrollLink !== "#") {
+      window.open(enrollLink, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       i < Math.floor(rating) ? (
@@ -54,17 +61,17 @@ const CourseCard = ({
   // Default variant (for home page)
   if (variant === 'default') {
     return (
-      <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-xs hover:shadow-lg transition-shadow">
-        <div className="relative h-48 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-md overflow-hidden w-full max-w-xs hover:shadow-lg transition-shadow h-full flex flex-col">
+        <div className="relative w-full aspect-video overflow-hidden rounded-t-xl">
           <Image
             src={image}
             alt={title}
             fill
-            className="w-full h-full object-cover"
+            className="object-cover"
           />
         </div>
-        <div className="p-5">
-          <h3 className="text-lg font-semibold text-gray-800 mb-3">{title}</h3>
+        <div className="p-5 flex-1 flex flex-col">
+          <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">{title}</h3>
           <div className="flex items-center gap-2 mb-3">
             <div className="flex">{renderStars(rating)}</div>
             <span className="text-gray-500 text-sm">({reviews} Reviews)</span>
@@ -73,7 +80,14 @@ const CourseCard = ({
             <span className="text-2xl font-bold text-gray-800">₹{price}</span>
             <span className="text-gray-400 line-through">₹{oldPrice}</span>
           </div>
-          <button className="w-full bg-sky-700 text-white py-3 px-4 rounded-lg font-semibold hover:bg-sky-800 transition-all duration-200 flex items-center justify-center gap-2">
+          <button
+            onClick={handleEnrollClick}
+            disabled={!enrollLink || enrollLink === "#"}
+            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto ${enrollLink && enrollLink !== "#"
+              ? "bg-sky-700 text-white hover:bg-sky-800 cursor-pointer"
+              : "bg-gray-400 text-white cursor-not-allowed"
+              }`}
+          >
             Enroll Now
             <span className="text-lg">→</span>
           </button>
@@ -86,7 +100,7 @@ const CourseCard = ({
   return (
     <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
       {/* Course Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative w-full aspect-video overflow-hidden rounded-t-lg">
         <Image
           src={image}
           alt={title}
@@ -152,7 +166,14 @@ const CourseCard = ({
             <span className="text-lg font-bold text-gray-900">₹{price}</span>
             <span className="text-sm text-gray-500 line-through">₹{oldPrice}</span>
           </div>
-          <button className="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
+          <button
+            onClick={handleEnrollClick}
+            disabled={!enrollLink || enrollLink === "#"}
+            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${enrollLink && enrollLink !== "#"
+              ? "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
+              : "bg-gray-400 text-white cursor-not-allowed"
+              }`}
+          >
             Enroll Now
           </button>
         </div>

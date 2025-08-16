@@ -281,6 +281,7 @@ const CoursesCatalog = () => {
                     reviews={course.reviews}
                     price={course.price}
                     oldPrice={course.oldPrice}
+                    enrollLink={course.enrollLink}
                     instructor={course.instructor}
                     level={course.level}
                     students={course.students}
@@ -295,7 +296,7 @@ const CoursesCatalog = () => {
                   <div className="text-6xl mb-4">🚀</div>
                   <h3 className="text-2xl font-semibold text-gray-800 mb-2">Coming Soon!</h3>
                   <p className="text-gray-600 text-center max-w-md">
-                    We're working hard to bring you amazing skill development courses. Stay tuned for updates!
+                    We&apos;re working hard to bring you amazing skill development courses. Stay tuned for updates!
                   </p>
                 </div>
               )}
