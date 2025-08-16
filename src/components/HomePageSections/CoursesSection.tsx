@@ -201,9 +201,6 @@ const CoursesSection = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
                     See More Courses
                   </h3>
-                  <p className="text-gray-600 text-center text-sm">
-                    Explore our complete collection of {totalCourseCount}+ courses
-                  </p>
                 </div>
               </div>
             </div>
