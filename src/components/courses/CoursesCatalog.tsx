@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { MdGridView } from "react-icons/md";
+import { MdGridView, MdViewList } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
 
@@ -10,6 +10,7 @@ const CoursesCatalog = () => {
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const coursesPerPage = 6;
 
   const toggleCategory = (categoryName: string) => {
@@ -137,12 +138,8 @@ const CoursesCatalog = () => {
     <section className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Explore Courses</h2>
-          <p className="text-gray-600">
-            Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
-            {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
-          </p>
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900">Explore Courses</h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -231,46 +228,58 @@ const CoursesCatalog = () => {
 
           {/* Main Content */}
           <div className="lg:w-3/4">
-            {/* Sort and View Options */}
+            {/* Results Count and View Options */}
             <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Sort by:</span>
-                <div className="relative">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => handleSortChange(e.target.value)}
-                    className="appearance-none bg-white border border-gray-300 rounded-md px-3 py-1 pr-8 text-sm focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option>Newly published</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Rating</option>
-                  </select>
-                  <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                </div>
+              <div className="text-gray-600">
+                Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
+                {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
               </div>
 
-              <div className="flex items-center gap-2">
-                <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-50">
-                  <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
-                    <div className="bg-blue-600 rounded-sm"></div>
-                    <div className="bg-blue-600 rounded-sm"></div>
-                    <div className="bg-blue-600 rounded-sm"></div>
-                    <div className="bg-blue-600 rounded-sm"></div>
+              <div className="flex items-center gap-4">
+                {/* Sort Options */}
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-600">Sort by:</span>
+                  <div className="relative">
+                    <select
+                      value={sortBy}
+                      onChange={(e) => handleSortChange(e.target.value)}
+                      className="appearance-none bg-white border border-blue-200 rounded-lg px-4 py-2 pr-10 text-sm text-blue-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-w-[200px]"
+                    >
+                      <option>Newly published</option>
+                      <option>Price: Low to High</option>
+                      <option>Price: High to Low</option>
+                      <option>Rating</option>
+                    </select>
+                    <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-600" />
                   </div>
-                </button>
-                <button className="p-2 border border-gray-300 rounded-md hover:bg-gray-50">
-                  <div className="flex flex-col gap-0.5 w-4 h-4">
-                    <div className="bg-gray-400 h-1 rounded-sm"></div>
-                    <div className="bg-gray-400 h-1 rounded-sm"></div>
-                    <div className="bg-gray-400 h-1 rounded-sm"></div>
-                  </div>
-                </button>
+                </div>
+
+                {/* View Toggle */}
+                <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                  <button
+                    onClick={() => setViewType("grid")}
+                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "grid"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-gray-600 hover:text-gray-800"
+                      }`}
+                  >
+                    <MdGridView className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewType("list")}
+                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "list"
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-gray-600 hover:text-gray-800"
+                      }`}
+                  >
+                    <MdViewList className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Course Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
               {currentCourses.length > 0 ? (
                 currentCourses.map((course) => (
                   <CourseCard
@@ -288,7 +297,7 @@ const CoursesCatalog = () => {
                     duration={course.duration}
                     category={course.category}
                     isPopular={course.isPopular}
-                    variant="detailed"
+                    variant="default"
                   />
                 ))
               ) : (

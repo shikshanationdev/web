@@ -121,7 +121,6 @@ export const coursesData: Course[] = [
     description: "Visual mind maps for better understanding and quick revision",
     features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"]
   },
-
   // Class 7th Courses
   {
     id: 6,
