@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories, getCoursesByCategory, getPopularCourses } from "@/data/courses";
+import { FiArrowRight } from "react-icons/fi";
 
 const categoryOptions = [
   { label: "All Categories", value: "all" },
@@ -18,6 +20,7 @@ const CoursesSection = () => {
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
+  const router = useRouter();
 
   // Get filtered courses based on selected category
   const getFilteredCourses = () => {
@@ -39,8 +42,13 @@ const CoursesSection = () => {
 
   const filteredCourses = getFilteredCourses();
 
-  // Slider logic (show 4 at a time)
-  const visibleCourses = filteredCourses.slice(scrollIndex, scrollIndex + 4);
+  // Show only first 6 courses for horizontal scrolling
+  const visibleCourses = filteredCourses.slice(0, 6);
+
+  // Handle navigation to courses page
+  const handleSeeMoreClick = () => {
+    router.push('/courses');
+  };
 
   // Update indicator position and width when category changes
   useEffect(() => {
@@ -118,7 +126,6 @@ const CoursesSection = () => {
                   }`}
                 onClick={() => {
                   setSelectedCategory(cat.value);
-                  setScrollIndex(0);
                 }}
               >
                 {cat.label}
@@ -143,17 +150,52 @@ const CoursesSection = () => {
             -ms-overflow-style: none;
             scrollbar-width: none;
           }
+          .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+          }
+          .overflow-x-auto {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
         `}</style>
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12 justify-items-center">
-          {visibleCourses.map((course) => (
-            <CourseCard key={course.id} {...course} />
-          ))}
+        {/* Courses Horizontal Scroll */}
+        <div className="overflow-x-auto pb-6">
+          <div className="flex gap-6 w-max">
+            {/* Course Cards */}
+            {visibleCourses.map((course) => (
+              <div key={course.id} className="w-80 flex-shrink-0">
+                <CourseCard {...course} />
+              </div>
+            ))}
+
+            {/* See More Courses Card */}
+            <div
+              className="w-80 flex-shrink-0 cursor-pointer"
+              onClick={handleSeeMoreClick}
+            >
+              <div className="bg-white rounded-xl shadow-md overflow-hidden w-full h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-2 border-dashed border-gray-300 hover:border-sky-500">
+                <div className="flex-1 flex flex-col items-center justify-center p-8">
+                  <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-4">
+                    <FiArrowRight className="w-8 h-8 text-sky-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
+                    See More Courses
+                  </h3>
+                  <p className="text-gray-600 text-center text-sm">
+                    Explore our complete collection of {filteredCourses.length}+ courses
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Explore All Courses Button */}
+        {/* Explore All Courses Button (keep as fallback) */}
         <div className="text-center">
-          <button className="inline-flex items-center px-8 py-3 border-2 border-sky-700 rounded-full text-sky-700 font-semibold hover:bg-sky-800 hover:border-sky-800 hover:text-white transition-all duration-200">
+          <button
+            onClick={handleSeeMoreClick}
+            className="inline-flex items-center px-8 py-3 border-2 border-sky-700 rounded-full text-sky-700 font-semibold hover:bg-sky-800 hover:border-sky-800 hover:text-white transition-all duration-200"
+          >
             Explore all courses
           </button>
         </div>
