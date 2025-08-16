@@ -45,6 +45,26 @@ const CoursesSection = () => {
   // Show only first 6 courses for horizontal scrolling
   const visibleCourses = filteredCourses.slice(0, 6);
 
+  // Get total count for "See More" card display
+  const getTotalCourseCount = () => {
+    if (selectedCategory === "all") {
+      return coursesData.length; // Show total courses count for "All Categories"
+    } else if (selectedCategory === "class6-12") {
+      return coursesData.filter(course => course.category.includes("Class")).length;
+    } else if (selectedCategory === "jee") {
+      return coursesData.filter(course => course.category === "JEE").length;
+    } else if (selectedCategory === "neet") {
+      return coursesData.filter(course => course.category === "NEET").length;
+    } else if (selectedCategory === "cuet") {
+      return coursesData.filter(course => course.category === "CUET").length;
+    } else if (selectedCategory === "skilling") {
+      return coursesData.filter(course => course.category === "Skill Development").length;
+    }
+    return coursesData.length;
+  };
+
+  const totalCourseCount = getTotalCourseCount();
+
   // Handle navigation to courses page
   const handleSeeMoreClick = () => {
     router.push('/courses');
@@ -182,7 +202,7 @@ const CoursesSection = () => {
                     See More Courses
                   </h3>
                   <p className="text-gray-600 text-center text-sm">
-                    Explore our complete collection of {filteredCourses.length}+ courses
+                    Explore our complete collection of {totalCourseCount}+ courses
                   </p>
                 </div>
               </div>
