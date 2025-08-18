@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { BsTwitterX } from "react-icons/bs";
 import {
   FaFacebookF,
@@ -17,6 +19,22 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const router = useRouter();
+
+  const handleCategoryClick = (category: string) => {
+    // Map footer categories to course page categories
+    const categoryMap: { [key: string]: string } = {
+      "Class 6": "Class 6th",
+      "Class 7": "Class 7th",
+      "Class 8": "Class 8th",
+      "Class 9": "Class 9th",
+      "Class 10": "Class 10th",
+      "Test Series": "Test Series"
+    };
+
+    const mappedCategory = categoryMap[category] || category;
+    router.push(`/courses?category=${encodeURIComponent(mappedCategory)}`);
+  };
   return (
     <footer className="py-12 px-4 md:px-8 text-sky-700 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -32,19 +50,19 @@ const Footer = () => {
               <ul className="space-y-2">
                 {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Test Series"].map((item) => (
                   <li key={item}>
-                    <Link
-                      href="#"
-                      className="hover:underline text-sm transition-colors duration-200"
+                    <button
+                      onClick={() => handleCategoryClick(item)}
+                      className="hover:underline text-sm transition-colors duration-200 text-left"
                     >
                       {item}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
             </div>
             {/* Useful Links */}
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-4 pr-2 md:pr-0">
                 Useful Links
               </h3>
               <ul className="space-y-2">
@@ -93,22 +111,44 @@ const Footer = () => {
             </div>
             {/* Company */}
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-11 md:mb-4">
                 Company
               </h3>
               <ul className="space-y-2">
-                {["About Us", "Blog", "Media", "Career", "Contact Us"].map(
-                  (item) => (
-                    <li key={item}>
-                      <Link
-                        href="#"
-                        className="hover:underline text-sm transition-colors duration-200"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  )
-                )}
+                <li>
+                  <Link
+                    href="/about"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://blog.shikshanation.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/media"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Media
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

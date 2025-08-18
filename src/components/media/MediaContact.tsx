@@ -37,12 +37,12 @@ const MediaContact = () => {
           <a
             key={idx}
             href={opt.href}
-            className="flex flex-row items-center bg-white rounded-2xl shadow p-6 md:p-8 min-w-[260px] max-w-xs w-full hover:shadow-md transition group"
+            className="flex flex-row items-center bg-white h-[120px] rounded-2xl shadow p-6 md:p-8 min-w-[260px] max-w-xs w-full hover:shadow-md transition group"
             target="_blank"
             rel="noopener noreferrer"
           >
             <span className="mr-4">{opt.icon}</span>
-            <span className={`text-xl md:text-2xl font-bold ${opt.color} group-hover:underline text-left`}>{opt.title}</span>
+            <span className={`text-xl md:text-xl font-bold ${opt.color} group-hover:underline text-left`}>{opt.title}</span>
           </a>
         ))}
       </div>

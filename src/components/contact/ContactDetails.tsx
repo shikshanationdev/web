@@ -16,13 +16,7 @@ const contactInfo = [
   {
     icon: MdLocationOn,
     label: "ADDRESS",
-    content: (
-      <>
-        10th floor Tower C Bhutani 62 Avenue,<br />
-        Block - C, Phase 2, Industrial Area,<br />
-        Noida, Uttar Pradesh 201309
-      </>
-    )
+    content: "10th floor Tower C Bhutani 62 Avenue, Block - C, Phase 2, Industrial Area, Noida, Uttar Pradesh 201309"
   },
   {
     icon: MdAccessTime,
@@ -45,14 +39,14 @@ const ContactDetails: React.FC = () => (
     <div className="space-y-8">
       {contactInfo.map((item, index) => (
         <React.Fragment key={index}>
-          <div className="flex items-start">
-            <div className="flex items-center w-[160px]">
+          <div className="flex flex-col sm:flex-row sm:items-start">
+            <div className="flex items-center mb-2 sm:mb-0 sm:w-[160px] sm:flex-shrink-0">
               <item.icon className="w-5 h-5 text-green-500 mr-3" />
               <span className="text-sm font-bold text-green-500 uppercase tracking-wide">
                 {item.label}
               </span>
             </div>
-            <div className="text-gray-900 font-medium">
+            <div className="text-gray-900 font-medium sm:ml-4">
               {item.content}
             </div>
           </div>

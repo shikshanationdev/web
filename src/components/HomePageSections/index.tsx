@@ -1,7 +1,7 @@
 import Hero from "./Hero";
 import StatsSection from "./StatsSection";
 import FeaturesSection from "./FeaturesSection";
-import LearningGoalsSection from "./LearningGoalSection";
+import TopCategoriesSection from "./LearningGoalSection";
 import StatesSection from "./StatsSection";
 import CopyrightSection from "./CopyrightSection";
 import CoursesSection from "./CoursesSection";
@@ -11,4 +11,4 @@ import TestimonialsSection from "./TestimonialsSection";
 import JoinLearnersSection from "./JoinLearnersSection";
 import FaqSection from "./FaqSection";
 import QrAppPromo from "./QrAppPromo";
-export {Hero, StatsSection, FeaturesSection, LearningGoalsSection, StatesSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection, QrAppPromo};
+export { Hero, StatsSection, FeaturesSection, TopCategoriesSection, StatesSection, CopyrightSection, CoursesSection, WhatYouGetSection, LearningStatsSection, TestimonialsSection, JoinLearnersSection, FaqSection, QrAppPromo };

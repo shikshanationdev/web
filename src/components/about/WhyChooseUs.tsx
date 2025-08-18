@@ -30,7 +30,7 @@ const WhyChooseUs = () => {
     <section className="w-full max-w-6xl mx-auto py-20 px-4">
       <div className="text-center mb-16">
         <p className="text-gray-500 text-lg mb-4">Why Choose Shiksha Nation</p>
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
           Unlock the Powerful<br />
           Advantages of Learning with Us
         </h2>

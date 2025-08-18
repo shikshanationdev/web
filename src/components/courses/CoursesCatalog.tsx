@@ -1,17 +1,37 @@
 "use client";
-import { useState } from "react";
-import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { MdGridView, MdViewList } from "react-icons/md";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiFilter } from "react-icons/fi";
+import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
+import { LuSettings2 } from "react-icons/lu";
 
 const CoursesCatalog = () => {
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams?.get('category');
+
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const coursesPerPage = 6;
+
+  // Set category from URL parameter on component mount
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+      // If it's a class category, expand the "Class 6th to 12th" section
+      if (categoryFromUrl.includes("Class")) {
+        setExpandedCategories(prev =>
+          prev.includes("Class 6th to 12th") ? prev : [...prev, "Class 6th to 12th"]
+        );
+      }
+    }
+  }, [categoryFromUrl]);
+
+  const toggleMobileFilters = () => setIsMobileFiltersOpen(s => !s);
 
   const toggleCategory = (categoryName: string) => {
     setExpandedCategories(prev =>
@@ -30,6 +50,7 @@ const CoursesCatalog = () => {
   const handleSortChange = (sort: string) => {
     setSortBy(sort);
     setCurrentPage(1);
+    setIsMobileFiltersOpen(false); // Close mobile filter panel
   };
 
   // Filter courses based on selected category
@@ -46,8 +67,22 @@ const CoursesCatalog = () => {
       return coursesData.filter(course => course.category === "CUET");
     } else if (selectedCategory === "Skill Development") {
       return coursesData.filter(course => course.category === "Skill Development");
+    } else if (selectedCategory === "Class 11th") {
+      // Include JEE and NEET courses for Class 11th
+      return coursesData.filter(course =>
+        course.category === "Class 11th" ||
+        course.category === "JEE" ||
+        course.category === "NEET"
+      );
+    } else if (selectedCategory === "Class 12th") {
+      // Include JEE and NEET courses for Class 12th
+      return coursesData.filter(course =>
+        course.category === "Class 12th" ||
+        course.category === "JEE" ||
+        course.category === "NEET"
+      );
     } else {
-      // For subcategories
+      // For other subcategories
       return coursesData.filter(course =>
         course.category === selectedCategory || course.subCategory === selectedCategory
       );
@@ -82,8 +117,11 @@ const CoursesCatalog = () => {
   // Pagination helper functions
   const goToPage = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top of course grid
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to course grid section
+    const courseGridElement = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.xl\\:grid-cols-3');
+    if (courseGridElement) {
+      courseGridElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const goToPreviousPage = () => {
@@ -143,8 +181,104 @@ const CoursesCatalog = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-1/4">
+          {/* Mobile Sort and Filter Controls */}
+          <div className="w-full lg:hidden flex gap-3">
+            {/* Sort Dropdown */}
+            <div className="relative flex-1">
+              <select
+                value={sortBy}
+                onChange={(e) => handleSortChange(e.target.value)}
+                className="appearance-none w-full bg-white border-2 border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 outline-none focus:ring-0"
+              >
+                <option>Newly published</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Rating</option>
+              </select>
+              <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-sky-600" />
+            </div>
+
+            {/* Filter Button */}
+            <button
+              onClick={toggleMobileFilters}
+              aria-expanded={isMobileFiltersOpen}
+              className="inline-flex justify-center items-center gap-2 px-4 py-2 text-sm border-2 border-sky-600 text-sky-600 rounded-full bg-white whitespace-nowrap"
+            >
+              <LuSettings2 className="w-4 h-4" />
+              <span>Filter</span>
+            </button>
+          </div>
+
+          {/* Mobile Sliding Filters (hidden on desktop) */}
+          <div className={`lg:hidden overflow-hidden transition-max-height duration-300 ${isMobileFiltersOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
+            <div className="bg-white rounded-2xl shadow-lg p-4 mb-4 max-h-[450px] overflow-y-auto">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <MdGridView className="w-4 h-4 text-gray-600" />
+                  <h3 className="font-medium text-gray-900">Categories</h3>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {categories.map((category) => (
+                  <div key={category.label}>
+                    <div className="flex items-center justify-between py-2">
+                      <label className="flex items-center cursor-pointer flex-1">
+                        <input
+                          type="radio"
+                          name="mobile-category"
+                          value={category.label}
+                          checked={selectedCategory === category.label}
+                          onChange={(e) => { handleCategoryChange(e.target.value); setIsMobileFiltersOpen(false); }}
+                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                        />
+                        <span className={`ml-3 text-sm ${selectedCategory === category.label ? 'text-blue-600 font-medium' : 'text-gray-700'}`}>
+                          {category.label}
+                        </span>
+                      </label>
+                      {category.subCategories && (
+                        <button
+                          onClick={() => toggleCategory(category.label)}
+                          className="p-1 hover:bg-gray-100 rounded"
+                        >
+                          {expandedCategories.includes(category.label) ? (
+                            <FiChevronUp className="w-3 h-3 text-gray-400" />
+                          ) : (
+                            <FiChevronDown className="w-3 h-3 text-gray-400" />
+                          )}
+                        </button>
+                      )}
+                    </div>
+
+                    {category.subCategories && expandedCategories.includes(category.label) && (
+                      <div className="ml-6 space-y-2">
+                        {category.subCategories.map((subCategory) => (
+                          <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-2">
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                name="mobile-category"
+                                value={subCategory.name}
+                                checked={selectedCategory === subCategory.name}
+                                onChange={(e) => { handleCategoryChange(e.target.value); setIsMobileFiltersOpen(false); }}
+                                className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                              />
+                              <span className={`ml-3 text-sm ${selectedCategory === subCategory.name ? 'text-blue-600 font-medium' : 'text-gray-600'}`}>
+                                {subCategory.name}
+                              </span>
+                            </div>
+                            <span className="text-xs text-gray-500">({subCategory.count})</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar Filters (desktop only) */}
+          <div className="hidden lg:block lg:w-1/4">
             <div className="bg-white rounded-2xl shadow-lg lg:sticky lg:top-4 lg:h-fit lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
               {/* Categories */}
               <div className="p-6">
@@ -228,8 +362,8 @@ const CoursesCatalog = () => {
 
           {/* Main Content */}
           <div className="lg:w-3/4">
-            {/* Results Count and View Options */}
-            <div className="flex justify-between items-center mb-6">
+            {/* Results Count and View Options - Desktop only */}
+            <div className="hidden lg:flex justify-between items-center mb-6">
               <div className="text-gray-600">
                 Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
                 {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
@@ -238,12 +372,12 @@ const CoursesCatalog = () => {
               <div className="flex items-center gap-4">
                 {/* Sort Options */}
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">Sort by:</span>
+                  <span className="text-sm text-sky-600">Sort by:</span>
                   <div className="relative">
                     <select
                       value={sortBy}
                       onChange={(e) => handleSortChange(e.target.value)}
-                      className="appearance-none bg-white border border-blue-200 rounded-lg px-4 py-2 pr-10 text-sm text-blue-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-w-[200px]"
+                      className="appearance-none bg-white border-2 border-sky-600 outline-none rounded-lg px-4 py-2 pr-10 text-sm text-sky-600 focus:ring-0 focus:border-blue-500 min-w-[200px]"
                     >
                       <option>Newly published</option>
                       <option>Price: Low to High</option>
@@ -254,28 +388,14 @@ const CoursesCatalog = () => {
                   </div>
                 </div>
 
-                {/* View Toggle */}
-                <div className="flex items-center bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewType("grid")}
-                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "grid"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "text-gray-600 hover:text-gray-800"
-                      }`}
-                  >
-                    <MdGridView className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewType("list")}
-                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "list"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "text-gray-600 hover:text-gray-800"
-                      }`}
-                  >
-                    <MdViewList className="w-4 h-4" />
-                  </button>
-                </div>
+
               </div>
+            </div>
+
+            {/* Mobile Results Count only */}
+            <div className="lg:hidden text-center text-sm text-gray-600 mb-6">
+              Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
+              {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
             </div>
 
             {/* Course Grid */}

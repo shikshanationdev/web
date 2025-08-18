@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const CopyrightSection = () => {
@@ -17,7 +18,7 @@ const CopyrightSection = () => {
         </div>
         <div>
           Designed by{" "}
-          <span className="font-semibold">Generative Crafts</span>
+          <Link href={"https://www.generativecrafts.com"} className="font-semibold">Generative Crafts</Link>
         </div>
       </div>
     </div>

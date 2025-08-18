@@ -1,6 +1,8 @@
+"use client";
 import { FiArrowRight } from "react-icons/fi";
 import InfoCard from "../ui/InfoCard";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -33,7 +35,12 @@ const features = [
   },
 ];
 
+
 const WhatYouGetSection = () => {
+  	const router = useRouter();
+	const handleStartLearning = () => {
+		router.push("/courses");
+	};
   return (
     <section className="w-full flex flex-col items-center py-16">
       <h2 className="text-4xl sm:text-4xl font-extrabold text-black text-center mb-4">
@@ -76,7 +83,7 @@ const WhatYouGetSection = () => {
           <InfoCard key={feature.label} icon={feature.icon} label={feature.label} />
         ))}
       </div>
-      <button className="mt-2 px-6 sm:px-10 py-3 sm:py-4 justify-around bg-sky-700 hover:bg-sky-800 text-white font-semibold rounded-full text-lg sm:text-xl flex items-center gap-2 transition">
+      <button onClick={handleStartLearning} className="mt-2 px-6 sm:px-10 py-3 sm:py-4 justify-around bg-sky-700 hover:bg-sky-800 text-white font-semibold rounded-full text-lg sm:text-xl flex items-center gap-2 transition">
         <span> Start Learning</span>
         <div className="ml-4"><FiArrowRight className="text-2xl sm:text-3xl" /></div>
       </button>

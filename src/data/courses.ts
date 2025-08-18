@@ -541,7 +541,7 @@ export const coursesData: Course[] = [
     level: 'Advanced',
     students: 1234,
     duration: "Full Year",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_3df92c1d-4cb9-4a44-a69e-46e70bbdb4f6",
     category: "JEE",
     subCategory: "Live Classes",
     isPopular: true,
@@ -561,7 +561,7 @@ export const coursesData: Course[] = [
     level: 'Advanced',
     students: 789,
     duration: "6 Months",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-18.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_00498f25-cc1d-4567-95aa-a9cb0890bc13",
     category: "JEE",
     subCategory: "Test Series",
     isPopular: true,
@@ -620,12 +620,12 @@ export const coursesData: Course[] = [
     instructor: "CUET Expert",
     rating: 4.6,
     reviews: 234,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 445,
     duration: "30 hours",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_5c848ae4-8975-4524-acce-2f03f013f683",
     category: "CUET",
     subCategory: "General Aptitude",
     isPopular: false,
@@ -640,12 +640,12 @@ export const coursesData: Course[] = [
     instructor: "Science Expert",
     rating: 4.5,
     reviews: 189,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 334,
     duration: "30 hours",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_298b04f8-1380-460e-ae9d-ed5bb9504a4b",
     category: "CUET",
     subCategory: "Science",
     isPopular: false,
@@ -660,12 +660,12 @@ export const coursesData: Course[] = [
     instructor: "Commerce Expert",
     rating: 4.4,
     reviews: 156,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 289,
     duration: "30 hours",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_2b433614-d56f-45ac-9784-0a59f509cac8",
     category: "CUET",
     subCategory: "Commerce",
     isPopular: false,
@@ -680,12 +680,12 @@ export const coursesData: Course[] = [
     instructor: "Humanities Expert",
     rating: 4.3,
     reviews: 134,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 29999,
     level: 'Advanced',
     students: 223,
     duration: "30 hours",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_e1a8a855-b33b-4595-9780-8701adc63bb6",
     category: "CUET",
     subCategory: "Humanities",
     isPopular: false,
@@ -700,12 +700,12 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.2,
     reviews: 98,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 167,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_3c77e94c-1949-4926-b033-b232e69e7d88",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -720,12 +720,12 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.1,
     reviews: 87,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 145,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_1765c713-a8b9-4b48-80bc-621137b51fc5",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -740,12 +740,12 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.0,
     reviews: 76,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 123,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_ec2c29c7-4230-4eee-8644-1ebd80195205",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -762,12 +762,12 @@ export const coursesData: Course[] = [
     instructor: "IIT Faculty",
     rating: 4.6,
     reviews: 298,
-    price: 1499,
+    price: 0,
     oldPrice: 2499,
     level: 'Advanced',
     students: 523,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-5.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_4dae5415-85e8-48d9-97bd-79403f8b9220",
     category: "JEE",
     subCategory: "PYQs",
     isPopular: true,
@@ -784,12 +784,12 @@ export const coursesData: Course[] = [
     instructor: "Medical Faculty",
     rating: 4.7,
     reviews: 345,
-    price: 1499,
+    price: 0,
     oldPrice: 2499,
     level: 'Advanced',
     students: 678,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-5.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_09175d26-8a09-4750-b2c3-1ecbbcfd1c9a",
     category: "NEET",
     subCategory: "PYQs",
     isPopular: true,
@@ -797,6 +797,108 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "ScoreLift NEET 2026 Previous Year Questions",
     features: ["Previous Year Papers", "NCERT Based", "Detailed Solutions", "Topic-wise Practice"]
+  },
+
+  // Skill Development / Upskilling Courses
+  {
+    id: 39,
+    title: "Artificial Intelligence - Advanced Program",
+    instructor: "AI Expert",
+    rating: 4.8,
+    reviews: 234,
+    price: 29999,
+    oldPrice: 39999,
+    level: 'Advanced',
+    students: 456,
+    duration: "6 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_128977ec-63da-4f03-bcb8-0383916daeba",
+    category: "Skill Development",
+    subCategory: "Artificial Intelligence",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/artificial-intelligence-advanced-program-68a2c1aa52085dd80fd21e99",
+    demoLink: "#",
+    description: "Advanced AI program covering Machine Learning, Deep Learning, and Neural Networks",
+    features: ["Machine Learning", "Deep Learning", "Neural Networks", "Hands-on Projects", "Industry Mentorship"]
+  },
+  {
+    id: 40,
+    title: "Artificial Intelligence - Basic Program",
+    instructor: "AI Expert",
+    rating: 4.6,
+    reviews: 189,
+    price: 4999,
+    oldPrice: 9999,
+    level: 'Beginner',
+    students: 567,
+    duration: "3 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_96a5a9bb-40b1-4715-997c-653b67b65bc9",
+    category: "Skill Development",
+    subCategory: "Artificial Intelligence",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/artificial-intelligence-basic-program-68a2c18bcba13440e4d07c2a",
+    demoLink: "#",
+    description: "Introduction to AI concepts, Python programming, and basic machine learning",
+    features: ["Python Programming", "AI Fundamentals", "Basic ML Algorithms", "Practical Projects"]
+  },
+  {
+    id: 41,
+    title: "Data Analytics",
+    instructor: "Data Science Expert",
+    rating: 4.7,
+    reviews: 345,
+    price: 29999,
+    oldPrice: 39999,
+    level: 'Intermediate',
+    students: 678,
+    duration: "4 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_97e02f43-3334-46e4-84ef-f976e9580a27",
+    category: "Skill Development",
+    subCategory: "Data Analytics",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/data-analytics-68a2c0de5bcbb1ca1f9df151",
+    demoLink: "#",
+    description: "Comprehensive data analytics course covering statistics, visualization, and business intelligence",
+    features: ["Statistical Analysis", "Data Visualization", "Excel & SQL", "Power BI", "Real-world Projects"]
+  },
+  {
+    id: 42,
+    title: "Digital Marketing",
+    instructor: "Marketing Expert",
+    rating: 4.5,
+    reviews: 298,
+    price: 29999,
+    oldPrice: 39999,
+    level: 'Intermediate',
+    students: 789,
+    duration: "3 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_5c1500b3-fb68-4b1b-ac52-15dc8acc36d3",
+    category: "Skill Development",
+    subCategory: "Digital Marketing",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/digital-marketing-68a2c0c8ae3fad7478b63cdc",
+    demoLink: "#",
+    description: "Complete digital marketing course covering SEO, SEM, social media, and content marketing",
+    features: ["SEO & SEM", "Social Media Marketing", "Content Marketing", "Google Ads", "Analytics & Reporting"]
+  },
+  {
+    id: 43,
+    title: "UI UX Design",
+    instructor: "Design Expert",
+    rating: 4.6,
+    reviews: 267,
+    price: 29999,
+    oldPrice: 39999,
+    level: 'Intermediate',
+    students: 445,
+    duration: "4 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_61742eb1-3c98-4b82-a38f-4e86d0d4b8b9",
+    category: "Skill Development",
+    subCategory: "UI/UX Design",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/ui-ux-design-68a2c061ac2a8d755cecf0dd",
+    demoLink: "#",
+    description: "Complete UI/UX design course covering design principles, tools, and portfolio development",
+    features: ["Design Principles", "Figma & Adobe XD", "User Research", "Prototyping", "Portfolio Development"]
   }
 ];
 
@@ -805,6 +907,29 @@ export const getCoursesByCategory = (category: string): Course[] => {
   if (category === "all" || category === "All Categories") {
     return coursesData;
   }
+  
+  // For Class 11th and 12th, include JEE and NEET courses as well
+  if (category === "Class 11th") {
+    return coursesData.filter(course => 
+      course.category === "Class 11th" || 
+      course.category === "JEE" || 
+      course.category === "NEET"
+    );
+  }
+  
+  if (category === "Class 12th") {
+    return coursesData.filter(course => 
+      course.category === "Class 12th" || 
+      course.category === "JEE" || 
+      course.category === "NEET"
+    );
+  }
+
+  // Handle skilling/skill development category
+  if (category === "skilling" || category === "Skill Development") {
+    return coursesData.filter(course => course.category === "Skill Development");
+  }
+  
   return coursesData.filter(course => course.category === category);
 };
 
@@ -833,8 +958,14 @@ export const categories = [
       { name: "Class 8th", count: coursesData.filter(c => c.category === "Class 8th").length },
       { name: "Class 9th", count: coursesData.filter(c => c.category === "Class 9th").length },
       { name: "Class 10th", count: coursesData.filter(c => c.category === "Class 10th").length },
-      { name: "Class 11th", count: coursesData.filter(c => c.category === "Class 11th").length },
-      { name: "Class 12th", count: coursesData.filter(c => c.category === "Class 12th").length },
+      { 
+        name: "Class 11th", 
+        count: coursesData.filter(c => c.category === "Class 11th" || c.category === "JEE" || c.category === "NEET").length 
+      },
+      { 
+        name: "Class 12th", 
+        count: coursesData.filter(c => c.category === "Class 12th" || c.category === "JEE" || c.category === "NEET").length 
+      },
     ]
   },
   { 
@@ -855,7 +986,6 @@ export const categories = [
   { 
     label: "Skill Development", 
     value: "skilling", 
-    count: 0,
-    isComingSoon: true
+    count: coursesData.filter(c => c.category === "Skill Development").length
   },
 ];

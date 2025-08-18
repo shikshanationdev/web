@@ -1,4 +1,4 @@
-import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, LearningGoalsSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection } from "@/components/HomePageSections";
+import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, TopCategoriesSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection } from "@/components/HomePageSections";
 
 export default function Home() {
   return (
@@ -6,7 +6,7 @@ export default function Home() {
       <Hero />
       <StatsSection />
       <FeaturesSection />
-      <LearningGoalsSection />
+      <TopCategoriesSection />
       <CoursesSection />
       <WhatYouGetSection />
       <TestimonialsSection />
