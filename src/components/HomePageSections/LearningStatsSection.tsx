@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const stats = [
   { value: "6.3k", label: "Online courses" },
@@ -7,6 +9,16 @@ const stats = [
 ];
 
 const LearningStatsSection = () => {
+  const router = useRouter();
+
+  const handleStartLearningClick = () => {
+    router.push("https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=signup");
+  };
+
+  const handleBrowseCoursesClick = () => {
+    router.push("/courses");
+  };
+
   return (
     <section className="w-full py-16 px-5 xl:px-0">
       <div className="max-w-7xl mx-auto">
@@ -17,19 +29,25 @@ const LearningStatsSection = () => {
               Start learning with 67.1k students around the world.
             </h2>
             <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
-              <button className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary))] hover:bg-[rgb(var(--color-green-primary)/0.9)] text-white font-semibold rounded-full text-xs sm:text-sm transition-colors whitespace-nowrap">
+              <button
+                className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary))] hover:bg-[rgb(var(--color-green-primary)/0.9)] text-white font-semibold rounded-full text-xs sm:text-sm transition-colors whitespace-nowrap"
+                onClick={handleStartLearningClick}
+              >
                 Start Learning Now
               </button>
-              <button className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary)/0.1)] text-[rgb(var(--color-green-primary))] font-semibold rounded-full text-xs sm:text-sm transition-colors border-2 border-[rgb(var(--color-green-primary)/0.3)] hover:bg-[rgb(var(--color-green-primary)/0.15)] whitespace-nowrap">
+              <button
+                className="px-3 w-full sm:px-4 md:px-6 lg:px-8 py-3 bg-[rgb(var(--color-green-primary)/0.1)] text-[rgb(var(--color-green-primary))] font-semibold rounded-full text-xs sm:text-sm transition-colors border-2 border-[rgb(var(--color-green-primary)/0.3)] hover:bg-[rgb(var(--color-green-primary)/0.15)] whitespace-nowrap"
+                onClick={handleBrowseCoursesClick}
+              >
                 Browse All Courses
               </button>
             </div>
           </div>
-          
+
           {/* Separator Line - Horizontal for mobile, Vertical for desktop */}
           <div className="lg:hidden w-full h-px bg-sky-700 my-4"></div>
           <div className="hidden lg:block w-px h-56 bg-sky-700"></div>
-          
+
           {/* Right: Stats */}
           <div className="w-full lg:w-1/2">
             <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
