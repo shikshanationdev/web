@@ -111,7 +111,7 @@ const Footer = () => {
             </div>
             {/* Company */}
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-11 md:mb-4">
                 Company
               </h3>
               <ul className="space-y-2">

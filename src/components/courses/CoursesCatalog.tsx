@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiFilter } from "react-icons/fi";
 import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
@@ -13,6 +13,7 @@ const CoursesCatalog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 6;
 
@@ -28,6 +29,8 @@ const CoursesCatalog = () => {
       }
     }
   }, [categoryFromUrl]);
+
+  const toggleMobileFilters = () => setIsMobileFiltersOpen(s => !s);
 
   const toggleCategory = (categoryName: string) => {
     setExpandedCategories(prev =>
@@ -46,6 +49,7 @@ const CoursesCatalog = () => {
   const handleSortChange = (sort: string) => {
     setSortBy(sort);
     setCurrentPage(1);
+    setIsMobileFiltersOpen(false); // Close mobile filter panel
   };
 
   // Filter courses based on selected category
@@ -173,8 +177,108 @@ const CoursesCatalog = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <div className="lg:w-1/4">
+          {/* Mobile Filter Button */}
+          <div className="w-full lg:hidden">
+            <button
+              onClick={toggleMobileFilters}
+              aria-expanded={isMobileFiltersOpen}
+              className="w-full inline-flex justify-center items-center gap-2 px-4 py-3 border rounded-full text-sm bg-white shadow-sm"
+            >
+              <FiFilter className="w-4 h-4" />
+              <span>Filter</span>
+            </button>
+          </div>
+
+          {/* Mobile Sliding Filters (hidden on desktop) */}
+          <div className={`lg:hidden overflow-hidden transition-max-height duration-300 ${isMobileFiltersOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
+            <div className="bg-white rounded-2xl shadow-lg p-4 mb-4 max-h-[450px] overflow-y-auto">
+              {/* Sort Options for Mobile */}
+              <div className="mb-4 pb-4 border-b border-gray-200">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-sm font-medium text-gray-900">Sort by:</span>
+                </div>
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => handleSortChange(e.target.value)}
+                    className="appearance-none w-full bg-white border border-blue-200 rounded-lg px-3 py-2 pr-8 text-sm text-blue-600 focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option>Newly published</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Rating</option>
+                  </select>
+                  <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-600" />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <MdGridView className="w-4 h-4 text-gray-600" />
+                  <h3 className="font-medium text-gray-900">Categories</h3>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {categories.map((category) => (
+                  <div key={category.label}>
+                    <div className="flex items-center justify-between py-2">
+                      <label className="flex items-center cursor-pointer flex-1">
+                        <input
+                          type="radio"
+                          name="mobile-category"
+                          value={category.label}
+                          checked={selectedCategory === category.label}
+                          onChange={(e) => { handleCategoryChange(e.target.value); setIsMobileFiltersOpen(false); }}
+                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                        />
+                        <span className={`ml-3 text-sm ${selectedCategory === category.label ? 'text-blue-600 font-medium' : 'text-gray-700'}`}>
+                          {category.label}
+                        </span>
+                      </label>
+                      {category.subCategories && (
+                        <button
+                          onClick={() => toggleCategory(category.label)}
+                          className="p-1 hover:bg-gray-100 rounded"
+                        >
+                          {expandedCategories.includes(category.label) ? (
+                            <FiChevronUp className="w-3 h-3 text-gray-400" />
+                          ) : (
+                            <FiChevronDown className="w-3 h-3 text-gray-400" />
+                          )}
+                        </button>
+                      )}
+                    </div>
+
+                    {category.subCategories && expandedCategories.includes(category.label) && (
+                      <div className="ml-6 space-y-2">
+                        {category.subCategories.map((subCategory) => (
+                          <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-2">
+                            <div className="flex items-center">
+                              <input
+                                type="radio"
+                                name="mobile-category"
+                                value={subCategory.name}
+                                checked={selectedCategory === subCategory.name}
+                                onChange={(e) => { handleCategoryChange(e.target.value); setIsMobileFiltersOpen(false); }}
+                                className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                              />
+                              <span className={`ml-3 text-sm ${selectedCategory === subCategory.name ? 'text-blue-600 font-medium' : 'text-gray-600'}`}>
+                                {subCategory.name}
+                              </span>
+                            </div>
+                            <span className="text-xs text-gray-500">({subCategory.count})</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar Filters (desktop only) */}
+          <div className="hidden lg:block lg:w-1/4">
             <div className="bg-white rounded-2xl shadow-lg lg:sticky lg:top-4 lg:h-fit lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
               {/* Categories */}
               <div className="p-6">
@@ -258,8 +362,8 @@ const CoursesCatalog = () => {
 
           {/* Main Content */}
           <div className="lg:w-3/4">
-            {/* Results Count and View Options */}
-            <div className="flex justify-between items-center mb-6">
+            {/* Results Count and View Options - Desktop only */}
+            <div className="hidden lg:flex justify-between items-center mb-6">
               <div className="text-gray-600">
                 Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
                 {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
@@ -286,6 +390,12 @@ const CoursesCatalog = () => {
 
 
               </div>
+            </div>
+
+            {/* Mobile Results Count only */}
+            <div className="lg:hidden text-center text-sm text-gray-600 mb-6">
+              Showing {startIndex + 1}-{Math.min(endIndex, totalCourses)} of {totalCourses} Results
+              {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
             </div>
 
             {/* Course Grid */}
