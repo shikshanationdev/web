@@ -188,7 +188,7 @@ const CoursesCatalog = () => {
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="appearance-none w-full bg-white border-2 border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 focus:ring-2 focus:ring-blue-500"
+                className="appearance-none w-full bg-white border-2 border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 outline-none focus:ring-0"
               >
                 <option>Newly published</option>
                 <option>Price: Low to High</option>
@@ -377,7 +377,7 @@ const CoursesCatalog = () => {
                     <select
                       value={sortBy}
                       onChange={(e) => handleSortChange(e.target.value)}
-                      className="appearance-none bg-white border-2 border-sky-600 outline-none rounded-lg px-4 py-2 pr-10 text-sm text-sky-600 focus:ring-2 focus:ring-0 focus:border-blue-500 min-w-[200px]"
+                      className="appearance-none bg-white border-2 border-sky-600 outline-none rounded-lg px-4 py-2 pr-10 text-sm text-sky-600 focus:ring-0 focus:border-blue-500 min-w-[200px]"
                     >
                       <option>Newly published</option>
                       <option>Price: Low to High</option>
