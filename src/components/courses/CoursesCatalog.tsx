@@ -5,6 +5,7 @@ import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiFilter } f
 import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
+import { LuSettings2 } from "react-icons/lu";
 
 const CoursesCatalog = () => {
   const searchParams = useSearchParams();
@@ -180,14 +181,30 @@ const CoursesCatalog = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Mobile Filter Button */}
-          <div className="w-full lg:hidden">
+          {/* Mobile Sort and Filter Controls */}
+          <div className="w-full lg:hidden flex gap-3">
+            {/* Sort Dropdown */}
+            <div className="relative flex-1">
+              <select
+                value={sortBy}
+                onChange={(e) => handleSortChange(e.target.value)}
+                className="appearance-none w-full bg-white border border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 focus:ring-2 focus:ring-blue-500"
+              >
+                <option>Newly published</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Rating</option>
+              </select>
+              <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-sky-600" />
+            </div>
+            
+            {/* Filter Button */}
             <button
               onClick={toggleMobileFilters}
               aria-expanded={isMobileFiltersOpen}
-              className="w-full inline-flex justify-center items-center gap-2 px-4 py-3 border rounded-full text-sm bg-white shadow-sm"
+              className="inline-flex justify-center items-center gap-2 px-4 py-2 text-xl border-2 border-sky-600 text-sky-600 rounded-full bg-white whitespace-nowrap"
             >
-              <FiFilter className="w-4 h-4" />
+              <LuSettings2 className="w-6 h-6" />
               <span>Filter</span>
             </button>
           </div>
@@ -195,26 +212,6 @@ const CoursesCatalog = () => {
           {/* Mobile Sliding Filters (hidden on desktop) */}
           <div className={`lg:hidden overflow-hidden transition-max-height duration-300 ${isMobileFiltersOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
             <div className="bg-white rounded-2xl shadow-lg p-4 mb-4 max-h-[450px] overflow-y-auto">
-              {/* Sort Options for Mobile */}
-              <div className="mb-4 pb-4 border-b border-gray-200">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-sm font-medium text-gray-900">Sort by:</span>
-                </div>
-                <div className="relative">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => handleSortChange(e.target.value)}
-                    className="appearance-none w-full bg-white border border-blue-200 rounded-lg px-3 py-2 pr-8 text-sm text-blue-600 focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option>Newly published</option>
-                    <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
-                    <option>Rating</option>
-                  </select>
-                  <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-blue-600" />
-                </div>
-              </div>
-
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <MdGridView className="w-4 h-4 text-gray-600" />
