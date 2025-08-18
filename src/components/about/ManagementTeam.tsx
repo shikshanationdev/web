@@ -1,6 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
+const founder = {
+  name: 'Saurabh Kumar',
+  title: 'Founder & CEO of Shiksha Nation',
+  img: '/saurabh-kumar.jpeg',
+  border: 'border-purple-300',
+  container: 'bg-purple-100',
+};
+
 const managementTeam = [
   {
     name: 'Rajat Sharma',
@@ -40,8 +48,30 @@ const ManagementTeam = () => {
       <p className="text-center text-gray-500 mb-12 text-base md:text-lg">
         The minds behind Shiksha Nation — leading with vision, passion, and purpose.
       </p>
+
+      {/* Founder Section */}
+      <div className="flex justify-center mb-12">
+        <div
+          className={`rounded-2xl border ${founder.border} relative bg-white shadow-sm flex flex-col items-center p-6 transition-transform hover:scale-105 w-full sm:max-w-sm`}
+        >
+          <div className={`absolute w-full ${founder.container} h-20 top-0 rounded-t-2xl rounded-b-4xl`}></div>
+          <div className="relative w-32 h-32 mb-4">
+            <Image
+              src={founder.img}
+              alt={founder.name}
+              fill
+              className="rounded-full object-cover"
+              sizes="128px"
+            />
+            <div className="absolute top-0 left-0 w-full h-1/2 bg-gray-100 rounded-t-full -z-10" />
+          </div>
+          <h3 className="font-bold text-xl text-gray-900 text-center mb-1">{founder.name}</h3>
+          <p className="text-gray-700 text-center text-sm font-medium">{founder.title}</p>
+        </div>
+      </div>
+
+      {/* Management Team Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        
         {managementTeam.map((member, idx) => (
           <div
             key={member.name}
