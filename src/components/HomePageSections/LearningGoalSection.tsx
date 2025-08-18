@@ -1,127 +1,102 @@
 import React from "react";
-import { FaChevronRight } from "react-icons/fa";
-import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
-const LearningGoalsSection = (): React.ReactElement => {
-  // Define the learning goal cards data for easy mapping
-  const learningGoals = [
+const TopCategoriesSection = (): React.ReactElement => {
+  // Define the category cards data
+  const topCategories = [
     {
       id: "class-6-12",
-      title: "Class 6-12",
-      description: "For Classes 6 to 12 — CBSE, ICSE, and more",
+      title: "Class 6th to 12th",
+      description: "Comprehensive courses for school education",
       buttonText: "Explore Classes",
-      bgColor: "bg-[#f7fff3]",
-      titleColor: "text-[#3ebc00]",
-      descriptionColor: "text-[#68c937]",
-      buttonBgColor: "bg-[#8de561]",
-      circleBgColor: "bg-[#eeffe6]",
-      iconSrc: "/home/class-6-12.svg",
+      link: "/courses",
+      image: "/home/category1.jpeg",
+      gradient: "from-blue-500/10 to-blue-600/20",
+      textColor: "text-blue-700",
+      buttonColor: "bg-blue-600 hover:bg-blue-700",
     },
     {
-      id: "crack-neet",
-      title: "Crack NEET",
-      description: "Complete prep for Biology, Physics & Chemistry",
-      buttonText: "Start NEET Prep",
-      bgColor: "bg-[#e2fffc]",
-      titleColor: "text-[#00988a]",
-      descriptionColor: "text-[#03baa8]",
-      buttonBgColor: "bg-[#4ed6c9]",
-      circleBgColor: "bg-[#cdfffa]",
-      iconSrc: "/home/crack-neet.svg",
+      id: "jee-neet",
+      title: "JEE & NEET",
+      description: "Complete preparation for engineering & medical entrance",
+      buttonText: "Start Preparation",
+      link: "/courses",
+      image: "/home/category2.jpeg",
+      gradient: "from-green-500/10 to-green-600/20",
+      textColor: "text-green-700",
+      buttonColor: "bg-green-600 hover:bg-green-700",
     },
     {
-      id: "ace-jee",
-      title: "Ace JEE",
-      description: "Detailed lessons with mock tests & problem-solving",
-      buttonText: "Start JEE Prep",
-      bgColor: "bg-[#fff5f5]",
-      titleColor: "text-[#3ebc00]",
-      descriptionColor: "text-[#d95b5b]",
-      buttonBgColor: "bg-[#f37777]",
-      circleBgColor: "bg-[#fbe9e9]",
-      iconSrc: "/home/ace-jee.svg",
-    },
-    {
-      id: "prepare-cuet",
-      title: "Prepare for CUET",
-      description: "Covers General Test, English & more",
+      id: "cuet",
+      title: "CUET",
+      description: "University entrance exam preparation",
       buttonText: "Start CUET Prep",
-      bgColor: "bg-[#f5f8ff]",
-      titleColor: "text-[#00988a]",
-      descriptionColor: "text-[#54678f]",
-      buttonBgColor: "bg-[#7092d8]",
-      circleBgColor: "bg-[#e7eefc]",
-      iconSrc: "/home/prepare-for-cuet.svg",
+      link: "/courses",
+      image: "/home/category3.jpeg",
+      gradient: "from-purple-500/10 to-purple-600/20",
+      textColor: "text-purple-700",
+      buttonColor: "bg-purple-600 hover:bg-purple-700",
+    },
+    {
+      id: "skill-development",
+      title: "Skill Development",
+      description: "Professional skills for career growth",
+      buttonText: "Explore Skills",
+      link: "/courses",
+      image: "/home/category4.jpeg",
+      gradient: "from-orange-500/10 to-orange-600/20",
+      textColor: "text-orange-700",
+      buttonColor: "bg-orange-600 hover:bg-orange-700",
     },
   ];
 
   return (
-    <section className="w-full py-36 bg-white">
+    <section className="w-full py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-[40px] font-bold text-[#141219] text-center mb-5 font-['Lexend_Deca',Helvetica]">
-          What&apos;s Your Learning Goal
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-['Lexend_Deca',Helvetica]">
+            Top Categories
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-['Lexend_Deca',Helvetica]">
+            Discover our most popular learning categories designed to help you achieve your educational and career goals.
+          </p>
+        </div>
 
-        <p className="text-lg text-[#454648] text-center mb-12 max-w-3xl mx-auto font-['Lexend_Deca',Helvetica]">
-        Choose a learning path that aligns perfectly with your aspirations and career dreams.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {learningGoals.map((goal) => (
-            <Card
-              key={goal.id}
-              className={`${goal.bgColor} border-none overflow-hidden relative`}
-            >
-              <CardContent className="p-4 md:px-8 relative z-10">
-                <div className="flex justify-between items-center min-h-[160px] md:min-h-[202px]">
-                  <div className="flex-1 pr-[110px] md:pr-[130px] flex flex-col">
-                    <h3
-                      className={`${goal.titleColor} text-xl md:text-2xl font-bold font-['Lexend_Deca',Helvetica]`}
-                    >
-                      {goal.title}
-                    </h3>
-
-                    <p
-                      className={`${goal.descriptionColor} text-sm md:text-base mt-2 mb-4 md:mb-6 font-['Lexend_Deca',Helvetica]`}
-                    >
-                      {goal.description}
-                    </p>
-
-                    <Button
-                      className={`${goal.buttonBgColor} text-white rounded-xl h-[40px] md:h-[50px] w-full max-w-[200px] md:max-w-[232px] hover:opacity-90 transition-opacity duration-200`}
-                    >
-                      <span className="font-medium text-sm md:text-lg font-['Lexend_Deca',Helvetica]">
-                        {goal.buttonText}
-                      </span>
-                      <FaChevronRight className="ml-1 md:ml-2 h-4 w-4 md:h-6 md:w-6" />
-                    </Button>
-                  </div>
-
-                  <div className="absolute top-0 right-0 h-full">
-                    <div
-                      className={`w-[100px] md:w-[120px] h-full ${goal.circleBgColor} flex items-center justify-center`}
-                      style={{
-                        borderTopLeftRadius: '60px',
-                        borderBottomLeftRadius: '60px',
-                      }}
-                    >
-                      <Image
-                        className="w-12 h-12 p-4 md:w-16 md:h-16 object-contain"
-                        fill
-                        alt={`${goal.title} icon`}
-                        src={goal.iconSrc}
-                      />
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {topCategories.map((category) => (
+            <Link key={category.id} href={category.link}>
+              <div className="group relative w-full aspect-square cursor-pointer overflow-hidden rounded-lg shadow-lg">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover w-full h-full"
+                  />
                 </div>
-              </CardContent>
-            </Card>
+
+                {/* Overlay Card */}
+                <Card className="absolute inset-0 bg-white/95 backdrop-blur-sm border-none group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
+                  <CardContent className="p-6 h-full flex flex-col justify-center items-center text-center">
+                    <h3 className={`${category.textColor} text-2xl font-bold mb-3 font-['Lexend_Deca',Helvetica]`}>
+                      {category.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm font-['Lexend_Deca',Helvetica]">
+                      {category.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </Link>
           ))}
         </div>
+
+        {/* Call to Action */}
       </div>
     </section>
   );
 };
-export default LearningGoalsSection;
+export default TopCategoriesSection;

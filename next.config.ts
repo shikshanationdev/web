@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       "images.unsplash.com",
       "files.wiseapp.live",
       "cdn.wiseapp.live",
+      "shikshanation.com",
     ]
   }
 };
