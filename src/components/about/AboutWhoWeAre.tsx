@@ -41,7 +41,7 @@ const AboutWhoWeAre = () => {
         </div>
 
         {/* Center Blur Element */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10">
           <div className="w-20 h-20 bg-green-400 rounded-full blur-2xl opacity-70"></div>
         </div>
 
