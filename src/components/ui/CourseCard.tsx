@@ -76,10 +76,12 @@ const CourseCard = ({
             <div className="flex">{renderStars(rating)}</div>
             <span className="text-gray-500 text-sm">({reviews} Reviews)</span>
           </div>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-2xl font-bold text-gray-800">₹{price}</span>
-            <span className="text-gray-400 line-through">₹{oldPrice}</span>
-          </div>
+          {price > 0 && (
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl font-bold text-gray-800">₹{price}</span>
+              <span className="text-gray-400 line-through">₹{oldPrice}</span>
+            </div>
+          )}
           <button
             onClick={handleEnrollClick}
             disabled={!enrollLink || enrollLink === "#"}
@@ -162,14 +164,16 @@ const CourseCard = ({
 
         {/* Price and Button */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-gray-900">₹{price}</span>
-            <span className="text-sm text-gray-500 line-through">₹{oldPrice}</span>
-          </div>
+          {price > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-lg font-bold text-gray-900">₹{price}</span>
+              <span className="text-sm text-gray-500 line-through">₹{oldPrice}</span>
+            </div>
+          )}
           <button
             onClick={handleEnrollClick}
             disabled={!enrollLink || enrollLink === "#"}
-            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${enrollLink && enrollLink !== "#"
+            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${price === 0 ? 'ml-auto' : ''} ${enrollLink && enrollLink !== "#"
               ? "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
               : "bg-gray-400 text-white cursor-not-allowed"
               }`}

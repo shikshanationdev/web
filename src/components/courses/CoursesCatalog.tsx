@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { MdGridView, MdViewList } from "react-icons/md";
+import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
 
@@ -10,7 +10,6 @@ const CoursesCatalog = () => {
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [viewType, setViewType] = useState<"grid" | "list">("grid");
   const coursesPerPage = 6;
 
   const toggleCategory = (categoryName: string) => {
@@ -46,8 +45,22 @@ const CoursesCatalog = () => {
       return coursesData.filter(course => course.category === "CUET");
     } else if (selectedCategory === "Skill Development") {
       return coursesData.filter(course => course.category === "Skill Development");
+    } else if (selectedCategory === "Class 11th") {
+      // Include JEE and NEET courses for Class 11th
+      return coursesData.filter(course =>
+        course.category === "Class 11th" ||
+        course.category === "JEE" ||
+        course.category === "NEET"
+      );
+    } else if (selectedCategory === "Class 12th") {
+      // Include JEE and NEET courses for Class 12th
+      return coursesData.filter(course =>
+        course.category === "Class 12th" ||
+        course.category === "JEE" ||
+        course.category === "NEET"
+      );
     } else {
-      // For subcategories
+      // For other subcategories
       return coursesData.filter(course =>
         course.category === selectedCategory || course.subCategory === selectedCategory
       );
@@ -254,27 +267,7 @@ const CoursesCatalog = () => {
                   </div>
                 </div>
 
-                {/* View Toggle */}
-                <div className="flex items-center bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewType("grid")}
-                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "grid"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "text-gray-600 hover:text-gray-800"
-                      }`}
-                  >
-                    <MdGridView className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewType("list")}
-                    className={`flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 ${viewType === "list"
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "text-gray-600 hover:text-gray-800"
-                      }`}
-                  >
-                    <MdViewList className="w-4 h-4" />
-                  </button>
-                </div>
+
               </div>
             </div>
 

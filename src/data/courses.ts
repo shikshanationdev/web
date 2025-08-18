@@ -620,8 +620,8 @@ export const coursesData: Course[] = [
     instructor: "CUET Expert",
     rating: 4.6,
     reviews: 234,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 445,
     duration: "30 hours",
@@ -640,8 +640,8 @@ export const coursesData: Course[] = [
     instructor: "Science Expert",
     rating: 4.5,
     reviews: 189,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 334,
     duration: "30 hours",
@@ -660,8 +660,8 @@ export const coursesData: Course[] = [
     instructor: "Commerce Expert",
     rating: 4.4,
     reviews: 156,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 34999,
     level: 'Advanced',
     students: 289,
     duration: "30 hours",
@@ -680,8 +680,8 @@ export const coursesData: Course[] = [
     instructor: "Humanities Expert",
     rating: 4.3,
     reviews: 134,
-    price: 1999,
-    oldPrice: 2999,
+    price: 24999,
+    oldPrice: 29999,
     level: 'Advanced',
     students: 223,
     duration: "30 hours",
@@ -700,7 +700,7 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.2,
     reviews: 98,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 167,
@@ -720,7 +720,7 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.1,
     reviews: 87,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 145,
@@ -740,7 +740,7 @@ export const coursesData: Course[] = [
     instructor: "Content Team",
     rating: 4.0,
     reviews: 76,
-    price: 999,
+    price: 0,
     oldPrice: 1499,
     level: 'Advanced',
     students: 123,
@@ -762,7 +762,7 @@ export const coursesData: Course[] = [
     instructor: "IIT Faculty",
     rating: 4.6,
     reviews: 298,
-    price: 1499,
+    price: 0,
     oldPrice: 2499,
     level: 'Advanced',
     students: 523,
@@ -784,7 +784,7 @@ export const coursesData: Course[] = [
     instructor: "Medical Faculty",
     rating: 4.7,
     reviews: 345,
-    price: 1499,
+    price: 0,
     oldPrice: 2499,
     level: 'Advanced',
     students: 678,
@@ -805,6 +805,24 @@ export const getCoursesByCategory = (category: string): Course[] => {
   if (category === "all" || category === "All Categories") {
     return coursesData;
   }
+  
+  // For Class 11th and 12th, include JEE and NEET courses as well
+  if (category === "Class 11th") {
+    return coursesData.filter(course => 
+      course.category === "Class 11th" || 
+      course.category === "JEE" || 
+      course.category === "NEET"
+    );
+  }
+  
+  if (category === "Class 12th") {
+    return coursesData.filter(course => 
+      course.category === "Class 12th" || 
+      course.category === "JEE" || 
+      course.category === "NEET"
+    );
+  }
+  
   return coursesData.filter(course => course.category === category);
 };
 
@@ -833,8 +851,14 @@ export const categories = [
       { name: "Class 8th", count: coursesData.filter(c => c.category === "Class 8th").length },
       { name: "Class 9th", count: coursesData.filter(c => c.category === "Class 9th").length },
       { name: "Class 10th", count: coursesData.filter(c => c.category === "Class 10th").length },
-      { name: "Class 11th", count: coursesData.filter(c => c.category === "Class 11th").length },
-      { name: "Class 12th", count: coursesData.filter(c => c.category === "Class 12th").length },
+      { 
+        name: "Class 11th", 
+        count: coursesData.filter(c => c.category === "Class 11th" || c.category === "JEE" || c.category === "NEET").length 
+      },
+      { 
+        name: "Class 12th", 
+        count: coursesData.filter(c => c.category === "Class 12th" || c.category === "JEE" || c.category === "NEET").length 
+      },
     ]
   },
   { 
