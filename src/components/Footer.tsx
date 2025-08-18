@@ -97,18 +97,40 @@ const Footer = () => {
                 Company
               </h3>
               <ul className="space-y-2">
-                {["About Us", "Blog", "Media", "Career", "Contact Us"].map(
-                  (item) => (
-                    <li key={item}>
-                      <Link
-                        href="#"
-                        className="hover:underline text-sm transition-colors duration-200"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  )
-                )}
+                <li>
+                  <Link
+                    href="/about"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="https://blog.shikshanation.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/media"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Media
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="hover:underline text-sm transition-colors duration-200"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

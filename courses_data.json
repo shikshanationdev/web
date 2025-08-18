@@ -1,5 +1,35 @@
 [
   {
+    "Category":"UpSkilling",
+    "Course Name":"Artificial Intelligence - Advanced Program",
+    "Course Link":"https:\/\/courses.shikshanation.com\/courses\/artificial-intelligence-advanced-program-68a2c1aa52085dd80fd21e99",
+    "Images":"https:\/\/files.wiseapp.live\/upload_files\/688083d00933d0d6193bffe5\/upload_128977ec-63da-4f03-bcb8-0383916daeba"
+  },
+  {
+    "Category":"UpSkilling",
+    "Course Name":"Artificial Intelligence - Basic Program",
+    "Course Link":"https:\/\/courses.shikshanation.com\/courses\/artificial-intelligence-basic-program-68a2c18bcba13440e4d07c2a",
+    "Images":"https:\/\/files.wiseapp.live\/upload_files\/688083d00933d0d6193bffe5\/upload_96a5a9bb-40b1-4715-997c-653b67b65bc9"
+  },
+  {
+    "Category":"UpSkilling",
+    "Course Name":"Data Analytics",
+    "Course Link":"https:\/\/courses.shikshanation.com\/courses\/data-analytics-68a2c0de5bcbb1ca1f9df151",
+    "Images":"https:\/\/files.wiseapp.live\/upload_files\/688083d00933d0d6193bffe5\/upload_97e02f43-3334-46e4-84ef-f976e9580a27"
+  },
+  {
+    "Category":"UpSkilling",
+    "Course Name":"Digital Marketing",
+    "Course Link":"https:\/\/courses.shikshanation.com\/courses\/digital-marketing-68a2c0c8ae3fad7478b63cdc",
+    "Images":"https:\/\/files.wiseapp.live\/upload_files\/688083d00933d0d6193bffe5\/upload_5c1500b3-fb68-4b1b-ac52-15dc8acc36d3"
+  },
+  {
+    "Category":"UpSkilling",
+    "Course Name":"UI UX Design",
+    "Course Link":"https:\/\/courses.shikshanation.com\/courses\/ui-ux-design-68a2c061ac2a8d755cecf0dd",
+    "Images":"https:\/\/files.wiseapp.live\/upload_files\/688083d00933d0d6193bffe5\/upload_61742eb1-3c98-4b82-a38f-4e86d0d4b8b9"
+  },
+  {
     "Category":"CUET",
     "Course Name":"CUET - General Aptitude Test",
     "Course Link":"https:\/\/courses.shikshanation.com\/courses\/cuet-general-aptitude-test-689b3070d2d7065022f2ff12",

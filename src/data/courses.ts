@@ -705,7 +705,7 @@ export const coursesData: Course[] = [
     level: 'Advanced',
     students: 167,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_3c77e94c-1949-4926-b033-b232e69e7d88",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -725,7 +725,7 @@ export const coursesData: Course[] = [
     level: 'Advanced',
     students: 145,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_1765c713-a8b9-4b48-80bc-621137b51fc5",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -745,7 +745,7 @@ export const coursesData: Course[] = [
     level: 'Advanced',
     students: 123,
     duration: "Lifetime Access",
-    image: "https://cdn.wiseapp.live/images/classroom_covers/generic-15.png",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_ec2c29c7-4230-4eee-8644-1ebd80195205",
     category: "CUET",
     subCategory: "PYQs",
     isPopular: false,
@@ -797,6 +797,108 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "ScoreLift NEET 2026 Previous Year Questions",
     features: ["Previous Year Papers", "NCERT Based", "Detailed Solutions", "Topic-wise Practice"]
+  },
+
+  // Skill Development / Upskilling Courses
+  {
+    id: 39,
+    title: "Artificial Intelligence - Advanced Program",
+    instructor: "AI Expert",
+    rating: 4.8,
+    reviews: 234,
+    price: 49999,
+    oldPrice: 79999,
+    level: 'Advanced',
+    students: 456,
+    duration: "6 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_128977ec-63da-4f03-bcb8-0383916daeba",
+    category: "Skill Development",
+    subCategory: "Artificial Intelligence",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/artificial-intelligence-advanced-program-68a2c1aa52085dd80fd21e99",
+    demoLink: "#",
+    description: "Advanced AI program covering Machine Learning, Deep Learning, and Neural Networks",
+    features: ["Machine Learning", "Deep Learning", "Neural Networks", "Hands-on Projects", "Industry Mentorship"]
+  },
+  {
+    id: 40,
+    title: "Artificial Intelligence - Basic Program",
+    instructor: "AI Expert",
+    rating: 4.6,
+    reviews: 189,
+    price: 29999,
+    oldPrice: 49999,
+    level: 'Beginner',
+    students: 567,
+    duration: "3 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_96a5a9bb-40b1-4715-997c-653b67b65bc9",
+    category: "Skill Development",
+    subCategory: "Artificial Intelligence",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/artificial-intelligence-basic-program-68a2c18bcba13440e4d07c2a",
+    demoLink: "#",
+    description: "Introduction to AI concepts, Python programming, and basic machine learning",
+    features: ["Python Programming", "AI Fundamentals", "Basic ML Algorithms", "Practical Projects"]
+  },
+  {
+    id: 41,
+    title: "Data Analytics",
+    instructor: "Data Science Expert",
+    rating: 4.7,
+    reviews: 345,
+    price: 39999,
+    oldPrice: 59999,
+    level: 'Intermediate',
+    students: 678,
+    duration: "4 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_97e02f43-3334-46e4-84ef-f976e9580a27",
+    category: "Skill Development",
+    subCategory: "Data Analytics",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/data-analytics-68a2c0de5bcbb1ca1f9df151",
+    demoLink: "#",
+    description: "Comprehensive data analytics course covering statistics, visualization, and business intelligence",
+    features: ["Statistical Analysis", "Data Visualization", "Excel & SQL", "Power BI", "Real-world Projects"]
+  },
+  {
+    id: 42,
+    title: "Digital Marketing",
+    instructor: "Marketing Expert",
+    rating: 4.5,
+    reviews: 298,
+    price: 24999,
+    oldPrice: 39999,
+    level: 'Intermediate',
+    students: 789,
+    duration: "3 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_5c1500b3-fb68-4b1b-ac52-15dc8acc36d3",
+    category: "Skill Development",
+    subCategory: "Digital Marketing",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/digital-marketing-68a2c0c8ae3fad7478b63cdc",
+    demoLink: "#",
+    description: "Complete digital marketing course covering SEO, SEM, social media, and content marketing",
+    features: ["SEO & SEM", "Social Media Marketing", "Content Marketing", "Google Ads", "Analytics & Reporting"]
+  },
+  {
+    id: 43,
+    title: "UI UX Design",
+    instructor: "Design Expert",
+    rating: 4.6,
+    reviews: 267,
+    price: 34999,
+    oldPrice: 49999,
+    level: 'Intermediate',
+    students: 445,
+    duration: "4 Months",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_61742eb1-3c98-4b82-a38f-4e86d0d4b8b9",
+    category: "Skill Development",
+    subCategory: "UI/UX Design",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/ui-ux-design-68a2c061ac2a8d755cecf0dd",
+    demoLink: "#",
+    description: "Complete UI/UX design course covering design principles, tools, and portfolio development",
+    features: ["Design Principles", "Figma & Adobe XD", "User Research", "Prototyping", "Portfolio Development"]
   }
 ];
 
@@ -821,6 +923,11 @@ export const getCoursesByCategory = (category: string): Course[] => {
       course.category === "JEE" || 
       course.category === "NEET"
     );
+  }
+
+  // Handle skilling/skill development category
+  if (category === "skilling" || category === "Skill Development") {
+    return coursesData.filter(course => course.category === "Skill Development");
   }
   
   return coursesData.filter(course => course.category === category);
@@ -879,7 +986,6 @@ export const categories = [
   { 
     label: "Skill Development", 
     value: "skilling", 
-    count: 0,
-    isComingSoon: true
+    count: coursesData.filter(c => c.category === "Skill Development").length
   },
 ];
