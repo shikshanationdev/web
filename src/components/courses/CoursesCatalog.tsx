@@ -116,8 +116,11 @@ const CoursesCatalog = () => {
   // Pagination helper functions
   const goToPage = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top of course grid
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to course grid section
+    const courseGridElement = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.xl\\:grid-cols-3');
+    if (courseGridElement) {
+      courseGridElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const goToPreviousPage = () => {
