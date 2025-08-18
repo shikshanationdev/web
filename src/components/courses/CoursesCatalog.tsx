@@ -188,7 +188,7 @@ const CoursesCatalog = () => {
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="appearance-none w-full bg-white border border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 focus:ring-2 focus:ring-blue-500"
+                className="appearance-none w-full bg-white border-2 border-sky-600 rounded-full px-4 py-2 pr-8 text-sm text-sky-600 focus:ring-2 focus:ring-blue-500"
               >
                 <option>Newly published</option>
                 <option>Price: Low to High</option>
@@ -197,14 +197,14 @@ const CoursesCatalog = () => {
               </select>
               <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-sky-600" />
             </div>
-            
+
             {/* Filter Button */}
             <button
               onClick={toggleMobileFilters}
               aria-expanded={isMobileFiltersOpen}
-              className="inline-flex justify-center items-center gap-2 px-4 py-2 text-xl border-2 border-sky-600 text-sky-600 rounded-full bg-white whitespace-nowrap"
+              className="inline-flex justify-center items-center gap-2 px-4 py-2 text-sm border-2 border-sky-600 text-sky-600 rounded-full bg-white whitespace-nowrap"
             >
-              <LuSettings2 className="w-6 h-6" />
+              <LuSettings2 className="w-4 h-4" />
               <span>Filter</span>
             </button>
           </div>
