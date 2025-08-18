@@ -78,8 +78,8 @@ const TopCategoriesSection = (): React.ReactElement => {
                   />
                 </div>
 
-                {/* Overlay Card */}
-                <Card className="absolute inset-0 bg-white/95 backdrop-blur-sm border-none group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
+                {/* Overlay Card - hidden on small screens */}
+                <Card className="absolute inset-0 bg-white/95 backdrop-blur-sm border-none group-hover:opacity-0 transition-opacity duration-500 ease-in-out hidden sm:block">
                   <CardContent className="p-6 h-full flex flex-col justify-center items-center text-center">
                     <h3 className={`${category.textColor} text-2xl font-bold mb-3 font-['Lexend_Deca',Helvetica]`}>
                       {category.title}

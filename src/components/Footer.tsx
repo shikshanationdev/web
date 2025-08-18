@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
             {/* Useful Links */}
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-4">
+              <h3 className="font-semibold text-lg mb-4 pr-2 md:pr-0">
                 Useful Links
               </h3>
               <ul className="space-y-2">
