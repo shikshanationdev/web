@@ -1,16 +1,33 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
 
 const CoursesCatalog = () => {
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams?.get('category');
+
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [sortBy, setSortBy] = useState("Newly published");
   const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 6;
+
+  // Set category from URL parameter on component mount
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+      // If it's a class category, expand the "Class 6th to 12th" section
+      if (categoryFromUrl.includes("Class")) {
+        setExpandedCategories(prev =>
+          prev.includes("Class 6th to 12th") ? prev : [...prev, "Class 6th to 12th"]
+        );
+      }
+    }
+  }, [categoryFromUrl]);
 
   const toggleCategory = (categoryName: string) => {
     setExpandedCategories(prev =>
