@@ -71,6 +71,24 @@ const QrAppPromo: React.FC = () => {
                   />
                 </a>
               </div>
+                <div className="flex items-center pt-4 gap-2">
+                <a href="#window-store" aria-label="Get it on Windows Store" className="transform hover:scale-105 transition-transform">
+                  <Image
+                    src="/home/get-it-on-windows-store.png"
+                    alt="Get it on Windows Store"
+                    width={180}
+                    height={40}
+                  />
+                </a>
+                <a href="#MacOS" aria-label="Download on the Mac App Store" className="transform hover:scale-105 transition-transform">
+                  <Image
+                    src="/home/dowload_for_mac_os.png"
+                    alt="Get it on Mac App Store"
+                    width={180}
+                    height={40}
+                  />
+                </a>
+              </div>
             </div>
           </div>
 
