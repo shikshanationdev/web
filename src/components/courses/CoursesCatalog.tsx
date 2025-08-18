@@ -372,12 +372,12 @@ const CoursesCatalog = () => {
               <div className="flex items-center gap-4">
                 {/* Sort Options */}
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">Sort by:</span>
+                  <span className="text-sm text-sky-600">Sort by:</span>
                   <div className="relative">
                     <select
                       value={sortBy}
                       onChange={(e) => handleSortChange(e.target.value)}
-                      className="appearance-none bg-white border border-blue-200 rounded-lg px-4 py-2 pr-10 text-sm text-blue-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-w-[200px]"
+                      className="appearance-none bg-white border-2 border-sky-600 outline-none rounded-lg px-4 py-2 pr-10 text-sm text-sky-600 focus:ring-2 focus:ring-0 focus:border-blue-500 min-w-[200px]"
                     >
                       <option>Newly published</option>
                       <option>Price: Low to High</option>
