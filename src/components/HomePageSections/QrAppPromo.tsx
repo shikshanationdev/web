@@ -24,7 +24,7 @@ const QrAppPromo: React.FC = () => {
           {/* Right Section: Text Content & QR Code */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left ">
             <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-              Learn <span className="text-sky-600">Anytime, Anywhere </span> 
+              Learn <span className="text-sky-600">Anytime</span>, <span className="text-green-primary">Anywhere </span>
               with the Shiksha Nation App
             </h1>
             

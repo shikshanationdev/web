@@ -49,7 +49,7 @@ const FeaturesSection = () => {
         <div ref={scrollRef} className="w-full flex gap-3 md:gap-6 overflow-x-auto md:grid md:grid-cols-4 md:gap-0 md:overflow-x-visible scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
           {features.map((feature) => (
             <div key={feature.title} className="flex-shrink-0 flex flex-col items-center min-w-[140px] md:min-w-0">
-              <div className="bg-lime-500 rounded-xl p-2 md:p-4 mb-2 md:mb-3 flex items-center justify-center shadow-md">
+              <div className="bg-green-secondary rounded-xl p-2 md:p-4 mb-2 md:mb-3 flex items-center justify-center shadow-md">
                 <Image
                   src={feature.icon}
                   alt={feature.title}

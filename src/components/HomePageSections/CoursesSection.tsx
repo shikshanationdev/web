@@ -140,9 +140,9 @@ const CoursesSection = () => {
               <button
                 key={cat.value}
                 ref={(el) => { tabRefs.current[cat.value] = el; }}
-                className={`pb-3 text-base sm:text-xl md:text-2xl font-medium transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${selectedCategory === cat.value
-                  ? "text-green-600"
-                  : "text-gray-500 hover:text-gray-700"
+                className={`pb-3 text-base sm:text-xl md:text-2xl  transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${selectedCategory === cat.value
+                  ? "text-green-600 font-semibold"
+                  : "text-gray-500 hover:text-gray-700 font-medium"
                   }`}
                 onClick={() => {
                   setSelectedCategory(cat.value);

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /* Custom color extensions using CSS custom properties */
-:root {
-  --color-green-primary: 59 202 67; /* #3BCA43 in RGB format */
+@theme {
+  --color-green-primary: #3BCA43;
+  --color-green-secondary: #68ba4c;
 }
 
 /* For Firefox */
