@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 
 // Navigation items for the mobile
@@ -19,6 +20,19 @@ const navItems = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Function to check if a navigation item is active
+  const isActiveNavItem = (href: string) => {
+    if (!pathname) return false;
+    if (href === "/" && pathname === "/") {
+      return true;
+    }
+    if (href !== "/" && pathname.startsWith(href)) {
+      return true;
+    }
+    return false;
+  };
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -91,7 +105,14 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="flex items-center gap-5 lg:gap-8 xl:gap-24">
               {navItems.map((item) => (
-                <Link key={item.label} href={item.href} className="text-sky-600 hover:text-sky-700 transition-colors">
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`transition-colors ${isActiveNavItem(item.href)
+                      ? "text-sky-600"
+                      : "text-gray-800 hover:text-sky-700"
+                    }`}
+                >
                   {item.label}
                 </Link>
               ))}
@@ -147,7 +168,10 @@ const Navbar = () => {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-sky-700 hover:text-sky-800 transition-colors text-lg font-medium"
+                    className={`transition-colors text-lg font-medium ${isActiveNavItem(item.href)
+                        ? "text-sky-600"
+                        : "text-gray-800 hover:text-sky-800"
+                      }`}
                     onClick={closeMenu}
                   >
                     {item.label}

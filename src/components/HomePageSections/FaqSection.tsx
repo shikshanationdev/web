@@ -37,13 +37,13 @@ const FaqSection = () => {
           {faqs.map((faq, idx) => (
             <div
               key={faq.question}
-              className={`bg-sky-50 border border-sky-400 rounded-2xl px-8 py-6 transition-all duration-300 ${openIndex === idx ? "shadow-md" : ""}`}
+              className={`bg-sky-50/50 border border-sky-600 rounded-2xl px-8 py-6 transition-all duration-300 ${openIndex === idx ? "shadow-md" : ""}`}
             >
               <button
                 className="w-full flex items-center justify-between focus:outline-none"
                 onClick={() => setOpenIndex(openIndex === idx ? -1 : idx)}
               >
-                <span className="text-lg md:text-xl font-bold text-sky-600 text-left">
+                <span className="text-lg md:text-xl font-semibold text-sky-700 text-left">
                   {faq.question}
                 </span>
                 <span className="ml-4 text-3xl text-sky-600">
@@ -56,7 +56,7 @@ const FaqSection = () => {
                   transitionProperty: 'max-height, opacity, margin-top',
                 }}
               >
-                <div className="text-sky-700 text-base font-medium">
+                <div className="text-sky-700 text-lg md:text-xl">
                   {faq.answer}
                 </div>
               </div>
