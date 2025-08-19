@@ -13,69 +13,8 @@ const Hero = () => {
 
   return (
     <section className="w-full bg-white">
-      {/* Top Carousel Banner */}
-      <div className="overflow-hidden relative bg-white border-b mt-10 md:mt-0 border-blue-100" style={{ height: '40px' }}>
-        <div
-          className="w-full h-full flex"
-          style={{ position: 'absolute', width: '200%', height: '100%', left: 0, top: 0 }}
-        >
-          <div
-            className="flex h-full animate-banner-scroll"
-            style={{ width: '100%' }}
-          >
-            <Image
-              src="/home/Carousal1.png"
-              alt="Carousel Image"
-              width={2160}
-              height={135}
-              className="h-full object-cover flex-shrink-0"
-              priority
-              quality={100}
-            />
-            <Image
-              src="/home/Carousal1.png"
-              alt="Carousel Image"
-              width={2160}
-              height={135}
-              className="h-full object-cover flex-shrink-0"
-              quality={100}
-            />
-          </div>
-          <div
-            className="flex h-full animate-banner-scroll"
-            style={{ width: '100%' }}
-          >
-            <Image
-              src="/home/Carousal1.png"
-              alt="Carousel Image"
-              width={2160}
-              height={135}
-              className="h-full object-cover flex-shrink-0"
-              quality={100}
-            />
-            <Image
-              src="/home/Carousal1.png"
-              alt="Carousel Image"
-              width={2160}
-              height={135}
-              className="h-full object-cover flex-shrink-0"
-              quality={100}
-            />
-          </div>
-        </div>
-        <style jsx>{`
-          @keyframes banner-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-banner-scroll {
-            animation: banner-scroll 20s linear infinite;
-          }
-        `}</style>
-      </div>
-
       {/* Main Hero Content */}
-      <div className="px-5 md:px-10 pb-12 md:pb-20 pt-10">
+      <div className="px-5 md:px-10 py-12 md:py-20">
         <div className="mx-auto flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
           {/* Left: Text */}
           <div className="basis-[60%] md:max-w-[60%]">
