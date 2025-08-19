@@ -26,8 +26,8 @@ const contactInfo = [
 ];
 
 const ContactDetails: React.FC = () => (
-  <div className="space-y-8">
-    <div>
+  <div className="space-y-8 px-10">
+    <div className="hidden lg:block">
       <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
         Contact Us
       </h1>

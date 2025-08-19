@@ -12,12 +12,12 @@ const GetInTouchSection = () => {
           <p className="text-white/70 text-[10px] md:text-lg mb-4 uppercase tracking-wider">
             GET IN TOUCH
           </p>
-          <h2 className="text-white text-lg text-wrap pr-20 sm:text-xl md:text-4xl font-bold mb-8 leading-tight">
+          <h2 className="text-white text-wrap pr-20 text-xl md:text-4xl font-bold mb-8 leading-tight">
             For Queries, Feedback or Assistance
           </h2>
           <Link
             href="/contact"
-            className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold px-2 py-1 md:px-8 md:py-4 rounded-full transition-all duration-300 hover:scale-105 text-sm md:text-lg"
+            className="inline-flex items-center bg-green-primary hover:bg-green-600 text-white font-semibold px-5 py-2 md:px-8 md:py-4 rounded-full transition-all duration-300 hover:scale-105 text-sm md:text-lg"
           >
             Contact Us
             <FiArrowRight className="ml-2 text-xl" />
