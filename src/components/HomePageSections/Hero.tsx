@@ -3,19 +3,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
-  // Carousel images - you can add more images to this array later
+  // Carousel images with the Shiksha series
   const carouselImages = [
-    "/home/Carousal1.png",
-    // Add more images here when available
+    "/home/ShikshaBase.png",
+    "/home/ShikshaEdge.png",
+    "/home/ShikshaQuest.png",
+    "/home/ShikshaPro.png",
   ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false);
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) =>
+          (prevIndex + 1) % carouselImages.length
+        );
+        setIsVisible(true);
+      }, 500); // Half second for fade out
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
 
   return (
     <section className="w-full bg-white">
       {/* Main Hero Content */}
-      <div className="px-5 md:px-10 py-12 md:py-20">
-        <div className="mx-auto flex flex-col md:flex-row items-center justify-between w-full max-w-7xl">
+      <div className="py-12 md:py-16 px-5 md:px-0 md:pl-20">
+        <div className="mx-auto flex flex-col md:flex-row items-center justify-between w-full max-w-[1536px]">
           {/* Left: Text */}
           <div className="basis-[60%] md:max-w-[60%]">
             <div className="flex items-center mb-2 w-full gap-5">
@@ -59,13 +79,16 @@ const Hero = () => {
 
             {/* Mobile Image - appears between content and button */}
             <div className="md:hidden w-full flex justify-center mb-8">
-              <Image
-                src="/home/hero_section_img.svg"
-                alt="Learning Illustration"
-                width={340}
-                height={340}
-                className="w-80 h-50 object-contain"
-              />
+              <div className="relative w-80 h-80">
+                <Image
+                  src={carouselImages[currentImageIndex]}
+                  alt="Learning Platform"
+                  width={320}
+                  height={320}
+                  className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
+                    }`}
+                />
+              </div>
             </div>
 
             <div className="flex justify-center md:justify-start">
@@ -80,13 +103,16 @@ const Hero = () => {
           </div>
           {/* Right: Illustration - Desktop only */}
           <div className="hidden md:flex basis-[40%] md:max-w-[40%] justify-center">
-            <Image
-              src="/home/hero_section_img.svg"
-              alt="Learning Illustration"
-              width={340}
-              height={340}
-              className="w-full h-auto object-contain"
-            />
+            <div className="relative w-full h-auto">
+              <Image
+                src={carouselImages[currentImageIndex]}
+                alt="Learning Platform"
+                width={340}
+                height={340}
+                className={`w-full h-auto object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
+                  }`}
+              />
+            </div>
           </div>
         </div>
       </div>
