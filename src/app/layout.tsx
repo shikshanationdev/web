@@ -15,8 +15,8 @@ const lexendDeca = Lexend_Deca({
 });
 
 export const metadata: Metadata = {
-  title: "SikshaNation - Quality Education for All",
-  description: "SikshaNation provides quality education through online courses, JEE/NEET preparation, and skill development programs.",
+  title: "Shikshanation - Quality Education for All",
+  description: "Shikshanation provides quality education through online courses, JEE/NEET preparation, and skill development programs.",
   icons: {
     icon: '/favicon.ico',
   },
