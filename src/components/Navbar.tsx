@@ -82,7 +82,7 @@ const Navbar = () => {
 
             {/* Open App Button - Right */}
             <Link
-              href="/app"
+              href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
               className="px-4 py-2 border-2 border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-sm font-medium"
             >
               Open App
