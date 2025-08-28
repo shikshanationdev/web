@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
-import { coursesData, categories, getCoursesByCategory, getPopularCourses } from "@/data/courses";
+import { coursesData, getPopularCourses } from "@/data/courses";
 import { FiArrowRight } from "react-icons/fi";
 
 const categoryOptions = [
@@ -16,7 +16,6 @@ const categoryOptions = [
 
 const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [scrollIndex, setScrollIndex] = useState(0);
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
@@ -62,8 +61,6 @@ const CoursesSection = () => {
     }
     return coursesData.length;
   };
-
-  const totalCourseCount = getTotalCourseCount();
 
   // Handle navigation to courses page
   const handleSeeMoreClick = () => {
