@@ -60,10 +60,10 @@ const Footer = () => {
                 </div>
                 <div className="mb-4">
                   <p className="text-md text-black mb-2 font-medium italic leading-none">
-                    "Of Bharat, By Bharat, For Bharat."
+                    &ldquo;Of Bharat, By Bharat, For Bharat.&rdquo;
                   </p>
                   <p className="text-md text-black font-medium leading-none">
-                    India's Own Learning Revolution.
+                    India&apos;s Own Learning Revolution.
                   </p>
                 </div>
                 <div className="space-y-3 text-sm py-5">
@@ -100,7 +100,7 @@ const Footer = () => {
 
               {/* Social Links */}
               <div>
-                <h4 className="font-semibold text-lg mb-4 text-sky-700">Let's Get Social</h4>
+                <h4 className="font-semibold text-lg mb-4 text-sky-700">Let&apos;s Get Social</h4>
                 <div className="flex gap-3">
                   {socialLinks.map((s) => {
                     const IconComponent = s.icon;
