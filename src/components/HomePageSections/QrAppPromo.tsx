@@ -7,12 +7,12 @@ const QrAppPromo: React.FC = () => {
     <section className="bg-white px-5">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Section: Image Mockups */}
-          <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[500px]">            
+          <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
             {/* Device Mockup Image - Using next/image */}
-            <Image 
-              src="/home/Phone & Tablet Mockup.png" 
+            <Image
+              src="/home/phone-tablet-mockup.png"
               width={500}
               height={500}
               alt="Shiksha Nation App on Phone & Tablet"
@@ -27,7 +27,7 @@ const QrAppPromo: React.FC = () => {
               Learn <span className="text-sky-600">Anytime</span>, <span className="text-green-primary">Anywhere </span>
               with the Shiksha Nation App
             </h1>
-            
+
             <p className="mt-4 text-lg text-gray-700 font-medium max-w-md">
               Access live classes, notes, tests & progress — all in one app.
             </p>
@@ -39,9 +39,9 @@ const QrAppPromo: React.FC = () => {
                 <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-blue-700 rounded-tr-lg"></div>
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-green-400 rounded-bl-lg"></div>
                 <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-green-400 rounded-br-lg"></div>
-                <Image 
-                  src="/home/qr.png" 
-                  alt="QR code to download app" 
+                <Image
+                  src="/home/qr.png"
+                  alt="QR code to download app"
                   fill
                   sizes="144px"
                   className="p-1 object-contain"
@@ -71,7 +71,7 @@ const QrAppPromo: React.FC = () => {
                   />
                 </a>
               </div>
-                <div className="flex items-center pt-4 gap-2">
+              <div className="flex items-center pt-4 gap-2">
                 <a href="#window-store" aria-label="Get it on Windows Store" className="transform hover:scale-105 transition-transform">
                   <Image
                     src="/home/get-it-on-windows-store.png"
