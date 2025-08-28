@@ -89,10 +89,10 @@ const Footer = () => {
                   <div>
                     <span className="font-semibold text-sky-700">Email:</span>{" "}
                     <Link
-                      href="mailto:support@shikshanation.in"
+                      href="mailto:support@shikshanation.com"
                       className="hover:underline text-sky-600"
                     >
-                      support@shikshanation.in
+                      support@shikshanation.com
                     </Link>
                   </div>
                 </div>
