@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight, FiFilter } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, categories } from "@/data/courses";
