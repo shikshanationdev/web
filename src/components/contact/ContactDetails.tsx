@@ -6,7 +6,7 @@ const contactInfo = [
   {
     icon: MdEmail,
     label: "EMAIL",
-    content: "hello@shikshanation.com"
+    content: "support@shikshanation.com"
   },
   {
     icon: MdPhone,
