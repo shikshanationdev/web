@@ -525,7 +525,7 @@ const Footer = () => {
                 {/* Download Now */}
                 <div className="flex-1">
                   <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
-                  <div className="flex flex-col gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     <Link
                       href="#"
                       target="_blank"
@@ -535,9 +535,9 @@ const Footer = () => {
                       <Image
                         src="/home/get-it-on-playstore.png"
                         alt="Get it on Google Play"
-                        width={120}
-                        height={36}
-                        className="h-auto"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
                       />
                     </Link>
                     <Link
@@ -549,9 +549,9 @@ const Footer = () => {
                       <Image
                         src="/home/get-it-on-appstore.png"
                         alt="Download on the App Store"
-                        width={120}
-                        height={36}
-                        className="h-auto"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
                       />
                     </Link>
                     <Link
@@ -563,9 +563,9 @@ const Footer = () => {
                       <Image
                         src="/home/get-it-on-windows-store.png"
                         alt="Get it from Microsoft"
-                        width={120}
-                        height={36}
-                        className="h-auto"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
                       />
                     </Link>
                     <Link
@@ -577,9 +577,9 @@ const Footer = () => {
                       <Image
                         src="/home/dowload_for_mac_os.png"
                         alt="Download for macOS"
-                        width={120}
-                        height={36}
-                        className="h-auto"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
                       />
                     </Link>
                   </div>
