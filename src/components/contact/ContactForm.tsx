@@ -59,8 +59,8 @@ const ContactForm: React.FC = () => {
         setError(data.message || 'Something went wrong.');
       }
     } catch (err) {
-        toast.error('Something went wrong.');
-        setError('Something went wrong.');
+      toast.error('Something went wrong.');
+      setError('Something went wrong.');
     } finally {
       setLoading(false);
     }
@@ -136,7 +136,8 @@ const ContactForm: React.FC = () => {
             required
           />
           <label htmlFor="agreement" className="text-sm text-gray-600">
-            I agree that my submitted data is being collected & stored.
+            I agree that my submitted data is being collected, stored and can be
+            used for SMS/WhatsApp/RCS
           </label>
         </div>
         <button
