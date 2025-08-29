@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGraduationCap, FaUserGraduate, FaUniversity, FaTools } from "react-icons/fa";
 
 const TopCategoriesSection = (): React.ReactElement => {
   // Define the category cards data
@@ -14,8 +13,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       buttonText: "Explore Classes",
       link: "/courses?category=ShikshaBase",
       image: "/home/category4.jpeg",
-      icon: "/home/Class 6th to 10th.svg",
-      reactIcon: FaGraduationCap,
+      icon: "/home/ShikshaBaseIcon.svg",
       gradient: "from-teal-500 to-teal-600",
       bgColor: "bg-teal-500",
       textColor: "text-white",
@@ -29,8 +27,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       buttonText: "Start Learning",
       link: "/courses?category=ShikshaEdge",
       image: "/home/category3.jpeg",
-      icon: "/home/Class 11th to 12th.svg",
-      reactIcon: FaUserGraduate,
+      icon: "/home/ShikshaEdgeIcon.svg",
       gradient: "from-indigo-500 to-indigo-600",
       bgColor: "bg-indigo-500",
       textColor: "text-white",
@@ -38,14 +35,13 @@ const TopCategoriesSection = (): React.ReactElement => {
     },
     {
       id: "jee-neet-cuet",
-      title: "Prep for JEE, NEET & CUET",
+      title: "JEE, NEET & CUET",
       subtitle: "ShikshaQuest",
       description: "Complete preparation for competitive exams",
       buttonText: "Start Preparation",
       link: "/courses?category=ShikshaEdge",
       image: "/home/category2.jpeg",
-      icon: "/home/Prep for JEE, NEET & CUET.svg",
-      reactIcon: FaUniversity,
+      icon: "/home/ShikshaQuestIcon.svg",
       gradient: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-500",
       textColor: "text-white",
@@ -59,8 +55,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       buttonText: "Explore Skills",
       link: "/courses?category=ShikshaPro",
       image: "/home/category1.jpeg",
-      icon: "/home/Skill Development.svg",
-      reactIcon: FaTools,
+      icon: "/home/ShikshaPro.svg",
       gradient: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-500",
       textColor: "text-white",
@@ -101,8 +96,16 @@ const TopCategoriesSection = (): React.ReactElement => {
 
                   {/* Content */}
                   <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
-                    {/* React Icon */}
-                    <category.reactIcon className="w-12 h-12 text-white mb-4" />
+                    {/* Custom SVG Icon */}
+                    <div className="w-12 h-12 mb-4 relative">
+                      <Image
+                        src={category.icon}
+                        alt={`${category.subtitle} Icon`}
+                        width={48}
+                        height={48}
+                        className="w-full h-full object-contain filter brightness-0 invert"
+                      />
+                    </div>
 
                     {/* Title */}
                     <h3 className={`text-xl font-bold mb-2 ${category.textColor} font-['Lexend_Deca',Helvetica]`}>
