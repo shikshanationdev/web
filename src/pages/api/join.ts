@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       to: 'support@shikshanation.com',
       subject: 'New Enquiry - JOIN FOR FREE',
       html: `
-        <h2>New User Registration</h2>
+        <h2>New User Enquiry</h2>
         <p>A new user has registered for enquiry.</p>
         <br/>
         <p><strong>Mobile Number:</strong> +91 ${mobileNumber}</p>
