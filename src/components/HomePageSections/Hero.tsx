@@ -16,6 +16,7 @@ const Hero = () => {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [mobileNumber, setMobileNumber] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,7 +78,48 @@ const Hero = () => {
               />
             </div>
 
-            {/* Mobile Image - appears between content and button */}
+            {/* Mobile Number Input - appears before image on mobile, after image on desktop */}
+            <div className="md:hidden flex justify-center mb-8">
+              <div className="flex items-stretch bg-white rounded-full shadow-lg overflow-hidden w-full max-w-sm sm:max-w-md border border-gray-200">
+                {/* Country Code */}
+                <div className="bg-blue-600 text-white px-3 sm:px-4 flex items-center justify-center font-semibold text-sm sm:text-base flex-shrink-0 py-2.5 sm:py-3">
+                  +91
+                </div>
+
+                {/* Mobile Number Input */}
+                <input
+                  type="tel"
+                  placeholder="Enter Your Mobile Number"
+                  value={mobileNumber}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '');
+                    if (value.length <= 10) {
+                      setMobileNumber(value);
+                    }
+                  }}
+                  className="flex-[2] sm:flex-[2.5] px-2 sm:px-3 py-2.5 sm:py-3 text-gray-700 placeholder-gray-400 outline-none border-none text-sm sm:text-base min-w-0"
+                  maxLength={10}
+                />
+
+                {/* Join Button */}
+                <button
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-3 sm:px-4 py-2.5 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm whitespace-nowrap flex-shrink-0 rounded-r-full"
+                  disabled={mobileNumber.length !== 10}
+                  onClick={() => {
+                    if (mobileNumber.length === 10) {
+                      // Handle join action here
+                      console.log('Joining with mobile number:', mobileNumber);
+                      // You can add navigation or API call here
+                    }
+                  }}
+                >
+                  <span className="hidden sm:inline">JOIN FOR FREE</span>
+                  <span className="sm:hidden">JOIN</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Image - appears after input on mobile */}
             <div className="md:hidden w-full flex justify-center mb-8">
               <div className="relative w-80 h-80">
                 <Image
@@ -91,14 +133,44 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex justify-center md:justify-start">
-              <Link
-                href="/courses"
-                className="inline-flex items-center gap-2 px-4 py-2 md:px-8 md:py-3 bg-sky-600 text-nowrap text-white rounded-full md:font-semibold text-lg shadow hover:bg-sky-800 transition-all duration-200"
-              >
-                Explore Courses
-                <FaArrowRightLong />
-              </Link>
+            {/* Desktop Number Input - appears after image on desktop */}
+            <div className="hidden md:flex justify-center md:justify-start">
+              <div className="flex items-stretch bg-white rounded-full shadow-lg overflow-hidden w-full max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl border border-gray-200">
+                {/* Country Code */}
+                <div className="bg-blue-600 text-white px-3 lg:px-4 xl:px-6 2xl:px-8 flex items-center justify-center font-semibold text-sm lg:text-base flex-shrink-0 py-3 lg:py-4 xl:py-5 2xl:py-6">
+                  +91
+                </div>
+
+                {/* Mobile Number Input */}
+                <input
+                  type="tel"
+                  placeholder="Enter Your Mobile Number"
+                  value={mobileNumber}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '');
+                    if (value.length <= 10) {
+                      setMobileNumber(value);
+                    }
+                  }}
+                  className="flex-[3] px-3 lg:px-4 xl:px-6 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 text-gray-700 placeholder-gray-400 outline-none border-none text-sm lg:text-base xl:text-lg 2xl:text-xl min-w-0"
+                  maxLength={10}
+                />
+
+                {/* Join Button */}
+                <button
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-3 lg:px-4 xl:px-5 2xl:px-6 py-3 lg:py-4 xl:py-5 2xl:py-6 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base whitespace-nowrap flex-shrink-0 rounded-r-full"
+                  disabled={mobileNumber.length !== 10}
+                  onClick={() => {
+                    if (mobileNumber.length === 10) {
+                      // Handle join action here
+                      console.log('Joining with mobile number:', mobileNumber);
+                      // You can add navigation or API call here
+                    }
+                  }}
+                >
+                  JOIN FOR FREE
+                </button>
+              </div>
             </div>
           </div>
           {/* Right: Illustration - Desktop only */}
