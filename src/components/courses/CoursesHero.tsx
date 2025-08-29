@@ -6,25 +6,25 @@ const CoursesHero = () => {
     {
       id: 1,
       title: "Class 6th to 12th",
-      image: "/courses/Class 6th to 12th.jpg",
+      image: "/courses/Shiksha-Base.png",
       description: "Comprehensive curriculum for secondary education"
     },
     {
       id: 2,
       title: "NEET",
-      image: "/courses/NEET.jpg",
+      image: "/courses/Shiksha-Edge.png",
       description: "Medical entrance exam preparation"
     },
     {
       id: 3,
       title: "JEE",
-      image: "/courses/JEE.jpg",
+      image: "/courses/Shiksha-Pro.png",
       description: "Engineering entrance exam preparation"
     },
     {
       id: 4,
       title: "Skill Development",
-      image: "/courses/Skill Development.jpg",
+      image: "/courses/Shiksha-Quest.png",
       description: "Professional and technical skills"
     }
   ];
@@ -68,22 +68,7 @@ const CoursesHero = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
                   </div>
-
-                  {/* Course Title */}
-                  <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3">
-                    <h3 className="text-white text-sm sm:text-base font-bold mb-1">
-                      {course.title}
-                    </h3>
-                    <p className="text-white/80 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {course.description}
-                    </p>
-                  </div>
-
-                  {/* Hover Effect Border */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/50 rounded-xl transition-colors duration-300" />
                 </div>
               ))}
             </div>
