@@ -67,6 +67,15 @@ const CoursesSection = () => {
     router.push('/courses');
   };
 
+  // Handle category selection with better mobile support
+  const handleCategoryClick = (categoryValue: string, event?: React.MouseEvent | React.TouchEvent) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setSelectedCategory(categoryValue);
+  };
+
   // Update indicator position and width when category changes
   useEffect(() => {
     const updateIndicator = () => {
@@ -127,30 +136,30 @@ const CoursesSection = () => {
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
-        <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none', touchAction: 'pan-x' }}>
           <div
             ref={containerRef}
             className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
-            style={{ overflowX: 'auto' }}
+            style={{ overflowX: 'auto', touchAction: 'pan-x' }}
           >
             {categoryOptions.map((cat) => (
               <button
                 key={cat.value}
                 ref={(el) => { tabRefs.current[cat.value] = el; }}
-                className={`pb-3 text-base sm:text-xl md:text-2xl  transition-colors duration-300 whitespace-nowrap min-w-max relative z-10 ${selectedCategory === cat.value
+                className={`pb-3 text-base sm:text-xl md:text-2xl transition-colors duration-300 whitespace-nowrap min-w-max relative z-20 cursor-pointer select-none ${selectedCategory === cat.value
                   ? "text-green-600 font-semibold"
                   : "text-gray-500 hover:text-gray-700 font-medium"
                   }`}
-                onClick={() => {
-                  setSelectedCategory(cat.value);
-                }}
+                style={{ touchAction: 'manipulation' }}
+                onClick={(e) => handleCategoryClick(cat.value, e)}
+                onTouchEnd={(e) => handleCategoryClick(cat.value, e)}
               >
                 {cat.label}
               </button>
             ))}
             {/* Sliding Active Indicator */}
             <div
-              className="absolute bottom-0 h-0.5 bg-green-600 transition-all duration-500 ease-out z-0 rounded-full"
+              className="absolute bottom-0 h-0.5 bg-green-600 transition-all duration-500 ease-out z-0 rounded-full pointer-events-none"
               style={{
                 width: `${indicatorStyle.width}px`,
                 left: `${indicatorStyle.left}px`,
@@ -173,6 +182,23 @@ const CoursesSection = () => {
           .overflow-x-auto {
             -ms-overflow-style: none;
             scrollbar-width: none;
+          }
+          
+          /* Ensure proper touch handling on mobile */
+          button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          
+          /* Prevent scrolling interference with button taps */
+          .relative {
+            touch-action: auto;
           }
         `}</style>
         {/* Courses Horizontal Scroll */}
