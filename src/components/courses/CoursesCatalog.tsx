@@ -13,7 +13,6 @@ const CoursesCatalog = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [sortBy, setSortBy] = useState("Newly published");
-  const [expandedCategories, setExpandedCategories] = useState(["Class 6th to 12th"]);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 6;
@@ -22,24 +21,10 @@ const CoursesCatalog = () => {
   useEffect(() => {
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
-      // If it's a class category, expand the "Class 6th to 12th" section
-      if (categoryFromUrl.includes("Class")) {
-        setExpandedCategories(prev =>
-          prev.includes("Class 6th to 12th") ? prev : [...prev, "Class 6th to 12th"]
-        );
-      }
     }
   }, [categoryFromUrl]);
 
   const toggleMobileFilters = () => setIsMobileFiltersOpen(s => !s);
-
-  const toggleCategory = (categoryName: string) => {
-    setExpandedCategories(prev =>
-      prev.includes(categoryName)
-        ? prev.filter(name => name !== categoryName)
-        : [...prev, categoryName]
-    );
-  };
 
   // Reset to first page when category or sort changes
   const handleCategoryChange = (category: string) => {
@@ -57,32 +42,51 @@ const CoursesCatalog = () => {
   const getFilteredCourses = () => {
     if (selectedCategory === "All Categories") {
       return coursesData;
-    } else if (selectedCategory === "Class 6th to 12th") {
-      return coursesData.filter(course => course.category.includes("Class"));
-    } else if (selectedCategory === "JEE") {
-      return coursesData.filter(course => course.category === "JEE");
-    } else if (selectedCategory === "NEET") {
-      return coursesData.filter(course => course.category === "NEET");
-    } else if (selectedCategory === "CUET") {
-      return coursesData.filter(course => course.category === "CUET");
-    } else if (selectedCategory === "Skill Development") {
-      return coursesData.filter(course => course.category === "Skill Development");
-    } else if (selectedCategory === "Class 11th") {
-      // Include JEE and NEET courses for Class 11th
+    } else if (selectedCategory === "ShikshaBase") {
+      return coursesData.filter(course =>
+        course.category.includes("Class") &&
+        !course.category.includes("11th") &&
+        !course.category.includes("12th")
+      );
+    } else if (selectedCategory === "ShikshaEdge") {
       return coursesData.filter(course =>
         course.category === "Class 11th" ||
-        course.category === "JEE" ||
-        course.category === "NEET"
+        course.category === "Class 12th"
       );
-    } else if (selectedCategory === "Class 12th") {
-      // Include JEE and NEET courses for Class 12th
+    } else if (selectedCategory === "ShikshaQuest") {
       return coursesData.filter(course =>
-        course.category === "Class 12th" ||
         course.category === "JEE" ||
-        course.category === "NEET"
+        course.category === "NEET" ||
+        course.category === "CUET"
       );
+    } else if (selectedCategory === "ShikshaPro") {
+      return coursesData.filter(course => course.category === "Skill Development");
+    } else if (selectedCategory.includes("Class")) {
+      return coursesData.filter(course => course.category === selectedCategory);
+    } else if (selectedCategory === "JEE" || selectedCategory === "NEET" || selectedCategory === "CUET") {
+      return coursesData.filter(course => course.category === selectedCategory);
+    } else if (selectedCategory === "PCB") {
+      return coursesData.filter(course => course.category === "NEET");
+    } else if (selectedCategory === "PCM") {
+      return coursesData.filter(course => course.category === "JEE");
+    } else if (selectedCategory === "Humanities") {
+      return coursesData.filter(course =>
+        course.category === "CUET" &&
+        (course.subCategory === "Humanities" || course.title === "CUET - Humanities PYQs")
+      );
+    } else if (selectedCategory === "Commerce") {
+      return coursesData.filter(course =>
+        course.category === "CUET" &&
+        (course.subCategory === "Commerce" || course.title === "CUET - Commerce PYQs")
+      );
+    } else if (selectedCategory === "Artificial Intelligence - Advanced Program" ||
+      selectedCategory === "Artificial Intelligence - Basic Program" ||
+      selectedCategory === "Data Analytics" ||
+      selectedCategory === "Digital Marketing" ||
+      selectedCategory === "UI UX Design") {
+      return coursesData.filter(course => course.title === selectedCategory);
     } else {
-      // For other subcategories
+      // For other subcategories or legacy categories
       return coursesData.filter(course =>
         course.category === selectedCategory || course.subCategory === selectedCategory
       );
@@ -231,25 +235,13 @@ const CoursesCatalog = () => {
                           onChange={(e) => { handleCategoryChange(e.target.value); setIsMobileFiltersOpen(false); }}
                           className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                         />
-                        <span className={`ml-3 text-sm ${selectedCategory === category.label ? 'text-blue-600 font-medium' : 'text-gray-700'}`}>
+                        <span className={`ml-3 text-sm font-bold text-black ${selectedCategory === category.label ? 'text-blue-600 font-medium' : ''}`}>
                           {category.label}
                         </span>
                       </label>
-                      {category.subCategories && (
-                        <button
-                          onClick={() => toggleCategory(category.label)}
-                          className="p-1 hover:bg-gray-100 rounded"
-                        >
-                          {expandedCategories.includes(category.label) ? (
-                            <FiChevronUp className="w-3 h-3 text-gray-400" />
-                          ) : (
-                            <FiChevronDown className="w-3 h-3 text-gray-400" />
-                          )}
-                        </button>
-                      )}
                     </div>
 
-                    {category.subCategories && expandedCategories.includes(category.label) && (
+                    {category.subCategories && (
                       <div className="ml-6 space-y-2">
                         {category.subCategories.map((subCategory) => (
                           <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-2">
@@ -279,7 +271,7 @@ const CoursesCatalog = () => {
 
           {/* Sidebar Filters (desktop only) */}
           <div className="hidden lg:block lg:w-1/4">
-            <div className="bg-white rounded-2xl shadow-lg lg:sticky lg:top-4 lg:h-fit lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-lg lg:sticky lg:top-4 lg:max-h-[calc(100vh-8rem)] lg:overflow-hidden">
               {/* Categories */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
@@ -287,10 +279,9 @@ const CoursesCatalog = () => {
                     <MdGridView className="w-4 h-4 text-gray-600" />
                     <h3 className="font-medium text-gray-900">Categories</h3>
                   </div>
-                  <FiChevronUp className="w-4 h-4 text-gray-400" />
                 </div>
 
-                <div className="space-y-3">{categories.map((category) => (
+                <div className="space-y-3 max-h-[calc(100vh-16rem)] overflow-y-auto scrollbar-hide">{categories.map((category) => (
                   <div key={category.label}>
                     {/* Main Category */}
                     <div className="flex items-center justify-between py-3">
@@ -303,32 +294,20 @@ const CoursesCatalog = () => {
                           onChange={(e) => handleCategoryChange(e.target.value)}
                           className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                         />
-                        <span className={`ml-3 text-sm ${selectedCategory === category.label
+                        <span className={`ml-3 text-sm font-bold text-black ${selectedCategory === category.label
                           ? 'text-blue-600 font-medium'
-                          : 'text-gray-700'
+                          : ''
                           }`}>
                           {category.label}
                         </span>
                       </label>
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-gray-500">({category.count})</span>
-                        {category.subCategories && (
-                          <button
-                            onClick={() => toggleCategory(category.label)}
-                            className="p-1 hover:bg-gray-100 rounded"
-                          >
-                            {expandedCategories.includes(category.label) ? (
-                              <FiChevronUp className="w-3 h-3 text-gray-400" />
-                            ) : (
-                              <FiChevronDown className="w-3 h-3 text-gray-400" />
-                            )}
-                          </button>
-                        )}
                       </div>
                     </div>
 
                     {/* Sub Categories */}
-                    {category.subCategories && expandedCategories.includes(category.label) && (
+                    {category.subCategories && (
                       <div className="ml-7 space-y-2">
                         {category.subCategories.map((subCategory) => (
                           <label key={subCategory.name} className="flex items-center justify-between cursor-pointer py-2">
