@@ -124,232 +124,465 @@ const Footer = () => {
 
           {/* Right: Columns - comes second on mobile */}
           <div className="w-full lg:w-3/5 flex flex-col gap-6 order-2 lg:order-2">
-            {/* First Row: Top Categories, Top Live Classes */}
-            <div className="flex flex-row gap-4 lg:gap-8">
-              {/* Top Categories */}
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-4 text-sky-700">
-                  Top Categories
-                </h3>
-                <ul className="space-y-2">
-                  {["ShikshaBase", "ShikshaEdge", "ShikshaQuest", "ShikshaPro"].map((item) => (
-                    <li key={item}>
-                      <button
-                        onClick={() => handleCategoryClick(item)}
-                        className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
-                      >
-                        {item}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+            {/* Mobile Layout - 2 columns per row (same as before) */}
+            <div className="lg:hidden">
+              {/* First Row: Top Categories, Top Live Classes */}
+              <div className="flex flex-row gap-4 mb-6">
+                {/* Top Categories */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Top Categories
+                  </h3>
+                  <ul className="space-y-2">
+                    {["ShikshaBase", "ShikshaEdge", "ShikshaQuest", "ShikshaPro"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Top Live Classes */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Top Live Classes
+                  </h3>
+                  <ul className="space-y-2">
+                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              {/* Top Live Classes */}
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-4 text-sky-700">
-                  Top Live Classes
-                </h3>
-                <ul className="space-y-2">
-                  {["Class 8", "Class 9", "Class 10"].map((item) => (
-                    <li key={item}>
-                      <button
-                        onClick={() => handleCategoryClick(item)}
-                        className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
-                      >
-                        {item}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              {/* Second Row: Upcoming Courses, Company */}
+              <div className="flex flex-row gap-4 mb-6">
+                {/* Upcoming Courses */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Upcoming Courses
+                  </h3>
+                  <ul className="space-y-2">
+                    {["JEE", "NEET", "Skilling"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            {/* Second Row: Upcoming Courses, Company */}
-            <div className="flex flex-row gap-4 lg:gap-8">
-              {/* Upcoming Courses */}
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-4 text-sky-700">
-                  Upcoming Courses
-                </h3>
-                <ul className="space-y-2">
-                  {["JEE", "NEET", "Skilling"].map((item) => (
-                    <li key={item}>
-                      <button
-                        onClick={() => handleCategoryClick(item)}
-                        className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                {/* Company */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Company
+                  </h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link
+                        href="/about"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
-                        {item}
-                      </button>
+                        About Us
+                      </Link>
                     </li>
-                  ))}
-                </ul>
+                    <li>
+                      <Link
+                        href="https://blog.shikshanation.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/media"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Media
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/careers"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Careers
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/contact"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Contact Us
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              {/* Company */}
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-4 text-sky-700">
-                  Company
-                </h3>
-                <ul className="space-y-2">
-                  <li>
+              {/* Third Row: Useful Links, Download Now */}
+              <div className="flex flex-row gap-4">
+                {/* Useful Links */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Useful Links
+                  </h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-1">
+                      <Link
+                        href="/become-instructor"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Become Instructor
+                      </Link>
+                      <span className="text-sm text-sky-600">→</span>
+                    </li>
+                    <li>
+                      <Link
+                        href="/faqs"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        FAQs
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/privacy-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/terms-conditions"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Terms & Conditions
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/refund-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Refund Policy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Download Now */}
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
+                  <div className="flex flex-col gap-2">
                     <Link
-                      href="/about"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://blog.shikshanation.com"
+                      href="#"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      className="transition-transform hover:scale-105"
                     >
-                      Blog
+                      <Image
+                        src="/home/get-it-on-playstore.png"
+                        alt="Get it on Google Play"
+                        width={120}
+                        height={36}
+                        className="h-auto"
+                      />
                     </Link>
-                  </li>
-                  <li>
                     <Link
-                      href="/media"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
                     >
-                      Media
+                      <Image
+                        src="/home/get-it-on-appstore.png"
+                        alt="Download on the App Store"
+                        width={120}
+                        height={36}
+                        className="h-auto"
+                      />
                     </Link>
-                  </li>
-                  <li>
                     <Link
-                      href="/careers"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
                     >
-                      Careers
+                      <Image
+                        src="/home/get-it-on-windows-store.png"
+                        alt="Get it from Microsoft"
+                        width={120}
+                        height={36}
+                        className="h-auto"
+                      />
                     </Link>
-                  </li>
-                  <li>
                     <Link
-                      href="/contact"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
                     >
-                      Contact Us
+                      <Image
+                        src="/home/dowload_for_mac_os.png"
+                        alt="Download for macOS"
+                        width={120}
+                        height={36}
+                        className="h-auto"
+                      />
                     </Link>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Third Row: Useful Links, Download Now */}
-            <div className="flex flex-row gap-4 lg:gap-8">
-              {/* Useful Links */}
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-4 text-sky-700">
-                  Useful Links
-                </h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-1">
-                    <Link
-                      href="/become-instructor"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      Become Instructor
-                    </Link>
-                    <span className="text-sm text-sky-600">→</span>
-                  </li>
-                  <li>
-                    <Link
-                      href="/faqs"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      FAQs
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/privacy-policy"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/terms-conditions"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      Terms & Conditions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/refund-policy"
-                      className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                    >
-                      Refund Policy
-                    </Link>
-                  </li>
-                </ul>
+            {/* Desktop Layout - 3 columns per row */}
+            <div className="hidden lg:block">
+              {/* First Row: Top Categories, Top Live Classes, Upcoming Courses */}
+              <div className="flex flex-row gap-8 mb-6">
+                {/* Top Categories */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Top Categories
+                  </h3>
+                  <ul className="space-y-2">
+                    {["ShikshaBase", "ShikshaEdge", "ShikshaQuest", "ShikshaPro"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Top Live Classes */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Top Live Classes
+                  </h3>
+                  <ul className="space-y-2">
+                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Upcoming Courses */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Upcoming Courses
+                  </h3>
+                  <ul className="space-y-2">
+                    {["JEE", "NEET", "Skilling"].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleCategoryClick(item)}
+                          className="hover:underline text-sm transition-colors duration-200 text-left text-sky-600"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              {/* Download Now */}
-              <div className="flex-1">
-                <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
-                <div className="flex flex-col gap-2">
-                  <Link
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src="/home/get-it-on-playstore.png"
-                      alt="Get it on Google Play"
-                      width={120}
-                      height={36}
-                      className="h-auto"
-                    />
-                  </Link>
-                  <Link
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src="/home/get-it-on-appstore.png"
-                      alt="Download on the App Store"
-                      width={120}
-                      height={36}
-                      className="h-auto"
-                    />
-                  </Link>
-                  <Link
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src="/home/get-it-on-windows-store.png"
-                      alt="Get it from Microsoft"
-                      width={120}
-                      height={36}
-                      className="h-auto"
-                    />
-                  </Link>
-                  <Link
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-transform hover:scale-105"
-                  >
-                    <Image
-                      src="/home/dowload_for_mac_os.png"
-                      alt="Download for macOS"
-                      width={120}
-                      height={36}
-                      className="h-auto"
-                    />
-                  </Link>
+              {/* Second Row: Company, Useful Links, Download Now */}
+              <div className="flex flex-row gap-8">
+                {/* Company */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Company
+                  </h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link
+                        href="/about"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        About Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="https://blog.shikshanation.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/media"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Media
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/careers"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Careers
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/contact"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Contact Us
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Useful Links */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-4 text-sky-700">
+                    Useful Links
+                  </h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-1">
+                      <Link
+                        href="/become-instructor"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Become Instructor
+                      </Link>
+                      <span className="text-sm text-sky-600">→</span>
+                    </li>
+                    <li>
+                      <Link
+                        href="/faqs"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        FAQs
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/privacy-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/terms-conditions"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Terms & Conditions
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/refund-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Refund Policy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Download Now */}
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
+                    >
+                      <Image
+                        src="/home/get-it-on-playstore.png"
+                        alt="Get it on Google Play"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
+                      />
+                    </Link>
+                    <Link
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
+                    >
+                      <Image
+                        src="/home/get-it-on-appstore.png"
+                        alt="Download on the App Store"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
+                      />
+                    </Link>
+                    <Link
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
+                    >
+                      <Image
+                        src="/home/get-it-on-windows-store.png"
+                        alt="Get it from Microsoft"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
+                      />
+                    </Link>
+                    <Link
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-transform hover:scale-105"
+                    >
+                      <Image
+                        src="/home/dowload_for_mac_os.png"
+                        alt="Download for macOS"
+                        width={100}
+                        height={30}
+                        className="h-auto w-full"
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
