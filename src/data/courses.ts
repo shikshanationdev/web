@@ -911,17 +911,20 @@ export const getCoursesByCategory = (category: string): Course[] => {
   // ShikshaBase - Class 6th to 10th
   if (category === "ShikshaBase") {
     return coursesData.filter(course => 
-      course.category.includes("Class") && 
-      !course.category.includes("11th") && 
-      !course.category.includes("12th")
+      course.category === "Class 6th" ||
+      course.category === "Class 7th" ||
+      course.category === "Class 8th" ||
+      course.category === "Class 9th" ||
+      course.category === "Class 10th"
     );
   }
   
-  // ShikshaEdge - Class 11th and 12th
+  // ShikshaEdge - Competitive exams (PCM, PCB, Humanities, Commerce)
   if (category === "ShikshaEdge") {
     return coursesData.filter(course => 
-      course.category === "Class 11th" || 
-      course.category === "Class 12th"
+      course.category === "JEE" || 
+      course.category === "NEET" ||
+      course.category === "CUET"
     );
   }
   
@@ -1007,7 +1010,7 @@ export const categories = [
   { 
     label: "ShikshaBase", 
     value: "shikshabase", 
-    count: coursesData.filter(c => c.category.includes("Class") && !c.category.includes("11th") && !c.category.includes("12th")).length,
+    count: coursesData.filter(c => c.category === "Class 6th" || c.category === "Class 7th" || c.category === "Class 8th" || c.category === "Class 9th" || c.category === "Class 10th").length,
     subCategories: [
       { name: "Class 6th", count: coursesData.filter(c => c.category === "Class 6th").length },
       { name: "Class 7th", count: coursesData.filter(c => c.category === "Class 7th").length },
@@ -1019,18 +1022,15 @@ export const categories = [
   { 
     label: "ShikshaEdge", 
     value: "shikshaedge", 
-    count: coursesData.filter(c => c.category === "NEET").length + 
-           coursesData.filter(c => c.category === "JEE").length + 
-           coursesData.filter(c => c.category === "CUET" && (c.subCategory === "Humanities" || c.title === "CUET - Humanities PYQs")).length + 
-           coursesData.filter(c => c.category === "CUET" && (c.subCategory === "Commerce" || c.title === "CUET - Commerce PYQs")).length,
+    count: coursesData.filter(c => c.category === "JEE" || c.category === "NEET" || c.category === "CUET").length,
     subCategories: [
-      { 
-        name: "PCB", 
-        count: coursesData.filter(c => c.category === "NEET").length 
-      },
       { 
         name: "PCM", 
         count: coursesData.filter(c => c.category === "JEE").length 
+      },
+      { 
+        name: "PCB", 
+        count: coursesData.filter(c => c.category === "NEET").length 
       },
       { 
         name: "Humanities", 

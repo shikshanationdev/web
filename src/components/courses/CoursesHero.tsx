@@ -58,15 +58,18 @@ const CoursesHero = () => {
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer h-28 sm:h-32"
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 >
                   {/* Course Image */}
-                  <div className="absolute inset-0">
+                  <div className="relative w-full">
                     <Image
                       src={course.image}
                       alt={course.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      width={0}
+                      height={0}
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                      className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                      style={{ width: '100%', height: 'auto' }}
                     />
                   </div>
                 </div>

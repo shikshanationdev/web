@@ -44,14 +44,17 @@ const CoursesCatalog = () => {
       return coursesData;
     } else if (selectedCategory === "ShikshaBase") {
       return coursesData.filter(course =>
-        course.category.includes("Class") &&
-        !course.category.includes("11th") &&
-        !course.category.includes("12th")
+        course.category === "Class 6th" ||
+        course.category === "Class 7th" ||
+        course.category === "Class 8th" ||
+        course.category === "Class 9th" ||
+        course.category === "Class 10th"
       );
     } else if (selectedCategory === "ShikshaEdge") {
       return coursesData.filter(course =>
-        course.category === "Class 11th" ||
-        course.category === "Class 12th"
+        course.category === "JEE" ||
+        course.category === "NEET" ||
+        course.category === "CUET"
       );
     } else if (selectedCategory === "ShikshaQuest") {
       return coursesData.filter(course =>

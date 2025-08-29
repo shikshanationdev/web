@@ -64,7 +64,22 @@ const CoursesSection = () => {
 
   // Handle navigation to courses page
   const handleSeeMoreClick = () => {
-    router.push('/courses');
+    // Navigate to courses page with the current selected category filter
+    if (selectedCategory === "all") {
+      router.push('/courses');
+    } else if (selectedCategory === "class6-12") {
+      router.push('/courses?category=ShikshaBase');
+    } else if (selectedCategory === "jee") {
+      router.push('/courses?category=JEE');
+    } else if (selectedCategory === "neet") {
+      router.push('/courses?category=NEET');
+    } else if (selectedCategory === "cuet") {
+      router.push('/courses?category=CUET');
+    } else if (selectedCategory === "skilling") {
+      router.push('/courses?category=ShikshaPro');
+    } else {
+      router.push('/courses');
+    }
   };
 
   // Handle category selection with better mobile support
