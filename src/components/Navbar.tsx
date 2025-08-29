@@ -183,7 +183,7 @@ const Navbar = () => {
               <div className="mt-auto p-6 space-y-4">
                 <Link
                   target="_blank"
-                  href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=login"
+                  href="https://courses.shikshanation.com/login"
                   className="w-full py-3 px-6 border border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-center font-medium block"
                   onClick={closeMenu}
                 >
@@ -191,7 +191,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   target="_blank"
-                  href="https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=signup"
+                  href="https://courses.shikshanation.com/signup"
                   className="w-full py-3 px-6 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors text-center font-medium block"
                   onClick={closeMenu}
                 >
