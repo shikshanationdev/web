@@ -60,8 +60,8 @@ const Hero = () => {
           (prevIndex + 1) % carouselImages.length
         );
         setIsVisible(true);
-      }, 500); // Half second for fade out
-    }, 3000); // Change image every 3 seconds
+      }, 300); // Half second for fade out
+    }, 8000); // Change image every 8 seconds
 
     return () => clearInterval(interval);
   }, [carouselImages.length]);

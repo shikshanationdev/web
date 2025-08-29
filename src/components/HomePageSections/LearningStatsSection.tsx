@@ -12,7 +12,7 @@ const LearningStatsSection = () => {
   const router = useRouter();
 
   const handleStartLearningClick = () => {
-    router.push("https://courses.shikshanation.com/?redirectToPath=%2Fstore%2F687f3e65d5a1315a16a88c72&loginType=signup");
+    router.push("https://courses.shikshanation.com/signup");
   };
 
   const handleBrowseCoursesClick = () => {
