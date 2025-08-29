@@ -908,24 +908,83 @@ export const getCoursesByCategory = (category: string): Course[] => {
     return coursesData;
   }
   
-  // For Class 11th and 12th, include JEE and NEET courses as well
-  if (category === "Class 11th") {
+  // ShikshaBase - Class 6th to 10th
+  if (category === "ShikshaBase") {
     return coursesData.filter(course => 
-      course.category === "Class 11th" || 
-      course.category === "JEE" || 
-      course.category === "NEET"
+      course.category === "Class 6th" ||
+      course.category === "Class 7th" ||
+      course.category === "Class 8th" ||
+      course.category === "Class 9th" ||
+      course.category === "Class 10th"
     );
   }
   
-  if (category === "Class 12th") {
+  // ShikshaEdge - Competitive exams (PCM, PCB, Humanities, Commerce)
+  if (category === "ShikshaEdge") {
     return coursesData.filter(course => 
-      course.category === "Class 12th" || 
       course.category === "JEE" || 
-      course.category === "NEET"
+      course.category === "NEET" ||
+      course.category === "CUET"
     );
   }
+  
+  // ShikshaQuest - Competitive exams
+  if (category === "ShikshaQuest") {
+    return coursesData.filter(course => 
+      course.category === "JEE" || 
+      course.category === "NEET" || 
+      course.category === "CUET"
+    );
+  }
+  
+  // ShikshaPro - Skill Development
+  if (category === "ShikshaPro") {
+    return coursesData.filter(course => course.category === "Skill Development");
+  }
 
-  // Handle skilling/skill development category
+  // Handle individual class categories
+  if (category.includes("Class")) {
+    return coursesData.filter(course => course.category === category);
+  }
+  
+  // Handle competitive exam categories
+  if (category === "JEE" || category === "NEET" || category === "CUET") {
+    return coursesData.filter(course => course.category === category);
+  }
+  
+  // Handle ShikshaEdge subcategories
+  if (category === "PCB") {
+    return coursesData.filter(course => course.category === "NEET");
+  }
+  
+  if (category === "PCM") {
+    return coursesData.filter(course => course.category === "JEE");
+  }
+  
+  if (category === "Humanities") {
+    return coursesData.filter(course => 
+      course.category === "CUET" && 
+      (course.subCategory === "Humanities" || course.title === "CUET - Humanities PYQs")
+    );
+  }
+  
+  if (category === "Commerce") {
+    return coursesData.filter(course => 
+      course.category === "CUET" && 
+      (course.subCategory === "Commerce" || course.title === "CUET - Commerce PYQs")
+    );
+  }
+  
+  // Handle ShikshaPro subcategories (specific course titles)
+  if (category === "Artificial Intelligence - Advanced Program" || 
+      category === "Artificial Intelligence - Basic Program" ||
+      category === "Data Analytics" ||
+      category === "Digital Marketing" ||
+      category === "UI UX Design") {
+    return coursesData.filter(course => course.title === category);
+  }
+
+  // Handle legacy skill development category
   if (category === "skilling" || category === "Skill Development") {
     return coursesData.filter(course => course.category === "Skill Development");
   }
@@ -949,43 +1008,66 @@ export const getCourseById = (id: number): Course | undefined => {
 export const categories = [
   { label: "All Categories", value: "all", count: coursesData.length },
   { 
-    label: "Class 6th to 12th", 
-    value: "class6-12", 
-    count: coursesData.filter(c => c.category.includes("Class")).length,
+    label: "ShikshaBase", 
+    value: "shikshabase", 
+    count: coursesData.filter(c => c.category === "Class 6th" || c.category === "Class 7th" || c.category === "Class 8th" || c.category === "Class 9th" || c.category === "Class 10th").length,
     subCategories: [
       { name: "Class 6th", count: coursesData.filter(c => c.category === "Class 6th").length },
       { name: "Class 7th", count: coursesData.filter(c => c.category === "Class 7th").length },
       { name: "Class 8th", count: coursesData.filter(c => c.category === "Class 8th").length },
       { name: "Class 9th", count: coursesData.filter(c => c.category === "Class 9th").length },
       { name: "Class 10th", count: coursesData.filter(c => c.category === "Class 10th").length },
+    ]
+  },
+  { 
+    label: "ShikshaEdge", 
+    value: "shikshaedge", 
+    count: coursesData.filter(c => c.category === "JEE" || c.category === "NEET" || c.category === "CUET").length,
+    subCategories: [
       { 
-        name: "Class 11th", 
-        count: coursesData.filter(c => c.category === "Class 11th" || c.category === "JEE" || c.category === "NEET").length 
+        name: "PCM", 
+        count: coursesData.filter(c => c.category === "JEE").length 
       },
       { 
-        name: "Class 12th", 
-        count: coursesData.filter(c => c.category === "Class 12th" || c.category === "JEE" || c.category === "NEET").length 
+        name: "PCB", 
+        count: coursesData.filter(c => c.category === "NEET").length 
+      },
+      { 
+        name: "Humanities", 
+        count: coursesData.filter(c => 
+          c.category === "CUET" && 
+          (c.subCategory === "Humanities" || c.title === "CUET - Humanities PYQs")
+        ).length 
+      },
+      { 
+        name: "Commerce", 
+        count: coursesData.filter(c => 
+          c.category === "CUET" && 
+          (c.subCategory === "Commerce" || c.title === "CUET - Commerce PYQs")
+        ).length 
       },
     ]
   },
   { 
-    label: "JEE", 
-    value: "jee", 
-    count: coursesData.filter(c => c.category === "JEE").length
+    label: "ShikshaQuest", 
+    value: "shikshaquest", 
+    count: coursesData.filter(c => c.category === "JEE" || c.category === "NEET" || c.category === "CUET").length,
+    subCategories: [
+      { name: "NEET", count: coursesData.filter(c => c.category === "NEET").length },
+      { name: "JEE", count: coursesData.filter(c => c.category === "JEE").length },
+      { name: "CUET", count: coursesData.filter(c => c.category === "CUET").length },
+    ]
   },
   { 
-    label: "NEET", 
-    value: "neet", 
-    count: coursesData.filter(c => c.category === "NEET").length
-  },
-  { 
-    label: "CUET", 
-    value: "cuet", 
-    count: coursesData.filter(c => c.category === "CUET").length 
-  },
-  { 
-    label: "Skill Development", 
-    value: "skilling", 
-    count: coursesData.filter(c => c.category === "Skill Development").length
+    label: "ShikshaPro", 
+    value: "shikshapro", 
+    count: coursesData.filter(c => c.category === "Skill Development").length,
+    subCategories: [
+      { name: "Artificial Intelligence - Advanced Program", count: coursesData.filter(c => c.title === "Artificial Intelligence - Advanced Program").length },
+      { name: "Artificial Intelligence - Basic Program", count: coursesData.filter(c => c.title === "Artificial Intelligence - Basic Program").length },
+      { name: "Data Analytics", count: coursesData.filter(c => c.title === "Data Analytics").length },
+      { name: "Digital Marketing", count: coursesData.filter(c => c.title === "Digital Marketing").length },
+      { name: "UI UX Design", count: coursesData.filter(c => c.title === "UI UX Design").length },
+    ]
   },
 ];

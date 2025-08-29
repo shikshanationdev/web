@@ -28,6 +28,8 @@ const Footer = () => {
       "ShikshaEdge": "ShikshaEdge",
       "ShikshaQuest": "ShikshaQuest",
       "ShikshaPro": "ShikshaPro",
+      "Class 6": "Class 6th",
+      "Class 7": "Class 7th",
       "Class 8": "Class 8th",
       "Class 9": "Class 9th",
       "Class 10": "Class 10th",
@@ -153,7 +155,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -386,7 +388,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}

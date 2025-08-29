@@ -12,7 +12,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       subtitle: "ShikshaBase",
       description: "Comprehensive courses for school education",
       buttonText: "Explore Classes",
-      link: "/courses",
+      link: "/courses?category=ShikshaBase",
       image: "/home/category4.jpeg",
       icon: "/home/Class 6th to 10th.svg",
       reactIcon: FaGraduationCap,
@@ -23,11 +23,11 @@ const TopCategoriesSection = (): React.ReactElement => {
     },
     {
       id: "class-11-12",
-      title: "Class 11th to 12th",
+      title: "JEE, NEET & CUET Prep",
       subtitle: "ShikshaEdge",
-      description: "Advanced preparation for higher classes",
+      description: "Advanced preparation for competitive exams",
       buttonText: "Start Learning",
-      link: "/courses",
+      link: "/courses?category=ShikshaEdge",
       image: "/home/category3.jpeg",
       icon: "/home/Class 11th to 12th.svg",
       reactIcon: FaUserGraduate,
@@ -42,7 +42,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       subtitle: "ShikshaQuest",
       description: "Complete preparation for competitive exams",
       buttonText: "Start Preparation",
-      link: "/courses",
+      link: "/courses?category=ShikshaEdge",
       image: "/home/category2.jpeg",
       icon: "/home/Prep for JEE, NEET & CUET.svg",
       reactIcon: FaUniversity,
@@ -57,7 +57,7 @@ const TopCategoriesSection = (): React.ReactElement => {
       subtitle: "ShikshaPro",
       description: "Professional skills for career growth",
       buttonText: "Explore Skills",
-      link: "/courses",
+      link: "/courses?category=ShikshaPro",
       image: "/home/category1.jpeg",
       icon: "/home/Skill Development.svg",
       reactIcon: FaTools,
@@ -69,7 +69,7 @@ const TopCategoriesSection = (): React.ReactElement => {
   ];
 
   return (
-    <section className="w-full py-20 bg-gray-50">
+    <section className="w-full py-20 ">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4 font-['Lexend_Deca',Helvetica]">
