@@ -31,13 +31,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Optionally send confirmation email to user
     await sendEmail({
       to: email,
-      subject: 'Thank you for contacting Sikshanation',
+      subject: 'Thank you for contacting Shikshanation',
       html: `
         <h2>Thank you for reaching out!</h2>
         <p>Dear ${firstName},</p>
         <p>We have received your message and will get back to you soon.</p>
         <br/>
-        <p>Best regards,<br/>Sikshanation Team</p>
+        <p>Best regards,<br/>Shikshanation Team</p>
       `,
       from: process.env.GMAIL_USER,
     });
