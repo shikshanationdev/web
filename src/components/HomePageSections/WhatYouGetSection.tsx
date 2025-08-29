@@ -10,27 +10,27 @@ const features = [
     label: "100+ Courses",
   },
   {
-    icon: "/home/Test Series.svg",
+    icon: "/home/test-series.svg",
     label: "Test Series",
   },
   {
-    icon: "/home/Mock Tests & Notes.svg",
+    icon: "/home/mock-test.svg",
     label: "Mock Tests\n& Notes",
   },
   {
-    icon: "/home/Recorded & Live Lectures.svg",
+    icon: "/home/recorded-lecture.svg",
     label: "Recorded &\nLive Lectures",
   },
   {
-    icon: "/home/Organized Learning.svg",
+    icon: "/home/organized-learning.svg",
     label: "Organized\nLearning",
   },
   {
-    icon: "/home/Expert Instructions.svg",
+    icon: "/home/expert-instructions.svg",
     label: "Expert\nInstructions",
   },
   {
-    icon: "/home/Smart Solutions.svg",
+    icon: "/home/smart-solutions.svg",
     label: "Smart\nSolutions",
   },
 ];
