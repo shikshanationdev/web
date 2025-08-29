@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { FaPhone, FaWhatsapp, FaRobot } from 'react-icons/fa';
 
 const FloatingContactWidget = () => {
-  const [showLabels, setShowLabels] = useState(false);
+  const [showWhatsAppLabel, setShowWhatsAppLabel] = useState(false);
+  const [showCallLabel, setShowCallLabel] = useState(false);
+  const [showChatLabel, setShowChatLabel] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(-1);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -63,18 +65,18 @@ const FloatingContactWidget = () => {
         {/* WhatsApp Button - Green */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowLabels(true)}
-          onMouseLeave={() => setShowLabels(false)}
+          onMouseEnter={() => setShowWhatsAppLabel(true)}
+          onMouseLeave={() => setShowWhatsAppLabel(false)}
         >
           {/* WhatsApp Message */}
           <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap
-            transition-all duration-500 z-10
-            ${showMessage && currentMessageIndex === 1 ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-2 scale-95 pointer-events-none'}
+            absolute right-24 top-1/2 transform -translate-y-1/2 
+            bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
+            transition-all duration-300 ease-out z-10
+            ${showMessage && currentMessageIndex === 1 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
           `}>
             {messages[1]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-green-600 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
+            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-green-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
           </div>
 
           <button
@@ -89,7 +91,7 @@ const FloatingContactWidget = () => {
             absolute right-20 top-1/2 transform -translate-y-1/2 
             bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
             transition-all duration-200 shadow-lg
-            ${showLabels ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+            ${showWhatsAppLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
           `}>
             WhatsApp
             <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
@@ -99,18 +101,18 @@ const FloatingContactWidget = () => {
         {/* Call Button - Blue */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowLabels(true)}
-          onMouseLeave={() => setShowLabels(false)}
+          onMouseEnter={() => setShowCallLabel(true)}
+          onMouseLeave={() => setShowCallLabel(false)}
         >
           {/* Call Message */}
           <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap
-            transition-all duration-500 z-10
-            ${showMessage && currentMessageIndex === 0 ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-2 scale-95 pointer-events-none'}
+            absolute right-24 top-1/2 transform -translate-y-1/2 
+            bg-blue-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
+            transition-all duration-300 ease-out z-10
+            ${showMessage && currentMessageIndex === 0 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
           `}>
             {messages[0]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-blue-600 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
+            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-blue-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
           </div>
 
           <button
@@ -125,7 +127,7 @@ const FloatingContactWidget = () => {
             absolute right-20 top-1/2 transform -translate-y-1/2 
             bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
             transition-all duration-200 shadow-lg
-            ${showLabels ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+            ${showCallLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
           `}>
             Call Us
             <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
@@ -135,18 +137,18 @@ const FloatingContactWidget = () => {
         {/* Chatbot Button - Light Blue */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowLabels(true)}
-          onMouseLeave={() => setShowLabels(false)}
+          onMouseEnter={() => setShowChatLabel(true)}
+          onMouseLeave={() => setShowChatLabel(false)}
         >
           {/* Chat Message */}
           <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap
-            transition-all duration-500 z-10
-            ${showMessage && currentMessageIndex === 2 ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-2 scale-95 pointer-events-none'}
+            absolute right-24 top-1/2 transform -translate-y-1/2 
+            bg-purple-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
+            transition-all duration-300 ease-out z-10
+            ${showMessage && currentMessageIndex === 2 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
           `}>
             {messages[2]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-purple-600 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
+            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-purple-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
           </div>
 
           <button
@@ -161,7 +163,7 @@ const FloatingContactWidget = () => {
             absolute right-20 top-1/2 transform -translate-y-1/2 
             bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
             transition-all duration-200 shadow-lg
-            ${showLabels ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+            ${showChatLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
           `}>
             Live Chat
             <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
