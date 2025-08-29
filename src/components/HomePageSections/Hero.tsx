@@ -116,7 +116,7 @@ const Hero = () => {
             <div className="md:hidden flex justify-center mb-8">
               <div className="flex items-stretch bg-white rounded-full shadow-lg overflow-hidden w-full max-w-sm sm:max-w-md border border-gray-200">
                 {/* Country Code */}
-                <div className="bg-blue-600 text-white px-3 sm:px-4 flex items-center justify-center font-semibold text-sm sm:text-base flex-shrink-0 py-2.5 sm:py-3">
+                <div className="bg-blue-600 text-white px-3 sm:px-4 flex items-center justify-center font-semibold text-sm sm:text-base flex-shrink-0 py-4 sm:py-3">
                   +91
                 </div>
 
@@ -131,13 +131,13 @@ const Hero = () => {
                       setMobileNumber(value);
                     }
                   }}
-                  className="flex-[2] sm:flex-[2.5] px-2 sm:px-3 py-2.5 sm:py-3 text-gray-700 placeholder-gray-400 outline-none border-none text-sm sm:text-base min-w-0"
+                  className="flex-[2] sm:flex-[2.5] px-2 sm:px-3 py-4 sm:py-3 text-gray-700 placeholder-gray-400 outline-none border-none text-sm sm:text-base min-w-0"
                   maxLength={10}
                 />
 
                 {/* Join Button */}
                 <button
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2.5 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm whitespace-nowrap flex-shrink-0 rounded-r-full w-16 sm:w-24 flex items-center justify-center"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm whitespace-nowrap flex-shrink-0 rounded-r-full w-16 sm:w-24 flex items-center justify-center"
                   disabled={mobileNumber.length !== 10 || isLoading}
                   onClick={handleJoinSubmit}
                 >
