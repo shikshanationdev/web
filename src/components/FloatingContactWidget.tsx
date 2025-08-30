@@ -19,8 +19,8 @@ const FloatingContactWidget = () => {
 
   // Messages to cycle through
   const messages = [
-    { action: 'Call Us', details: '+91 98765 43210', type: 'phone', index: 1 }, // Call button (middle)
-    { action: 'WhatsApp Us', details: '+91 98765 43210', type: 'whatsapp', index: 0 }, // WhatsApp button (top)
+    { action: 'Call Us', details: '+91 98211 15117', type: 'phone', index: 1 }, // Call button (middle)
+    { action: 'WhatsApp Us', details: '+91 98211 15117', type: 'whatsapp', index: 0 }, // WhatsApp button (top)
     { action: 'Chat with Us', details: 'Live Support', type: 'chat', index: 2 } // Chat button (bottom)
   ];
 
@@ -100,12 +100,12 @@ const FloatingContactWidget = () => {
   }, [isPaused, messages.length]);
 
   const handleCall = () => {
-    window.open('tel:+919876543210', '_self');
+    window.open('tel:+919821115117', '_self');
   };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Hello! I would like to know more about your courses.');
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+    window.open(`https://wa.me/919821115117?text=${message}`, '_blank');
   };
 
   const handleChatbot = () => {
