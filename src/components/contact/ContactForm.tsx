@@ -20,9 +20,23 @@ const ContactForm: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     let fieldValue: string | boolean = value;
+
     if (type === 'checkbox') {
       fieldValue = (e.target as HTMLInputElement).checked;
+    } else {
+      // Apply specific validation based on field name
+      if (name === 'firstName' || name === 'lastName') {
+        // Only allow alphabets and spaces for name fields
+        fieldValue = value.replace(/[^a-zA-Z\s]/g, '');
+      } else if (name === 'phone') {
+        // Only allow digits and limit to 10 digits
+        fieldValue = value.replace(/\D/g, '').slice(0, 10);
+      } else {
+        // For address and message, allow anything
+        fieldValue = value;
+      }
     }
+
     setForm((prev) => ({
       ...prev,
       [name]: fieldValue,
@@ -34,6 +48,27 @@ const ContactForm: React.FC = () => {
     setLoading(true);
     setSuccess('');
     setError('');
+
+    // Validate phone number (must be exactly 10 digits if provided)
+    if (form.phone && form.phone.length !== 10) {
+      toast.error('Phone number must be exactly 10 digits');
+      setLoading(false);
+      return;
+    }
+
+    // Validate name fields contain only alphabets
+    if (!/^[a-zA-Z\s]+$/.test(form.firstName)) {
+      toast.error('First name can only contain alphabets');
+      setLoading(false);
+      return;
+    }
+
+    if (form.lastName && !/^[a-zA-Z\s]+$/.test(form.lastName)) {
+      toast.error('Last name can only contain alphabets');
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -105,6 +140,8 @@ const ContactForm: React.FC = () => {
             placeholder="Phone"
             value={form.phone}
             onChange={handleChange}
+            maxLength={10}
+            pattern="[0-9]{10}"
             className="w-full px-4 py-3 border border-gray-200 bg-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
           />
         </div>
