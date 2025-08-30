@@ -16,7 +16,7 @@ const contactInfo = [
   {
     icon: MdLocationOn,
     label: "ADDRESS",
-    content: "10th floor Tower C Bhutani 62 Avenue, Block - C, Phase 2, Industrial Area, Noida, Uttar Pradesh 201309"
+    content: "10th Floor, Tower C, Bhutani Cyber Park, Sec 62, Noida, UP 201309"
   },
   {
     icon: MdAccessTime,

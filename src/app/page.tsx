@@ -1,4 +1,5 @@
 import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, TopCategoriesSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection } from "@/components/HomePageSections";
+import PopupBanner from "@/components/PopupBanner";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <JoinLearnersSection />
       <FaqSection />
       <QrAppPromo />
+      <PopupBanner />
     </div>
   );
 }

@@ -13,7 +13,6 @@ import {
 const socialLinks = [
   { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
   { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
-  { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X" },
   { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
   { href: "https://www.youtube.com/@shikshanation-rl7qo", icon: FaYoutube, label: "YouTube" },
 ];
@@ -62,7 +61,7 @@ const Footer = () => {
                 </div>
                 <div className="mb-4">
                   <p className="text-md text-black mb-2 font-medium italic leading-none">
-                    &ldquo;Of Bharat, By Bharat, For Bharat.&rdquo;
+                    &ldquo;For Bharat, Of Bharat, By Bharat.&rdquo;
                   </p>
                   <p className="text-md text-black font-medium leading-none">
                     India&apos;s Own Learning Revolution.
@@ -76,7 +75,7 @@ const Footer = () => {
                     <span className="ml-1 text-sky-600">
                       10th Floor, Tower C, Bhutani
                       <br />
-                      62 Avenue, Block-C, Phase 2, Noida, UP 201309
+                      Cyber Park, Sec 62, Noida, UP 201309
                     </span>
                   </div>
                   <div>
@@ -206,7 +205,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="https://blog.shikshanation.com"
+                        href="/blog"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
@@ -299,7 +298,7 @@ const Footer = () => {
                   <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
                   <div className="flex flex-col gap-2">
                     <Link
-                      href="#"
+                      href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -327,7 +326,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -341,7 +340,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -529,7 +528,7 @@ const Footer = () => {
                   <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
                   <div className="grid grid-cols-2 gap-2">
                     <Link
-                      href="#"
+                      href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -557,7 +556,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -571,7 +570,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"

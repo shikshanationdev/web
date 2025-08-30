@@ -39,3 +39,63 @@
   display: none;
 }
 
+/* Floating Contact Widget Animations */
+@keyframes slideInFromIcon {
+  0% {
+    opacity: 0;
+    transform: translateX(32px) scale(0);
+    transform-origin: right center;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(16px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideOutToIcon {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    transform-origin: right center;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(16px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(32px) scale(0);
+  }
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.animate-slide-in-from-icon {
+  animation: slideInFromIcon 0.5s ease-out forwards;
+}
+
+.animate-slide-out-to-icon {
+  animation: slideOutToIcon 0.5s ease-in forwards;
+}
+
+.animate-icon-pulse {
+  animation: iconPulse 2s ease-in-out;
+}
+

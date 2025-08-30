@@ -1,56 +1,111 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaPhone, FaWhatsapp, FaRobot } from 'react-icons/fa';
 
 const FloatingContactWidget = () => {
-  const [showWhatsAppLabel, setShowWhatsAppLabel] = useState(false);
-  const [showCallLabel, setShowCallLabel] = useState(false);
-  const [showChatLabel, setShowChatLabel] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(-1);
   const [showMessage, setShowMessage] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Use refs to track timeouts and prevent double cycling
+  const timeoutRefs = useRef<{
+    initial?: NodeJS.Timeout;
+    hide?: NodeJS.Timeout;
+    next?: NodeJS.Timeout;
+  }>({});
+  const cyclingRef = useRef(false);
 
   // Messages to cycle through
   const messages = [
-    { text: '+91 98765 43210', type: 'phone', index: 1 }, // Call button (middle)
-    { text: '+91 98765 43210', type: 'whatsapp', index: 0 }, // WhatsApp button (top)
-    { text: 'Chat with us', type: 'chat', index: 2 } // Chat button (bottom)
+    { action: 'Call Us', details: '+91 98211 15117', type: 'phone', index: 1 }, // Call button (middle)
+    { action: 'WhatsApp Us', details: '+91 98211 15117', type: 'whatsapp', index: 0 }, // WhatsApp button (top)
+    { action: 'Chat with Us', details: 'Live Support', type: 'chat', index: 2 } // Chat button (bottom)
   ];
 
+  // Clear all timeouts helper function
+  const clearAllTimeouts = () => {
+    Object.values(timeoutRefs.current).forEach(timeout => {
+      if (timeout) clearTimeout(timeout);
+    });
+    timeoutRefs.current = {};
+  };
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredIndex(index);
+    setIsPaused(true);
+    setShowMessage(false); // Hide auto-cycling message
+    clearAllTimeouts(); // Clear any running timeouts
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(-1);
+    setIsPaused(false);
+  };
+
   useEffect(() => {
-    // Start the cycle after 7 seconds
-    const initialDelay = setTimeout(() => {
+    // Clear any existing timeouts when starting new cycle
+    clearAllTimeouts();
+
+    if (isPaused || cyclingRef.current) return;
+
+    const startCycling = () => {
+      if (cyclingRef.current) return; // Prevent double cycling
+      cyclingRef.current = true;
+
       let messageIndex = 0;
 
-      const cycleMessages = () => {
+      const showNextMessage = () => {
+        if (isPaused) {
+          cyclingRef.current = false;
+          return;
+        }
+
         setCurrentMessageIndex(messageIndex);
         setShowMessage(true);
 
-        // Hide message after 7 seconds and move to next
-        setTimeout(() => {
-          setShowMessage(false);
-          messageIndex = (messageIndex + 1) % messages.length;
+        // Schedule hiding this message and showing next
+        timeoutRefs.current.hide = setTimeout(() => {
+          if (isPaused) {
+            cyclingRef.current = false;
+            return;
+          }
 
-          // Show next message after a brief pause
-          setTimeout(() => {
-            cycleMessages();
+          setShowMessage(false);
+
+          // Brief pause before next message
+          timeoutRefs.current.next = setTimeout(() => {
+            if (isPaused) {
+              cyclingRef.current = false;
+              return;
+            }
+
+            messageIndex = (messageIndex + 1) % messages.length;
+            showNextMessage();
           }, 500);
         }, 7000);
       };
 
-      cycleMessages();
-    }, 7000);
+      showNextMessage();
+    };
 
-    return () => clearTimeout(initialDelay);
-  }, []);
+    // Initial delay before starting the cycle
+    timeoutRefs.current.initial = setTimeout(startCycling, 7000);
+
+    return () => {
+      clearAllTimeouts();
+      cyclingRef.current = false;
+    };
+  }, [isPaused, messages.length]);
 
   const handleCall = () => {
-    window.open('tel:+919876543210', '_self');
+    window.open('tel:+919821115117', '_self');
   };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Hello! I would like to know more about your courses.');
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+    window.open(`https://wa.me/919821115117?text=${message}`, '_blank');
   };
 
   const handleChatbot = () => {
@@ -65,109 +120,133 @@ const FloatingContactWidget = () => {
         {/* WhatsApp Button - Green */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowWhatsAppLabel(true)}
-          onMouseLeave={() => setShowWhatsAppLabel(false)}
+          onMouseEnter={() => handleMouseEnter(1)}
+          onMouseLeave={handleMouseLeave}
         >
-          {/* WhatsApp Message */}
+          {/* WhatsApp Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 1 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-green-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            h-16
+            ${(showMessage && currentMessageIndex === 1 && !isPaused) || hoveredIndex === 1
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[1]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-green-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="flex flex-col">
+                <span className={`transition-all duration-300 text-green-600 font-semibold ${(showMessage && currentMessageIndex === 1 && !isPaused) || hoveredIndex === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[1]?.action}
+                </span>
+                <span className={`transition-all duration-300 text-green-500 text-xs ${(showMessage && currentMessageIndex === 1 && !isPaused) || hoveredIndex === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[1]?.details}
+                </span>
+              </div>
+            </div>
           </div>
+
+          {/* Remove Hover Tooltip - Not needed */}
 
           <button
             onClick={handleWhatsApp}
-            className="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-green-200"
+            className={`w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 1 ? 'scale-105 border-4 border-white' : 'border-4 border-green-200'}
+            `}
             title="WhatsApp Us"
           >
             <FaWhatsapp className="text-2xl" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showWhatsAppLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            WhatsApp
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
 
         {/* Call Button - Blue */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowCallLabel(true)}
-          onMouseLeave={() => setShowCallLabel(false)}
+          onMouseEnter={() => handleMouseEnter(0)}
+          onMouseLeave={handleMouseLeave}
         >
-          {/* Call Message */}
+          {/* Call Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-blue-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 0 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-blue-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            h-16
+            ${(showMessage && currentMessageIndex === 0 && !isPaused) || hoveredIndex === 0
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[0]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-blue-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="flex flex-col">
+                <span className={`transition-all duration-300 text-blue-600 font-semibold ${(showMessage && currentMessageIndex === 0 && !isPaused) || hoveredIndex === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[0]?.action}
+                </span>
+                <span className={`transition-all duration-300 text-blue-500 text-xs ${(showMessage && currentMessageIndex === 0 && !isPaused) || hoveredIndex === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[0]?.details}
+                </span>
+              </div>
+            </div>
           </div>
+
+          {/* Remove Hover Tooltip - Not needed */}
 
           <button
             onClick={handleCall}
-            className="w-16 h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-blue-200"
+            className={`w-16 h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 0 ? 'scale-105 border-4 border-white' : 'border-4 border-blue-200'}
+            `}
             title="Call Us"
           >
             <FaPhone className="text-xl" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showCallLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            Call Us
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
 
-        {/* Chatbot Button - Light Blue */}
+        {/* Chatbot Button - Purple */}
         <div
           className="group relative"
-          onMouseEnter={() => setShowChatLabel(true)}
-          onMouseLeave={() => setShowChatLabel(false)}
+          onMouseEnter={() => handleMouseEnter(2)}
+          onMouseLeave={handleMouseLeave}
         >
-          {/* Chat Message */}
+          {/* Chat Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-purple-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 2 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-gray-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            h-16
+            ${(showMessage && currentMessageIndex === 2 && !isPaused) || hoveredIndex === 2
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[2]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-purple-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="flex flex-col">
+                <span className={`transition-all duration-300 text-gray-600 font-semibold ${(showMessage && currentMessageIndex === 2 && !isPaused) || hoveredIndex === 2 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[2]?.action}
+                </span>
+                <span className={`transition-all duration-300 text-gray-500 text-xs ${(showMessage && currentMessageIndex === 2 && !isPaused) || hoveredIndex === 2 ? 'opacity-100' : 'opacity-0'}`}>
+                  {messages[2]?.details}
+                </span>
+              </div>
+            </div>
           </div>
+
+          {/* Remove Hover Tooltip - Not needed */}
 
           <button
             onClick={handleChatbot}
-            className="w-16 h-16 bg-white hover:bg-sky-50 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-sky-400"
+            className={`w-16 h-16 bg-white hover:bg-sky-50 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 2 ? 'scale-105 border-4 border-white' : 'border-4 border-sky-400'}
+            `}
             title="Chat with us"
           >
             <FaRobot className="text-2xl text-blue-400" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showChatLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            Live Chat
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
       </div>
     </div>
