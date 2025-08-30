@@ -13,7 +13,6 @@ import {
 const socialLinks = [
   { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
   { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
-  { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X" },
   { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
   { href: "https://www.youtube.com/@shikshanation-rl7qo", icon: FaYoutube, label: "YouTube" },
 ];
