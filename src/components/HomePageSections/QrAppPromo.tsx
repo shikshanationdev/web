@@ -14,7 +14,7 @@ const QrAppPromo: React.FC = () => {
             <Image
               src="/home/phone-tablet-mockup.png"
               width={500}
-              height={500}
+              height={500}  
               alt="Shiksha Nation App on Phone & Tablet"
               className="relative z-10 w-full max-w-md lg:max-w-xl transform transition-transform duration-500 hover:scale-105"
               priority

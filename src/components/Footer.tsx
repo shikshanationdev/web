@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
                 <div className="mb-4">
                   <p className="text-md text-black mb-2 font-medium italic leading-none">
-                    &ldquo;Of Bharat, By Bharat, For Bharat.&rdquo;
+                    &ldquo;For Bharat, Of Bharat, By Bharat.&rdquo;
                   </p>
                   <p className="text-md text-black font-medium leading-none">
                     India&apos;s Own Learning Revolution.
