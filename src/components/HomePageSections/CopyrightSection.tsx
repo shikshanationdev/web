@@ -21,7 +21,7 @@ const CopyrightSection = () => {
             &nbsp; | &nbsp;
           </div>
           <div>
-            Designed by{" "}
+            Designed and Developed by{" "}
             <Link href={"https://www.generativecrafts.com"} className="font-semibold">Generative Crafts</Link>
           </div>
         </div>
