@@ -12,6 +12,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
+  // Validate firstName and lastName contain only alphabets
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(firstName)) {
+    return res.status(400).json({ message: 'First name can only contain alphabets' });
+  }
+
+  if (lastName && !nameRegex.test(lastName)) {
+    return res.status(400).json({ message: 'Last name can only contain alphabets' });
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Please enter a valid email address' });
+  }
+
+  // Validate phone number (must be exactly 10 digits if provided)
+  if (phone && (!/^\d{10}$/.test(phone))) {
+    return res.status(400).json({ message: 'Phone number must be exactly 10 digits' });
+  }
+
   try {
     // Send email to your support email
     await sendEmail({
