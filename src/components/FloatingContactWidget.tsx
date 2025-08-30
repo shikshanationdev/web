@@ -4,11 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { FaPhone, FaWhatsapp, FaRobot } from 'react-icons/fa';
 
 const FloatingContactWidget = () => {
-  const [showWhatsAppLabel, setShowWhatsAppLabel] = useState(false);
-  const [showCallLabel, setShowCallLabel] = useState(false);
-  const [showChatLabel, setShowChatLabel] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(-1);
   const [showMessage, setShowMessage] = useState(false);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
 
   // Messages to cycle through
   const messages = [
@@ -63,111 +61,108 @@ const FloatingContactWidget = () => {
       {/* Contact Icons - Always Visible */}
       <div className="flex flex-col gap-2">
         {/* WhatsApp Button - Green */}
-        <div
-          className="group relative"
-          onMouseEnter={() => setShowWhatsAppLabel(true)}
-          onMouseLeave={() => setShowWhatsAppLabel(false)}
-        >
-          {/* WhatsApp Message */}
+        <div className="group relative">
+          {/* WhatsApp Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 1 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-green-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            ${showMessage && currentMessageIndex === 1
+              ? 'w-64 px-5 py-3 opacity-100'
+              : 'w-16 px-0 py-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[1]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-green-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaWhatsapp className="text-lg text-white" />
+              </div>
+              <span className={`transition-all duration-300 text-green-600 ${showMessage && currentMessageIndex === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                {messages[1]?.text}
+              </span>
+            </div>
           </div>
 
           <button
             onClick={handleWhatsApp}
-            className="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-green-200"
+            className={`w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 1 ? 'scale-105 border-4 border-white' : 'border-4 border-green-200'}
+            `}
             title="WhatsApp Us"
           >
             <FaWhatsapp className="text-2xl" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showWhatsAppLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            WhatsApp
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
 
         {/* Call Button - Blue */}
-        <div
-          className="group relative"
-          onMouseEnter={() => setShowCallLabel(true)}
-          onMouseLeave={() => setShowCallLabel(false)}
-        >
-          {/* Call Message */}
+        <div className="group relative">
+          {/* Call Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-blue-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 0 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-blue-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            ${showMessage && currentMessageIndex === 0
+              ? 'w-64 px-5 py-3 opacity-100'
+              : 'w-16 px-0 py-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[0]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-blue-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaPhone className="text-lg text-white" />
+              </div>
+              <span className={`transition-all duration-300 text-blue-600 ${showMessage && currentMessageIndex === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                {messages[0]?.text}
+              </span>
+            </div>
           </div>
 
           <button
             onClick={handleCall}
-            className="w-16 h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-blue-200"
+            className={`w-16 h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 0 ? 'scale-105 border-4 border-white' : 'border-4 border-blue-200'}
+            `}
             title="Call Us"
           >
             <FaPhone className="text-xl" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showCallLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            Call Us
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
 
-        {/* Chatbot Button - Light Blue */}
-        <div
-          className="group relative"
-          onMouseEnter={() => setShowChatLabel(true)}
-          onMouseLeave={() => setShowChatLabel(false)}
-        >
-          {/* Chat Message */}
+        {/* Chatbot Button - Purple */}
+        <div className="group relative">
+          {/* Chat Message - Expands from icon to the left */}
           <div className={`
-            absolute right-24 top-1/2 transform -translate-y-1/2 
-            bg-purple-600 text-white px-6 py-3 rounded-xl shadow-2xl text-base font-bold whitespace-nowrap
-            transition-all duration-300 ease-out z-10
-            ${showMessage && currentMessageIndex === 2 ? 'opacity-100 translate-x-0 scale-110 animate-bounce' : 'opacity-0 translate-x-4 scale-75 pointer-events-none'}
+            absolute right-0 top-1/2 transform -translate-y-1/2 
+            bg-white text-gray-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
+            transition-all duration-500 ease-out z-10 flex items-center
+            ${showMessage && currentMessageIndex === 2
+              ? 'w-64 px-5 py-3 opacity-100'
+              : 'w-16 px-0 py-0 opacity-0'}
+            overflow-hidden
           `}>
-            {messages[2]?.text}
-            <div className="absolute top-1/2 right-0 transform translate-x-2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-purple-600 border-t-3 border-b-3 border-t-transparent border-b-transparent"></div>
+            <div className="flex items-center gap-3 w-full">
+              <div className="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaRobot className="text-lg text-white" />
+              </div>
+              <span className={`transition-all duration-300 text-gray-600 ${showMessage && currentMessageIndex === 2 ? 'opacity-100' : 'opacity-0'}`}>
+                {messages[2]?.text}
+              </span>
+            </div>
           </div>
 
           <button
             onClick={handleChatbot}
-            className="w-16 h-16 bg-white hover:bg-sky-50 text-white rounded-full shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border-4 border-sky-400"
+            className={`w-16 h-16 bg-white hover:bg-sky-50 text-white rounded-full shadow-xl 
+              transition-all duration-300 hover:scale-110 flex items-center justify-center
+              relative z-20
+              ${showMessage && currentMessageIndex === 2 ? 'scale-105 border-4 border-white' : 'border-4 border-sky-400'}
+            `}
             title="Chat with us"
           >
             <FaRobot className="text-2xl text-blue-400" />
           </button>
-          {/* Hover Label */}
-          <div className={`
-            absolute right-20 top-1/2 transform -translate-y-1/2 
-            bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap
-            transition-all duration-200 shadow-lg
-            ${showChatLabel ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-          `}>
-            Live Chat
-            <div className="absolute right-0 top-1/2 transform translate-x-1 -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-800 border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
-          </div>
         </div>
       </div>
     </div>
