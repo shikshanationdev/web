@@ -67,9 +67,10 @@ const FloatingContactWidget = () => {
             absolute right-0 top-1/2 transform -translate-y-1/2 
             bg-white text-green-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
             transition-all duration-500 ease-out z-10 flex items-center
+            h-16
             ${showMessage && currentMessageIndex === 1
-              ? 'w-64 px-5 py-3 opacity-100'
-              : 'w-16 px-0 py-0 opacity-0'}
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
             overflow-hidden
           `}>
             <div className="flex items-center gap-3 w-full">
@@ -102,9 +103,10 @@ const FloatingContactWidget = () => {
             absolute right-0 top-1/2 transform -translate-y-1/2 
             bg-white text-blue-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
             transition-all duration-500 ease-out z-10 flex items-center
+            h-16
             ${showMessage && currentMessageIndex === 0
-              ? 'w-64 px-5 py-3 opacity-100'
-              : 'w-16 px-0 py-0 opacity-0'}
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
             overflow-hidden
           `}>
             <div className="flex items-center gap-3 w-full">
@@ -137,9 +139,10 @@ const FloatingContactWidget = () => {
             absolute right-0 top-1/2 transform -translate-y-1/2 
             bg-white text-gray-600 rounded-full shadow-2xl text-sm font-semibold border-2 border-white
             transition-all duration-500 ease-out z-10 flex items-center
+            h-16
             ${showMessage && currentMessageIndex === 2
-              ? 'w-64 px-5 py-3 opacity-100'
-              : 'w-16 px-0 py-0 opacity-0'}
+              ? 'w-64 px-5 opacity-100'
+              : 'w-16 px-0 opacity-0'}
             overflow-hidden
           `}>
             <div className="flex items-center gap-3 w-full">
