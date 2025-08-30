@@ -205,7 +205,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="https://blog.shikshanation.com"
+                        href="/blog"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
