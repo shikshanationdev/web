@@ -76,7 +76,7 @@ const Footer = () => {
                     <span className="ml-1 text-sky-600">
                       10th Floor, Tower C, Bhutani
                       <br />
-                      62 Avenue, Block-C, Phase 2, Noida, UP 201309
+                      Cyber Park, Sec 62, Noida, UP 201309
                     </span>
                   </div>
                   <div>
@@ -299,7 +299,7 @@ const Footer = () => {
                   <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
                   <div className="flex flex-col gap-2">
                     <Link
-                      href="#"
+                      href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -327,7 +327,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -341,7 +341,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -529,7 +529,7 @@ const Footer = () => {
                   <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
                   <div className="grid grid-cols-2 gap-2">
                     <Link
-                      href="#"
+                      href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -557,7 +557,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -571,7 +571,7 @@ const Footer = () => {
                       />
                     </Link>
                     <Link
-                      href="#"
+                      href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
