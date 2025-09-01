@@ -7,14 +7,24 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaYoutube
+  FaYoutube,
+  FaWhatsapp,
+  FaTelegramPlane,
+  FaDiscord
 } from "react-icons/fa";
 
 const socialLinks = [
   { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
   { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
-  { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
   { href: "https://www.youtube.com/@shikshanation-rl7qo", icon: FaYoutube, label: "YouTube" },
+  { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
+  { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X (Twitter)" },
+];
+
+const communityLinks = [
+  { href: "https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R", icon: FaWhatsapp, label: "WhatsApp Community" },
+  { href: "https://t.me/shikshanation", icon: FaTelegramPlane, label: "Telegram Channel" },
+  { href: "#", icon: FaDiscord, label: "Discord Server" },
 ];
 
 const Footer = () => {
@@ -112,6 +122,28 @@ const Footer = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
+                        className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
+                      >
+                        <IconComponent className="w-4 h-4 text-sky-700" />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Community Links */}
+              <div>
+                <h4 className="font-semibold text-lg mb-4 text-sky-700">Join our Student Community</h4>
+                <div className="flex gap-3">
+                  {communityLinks.map((c) => {
+                    const IconComponent = c.icon;
+                    return (
+                      <Link
+                        key={c.label}
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={c.label}
                         className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors duration-200"
                       >
                         <IconComponent className="w-4 h-4 text-sky-700" />
