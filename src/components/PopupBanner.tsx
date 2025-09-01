@@ -7,6 +7,7 @@ import { IoClose } from 'react-icons/io5';
 const PopupBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShownInitial, setHasShownInitial] = useState(false);
+  const [hasShownOnMouseLeave, setHasShownOnMouseLeave] = useState(false);
 
   useEffect(() => {
     // Show popup after 7 seconds on initial load
@@ -21,11 +22,12 @@ const PopupBanner = () => {
   }, [hasShownInitial]);
 
   useEffect(() => {
-    // Show popup when cursor leaves the window
+    // Show popup when cursor leaves the window (only once)
     const handleMouseLeave = (e: MouseEvent) => {
-      // Check if cursor is leaving from the top of the page
-      if (e.clientY <= 0) {
+      // Check if cursor is leaving from the top of the page and banner hasn't been shown on mouse leave yet
+      if (e.clientY <= 0 && !hasShownOnMouseLeave) {
         setIsVisible(true);
+        setHasShownOnMouseLeave(true);
       }
     };
 
@@ -34,7 +36,7 @@ const PopupBanner = () => {
     return () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [hasShownOnMouseLeave]);
 
   const closeBanner = () => {
     setIsVisible(false);
