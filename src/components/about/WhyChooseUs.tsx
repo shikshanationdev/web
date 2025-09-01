@@ -7,21 +7,21 @@ const features = [
     description: 'Each course is designed with industry-aligned skills and ends with a recognized certificate to boost your career opportunities.',
     bg: 'bg-blue-50',
     textColor: 'text-blue-600',
-    icon: '/about-us/Certified, Job Ready Courses.svg',
+    icon: '/about-us/certified-job-ready.svg',
   },
   {
     title: 'Unlimited Lifetime Access',
     description: 'Learn at your pace, revisit lessons anytime, and continue to grow — even years after enrolling. Your access never expires.',
     bg: 'bg-green-50',
     textColor: 'text-green-600',
-    icon: '/about-us/Unlimited Lifetime Access.svg',
+    icon: '/about-us/unlimited-access.svg',
   },
   {
     title: 'Top Mentors & Live Support',
     description: 'Our expert instructors and live student support ensure you\'re never stuck — help and guidance are always a message away.',
     bg: 'bg-blue-50',
     textColor: 'text-blue-600',
-    icon: '/about-us/Top Mentors & Live Support.svg',
+    icon: '/about-us/top-mentor-support.svg',
   },
 ];
 
