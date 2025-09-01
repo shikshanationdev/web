@@ -33,7 +33,7 @@ const managementTeam = [
     container: 'bg-blue-100',
   },
   {
-    name: 'Dr. NKS',
+    name: 'Dr. N.K. Sharma',
     title: 'Vice President, Academics (Biology & NEET)',
     img: '/NK.png',
     border: 'border-green-300',

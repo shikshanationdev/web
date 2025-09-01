@@ -40,6 +40,10 @@ const PopupBanner = () => {
     setIsVisible(false);
   };
 
+  const handleBannerClick = () => {
+    window.open('https://courses.shikshanation.com/courses/genetics-live-masterclass-by-dr-n-k-sharma-68a6b3fb25cd370d79a1e9c5', '_blank');
+  };
+
   if (!isVisible) return null;
 
   return (
@@ -54,8 +58,11 @@ const PopupBanner = () => {
           <IoClose className="w-7 h-7 text-gray-600" />
         </button>
 
-        {/* Banner image */}
-        <div className="relative">
+        {/* Banner image - clickable */}
+        <div
+          className="relative cursor-pointer hover:opacity-95 transition-opacity"
+          onClick={handleBannerClick}
+        >
           <Image
             src="/banner.png"
             alt="Promotional Banner"
