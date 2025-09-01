@@ -32,7 +32,7 @@ const AboutWhoWeAre = () => {
 
             {/* Blue text */}
             <p className="text-blue-600 text-lg leading-relaxed font-medium">
-              At Siksha Nation, we believe that education is the foundation of national progress.
+              At Shikshanation, we believe that education is the foundation of national progress.
               Our bilingual, inclusive, and technology-driven platform bridges urban-rural gaps,
               offering personalized learning experiences that are both academically rigorous and
               future-ready.
