@@ -44,7 +44,7 @@ const Footer = () => {
       "Class 10": "Class 10th",
       "JEE": "JEE",
       "NEET": "NEET",
-      "Skilling": "Skilling"
+      "Skilling": "ShikshaPro"
     };
 
     const mappedCategory = categoryMap[category] || category;
@@ -186,7 +186,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 8", "Class 9", "Class 10"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -419,7 +419,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 8", "Class 9", "Class 10"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}

@@ -15,7 +15,7 @@ const navItems = [
   { label: "Media", href: "/media" },
   { label: "Contact", href: "/contact" },
   // { label: "Media", href: "/media" },
-  { label: "About Us", href: "/about" },
+  { label: "Skilling", href: "/courses?category=ShikshaPro" },
 ];
 
 const Navbar = () => {
@@ -109,8 +109,8 @@ const Navbar = () => {
                   key={item.label}
                   href={item.href}
                   className={`transition-colors ${isActiveNavItem(item.href)
-                      ? "text-sky-600"
-                      : "text-gray-800 hover:text-sky-700"
+                    ? "text-sky-600"
+                    : "text-gray-800 hover:text-sky-700"
                     }`}
                 >
                   {item.label}
@@ -169,8 +169,8 @@ const Navbar = () => {
                     key={item.label}
                     href={item.href}
                     className={`transition-colors text-lg font-medium ${isActiveNavItem(item.href)
-                        ? "text-sky-600"
-                        : "text-gray-800 hover:text-sky-800"
+                      ? "text-sky-600"
+                      : "text-gray-800 hover:text-sky-800"
                       }`}
                     onClick={closeMenu}
                   >
