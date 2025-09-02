@@ -120,7 +120,7 @@ const Navbar = () => {
                     <span>{item.label}</span>
                   </div>
                   {item.phoneNumber && (
-                    <span className="text-base font-normal text-green-700">{item.phoneNumber}</span>
+                    <span className="text-base font-bold text-green-700">{item.phoneNumber}</span>
                   )}
                 </Link>
               ))}
@@ -191,7 +191,7 @@ const Navbar = () => {
                       <span>{item.label}</span>
                     </div>
                     {item.phoneNumber && (
-                      <span className="text-base font-normal text-green-700">{item.phoneNumber}</span>
+                      <span className="text-base font-bold text-green-700">{item.phoneNumber}</span>
                     )}
                   </Link>
                 ))}
