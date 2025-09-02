@@ -62,21 +62,24 @@ const ManagementTeam = () => {
       {/* Founder Section */}
       <div className="flex justify-center mb-12">
         <div className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row w-full sm:max-w-2xl border ${founder.border} overflow-hidden`}>
-          {/* Top/Left side - Image with colored background */}
-          <div className={`${founder.container} w-full md:w-48 h-32 md:h-auto flex items-center justify-center relative`}>
-            <div className="w-24 md:w-32 h-24 md:h-32 relative">
+          {/* Circular colored background - positioned top-left, 50% visible */}
+          <div className={`${founder.container} absolute -top-16 -left-16 w-32 h-32 rounded-full`}></div>
+
+          {/* Profile Image - vertically centered */}
+          <div className="flex justify-center md:justify-start items-center p-6 md:w-48">
+            <div className="w-28 h-28 md:w-32 md:h-32 relative">
               <Image
                 src={founder.img}
                 alt={founder.name}
                 fill
-                className="rounded-full object-cover"
-                sizes="(max-width: 768px) 96px, 128px"
+                className="rounded-full object-cover border-4 border-white"
+                sizes="(max-width: 768px) 112px, 128px"
               />
             </div>
           </div>
 
-          {/* Bottom/Right side - Content */}
-          <div className="flex-1 p-6 text-center md:text-left">
+          {/* Content Section */}
+          <div className="flex-1 p-6 pt-0 md:pt-6 text-center md:text-left">
             <div className="flex items-center gap-2 mb-1 md:block justify-center md:justify-start">
               <h3 className="font-bold text-xl text-gray-900">{founder.name}</h3>
               {/* Mobile LinkedIn Icon - only visible on mobile */}
@@ -113,21 +116,24 @@ const ManagementTeam = () => {
             key={member.name}
             className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row border ${member.border} transition-transform hover:scale-105 overflow-hidden`}
           >
-            {/* Top/Left side - Image with colored background */}
-            <div className={`${member.container} w-full md:w-40 h-32 md:h-auto flex items-center justify-center relative`}>
-              <div className="w-20 md:w-28 h-20 md:h-28 relative">
+            {/* Circular colored background - positioned top-left, 50% visible */}
+            <div className={`${member.container} absolute -top-14 -left-14 w-28 h-28 rounded-full`}></div>
+
+            {/* Profile Image - vertically centered */}
+            <div className="flex justify-center md:justify-start items-center p-6 md:w-40">
+              <div className="w-24 h-24 md:w-28 md:h-28 relative">
                 <Image
                   src={member.img}
                   alt={member.name}
                   fill
-                  className="rounded-full object-cover"
-                  sizes="(max-width: 768px) 80px, 112px"
+                  className="rounded-full object-cover border-4 border-white"
+                  sizes="(max-width: 768px) 96px, 112px"
                 />
               </div>
             </div>
 
-            {/* Bottom/Right side - Content */}
-            <div className="flex-1 p-6 text-center md:text-left">
+            {/* Content Section */}
+            <div className="flex-1 p-6 pt-0 md:pt-6 text-center md:text-left">
               <div className="flex items-center gap-2 mb-1 md:block justify-center md:justify-start">
                 <h3 className="font-bold text-lg text-gray-900">{member.name}</h3>
                 {/* Mobile LinkedIn Icon - only visible on mobile */}

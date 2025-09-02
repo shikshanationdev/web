@@ -99,3 +99,21 @@
   animation: iconPulse 2s ease-in-out;
 }
 
+/* Affiliations Carousel Animation */
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-carousel {
+  animation: scrollCarousel 5s linear infinite;
+}
+
+.animate-scroll-carousel:hover {
+  animation-play-state: paused;
+}
+
