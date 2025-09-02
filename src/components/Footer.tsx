@@ -186,7 +186,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 8", "Class 9", "Class 10", "NEET"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -208,7 +208,7 @@ const Footer = () => {
                     Upcoming Courses
                   </h3>
                   <ul className="space-y-2">
-                    {["JEE", "NEET", "Skilling"].map((item) => (
+                    {["JEE", "CUET", "Skilling"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -419,7 +419,7 @@ const Footer = () => {
                     Top Live Classes
                   </h3>
                   <ul className="space-y-2">
-                    {["Class 8", "Class 9", "Class 10"].map((item) => (
+                    {["Class 8", "Class 9", "Class 10", "NEET"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -438,7 +438,7 @@ const Footer = () => {
                     Upcoming Courses
                   </h3>
                   <ul className="space-y-2">
-                    {["JEE", "NEET", "Skilling"].map((item) => (
+                    {["JEE", "CUET", "Skilling"].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}

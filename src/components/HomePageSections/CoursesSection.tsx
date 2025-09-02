@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, getPopularCourses } from "@/data/courses";
-import { FiArrowRight } from "react-icons/fi";
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const categoryOptions = [
   { label: "All Categories", value: "all" },
@@ -17,8 +17,11 @@ const categoryOptions = [
 const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
+  const coursesScrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   // Get filtered courses based on selected category
@@ -91,6 +94,59 @@ const CoursesSection = () => {
     setSelectedCategory(categoryValue);
   };
 
+  // Handle course scroll navigation
+  const scrollCourses = (direction: 'left' | 'right') => {
+    const container = coursesScrollRef.current;
+    if (!container) return;
+
+    const cardWidth = 320; // Width of course card (320px as defined in w-80)
+    const gap = 24; // Gap between cards (gap-6 = 24px)
+    const scrollAmount = cardWidth + gap; // Total space per card including gap
+    const currentScroll = container.scrollLeft;
+
+    const newScroll = direction === 'left'
+      ? Math.max(0, currentScroll - scrollAmount)
+      : currentScroll + scrollAmount;
+
+    container.scrollTo({
+      left: newScroll,
+      behavior: 'smooth'
+    });
+  };
+
+  // Update scroll button states
+  const updateScrollButtons = () => {
+    const container = coursesScrollRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+  };
+
+  // Check scroll buttons on component mount and when courses change
+  useEffect(() => {
+    const container = coursesScrollRef.current;
+    if (!container) return;
+
+    updateScrollButtons();
+    container.addEventListener('scroll', updateScrollButtons);
+
+    return () => container.removeEventListener('scroll', updateScrollButtons);
+  }, [visibleCourses]);
+
+  // Update scroll buttons on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      updateScrollButtons();
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
   // Update indicator position and width when category changes
   useEffect(() => {
     const updateIndicator = () => {
@@ -151,11 +207,10 @@ const CoursesSection = () => {
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
-        <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none', touchAction: 'pan-x' }}>
+        <div className="flex items-center justify-center mb-12 overflow-x-auto lg:overflow-x-visible" style={{ scrollbarWidth: 'none', touchAction: 'pan-x' }}>
           <div
             ref={containerRef}
-            className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
-            style={{ overflowX: 'auto', touchAction: 'pan-x' }}
+            className="relative flex items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 border-b border-gray-200 justify-start lg:justify-center flex-nowrap px-2 sm:px-0 min-w-full lg:min-w-0 hide-scrollbar"
           >
             {categoryOptions.map((cat) => (
               <button
@@ -198,6 +253,13 @@ const CoursesSection = () => {
             -ms-overflow-style: none;
             scrollbar-width: none;
           }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
           
           /* Ensure proper touch handling on mobile */
           button {
@@ -216,29 +278,62 @@ const CoursesSection = () => {
             touch-action: auto;
           }
         `}</style>
-        {/* Courses Horizontal Scroll */}
-        <div className="overflow-x-auto pb-6">
-          <div className="flex gap-6 w-max">
-            {/* Course Cards */}
-            {visibleCourses.map((course) => (
-              <div key={course.id} className="w-80 flex-shrink-0">
-                <CourseCard {...course} />
-              </div>
-            ))}
+        {/* Courses Horizontal Scroll with Navigation */}
+        <div className="relative">
+          {/* Left Arrow - Positioned further out to avoid card content */}
+          <button
+            onClick={() => scrollCourses('left')}
+            disabled={!canScrollLeft}
+            className={`absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollLeft
+              ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
+              }`}
+            aria-label="Scroll courses left"
+          >
+            <FiChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
 
-            {/* See More Courses Card */}
-            <div
-              className="w-80 flex-shrink-0 cursor-pointer"
-              onClick={handleSeeMoreClick}
-            >
-              <div className="bg-white rounded-xl shadow-md overflow-hidden w-full h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-2 border-dashed border-gray-300 hover:border-sky-500">
-                <div className="flex-1 flex flex-col items-center justify-center p-8">
-                  <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-4">
-                    <FiArrowRight className="w-8 h-8 text-sky-600" />
+          {/* Right Arrow - Positioned further out to avoid card content */}
+          <button
+            onClick={() => scrollCourses('right')}
+            disabled={!canScrollRight}
+            className={`absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollRight
+              ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
+              }`}
+            aria-label="Scroll courses right"
+          >
+            <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+
+          {/* Courses Container */}
+          <div
+            ref={coursesScrollRef}
+            className="overflow-x-auto pb-6 scrollbar-hide"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            <div className="flex gap-6 w-max">
+              {/* Course Cards */}
+              {visibleCourses.map((course) => (
+                <div key={course.id} className="w-80 flex-shrink-0">
+                  <CourseCard {...course} />
+                </div>
+              ))}
+
+              {/* See More Courses Card */}
+              <div
+                className="w-80 flex-shrink-0 cursor-pointer"
+                onClick={handleSeeMoreClick}
+              >
+                <div className="bg-white rounded-xl shadow-md overflow-hidden w-full h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-2 border-dashed border-gray-300 hover:border-sky-500">
+                  <div className="flex-1 flex flex-col items-center justify-center p-8">
+                    <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-4">
+                      <FiArrowRight className="w-8 h-8 text-sky-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
+                      See More Courses
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
-                    See More Courses
-                  </h3>
                 </div>
               </div>
             </div>

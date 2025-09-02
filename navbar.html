@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shikshanation - Responsive Navbar</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    /* Custom font similar to Lexend Deca */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Custom colors to match sky theme */
+    .text-sky-600 {
+      color: #0284c7;
+    }
+
+    .text-sky-700 {
+      color: #0369a1;
+    }
+
+    .text-sky-800 {
+      color: #075985;
+    }
+
+    .bg-sky-600 {
+      background-color: #0284c7;
+    }
+
+    .bg-sky-700 {
+      background-color: #0369a1;
+    }
+
+    .border-sky-600 {
+      border-color: #0284c7;
+    }
+
+    .border-sky-100 {
+      border-color: #e0f2fe;
+    }
+
+    .hover\:bg-blue-50:hover {
+      background-color: #eff6ff;
+    }
+
+    .hover\:bg-sky-600:hover {
+      background-color: #0284c7;
+    }
+
+    .hover\:bg-sky-700:hover {
+      background-color: #0369a1;
+    }
+
+    .hover\:text-sky-600:hover {
+      color: #0284c7;
+    }
+
+    .hover\:text-sky-700:hover {
+      color: #0369a1;
+    }
+
+    .hover\:text-sky-800:hover {
+      color: #075985;
+    }
+
+    .hover\:text-green-600:hover {
+      color: #16a34a;
+    }
+
+    .text-green-500 {
+      color: #22c55e;
+    }
+
+    .text-green-700 {
+      color: #15803d;
+    }
+
+    /* Custom transitions */
+    .transition-colors {
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+
+    /* Mobile menu animation */
+    .mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.closed {
+      transform: translateX(-100%);
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Custom rounded corners */
+    .rounded-tr-4xl {
+      border-top-right-radius: 2rem;
+    }
+
+    /* Active navigation item */
+    .nav-item.active {
+      color: #0284c7;
+    }
+
+    /* Hamburger icon */
+    .hamburger-icon {
+      width: 2rem;
+      height: 2rem;
+      fill: currentColor;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div class="fixed top-0 left-0 right-0 w-full border-0 md:border-b border-sky-100 bg-white px-4 md:px-8 py-3 z-50">
+    <nav class="w-full flex items-center justify-between max-w-7xl mx-auto">
+      <!-- Mobile Layout -->
+      <div class="flex lg:hidden items-center justify-between w-full">
+        <!-- Left: Hamburger + Logo -->
+        <div class="flex items-center gap-2">
+          <button id="mobile-menu-toggle" class="p-2 text-gray-700 hover:text-sky-600 transition-colors"
+            aria-label="Toggle menu">
+            <!-- Hamburger Icon -->
+            <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <a href="/" class="flex items-center select-none">
+            <img src="/home/logo.webp" alt="Shiksha Nation Logo" class="h-auto" style="width: 120px; height: 40px;" />
+          </a>
+        </div>
+
+        <!-- Open App Button - Right -->
+        <a href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN" target="_blank"
+          class="px-4 py-2 border-2 border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-sm font-medium">
+          Open App
+        </a>
+      </div>
+
+      <!-- Desktop Layout -->
+      <div class="hidden lg:flex items-center justify-between w-full">
+        <!-- Logo -->
+        <a href="/" class="flex items-center select-none">
+          <img src="/home/logo.webp" alt="Shiksha Nation Logo" class="h-auto" style="width: 180px; height: 60px;" />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="flex items-center gap-5 lg:gap-8 xl:gap-24">
+          <a href="/courses" class="nav-item transition-colors text-gray-800 hover:text-sky-700"
+            data-href="/courses">Courses</a>
+          <a href="/courses?category=ShikshaPro" class="nav-item transition-colors text-gray-800 hover:text-sky-700"
+            data-href="/courses?category=ShikshaPro">Skilling</a>
+          <a href="/media" class="nav-item transition-colors text-gray-800 hover:text-sky-700"
+            data-href="/media">Media</a>
+          <a href="/blog" class="nav-item transition-colors text-gray-800 hover:text-sky-700" data-href="/blog">Blog</a>
+          <a href="tel:+919821115117"
+            class="nav-item transition-colors text-green-500 text-sm hover:text-green-600 flex flex-col text-left"
+            data-href="tel:+919821115117" data-phone="+91 98211 15117">
+            <div class="flex items-center gap-2">
+              <!-- Phone Icon -->
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+              </svg>
+              <span>Talk to our expert</span>
+            </div>
+            <span class="text-base font-normal text-green-700">+91 98211 15117</span>
+          </a>
+        </div>
+
+        <!-- Desktop Auth Buttons -->
+        <div class="flex items-center gap-4">
+          <a target="_blank" href="https://courses.shikshanation.com/login"
+            class="px-6 py-2 border-2 border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-sm font-medium">
+            Sign In
+          </a>
+          <a target="_blank" href="https://courses.shikshanation.com/signup"
+            class="px-6 py-2 bg-sky-700 text-white rounded-full hover:bg-sky-600 transition-colors text-sm font-medium">
+            Join for Free
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div id="mobile-overlay" class="fixed inset-0 z-40 lg:hidden hidden"></div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu"
+        class="mobile-menu closed fixed top-0 left-0 h-full w-[280px] rounded-tr-4xl border-r border-sky-100 bg-white shadow-2xl z-50 lg:hidden">
+        <div class="flex flex-col h-full">
+          <!-- Header with Logo -->
+          <div class="flex items-center justify-center p-6">
+            <img src="/home/logo.webp" alt="Shiksha Nation Logo" class="h-auto" style="width: 200px; height: 40px;" />
+          </div>
+
+          <!-- Menu Content -->
+          <div class="flex flex-col px-6 py-8 space-y-8">
+            <a href="/courses"
+              class="mobile-nav-item transition-colors text-lg font-medium text-gray-800 hover:text-sky-800"
+              data-href="/courses">Courses</a>
+            <a href="/courses?category=ShikshaPro"
+              class="mobile-nav-item transition-colors text-lg font-medium text-gray-800 hover:text-sky-800"
+              data-href="/courses?category=ShikshaPro">Skilling</a>
+            <a href="/media"
+              class="mobile-nav-item transition-colors text-lg font-medium text-gray-800 hover:text-sky-800"
+              data-href="/media">Media</a>
+            <a href="/blog"
+              class="mobile-nav-item transition-colors text-lg font-medium text-gray-800 hover:text-sky-800"
+              data-href="/blog">Blog</a>
+            <a href="tel:+919821115117"
+              class="mobile-nav-item transition-colors text-green-500 text-sm hover:text-green-600 flex flex-col"
+              data-href="tel:+919821115117" data-phone="+91 98211 15117">
+              <div class="flex items-center gap-3">
+                <!-- Phone Icon -->
+                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>Talk to our expert</span>
+              </div>
+              <span class="text-base font-normal text-green-700">+91 98211 15117</span>
+            </a>
+          </div>
+
+          <!-- Bottom Auth Buttons -->
+          <div class="mt-auto p-6 space-y-4">
+            <a target="_blank" href="https://courses.shikshanation.com/login"
+              class="w-full py-3 px-6 border border-sky-600 text-sky-600 rounded-full hover:bg-blue-50 transition-colors text-center font-medium block">
+              Sign In
+            </a>
+            <a target="_blank" href="https://courses.shikshanation.com/signup"
+              class="w-full py-3 px-6 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors text-center font-medium block">
+              Join for Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Spacer to prevent page content from being hidden behind fixed navbar -->
+  <div class="h-14 md:h-16 lg:h-20"></div>
+
+  <!-- JavaScript -->
+  <script>
+    // Get DOM elements
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const body = document.body;
+
+    // State management
+    let isMenuOpen = false;
+
+    // Function to open mobile menu
+    function openMenu() {
+      isMenuOpen = true;
+      mobileMenu.classList.remove('closed');
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.remove('hidden');
+      body.classList.add('menu-open');
+    }
+
+    // Function to close mobile menu
+    function closeMenu() {
+      isMenuOpen = false;
+      mobileMenu.classList.remove('open');
+      mobileMenu.classList.add('closed');
+      mobileOverlay.classList.add('hidden');
+      body.classList.remove('menu-open');
+    }
+
+    // Function to toggle mobile menu
+    function toggleMenu() {
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    // Event listeners
+    mobileMenuToggle.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', closeMenu);
+
+    // Close menu when clicking on mobile nav items
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+    mobileNavItems.forEach(item => {
+      item.addEventListener('click', closeMenu);
+    });
+
+    // Function to check if a navigation item is active
+    function isActiveNavItem(href) {
+      // Skip phone number links
+      if (href.startsWith('tel:')) {
+        return false;
+      }
+
+      const currentPath = window.location.pathname + window.location.search;
+      if (href === "/" && currentPath === "/") {
+        return true;
+      }
+      if (href !== "/" && currentPath.startsWith(href.split('?')[0])) {
+        return true;
+      }
+      return false;
+    }
+
+    // Function to update active navigation items
+    function updateActiveNavItems() {
+      // Update desktop nav items
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        const href = item.getAttribute('data-href');
+        const hasPhone = item.getAttribute('data-phone');
+
+        // Skip styling updates for phone number links
+        if (hasPhone || href.startsWith('tel:')) {
+          return;
+        }
+
+        if (isActiveNavItem(href)) {
+          item.classList.add('active');
+          item.classList.remove('text-gray-800');
+          item.classList.add('text-sky-600');
+        } else {
+          item.classList.remove('active');
+          item.classList.remove('text-sky-600');
+          item.classList.add('text-gray-800');
+        }
+      });
+
+      // Update mobile nav items
+      const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+      mobileNavItems.forEach(item => {
+        const href = item.getAttribute('data-href');
+        const hasPhone = item.getAttribute('data-phone');
+
+        // Skip styling updates for phone number links
+        if (hasPhone || href.startsWith('tel:')) {
+          return;
+        }
+
+        if (isActiveNavItem(href)) {
+          item.classList.add('active');
+          item.classList.remove('text-gray-800');
+          item.classList.add('text-sky-600');
+        } else {
+          item.classList.remove('active');
+          item.classList.remove('text-sky-600');
+          item.classList.add('text-gray-800');
+        }
+      });
+    }
+
+    // Update active nav items on page load
+    document.addEventListener('DOMContentLoaded', updateActiveNavItems);
+
+    // Close mobile menu when window is resized to desktop size
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    // Prevent body scroll when menu is open (additional handling)
+    document.addEventListener('touchmove', (e) => {
+      if (isMenuOpen && !mobileMenu.contains(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+</body>
+
+</html>

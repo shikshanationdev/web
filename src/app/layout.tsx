@@ -2,7 +2,7 @@ import { Navbar } from "@/components";
 import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
 
-import { Footer, FloatingContactWidget } from "@/components";
+import { Footer, FloatingContactWidget, TawkToWidget } from "@/components";
 import { LearningStatsSection } from "@/components/HomePageSections";
 import CopyrightSection from "@/components/HomePageSections/CopyrightSection";
 import { Toaster } from "react-hot-toast";
@@ -37,6 +37,7 @@ export default function RootLayout({
         <Footer />
         <CopyrightSection />
         <FloatingContactWidget />
+        <TawkToWidget />
       </body>
     </html>
   );
