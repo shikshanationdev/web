@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { sendEmail } from '../../lib/gmail';
+import { appendToJoinSheet } from '../../lib/googleSheets';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -18,6 +19,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    
+    // Store data in Google Sheets
+    try {
+      await appendToJoinSheet({
+        mobileNumber,
+        timestamp,
+        source: 'Website Home page'
+      });
+    } catch (sheetError) {
+      console.error('Error storing to Google Sheets:', sheetError);
+      // Continue with email sending even if sheets fails
+    }
+
     // Send email to support team
     await sendEmail({
       to: 'support@shikshanation.com',
@@ -27,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         <p>A new user has registered for enquiry.</p>
         <br/>
         <p><strong>Mobile Number:</strong> +91 ${mobileNumber}</p>
-        <p><strong>Registration Time:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+        <p><strong>Registration Time:</strong> ${timestamp}</p>
         <p><strong>Source:</strong> Website Home page</p>
         <br/>
         <p>Please follow up with the user for course recommendations and support.</p>
