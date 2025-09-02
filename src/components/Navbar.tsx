@@ -5,17 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
+import { MdCall } from "react-icons/md";
 
-// Navigation items for the mobile
+// Navigation items for the mobile and desktop
 const navItems = [
-  { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
-  // { label: "Skilling", href: "/skilling" },
-  // { label: "All Test Series", href: "/test-series" },
-  { label: "Media", href: "/media" },
-  { label: "Contact", href: "/contact" },
-  // { label: "Media", href: "/media" },
   { label: "Skilling", href: "/courses?category=ShikshaPro" },
+  { label: "Media", href: "/media" },
+  { label: "Blog", href: "/blog" },
+  { label: "Talk to our expert", href: "tel:+919821115117", phoneNumber: "+91 98211 15117" },
 ];
 
 const Navbar = () => {
@@ -108,12 +106,22 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`transition-colors ${isActiveNavItem(item.href)
-                    ? "text-sky-600"
-                    : "text-gray-800 hover:text-sky-700"
+                  className={`transition-colors ${item.phoneNumber
+                    ? "text-green-500 text-sm hover:text-green-600 flex flex-col text-left"
+                    : isActiveNavItem(item.href)
+                      ? "text-sky-600"
+                      : "text-gray-800 hover:text-sky-700"
                     }`}
                 >
-                  {item.label}
+                  <div className="flex items-center gap-2">
+                    {item.phoneNumber && (
+                      <MdCall className="w-4 h-4 text-green-500" />
+                    )}
+                    <span>{item.label}</span>
+                  </div>
+                  {item.phoneNumber && (
+                    <span className="text-base font-normal text-green-700">{item.phoneNumber}</span>
+                  )}
                 </Link>
               ))}
             </div>
@@ -168,13 +176,23 @@ const Navbar = () => {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`transition-colors text-lg font-medium ${isActiveNavItem(item.href)
-                      ? "text-sky-600"
-                      : "text-gray-800 hover:text-sky-800"
+                    className={`transition-colors text-lg font-medium ${item.phoneNumber
+                      ? "text-green-500 text-sm hover:text-green-600 flex flex-col"
+                      : isActiveNavItem(item.href)
+                        ? "text-sky-600"
+                        : "text-gray-800 hover:text-sky-800"
                       }`}
                     onClick={closeMenu}
                   >
-                    {item.label}
+                    <div className="flex items-center gap-3">
+                      {item.phoneNumber && (
+                        <MdCall className="w-4 h-4 text-green-500" />
+                      )}
+                      <span>{item.label}</span>
+                    </div>
+                    {item.phoneNumber && (
+                      <span className="text-base font-normal text-green-700">{item.phoneNumber}</span>
+                    )}
                   </Link>
                 ))}
               </div>
