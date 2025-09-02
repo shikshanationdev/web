@@ -99,8 +99,11 @@ const CoursesSection = () => {
     const container = coursesScrollRef.current;
     if (!container) return;
 
-    const scrollAmount = 320; // Width of course card (320px) + gap
+    const cardWidth = 320; // Width of course card (320px as defined in w-80)
+    const gap = 24; // Gap between cards (gap-6 = 24px)
+    const scrollAmount = cardWidth + gap; // Total space per card including gap
     const currentScroll = container.scrollLeft;
+
     const newScroll = direction === 'left'
       ? Math.max(0, currentScroll - scrollAmount)
       : currentScroll + scrollAmount;
@@ -204,11 +207,10 @@ const CoursesSection = () => {
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
-        <div className="flex items-center justify-center mb-12 overflow-x-auto" style={{ scrollbarWidth: 'none', touchAction: 'pan-x' }}>
+        <div className="flex items-center justify-center mb-12 overflow-x-auto lg:overflow-x-visible" style={{ scrollbarWidth: 'none', touchAction: 'pan-x' }}>
           <div
             ref={containerRef}
-            className="relative flex  items-center gap-6 sm:gap-12 md:gap-20 lg:gap-28 border-b border-gray-200 justify-start flex-nowrap px-2 sm:px-0 min-w-full hide-scrollbar"
-            style={{ overflowX: 'auto', touchAction: 'pan-x' }}
+            className="relative flex items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20 border-b border-gray-200 justify-start lg:justify-center flex-nowrap px-2 sm:px-0 min-w-full lg:min-w-0 hide-scrollbar"
           >
             {categoryOptions.map((cat) => (
               <button
@@ -283,8 +285,8 @@ const CoursesSection = () => {
             onClick={() => scrollCourses('left')}
             disabled={!canScrollLeft}
             className={`absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollLeft
-                ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
+              ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
               }`}
             aria-label="Scroll courses left"
           >
@@ -296,8 +298,8 @@ const CoursesSection = () => {
             onClick={() => scrollCourses('right')}
             disabled={!canScrollRight}
             className={`absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollRight
-                ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
+              ? 'bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300'
               }`}
             aria-label="Scroll courses right"
           >
