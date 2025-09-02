@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shikshanation Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navbar Styles */
+    .navbar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-bottom: 1px solid #dbeafe;
+      background-color: white;
+      padding: 12px 16px;
+      z-index: 50;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Layout */
+    .mobile-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .mobile-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hamburger-btn {
+      padding: 8px;
+      color: #374151;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .hamburger-btn:hover {
+      color: #0284c7;
+    }
+
+    .hamburger-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logo {
+      height: auto;
+    }
+
+    .mobile-logo {
+      width: 120px;
+      height: 40px;
+    }
+
+    .desktop-logo {
+      width: 180px;
+      height: 60px;
+    }
+
+    .open-app-btn {
+      padding: 8px 16px;
+      border: 2px solid #0284c7;
+      color: #0284c7;
+      background: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .open-app-btn:hover {
+      background-color: #eff6ff;
+    }
+
+    /* Desktop Layout */
+    .desktop-layout {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .desktop-navigation {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      transition: color 0.3s ease;
+      color: #1f2937;
+    }
+
+    .nav-link:hover {
+      color: #0369a1;
+    }
+
+    .nav-link.active {
+      color: #0284c7;
+    }
+
+    .phone-link {
+      color: #22c55e !important;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .phone-link:hover {
+      color: #16a34a !important;
+    }
+
+    .phone-link-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phone-icon {
+      width: 16px;
+      height: 16px;
+      color: #22c55e;
+    }
+
+    .phone-number {
+      font-size: 16px;
+      font-weight: normal;
+      color: #15803d;
+    }
+
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .sign-in-btn {
+      padding: 8px 24px;
+      border: 2px solid #0284c7;
+      color: #0284c7;
+      background: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .sign-in-btn:hover {
+      background-color: #eff6ff;
+    }
+
+    .join-btn {
+      padding: 8px 24px;
+      background-color: #0369a1;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .join-btn:hover {
+      background-color: #0284c7;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+    }
+
+    .mobile-overlay.active {
+      display: block;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 280px;
+      border-top-right-radius: 32px;
+      border-right: 1px solid #e0f2fe;
+      background-color: white;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .mobile-menu-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 0 24px 32px;
+      gap: 32px;
+    }
+
+    .mobile-nav-link {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      color: #1f2937;
+    }
+
+    .mobile-nav-link:hover {
+      color: #1f2937;
+    }
+
+    .mobile-nav-link.active {
+      color: #0284c7;
+    }
+
+    .mobile-phone-link {
+      color: #22c55e !important;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-phone-link:hover {
+      color: #16a34a !important;
+    }
+
+    .mobile-phone-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-auth-buttons {
+      margin-top: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-sign-in-btn {
+      width: 100%;
+      padding: 12px 24px;
+      border: 1px solid #0284c7;
+      color: #0284c7;
+      background: none;
+      border-radius: 50px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      display: block;
+    }
+
+    .mobile-sign-in-btn:hover {
+      background-color: #eff6ff;
+    }
+
+    .mobile-join-btn {
+      width: 100%;
+      padding: 12px 24px;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      display: block;
+    }
+
+    .mobile-join-btn:hover {
+      background-color: #0369a1;
+    }
+
+    /* Spacer */
+    .navbar-spacer {
+      height: 56px;
+    }
+
+    /* Body scroll lock */
+    .body-no-scroll {
+      overflow: hidden;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+      .navbar-container {
+        padding: 12px 32px;
+      }
+
+      .navbar-spacer {
+        height: 64px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .mobile-layout {
+        display: none;
+      }
+
+      .desktop-layout {
+        display: flex;
+      }
+
+      .mobile-overlay,
+      .mobile-menu {
+        display: none !important;
+      }
+
+      .navbar-spacer {
+        height: 80px;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .desktop-navigation {
+        gap: 96px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar-container">
+    <nav class="navbar">
+      <!-- Mobile Layout -->
+      <div class="mobile-layout">
+        <!-- Left: Hamburger + Logo -->
+        <div class="mobile-left">
+          <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+            <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <a href="/" class="logo-link">
+            <img src="./public/home/logo.webp" alt="Shiksha Nation Logo" class="logo mobile-logo" />
+          </a>
+        </div>
+
+        <!-- Open App Button - Right -->
+        <a href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN" class="open-app-btn">
+          Open App
+        </a>
+      </div>
+
+      <!-- Desktop Layout -->
+      <div class="desktop-layout">
+        <!-- Logo -->
+        <a href="/" class="logo-link">
+          <img src="./public/home/logo.webp" alt="Shiksha Nation Logo" class="logo desktop-logo" />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="desktop-navigation">
+          <a href="/courses" class="nav-link">Courses</a>
+          <a href="/courses?category=ShikshaPro" class="nav-link">Skilling</a>
+          <a href="/media" class="nav-link">Media</a>
+          <a href="/blog" class="nav-link">Blog</a>
+          <a href="tel:+919821115117" class="nav-link phone-link">
+            <div class="phone-link-content">
+              <svg class="phone-icon" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+              </svg>
+              <span>Talk to our expert</span>
+            </div>
+            <span class="phone-number">+91 98211 15117</span>
+          </a>
+        </div>
+
+        <!-- Desktop Auth Buttons -->
+        <div class="auth-buttons">
+          <a href="https://courses.shikshanation.com/login" target="_blank" class="sign-in-btn">
+            Sign In
+          </a>
+          <a href="https://courses.shikshanation.com/signup" target="_blank" class="join-btn">
+            Join for Free
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-overlay" onclick="closeMenu()"></div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+          <!-- Header with Logo -->
+          <div class="mobile-menu-header">
+            <img src="./public/home/logo.webp" alt="Shiksha Nation Logo" width="200" height="40" class="logo" />
+          </div>
+
+          <!-- Menu Content -->
+          <div class="mobile-menu-nav">
+            <a href="/courses" class="mobile-nav-link" onclick="closeMenu()">Courses</a>
+            <a href="/courses?category=ShikshaPro" class="mobile-nav-link" onclick="closeMenu()">Skilling</a>
+            <a href="/media" class="mobile-nav-link" onclick="closeMenu()">Media</a>
+            <a href="/blog" class="mobile-nav-link" onclick="closeMenu()">Blog</a>
+            <a href="tel:+919821115117" class="mobile-nav-link mobile-phone-link" onclick="closeMenu()">
+              <div class="mobile-phone-content">
+                <svg class="phone-icon" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+                </svg>
+                <span>Talk to our expert</span>
+              </div>
+              <span class="phone-number">+91 98211 15117</span>
+            </a>
+          </div>
+
+          <!-- Bottom Auth Buttons -->
+          <div class="mobile-auth-buttons">
+            <a href="https://courses.shikshanation.com/login" target="_blank" class="mobile-sign-in-btn"
+              onclick="closeMenu()">
+              Sign In
+            </a>
+            <a href="https://courses.shikshanation.com/signup" target="_blank" class="mobile-join-btn"
+              onclick="closeMenu()">
+              Join for Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Spacer to prevent page content from being hidden behind fixed navbar -->
+  <div class="navbar-spacer"></div>
+
+  <!-- Demo Content -->
+  <div style="padding: 40px 20px; max-width: 1280px; margin: 0 auto;">
+    <h1 style="font-size: 32px; font-weight: bold; color: #1f2937; margin-bottom: 16px;">Welcome to Shikshanation</h1>
+    <p style="color: #6b7280; font-size: 18px; line-height: 1.6; margin-bottom: 32px;">
+      This is a demo page showing the converted navbar. The navbar is fully responsive and includes all the
+      functionality from the original React component.
+    </p>
+
+    <div style="background: #f3f4f6; padding: 24px; border-radius: 8px; margin-bottom: 32px;">
+      <h2 style="font-size: 24px; font-weight: 600; color: #1f2937; margin-bottom: 16px;">Features Included:</h2>
+      <ul style="color: #6b7280; line-height: 1.8;">
+        <li>✅ Responsive design (mobile and desktop layouts)</li>
+        <li>✅ Mobile hamburger menu with slide-in animation</li>
+        <li>✅ Active navigation state highlighting</li>
+        <li>✅ Phone number with call icon</li>
+        <li>✅ Authentication buttons (Sign In / Join for Free)</li>
+        <li>✅ Smooth transitions and hover effects</li>
+        <li>✅ Body scroll lock when mobile menu is open</li>
+        <li>✅ Fixed positioning with proper spacing</li>
+      </ul>
+    </div>
+
+    <div style="background: #eff6ff; padding: 24px; border-radius: 8px; border-left: 4px solid #0284c7;">
+      <h3 style="font-size: 18px; font-weight: 600; color: #0369a1; margin-bottom: 8px;">Usage Instructions:</h3>
+      <p style="color: #1e40af; line-height: 1.6;">
+        Simply copy this HTML file and update the logo image path to match your project structure.
+        All styles are included inline for easy portability. You can customize colors, fonts, and spacing by modifying
+        the CSS variables in the style section.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      updateMenuState();
+    }
+
+    function closeMenu() {
+      isMenuOpen = false;
+      updateMenuState();
+    }
+
+    function updateMenuState() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.querySelector('.mobile-overlay');
+      const body = document.body;
+
+      if (isMenuOpen) {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('body-no-scroll');
+      } else {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('body-no-scroll');
+      }
+    }
+
+    // Close menu on window resize to desktop size
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1024 && isMenuOpen) {
+        closeMenu();
+      }
+    });
+
+    // Set active navigation state based on current page
+    function setActiveNavigation() {
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('tel:') && !href.startsWith('http')) {
+          if (currentPath === '/' && href === '/') {
+            link.classList.add('active');
+          } else if (currentPath !== '/' && currentPath.startsWith(href) && href !== '/') {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    // Initialize active navigation on page load
+    document.addEventListener('DOMContentLoaded', setActiveNavigation);
+  </script>
+</body>
+
+</html>
