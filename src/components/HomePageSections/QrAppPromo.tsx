@@ -33,23 +33,8 @@ const QrAppPromo: React.FC = () => {
             </p>
 
             <div className="mt-10 flex flex-col items-center lg:items-start">
-              {/* QR Code with decorative border - Using next/image */}
-              <div className="relative w-36 h-36">
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-[3px] border-l-[3px] border-blue-700 rounded-tl-lg"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-[3px] border-r-[3px] border-blue-700 rounded-tr-lg"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-[3px] border-l-[3px] border-green-400 rounded-bl-lg"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-[3px] border-r-[3px] border-green-400 rounded-br-lg"></div>
-                <Image
-                  src="/home/qr.png"
-                  alt="QR code to download app"
-                  fill
-                  sizes="144px"
-                  className="p-1 object-contain"
-                />
-              </div>
-
-              <p className="mt-6 text-base text-gray-500">
-                Available on Android, iOS & Website
+              <p className="text-base text-gray-500">
+                Available on Android, iOS, MacOS & Windows
               </p>
 
               {/* App Store Buttons */}
