@@ -31,6 +31,12 @@ const Footer = () => {
   const router = useRouter();
 
   const handleCategoryClick = (category: string) => {
+    // Handle external redirect for Skilling
+    if (category === "Skilling") {
+      window.open("https://skilling.shikshanation.com", "_blank");
+      return;
+    }
+
     // Map footer categories to course page categories
     const categoryMap: { [key: string]: string } = {
       "ShikshaBase": "ShikshaBase",
@@ -43,8 +49,7 @@ const Footer = () => {
       "Class 9": "Class 9th",
       "Class 10": "Class 10th",
       "JEE": "JEE",
-      "NEET": "NEET",
-      "Skilling": "ShikshaPro"
+      "NEET": "NEET"
     };
 
     const mappedCategory = categoryMap[category] || category;
