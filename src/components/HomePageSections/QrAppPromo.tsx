@@ -12,7 +12,7 @@ const QrAppPromo: React.FC = () => {
           <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
             {/* Device Mockup Image - Using next/image */}
             <Image
-              src="/home/phone-tablet-mockup.png"
+              src="/home/phone-tablet-mockup-v2.png"
               width={500}
               height={500}  
               alt="Shiksha Nation App on Phone & Tablet"
