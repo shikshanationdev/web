@@ -26,7 +26,7 @@ const LearningStatsSection = () => {
           {/* Left: Content */}
           <div className="w-full lg:w-1/2 text-center lg:text-left md:px-5">
             <h2 className="text-2xl text-left sm:text-4xl lg:text-[3vw] xl:text-[2.5rem] font-bold text-sky-700 mb-6 lg:mb-8 leading-tight">
-              Start learning with 67.1k students around the world.
+              Start learning with 25k students around the world.
             </h2>
             <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 justify-starty lg:justify-start">
               <button
