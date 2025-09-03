@@ -101,7 +101,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="flex items-center gap-5 lg:gap-8 xl:gap-24">
+            <div className="flex items-center gap-5 lg:gap-8 xl:gap-20">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
