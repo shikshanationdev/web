@@ -49,8 +49,8 @@ const AffiliationsCertifications = () => {
 
       {/* Carousel Container */}
       <div className="relative overflow-hidden">
-        {/* Infinite scrolling carousel */}
-        <div className="flex animate-scroll-carousel">
+        {/* Desktop Infinite scrolling carousel */}
+        <div className="hidden md:flex animate-scroll-carousel">
           {/* First set of affiliations */}
           {affiliations.map((item, idx) => (
             <div
@@ -88,6 +88,29 @@ const AffiliationsCertifications = () => {
                 />
               </div>
               <div className={`h-[20%] flex justify-center items-center w-full text-center font-semibold text-base ${item.text}`}>
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Static Grid */}
+        <div className="grid grid-cols-1 gap-4 md:hidden">
+          {affiliations.map((item, idx) => (
+            <div
+              key={`mobile-${idx}`}
+              className={`rounded-xl ${item.bg} shadow-lg shadow-green-100 flex flex-col transition-all overflow-hidden hover:scale-[1.02]`}
+            >
+              <div className="h-32 flex items-center justify-center w-full bg-white p-4">
+                <Image
+                  src={item.img}
+                  alt={item.label}
+                  width={200}
+                  height={100}
+                  className="object-contain max-w-full max-h-full"
+                />
+              </div>
+              <div className={`py-3 flex justify-center items-center w-full text-center font-semibold text-sm ${item.text} px-4`}>
                 {item.label}
               </div>
             </div>

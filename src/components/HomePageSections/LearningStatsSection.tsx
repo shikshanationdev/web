@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 const stats = [
   { value: "6.3k", label: "Online courses" },
-  { value: "26k", label: "Certified Instructor" },
+  { value: "100+", label: "Certified Instructor" },
   { value: "99.9%", label: "Success Rate" },
 ];
 
