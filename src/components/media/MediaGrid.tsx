@@ -83,7 +83,7 @@ const mediaPosts = [
     link: "https://foxstoryindia.com/2025/08/30/dr-saurabh-kumar-appointed-founder-ceo-of-shiksha-nation-indias-first-ai-enabled-bilingual-learning-platform/",
   },
   {
-    logo: "https://thecitycarnival.com/wp-content/uploads/2021/08/Carnival-Logo-White.png",
+    logo: "/carnival.png",
     brand: "The City Carnival",
     title: "Shiksha Nation Dr. Saurabh Kumar Leads AI Learning",
     desc: "India’s first AI-enabled bilingual learning platform, has announced the appointment of Dr. Saurabh Kumar as its Founder and Chief Executive Officer.",

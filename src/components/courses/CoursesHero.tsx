@@ -48,7 +48,7 @@ const CoursesHero = () => {
 
             {/* Subheading */}
             <p className="text-lg sm:text-xl text-blue-100 max-w-lg">
-              Browse curated courses for Classes 1-12, NEET, JEE, CUET, and beyond.
+              Browse curated courses for Classes 6-12, NEET, JEE, CUET, and beyond.
             </p>
           </div>
 

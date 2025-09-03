@@ -1,16 +1,17 @@
 import React from 'react';
 
 const mediaImages = [
-  '/media/wsj.png',
-  '/media/bloomberg.png',
-  '/media/fastcompany.png',
-  '/media/forbes.png',
-  '/media/new-york-time.png',
-  '/media/business-insider.png',
-  '/media/tc.png',
-  '/media/fortune.png',
-  '/media/entrepreneur.png',
-  '/media/diginomica.png',
+  'https://featuringdaily.com/wp-content/uploads/2025/04/cropped-cropped-cropped-Untitled-design-54-2-1.webp',
+  '/https://businessup2date.com/wp-content/uploads/2021/06/Business-Up2Date-e1716444753574.webp',
+  'https://mumbaimirror.co.in/wp-content/uploads/2025/04/cropped-logos-08-1-300x300.png',
+  'https://www.medianews4u.com/wp-content/uploads/2019/08/MediaNews4U.png',
+  'https://thehindustnexpress.com/wp-content/uploads/2025/05/cropped-hindustn-03.png',
+  '/ground.png',
+  'https://news18today.com/wp-content/uploads/2025/05/logos-12-1.png',
+  'https://indiastoday.com/wp-content/uploads/2021/11/cropped-logos-01-300x300.png',
+  'https://india24x7news.com/wp-content/uploads/2025/05/cropped-tinywow_change_bg_photo_79634246.png',
+  'https://foxstoryindia.com/wp-content/uploads/2024/07/cropped-Add-a-heading1.png',
+  "/carnival.png"
 ];
 
 const MediaMarquee = () => {
