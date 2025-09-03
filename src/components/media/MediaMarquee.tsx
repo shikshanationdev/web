@@ -2,7 +2,7 @@ import React from 'react';
 
 const mediaImages = [
   'https://featuringdaily.com/wp-content/uploads/2025/04/cropped-cropped-cropped-Untitled-design-54-2-1.webp',
-  '/https://businessup2date.com/wp-content/uploads/2021/06/Business-Up2Date-e1716444753574.webp',
+  'https://businessup2date.com/wp-content/uploads/2021/06/Business-Up2Date-e1716444753574.webp',
   'https://mumbaimirror.co.in/wp-content/uploads/2025/04/cropped-logos-08-1-300x300.png',
   'https://www.medianews4u.com/wp-content/uploads/2019/08/MediaNews4U.png',
   'https://thehindustnexpress.com/wp-content/uploads/2025/05/cropped-hindustn-03.png',
