@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 
 const FloatingContactWidget = () => {
 
@@ -24,7 +24,7 @@ const FloatingContactWidget = () => {
           className="w-16 h-16 bg-blue-500 text-white rounded-full shadow-xl flex items-center justify-center border-4 border-blue-200"
           title="Call Us"
         >
-          <FaPhone className="text-xl" />
+          <FaPhoneAlt className="text-xl" />
         </button>
 
         {/* WhatsApp Button - Green (Bottom) */}
