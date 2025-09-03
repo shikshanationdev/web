@@ -109,11 +109,25 @@
   }
 }
 
-.animate-scroll-carousel {
-  animation: scrollCarousel 5s linear infinite;
+@keyframes scrollCarouselMobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-scroll-carousel:hover {
+.animate-scroll-carousel {
+  animation: scrollCarousel 15s linear infinite;
+}
+
+.animate-scroll-carousel-mobile {
+  animation: scrollCarouselMobile 15s linear infinite;
+}
+
+.animate-scroll-carousel:hover,
+.animate-scroll-carousel-mobile:hover {
   animation-play-state: paused;
 }
 

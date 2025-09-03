@@ -16,7 +16,7 @@ import {
 const socialLinks = [
   { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
   { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
-  { href: "https://www.youtube.com/@shikshanation-rl7qo", icon: FaYoutube, label: "YouTube" },
+  { href: "https://www.youtube.com/@Shiksha_Nation", icon: FaYoutube, label: "YouTube" },
   { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
   { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X (Twitter)" },
 ];
@@ -24,13 +24,19 @@ const socialLinks = [
 const communityLinks = [
   { href: "https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R", icon: FaWhatsapp, label: "WhatsApp Community" },
   { href: "https://t.me/shikshanation", icon: FaTelegramPlane, label: "Telegram Channel" },
-  { href: "#", icon: FaDiscord, label: "Discord Server" },
+  { href: "https://discord.gg/STdUcWU6", icon: FaDiscord, label: "Discord Server" },
 ];
 
 const Footer = () => {
   const router = useRouter();
 
   const handleCategoryClick = (category: string) => {
+    // Handle external redirect for Skilling
+    if (category === "Skilling") {
+      window.open("https://skilling.shikshanation.com", "_blank");
+      return;
+    }
+
     // Map footer categories to course page categories
     const categoryMap: { [key: string]: string } = {
       "ShikshaBase": "ShikshaBase",
@@ -43,8 +49,7 @@ const Footer = () => {
       "Class 9": "Class 9th",
       "Class 10": "Class 10th",
       "JEE": "JEE",
-      "NEET": "NEET",
-      "Skilling": "ShikshaPro"
+      "NEET": "NEET"
     };
 
     const mappedCategory = categoryMap[category] || category;

@@ -10,7 +10,7 @@ import { MdCall } from "react-icons/md";
 // Navigation items for the mobile and desktop
 const navItems = [
   { label: "Courses", href: "/courses" },
-  { label: "Skilling", href: "/courses?category=ShikshaPro" },
+  { label: "Skilling", href: "https://skilling.shikshanation.com" },
   { label: "Media", href: "/media" },
   { label: "Blog", href: "/blog" },
   { label: "Talk to our expert", href: "tel:+919821115117", phoneNumber: "+91 98211 15117" },
@@ -101,7 +101,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="flex items-center gap-5 lg:gap-8 xl:gap-24">
+            <div className="flex items-center gap-5 lg:gap-8 xl:gap-20">
               {navItems.map((item) => (
                 <Link
                   key={item.label}

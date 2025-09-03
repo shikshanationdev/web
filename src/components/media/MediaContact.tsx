@@ -9,19 +9,19 @@ const contactOptions = [
     icon: <MdQuestionAnswer size={40} className="text-[#00E676] bg-[#00E676]/10 rounded-xl p-2" />,
     title: "Press Inquiries",
     color: "text-[#00E676]",
-    href: "mailto:press@shikshanation.com",
+    href: "mailto:support@shikshanation.com",
   },
   {
     icon: <FaHandshake size={40} className="text-[#8B5CF6] bg-[#8B5CF6]/10 rounded-xl p-2" />,
     title: "Partnerships",
     color: "text-[#8B5CF6]",
-    href: "mailto:partners@shikshanation.com",
+    href: "mailto:support@shikshanation.com",
   },
   {
     icon: <MdOutlineContactSupport size={40} className="text-[#00E5FF] bg-[#00E5FF]/10 rounded-xl p-2" />,
     title: "All Other Inquiries",
     color: "text-[#00E5FF]",
-    href: "mailto:info@shikshanation.com",
+    href: "mailto:support@shikshanation.com",
   },
 ];
 
