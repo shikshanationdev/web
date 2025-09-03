@@ -24,7 +24,7 @@ const socialLinks = [
 const communityLinks = [
   { href: "https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R", icon: FaWhatsapp, label: "WhatsApp Community" },
   { href: "https://t.me/shikshanation", icon: FaTelegramPlane, label: "Telegram Channel" },
-  { href: "#", icon: FaDiscord, label: "Discord Server" },
+  { href: "https://discord.gg/STdUcWU6", icon: FaDiscord, label: "Discord Server" },
 ];
 
 const Footer = () => {
