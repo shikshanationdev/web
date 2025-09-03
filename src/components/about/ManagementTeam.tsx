@@ -5,14 +5,15 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const founder = {
   name: 'Saurabh Kumar',
   title: 'Founder & CEO of Shiksha Nation',
-  img: '/saurabh-kumar.jpeg',
+  img: '/saurabh-kumar.png',
   border: 'border-purple-300',
   container: 'bg-purple-100',
-  description: 'Rajat Sharma, an IIT Bombay alumnus and Computer Science engineer, has led growth at Flipkart, Vedantu, Toppr, FlipLearn, and Growth School. A certified strategist in business and marketing, he now drives expansion and customer acquisition at Shiksha Nation, building Bharat\'s first AI-powered learning ecosystem.',
+  description: 'A Gold Medalist in Mechanical Engineering, PhD from Germany, and IIM alumnus, Dr. Saurabh Kumar has over 24 years of academic leadership across India and the Middle East. He has held senior roles at VMC, PW, CL Educate, FIITJEE, and pioneered test prep in the MENA region. He has mentored over 1 lakh students including IITians, NEET toppers, Olympiad winners, and board rankers. Now, as Founder & CEO of Shiksha Nation, he is building Bharat’s first AI-powered unified learning platform delivering quality education from Class 6 to Careers in Hindi & English.',
   linkedin: 'https://www.linkedin.com/in/saurabh-kumar-051276/'
 };
 
-const managementTeam = [
+// Second row team members
+const secondRowTeam = [
   {
     name: 'Rajat Sharma',
     title: 'Chief Business Officer (CBO)',
@@ -30,7 +31,11 @@ const managementTeam = [
     container: 'bg-green-100',
     description: 'Gaurav Mittal, an MBA from Symbiosis with backgrounds in IT and Commerce, has led tech at HCL Technologies and EXL. At Shiksha Nation, he drives technology and HR, ensuring Bharat\'s AI-powered education platform is scalable, personalized, and built on an ethical, high-performance culture.',
     linkedin: 'https://www.linkedin.com/in/gmittal1/'
-  },
+  }
+];
+
+// Third row team members
+const thirdRowTeam = [
   {
     name: 'Anurag Mishra',
     title: 'Vice President, Academics',
@@ -38,7 +43,7 @@ const managementTeam = [
     border: 'border-green-300',
     container: 'bg-green-100',
     description: 'Anurag Misra, IIT Roorkee alumnus and renowned Physics author, has over 25 years mentoring JEE/NEET aspirants. As VP-Academics at Shiksha Nation, he leads AI-powered strategies to make learning joyful, simple, and effective for Bharat\'s students.',
-    linkedin: ''
+    linkedin: 'https://www.linkedin.com/in/anurag-misra-20a381329/'
   },
   {
     name: 'Dr. NK Sharma',
@@ -47,8 +52,17 @@ const managementTeam = [
     border: 'border-blue-300',
     container: 'bg-blue-100',
     description: 'Dr. NKS, a medical graduate from LLRM Medical College, has 20+ years in NEET coaching and is author of Master Class in Biology and Pearson Guide for AIPMT. A digital learning pioneer, he now drives AI-powered, student-centric science education at Shiksha Nation.',
-    linkedin: ''
+    linkedin: '#'
   },
+  {
+    name: 'Dr. Gaurav Sharma',
+    title: 'Senior Academic Advisor',
+    img: '/Gaurav-Sharma.png',
+    border: 'border-purple-300',
+    container: 'bg-purple-100',
+    description: 'Dr. Gaurav Sharma brings over 20 years of interdisciplinary expertise in neuroscience, chemistry, dentistry, and computer psychology. As Senior Academic Advisor at Shiksha Nation, he has mentored thousands of NEET aspirants and designed innovative learning curricula to help students learn smarter and excel.',
+    linkedin: '#'
+  }
 ];
 
 const ManagementTeam = () => {
@@ -113,9 +127,9 @@ const ManagementTeam = () => {
         </div>
       </div>
 
-      {/* Management Team Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {managementTeam.map((member, idx) => (
+      {/* Second Row - Management Team */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-8">
+        {secondRowTeam.map((member, idx) => (
           <div
             key={member.name}
             className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row border ${member.border} transition-transform hover:scale-105 overflow-hidden`}
@@ -155,6 +169,65 @@ const ManagementTeam = () => {
 
               {/* Desktop LinkedIn Icon - only visible on desktop and when linkedin is not empty */}
               {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:block absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
+                >
+                  <FaLinkedinIn size={16} />
+                </a>
+              )}
+
+              <p className="text-gray-700 text-sm font-medium mb-3">{member.title}</p>
+              <p className="text-gray-600 text-xs leading-relaxed">{member.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Third Row - Academic Team */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {thirdRowTeam.map((member, idx) => (
+          <div
+            key={member.name}
+            className={`rounded-2xl relative bg-white shadow-lg flex flex-col border ${member.border} transition-transform hover:scale-105 overflow-hidden`}
+          >
+            {/* Circular colored background - positioned top-left, 50% visible */}
+            <div className={`${member.container} absolute -top-14 -left-14 w-28 h-28 rounded-full`}></div>
+
+            {/* Profile Image - centered */}
+            <div className="flex justify-center items-center p-6">
+              <div className="w-24 h-24 relative">
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  fill
+                  className="rounded-full object-cover border-4 border-white"
+                  sizes="96px"
+                />
+              </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="flex-1 p-6 pt-0 text-center">
+              <div className="flex items-center gap-2 mb-1 justify-center">
+                <h3 className="font-bold text-lg text-gray-900">{member.name}</h3>
+                {/* Mobile LinkedIn Icon - only visible when linkedin is not empty */}
+                {member.linkedin && member.linkedin !== '#' && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors flex items-center justify-center"
+                  >
+                    <FaLinkedinIn size={16} />
+                  </a>
+                )}
+              </div>
+
+              {/* Desktop LinkedIn Icon - positioned top-right when linkedin is not empty */}
+              {member.linkedin && member.linkedin !== '#' && (
                 <a
                   href={member.linkedin}
                   target="_blank"
