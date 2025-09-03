@@ -5,10 +5,10 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const founder = {
   name: 'Saurabh Kumar',
   title: 'Founder & CEO of Shiksha Nation',
-  img: '/saurabh-kumar.jpeg',
+  img: '/saurabh-kumar.png',
   border: 'border-purple-300',
   container: 'bg-purple-100',
-  description: 'Rajat Sharma, an IIT Bombay alumnus and Computer Science engineer, has led growth at Flipkart, Vedantu, Toppr, FlipLearn, and Growth School. A certified strategist in business and marketing, he now drives expansion and customer acquisition at Shiksha Nation, building Bharat\'s first AI-powered learning ecosystem.',
+  description: 'A Gold Medalist in Mechanical Engineering, PhD from Germany, and IIM alumnus, Dr. Saurabh Kumar has over 24 years of academic leadership across India and the Middle East. He has held senior roles at VMC, PW, CL Educate, FIITJEE, and pioneered test prep in the MENA region. He has mentored over 1 lakh students including IITians, NEET toppers, Olympiad winners, and board rankers. Now, as Founder & CEO of Shiksha Nation, he is building Bharat’s first AI-powered unified learning platform delivering quality education from Class 6 to Careers in Hindi & English.',
   linkedin: 'https://www.linkedin.com/in/saurabh-kumar-051276/'
 };
 
@@ -38,7 +38,7 @@ const managementTeam = [
     border: 'border-green-300',
     container: 'bg-green-100',
     description: 'Anurag Misra, IIT Roorkee alumnus and renowned Physics author, has over 25 years mentoring JEE/NEET aspirants. As VP-Academics at Shiksha Nation, he leads AI-powered strategies to make learning joyful, simple, and effective for Bharat\'s students.',
-    linkedin: ''
+    linkedin: 'https://www.linkedin.com/in/anurag-misra-20a381329/'
   },
   {
     name: 'Dr. NK Sharma',
@@ -47,7 +47,7 @@ const managementTeam = [
     border: 'border-blue-300',
     container: 'bg-blue-100',
     description: 'Dr. NKS, a medical graduate from LLRM Medical College, has 20+ years in NEET coaching and is author of Master Class in Biology and Pearson Guide for AIPMT. A digital learning pioneer, he now drives AI-powered, student-centric science education at Shiksha Nation.',
-    linkedin: ''
+    linkedin: '#'
   },
 ];
 

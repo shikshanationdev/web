@@ -7,7 +7,7 @@ const JoinLearnersSection = () => {
         {/* Left: Text */}
         <div className="w-[50vw] text-left">
           <h2  className="text-gray-900 leading-tight font-light mb-4 text-lg text-nowrap sm:text-3xl md:text-4xl lg:text-5xl">
-            Join over <span className="text-sky-600 font-semibold">25,000</span><br /> learners now
+            Join over <span className="text-sky-600 font-semibold">25,000+</span><br /> learners now
           </h2>
         </div>
         {/* Right: Illustration */}
