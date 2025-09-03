@@ -92,34 +92,21 @@ const ManagementTeam = () => {
             </div>
           </div>
 
+          {/* LinkedIn Icon - positioned top-right for all views */}
+          {founder.linkedin && (
+            <a
+              href={founder.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
+            >
+              <FaLinkedinIn size={16} />
+            </a>
+          )}
+
           {/* Content Section */}
           <div className="flex-1 p-6 pt-0 md:pt-6 text-center md:text-left">
-            <div className="flex items-center gap-2 mb-1 md:block justify-center md:justify-start">
-              <h3 className="font-bold text-xl text-gray-900">{founder.name}</h3>
-              {/* Mobile LinkedIn Icon - only visible on mobile and when linkedin is not empty */}
-              {founder.linkedin && (
-                <a
-                  href={founder.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="md:hidden bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors flex items-center justify-center"
-                >
-                  <FaLinkedinIn size={16} />
-                </a>
-              )}
-            </div>
-
-            {/* Desktop LinkedIn Icon - only visible on desktop and when linkedin is not empty */}
-            {founder.linkedin && (
-              <a
-                href={founder.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:block absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
-              >
-                <FaLinkedinIn size={16} />
-              </a>
-            )}
+            <h3 className="font-bold text-xl text-gray-900 mb-1">{founder.name}</h3>
 
             <p className="text-gray-700 text-sm font-medium mb-3">{founder.title}</p>
             <p className="text-gray-600 text-xs leading-relaxed">{founder.description}</p>
@@ -150,34 +137,21 @@ const ManagementTeam = () => {
               </div>
             </div>
 
+            {/* LinkedIn Icon - positioned top-right for all views */}
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
+              >
+                <FaLinkedinIn size={16} />
+              </a>
+            )}
+
             {/* Content Section */}
             <div className="flex-1 p-6 pt-0 md:pt-6 text-center md:text-left">
-              <div className="flex items-center gap-2 mb-1 md:block justify-center md:justify-start">
-                <h3 className="font-bold text-lg text-gray-900">{member.name}</h3>
-                {/* Mobile LinkedIn Icon - only visible on mobile and when linkedin is not empty */}
-                {member.linkedin && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="md:hidden bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors flex items-center justify-center"
-                  >
-                    <FaLinkedinIn size={16} />
-                  </a>
-                )}
-              </div>
-
-              {/* Desktop LinkedIn Icon - only visible on desktop and when linkedin is not empty */}
-              {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:block absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
-                >
-                  <FaLinkedinIn size={16} />
-                </a>
-              )}
+              <h3 className="font-bold text-lg text-gray-900 mb-1">{member.name}</h3>
 
               <p className="text-gray-700 text-sm font-medium mb-3">{member.title}</p>
               <p className="text-gray-600 text-xs leading-relaxed">{member.description}</p>
@@ -209,34 +183,21 @@ const ManagementTeam = () => {
               </div>
             </div>
 
+            {/* LinkedIn Icon - positioned top-right for all views when available */}
+            {member.linkedin && member.linkedin !== '#' && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
+              >
+                <FaLinkedinIn size={16} />
+              </a>
+            )}
+
             {/* Content Section */}
             <div className="flex-1 p-6 pt-0 text-center">
-              <div className="flex items-center gap-2 mb-1 justify-center">
-                <h3 className="font-bold text-lg text-gray-900">{member.name}</h3>
-                {/* Mobile LinkedIn Icon - only visible when linkedin is not empty */}
-                {member.linkedin && member.linkedin !== '#' && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors flex items-center justify-center"
-                  >
-                    <FaLinkedinIn size={16} />
-                  </a>
-                )}
-              </div>
-
-              {/* Desktop LinkedIn Icon - positioned top-right when linkedin is not empty */}
-              {member.linkedin && member.linkedin !== '#' && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:block absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
-                >
-                  <FaLinkedinIn size={16} />
-                </a>
-              )}
+              <h3 className="font-bold text-lg text-gray-900 mb-1">{member.name}</h3>
 
               <p className="text-gray-700 text-sm font-medium mb-3">{member.title}</p>
               <p className="text-gray-600 text-xs leading-relaxed">{member.description}</p>
