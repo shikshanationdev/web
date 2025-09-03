@@ -9,7 +9,7 @@ const affiliations = [
     text: 'text-green-600',
   },
   {
-    img: '/startup-india-2.jpg',
+    img: '/startup-india-23.jpg',
     label: 'Recognized by Startup India',
     bg: 'bg-green-50',
     text: 'text-green-600',
