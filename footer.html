@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiksha Nation Footer</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lexend Deca', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Footer Styles */
+    .footer {
+      padding: 3rem 1rem 0 1rem;
+      /* py-12 px-4 = 3rem 1rem */
+      color: #0369a1;
+      /* sky-700 */
+      background-color: white;
+    }
+
+    .footer-container {
+      max-width: 80rem;
+      /* 7xl = 80rem */
+      margin: 0 auto;
+    }
+
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      /* gap-8 = 2rem on mobile */
+    }
+
+    .footer-left {
+      width: 100%;
+      flex-shrink: 0;
+      order: 1;
+    }
+
+    .footer-left-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      /* gap-6 = 1.5rem */
+    }
+
+    .logo {
+      height: auto;
+      width: 200px;
+    }
+
+    .logo-container {
+      margin-bottom: 1.5rem;
+      /* mb-6 = 1.5rem */
+    }
+
+    .company-motto {
+      margin-bottom: 1rem;
+      /* mb-4 = 1rem */
+    }
+
+    .motto-primary {
+      font-size: 1rem;
+      color: #000;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .motto-secondary {
+      font-size: 1rem;
+      color: #000;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      /* space-y-3 = 0.75rem */
+      font-size: 0.875rem;
+      /* text-sm */
+      padding: 1.25rem 0;
+      /* py-5 = 1.25rem */
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .address-continuation {
+      color: #0284c7;
+      /* sky-600 */
+      font-size: 0.875rem;
+      margin-top: -0.75rem;
+      /* Pull it up closer to the first line */
+      margin-left: 0;
+      /* Align with "Corporate Office:" label */
+    }
+
+    .contact-item:first-child {
+      align-items: baseline;
+      margin-bottom: 0;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: #0369a1;
+      /* sky-700 */
+    }
+
+    .contact-value {
+      margin-left: 0.25rem;
+      color: #0284c7;
+      /* sky-600 */
+    }
+
+    .contact-link {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    .social-section h4,
+    .community-section h4 {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      color: #0369a1;
+      /* sky-700 */
+    }
+
+    .social-links,
+    .community-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-link,
+    .community-link {
+      width: 2rem;
+      height: 2rem;
+      background-color: #dbeafe;
+      /* blue-100 */
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0369a1;
+      /* sky-700 */
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .social-link:hover,
+    .community-link:hover {
+      background-color: #bfdbfe;
+      /* blue-200 */
+    }
+
+    .footer-right {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      /* gap-6 = 1.5rem */
+      order: 2;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      /* gap-4 = 1rem on mobile */
+      margin-bottom: 1.5rem;
+      /* mb-6 = 1.5rem */
+    }
+
+    .footer-column {
+      flex: 1;
+    }
+
+    .column-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      color: #0369a1;
+      /* sky-700 */
+    }
+
+    .column-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      /* space-y-2 = 0.5rem */
+    }
+
+    .column-link {
+      color: #0284c7;
+      /* sky-600 */
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+      text-align: left;
+      background: none;
+      box-shadow: none !important;
+      /* ✅ correct way */
+      border: none;
+      cursor: pointer;
+    }
+
+    .column-link:hover {
+      text-decoration: underline;
+      background: transparent;
+      color: #0284c7;
+    }
+
+
+    .download-apps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .app-link {
+      transition: transform 0.2s;
+      display: block;
+    }
+
+    .app-link:hover {
+      transform: scale(1.05);
+    }
+
+    .app-badge {
+      height: auto;
+      width: 120px;
+    }
+
+    /* Copyright Section */
+    .copyright-section {
+      border-top: 1px solid #0369a1;
+      /* border-t border-sky-700 */
+      padding: 2rem 0;
+      /* py-8 = 2rem */
+      color: #0369a1;
+      /* text-sky-700 */
+      background-color: white;
+      /* bg-white */
+    }
+
+    .copyright-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      /* space-y-2 = 0.5rem */
+      font-size: 0.875rem;
+      /* text-sm */
+      max-width: 80rem;
+      /* max-w-7xl */
+      margin: 0 auto;
+      padding: 0 1rem;
+      /* px-4 */
+    }
+
+    .copyright-company {
+      font-weight: 600;
+    }
+
+    .copyright-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .copyright-year {
+      font-weight: 600;
+    }
+
+    .copyright-separator {
+      display: none;
+    }
+
+    .copyright-developer a {
+      font-weight: 600;
+      color: #0369a1;
+      text-decoration: none;
+    }
+
+    .copyright-developer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Styles */
+    @media (min-width: 768px) {
+      .footer {
+        padding: 3rem 2rem 0 2rem;
+        /* md:px-8 py-12 */
+      }
+
+      .footer-columns {
+        gap: 2rem;
+        /* Larger gap on tablet */
+      }
+
+      .download-apps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+
+      .app-badge {
+        width: 100%;
+        height: auto;
+      }
+
+      .copyright-details {
+        flex-direction: row;
+        gap: 0;
+      }
+
+      .copyright-separator {
+        display: block;
+        margin: 0 0.5rem;
+      }
+
+      .copyright-content {
+        padding: 0 2rem;
+        /* md:px-8 */
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer {
+        padding-bottom: 3rem;
+        /* Add padding bottom for desktop */
+      }
+
+      .footer-main {
+        flex-direction: row;
+        gap: 3rem;
+        /* lg:gap-12 = 3rem */
+      }
+
+      .footer-left {
+        width: 40%;
+        /* lg:w-2/5 */
+        order: 1;
+      }
+
+      .footer-right {
+        width: 60%;
+        /* lg:w-3/5 */
+        order: 2;
+      }
+
+      .mobile-layout {
+        display: none;
+      }
+
+      .desktop-layout {
+        display: block;
+      }
+
+      .footer-columns.desktop {
+        gap: 2rem;
+        /* gap-8 = 2rem */
+        margin-bottom: 1.5rem;
+        /* mb-6 = 1.5rem */
+      }
+
+      .footer-columns.desktop-second {
+        gap: 2rem;
+        /* gap-8 = 2rem */
+      }
+    }
+
+    .mobile-layout {
+      display: block;
+    }
+
+    .desktop-layout {
+      display: none;
+    }
+
+    /* Utility classes */
+    .flex-row-arrow {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .arrow {
+      font-size: 0.875rem;
+      color: #0284c7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Footer Component -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Main Footer Content -->
+      <div class="footer-main">
+        <!-- Left: Logo & Contact Info -->
+        <div class="footer-left">
+          <div class="footer-left-content">
+            <!-- Logo and Company Info -->
+            <div class="logo-section">
+              <div class="logo-container">
+                <a href="/">
+                  <img src="https://shikshanation.com/home/logo.webp" alt="Shiksha Nation Logo" class="logo" /></a>
+              </div>
+              <div class="company-motto">
+                <p class="motto-primary">
+                  "For Bharat, By Bharat, Of Bharat."
+                </p>
+                <p class="motto-secondary">
+                  India's Own Learning Revolution.
+                </p>
+              </div>
+              <div class="contact-info">
+                <div class="contact-item corporate-office">
+                  <span class="contact-label">Corporate Office:</span>
+                  <span class="contact-value">
+                    10th Floor, Tower C, Bhutani
+                  </span>
+                </div>
+                <div class="address-continuation">
+                  Cyber Park, Sec 62, Noida, UP 201309
+                </div>
+                <div class="contact-item">
+                  <span class="contact-label">Call: </span>
+                  <a href="tel:+919821115117" class="contact-link">
+                    &nbsp;+91 98211 15117
+                  </a>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-label">Email: </span>
+                  <a href="mailto:support@shikshanation.com" class="contact-link">
+                    &nbsp;support@shikshanation.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-section">
+              <h4>Let's Get Social</h4>
+              <div class="social-links">
+                <a href="https://www.facebook.com/shikshanation24/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook" class="social-link">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/shikshanation/" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram" class="social-link">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@shikshanation-rl7qo" target="_blank" rel="noopener noreferrer"
+                  aria-label="YouTube" class="social-link">
+                  <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/shikshanation/" target="_blank" rel="noopener noreferrer"
+                  aria-label="LinkedIn" class="social-link">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/shikshanation" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+                  class="social-link">
+                  <img src="https://shikshanation.com/wp-content/uploads/2025/09/icons8-x-60.png" style="width:20px;">
+                </a>
+              </div>
+            </div>
+
+            <!-- Community Links -->
+            <div class="community-section">
+              <h4>Join our Student Community</h4>
+              <div class="community-links">
+                <a href="https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R" target="_blank"
+                  rel="noopener noreferrer" aria-label="WhatsApp Community" class="community-link">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/shikshanation" target="_blank" rel="noopener noreferrer"
+                  aria-label="Telegram Channel" class="community-link">
+                  <img src="https://shikshanation.com/wp-content/uploads/2025/09/icons8-telegram-48.png"
+                    style="width:16px;">
+                </a>
+                <a href="https://discord.gg/STdUcWU6" target="_blank" rel="noopener noreferrer"
+                  aria-label="Discord Server" class="community-link">
+                  <i class="fab fa-discord"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Columns -->
+        <div class="footer-right">
+          <!-- Mobile Layout -->
+          <div class="mobile-layout">
+            <!-- First Row: Top Categories, Top Live Classes, Upcoming Courses -->
+            <div class="footer-columns">
+              <div class="footer-column">
+                <h3 class="column-title">Top Categories</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaBase')">ShikshaBase</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaEdge')">ShikshaEdge</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaQuest')">ShikshaQuest</button>
+                  </li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaPro')">ShikshaPro</button></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Top Live Classes</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('Class 8')">Class 8</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('Class 9')">Class 9</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('Class 10')">Class 10</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('NEET')">NEET</button></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Upcoming Courses</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('JEE')">JEE</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('CUET')">CUET</button></li>
+                  <li><a class="column-link" href="https://skilling.shikshanation.com" target="_blank">Skilling</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Second Row: Company, Useful Links, Download Now -->
+            <div class="footer-columns">
+              <div class="footer-column">
+                <h3 class="column-title">Company</h3>
+                <ul class="column-list">
+                  <li><a href="/about" class="column-link">About Us</a></li>
+                  <li><a href="/blog" target="_blank" rel="noopener noreferrer" class="column-link">Blog</a></li>
+                  <li><a href="/media" class="column-link">Media</a></li>
+                  <li><a href="/careers" class="column-link">Careers</a></li>
+                  <li><a href="/contact" class="column-link">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Useful Links</h3>
+                <ul class="column-list">
+                  <li class="flex-row-arrow">
+                    <a href="/careers/" class="column-link">Become Instructor</a>
+                    <span class="arrow">→</span>
+                  </li>
+                  <li><a href="/faqs" class="column-link">FAQs</a></li>
+                  <li><a href="/privacy-policy" class="column-link">Privacy Policy</a></li>
+                  <li><a href="/terms-conditions" class="column-link">Terms & Conditions</a></li>
+                  <li><a href="/refund-policy" class="column-link">Refund Policy</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h4 class="column-title">Download Now</h4>
+                <div class="download-apps">
+                  <a href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/get-it-on-playstore.png" alt="Get it on Google Play"
+                      class="app-badge" />
+                  </a>
+                  <div class="app-link" onclick="alert('Coming Soon - Under Development')" style="cursor: pointer;">
+                    <img src="https://shikshanation.com/home/get-it-on-appstore.png" alt="Download on the App Store"
+                      class="app-badge" />
+                  </div>
+                  <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/get-it-on-windows-store.png" alt="Get it from Microsoft"
+                      class="app-badge" />
+                  </a>
+                  <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/dowload_for_mac_os.png" alt="Download for macOS"
+                      class="app-badge" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Layout -->
+          <div class="desktop-layout">
+            <!-- First Row: Top Categories, Top Live Classes, Upcoming Courses -->
+            <div class="footer-columns desktop">
+              <div class="footer-column">
+                <h3 class="column-title">Top Categories</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaBase')">ShikshaBase</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaEdge')">ShikshaEdge</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaQuest')">ShikshaQuest</button>
+                  </li>
+                  <li><button class="column-link" onclick="navigateToCategory('ShikshaPro')">ShikshaPro</button></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Top Live Classes</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('Class 8')">Class 8</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('Class 9')">Class 9</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('Class 10')">Class 10</button></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Upcoming Courses</h3>
+                <ul class="column-list">
+                  <li><button class="column-link" onclick="navigateToCategory('JEE')">JEE</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('NEET')">NEET</button></li>
+                  <li><button class="column-link" onclick="navigateToCategory('Skilling')">Skilling</button></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Second Row: Company, Useful Links, Download Now -->
+            <div class="footer-columns desktop-second">
+              <div class="footer-column">
+                <h3 class="column-title">Company</h3>
+                <ul class="column-list">
+                  <li><a href="/about" class="column-link">About Us</a></li>
+                  <li><a href="/blog" target="_blank" rel="noopener noreferrer" class="column-link">Blog</a></li>
+                  <li><a href="/media" class="column-link">Media</a></li>
+                  <li><a href="/careers" class="column-link">Careers</a></li>
+                  <li><a href="/contact" class="column-link">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h3 class="column-title">Useful Links</h3>
+                <ul class="column-list">
+                  <li class="flex-row-arrow">
+                    <a href="/become-instructor" class="column-link">Become Instructor</a>
+                    <span class="arrow">→</span>
+                  </li>
+                  <li><a href="/faqs" class="column-link">FAQs</a></li>
+                  <li><a href="/privacy-policy" class="column-link">Privacy Policy</a></li>
+                  <li><a href="/terms-conditions" class="column-link">Terms & Conditions</a></li>
+                  <li><a href="/refund-policy" class="column-link">Refund Policy</a></li>
+                </ul>
+              </div>
+              <div class="footer-column">
+                <h4 class="column-title">Download Now</h4>
+                <div class="download-apps">
+                  <a href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/get-it-on-playstore.png" alt="Get it on Google Play"
+                      class="app-badge" />
+                  </a>
+                  <div class="app-link" onclick="alert('Coming Soon - Under Development')" style="cursor: pointer;">
+                    <img src="https://shikshanation.com/home/get-it-on-appstore.png" alt="Download on the App Store"
+                      class="app-badge" />
+                  </div>
+                  <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/get-it-on-windows-store.png" alt="Get it from Microsoft"
+                      class="app-badge" />
+                  </a>
+                  <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg" target="_blank"
+                    rel="noopener noreferrer" class="app-link">
+                    <img src="https://shikshanation.com/home/dowload_for_mac_os.png" alt="Download for macOS"
+                      class="app-badge" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <div class="copyright-section">
+    <div class="copyright-content">
+      <div class="copyright-company">
+        Rarepillar Education Services Private Limited
+      </div>
+      <div class="copyright-details">
+        <div class="copyright-year">
+          © 2025 All Rights Reserved
+        </div>
+        <div class="copyright-separator">
+          |
+        </div>
+        <div class="copyright-developer">
+          Designed and Developed by
+          <a href="https://www.generativecrafts.com">Generative Crafts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Category navigation function
+    function navigateToCategory(category) {
+      // Map footer categories to course page categories
+      const categoryMap = {
+        "ShikshaBase": "ShikshaBase",
+        "ShikshaEdge": "ShikshaEdge",
+        "ShikshaQuest": "ShikshaQuest",
+        "ShikshaPro": "ShikshaPro",
+        "Class 6": "Class 6th",
+        "Class 7": "Class 7th",
+        "Class 8": "Class 8th",
+        "Class 9": "Class 9th",
+        "Class 10": "Class 10th",
+        "JEE": "JEE",
+        "NEET": "NEET",
+        "Skilling": "ShikshaPro"
+      };
+
+      const mappedCategory = categoryMap[category] || category;
+
+      // Replace this with your actual navigation logic
+      // For demonstration, it shows an alert
+      //   alert(`Navigating to courses with category: ${mappedCategory}`);
+
+      // In a real implementation, you would do something like:
+      window.location.href = `/courses?category=${encodeURIComponent(mappedCategory)}`;
+    }
+
+    // Add smooth hover effects
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add hover effects for app download links
+      const appLinks = document.querySelectorAll('.app-link');
+      appLinks.forEach(link => {
+        link.addEventListener('mouseenter', function () {
+          this.style.transform = 'scale(1.05)';
+        });
+        link.addEventListener('mouseleave', function () {
+          this.style.transform = 'scale(1)';
+        });
+      });
+
+      // Add hover effects for social and community links
+      const socialLinks = document.querySelectorAll('.social-link, .community-link');
+      socialLinks.forEach(link => {
+        link.addEventListener('mouseenter', function () {
+          this.style.backgroundColor = '#bfdbfe'; /* blue-200 */
+        });
+        link.addEventListener('mouseleave', function () {
+          this.style.backgroundColor = '#dbeafe'; /* blue-100 */
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
