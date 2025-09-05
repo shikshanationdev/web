@@ -137,8 +137,7 @@ const Hero = () => {
 
                 {/* Join Button */}
                 <button
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm whitespace-nowrap flex-shrink-0 rounded-r-full w-16 sm:w-24 flex items-center justify-center"
-                  disabled={mobileNumber.length !== 10 || isLoading}
+                  className="bg-gradient-to-b from-yellow-300 to-yellow-500 hover:from-yellow-200 hover:to-yellow-400 text-black font-bold py-4 sm:py-3 text-xs sm:text-sm whitespace-nowrap flex-shrink-0 rounded-r-full w-16 sm:w-24 flex items-center justify-center transition-colors duration-200"
                   onClick={handleJoinSubmit}
                 >
                   {isLoading ? (
@@ -198,8 +197,7 @@ const Hero = () => {
 
                 {/* Join Button */}
                 <button
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 lg:py-4 xl:py-5 2xl:py-6 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base whitespace-nowrap flex-shrink-0 rounded-r-full w-32 lg:w-36 xl:w-40 2xl:w-44 flex items-center justify-center"
-                  disabled={mobileNumber.length !== 10 || isLoading}
+                  className="bg-gradient-to-b from-yellow-300 to-yellow-500 hover:from-yellow-200 hover:to-yellow-400 text-black font-bold py-3 lg:py-4 xl:py-5 2xl:py-6 text-sm lg:text-base whitespace-nowrap flex-shrink-0 rounded-r-full w-32 lg:w-36 xl:w-40 2xl:w-44 flex items-center justify-center transition-colors duration-200"
                   onClick={handleJoinSubmit}
                 >
                   {isLoading ? (

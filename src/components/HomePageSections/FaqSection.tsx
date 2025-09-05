@@ -3,21 +3,24 @@ import React, { useState } from "react";
 
 const faqs = [
   {
-    question: "What classes and exams does Shiksha Nation cover?",
+    question: "What is Shiksha Nation?",
     answer:
-      "We provide learning content for Classes 1 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
+      "Shiksha Nation is an online learning platform offering both live interactive classes and recorded video lessons, with downloadable notes and test series for flexible, anytime learning via website or mobile app.",
   },
   {
-    question: "Can I try courses before enrolling?",
-    answer: "Yes, you can access sample lessons and trial courses before enrolling.",
+    question: "Which classes and exams are covered?",
+    answer:
+      "Courses are available for students in Classes 6 to 12, along with preparation for major entrance exams such as NEET, JEE, and CUET.",
   },
   {
-    question: "Are your courses live or pre-recorded?",
-    answer: "We offer both live and pre-recorded courses to suit your learning style.",
+    question: "What types of classes does Shiksha Nation offer?",
+    answer:
+      "Both live interactive classes and pre-recorded lessons are provided, allowing students to join real-time sessions or watch recorded content at their convenience.",
   },
   {
-    question: "Is Shiksha Nation suitable for school exam preparation?",
-    answer: "Absolutely! Our courses are designed to help students excel in school exams as well as competitive exams.",
+    question: "Can the platform be accessed on different devices?",
+    answer:
+      "Yes, the platform is accessible via desktop, tablet, and mobile devices. There is also an app available for seamless access.",
   },
 ];
 
@@ -37,7 +40,9 @@ const FaqSection = () => {
           {faqs.map((faq, idx) => (
             <div
               key={faq.question}
-              className={`bg-sky-50/50 border border-sky-600 rounded-2xl px-8 py-6 transition-all duration-300 ${openIndex === idx ? "shadow-md" : ""}`}
+              className={`bg-sky-50/50 border border-sky-600 rounded-2xl px-8 py-6 transition-all duration-300 ${
+                openIndex === idx ? "shadow-md" : ""
+              }`}
             >
               <button
                 className="w-full flex items-center justify-between focus:outline-none"
@@ -51,9 +56,13 @@ const FaqSection = () => {
                 </span>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-500 ${openIndex === idx ? 'max-h-40 mt-3 opacity-100' : 'max-h-0 opacity-0'}`}
+                className={`overflow-hidden transition-all duration-500 ${
+                  openIndex === idx
+                    ? "max-h-40 mt-3 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
                 style={{
-                  transitionProperty: 'max-height, opacity, margin-top',
+                  transitionProperty: "max-height, opacity, margin-top",
                 }}
               >
                 <div className="text-sky-700 text-lg md:text-xl">

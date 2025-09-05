@@ -1,45 +1,36 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const testimonials = [
+const baseTestimonials = [
   {
-    id: 1,
-    name: "Ananya Sharma",
-    content: "Shiksha Nation made Science and Math so easy for me! The lessons are fun, and I love how I can revise anytime. My marks improved in just one term!",
+    name: "Priya Sharma",
+    content: "These PDFs have been a game-changer for my daughter's studies. The chapter summaries are excellent and the practice questions really helped her improve her exam scores. Highly recommended for all parents!",
     rating: 5,
   },
   {
-    id: 2,
-    name: "Ravi Mehta",
-    content: "As a parent, I was looking for a platform that's both reliable and easy to monitor. Shiksha Nation gave my son structured classes, progress reports, and expert support — we're very happy!",
+    name: "Rajesh Kumar",
+    content: "The quality of content is outstanding. My son's confidence in Math and Science has improved significantly. The detailed solutions help him understand concepts he was struggling with in school.!",
     rating: 5,
   },
   {
-    id: 3,
-    name: "Mehul Raj",
-    content: "Preparing for NEET felt overwhelming until I joined Shiksha Nation. The mock tests, doubt-solving sessions, and mentors really helped me stay focused and confident.",
-    rating: 5,
-  },
-  // Duplicate for continuous scrolling
-  {
-    id: 4,
-    name: "Ananya Sharma",
-    content: "Shiksha Nation made Science and Math so easy for me! The lessons are fun, and I love how I can revise anytime. My marks improved in just one term!",
+    name: "Anita Patel",
+    content: "Affordable and comprehensive! The study materials are well-organized and cover the entire syllabus. My daughter loves the easy-to-understand explanations and visual diagrams..",
     rating: 5,
   },
   {
-    id: 5,
-    name: "Ravi Mehta",
-    content: "As a parent, I was looking for a platform that's both reliable and easy to monitor. Shiksha Nation gave my son structured classes, progress reports, and expert support — we're very happy!",
-    rating: 5,
-  },
-  {
-    id: 6,
-    name: "Mehul Raj",
-    content: "Preparing for NEET felt overwhelming until I joined Shiksha Nation. The mock tests, doubt-solving sessions, and mentors really helped me stay focused and confident.",
+    name: "Suresh Reddy",
+    content: "Excellent value for money. The PDFs are professionally designed and contain everything needed for exam preparation. My son's grades have improved remarkably since we started using these materials.",
     rating: 5,
   },
 ];
+
+const testimonials = Array.from({ length: 200 }, (_, i) => {
+  const base = baseTestimonials[i % 4];
+  return {
+    id: i + 1,
+    ...base
+  };
+});
 
 const StarRating = ({ rating }: { rating: number }) => {
   return (
@@ -47,9 +38,8 @@ const StarRating = ({ rating }: { rating: number }) => {
       {[...Array(5)].map((_, index) => (
         <svg
           key={index}
-          className={`w-5 h-5 ${
-            index < rating ? "text-yellow-400" : "text-gray-300"
-          }`}
+          className={`w-5 h-5 ${index < rating ? "text-yellow-400" : "text-gray-300"
+            }`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -98,7 +88,7 @@ const TestimonialsSection = () => {
 
         {/* Testimonials Carousel */}
         <div className="relative overflow-hidden py-10">
-          <div 
+          <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{
               transform: `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)`,
@@ -108,17 +98,16 @@ const TestimonialsSection = () => {
             {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => {
               const position = index - currentIndex;
               const centerCard = position === 1;
-              
+
               return (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-full md:w-1/3 px-4 transition-all duration-700 ${
-                    isMobile 
-                      ? 'transform scale-100 z-10' 
-                      : centerCard 
-                        ? 'transform scale-110 z-10' 
+                  className={`flex-shrink-0 w-full md:w-1/3 px-4 transition-all duration-700 ${isMobile
+                      ? 'transform scale-100 z-10'
+                      : centerCard
+                        ? 'transform scale-110 z-10'
                         : 'transform scale-90 z-0'
-                  } ${!isMobile && !centerCard ? 'md:block' : ''}`}
+                    } ${!isMobile && !centerCard ? 'md:block' : ''}`}
                 >
                   <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 relative min-h-[280px] flex flex-col mx-auto max-w-md">
                     {/* Quote Icon with Gradient */}
@@ -161,14 +150,13 @@ const TestimonialsSection = () => {
 
         {/* Dots indicator */}
         <div className="flex justify-center mt-8 space-x-2">
-          {testimonials.slice(0, 3).map((_, index) => (
+          {testimonials.slice(0, 4).map((_, index) => (
             <button
               key={index}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex % 3
+              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex % 4
                   ? 'bg-[rgb(var(--color-green-primary))] w-8'
                   : 'bg-gray-300 w-3'
-              }`}
+                }`}
               onClick={() => setCurrentIndex(index)}
             />
           ))}

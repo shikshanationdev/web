@@ -10,21 +10,53 @@ import {
   FaYoutube,
   FaWhatsapp,
   FaTelegramPlane,
-  FaDiscord
+  FaDiscord,
 } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://www.facebook.com/shikshanation24/", icon: FaFacebookF, label: "Facebook" },
-  { href: "https://www.instagram.com/shikshanation/", icon: FaInstagram, label: "Instagram" },
-  { href: "https://www.youtube.com/@Shiksha_Nation", icon: FaYoutube, label: "YouTube" },
-  { href: "https://www.linkedin.com/company/shikshanation/", icon: FaLinkedinIn, label: "LinkedIn" },
-  { href: "https://x.com/shikshanation", icon: BsTwitterX, label: "X (Twitter)" },
+  {
+    href: "https://www.facebook.com/shikshanation24/",
+    icon: FaFacebookF,
+    label: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com/shikshanation/",
+    icon: FaInstagram,
+    label: "Instagram",
+  },
+  {
+    href: "https://www.youtube.com/@Shiksha_Nation",
+    icon: FaYoutube,
+    label: "YouTube",
+  },
+  {
+    href: "https://www.linkedin.com/company/shikshanation/",
+    icon: FaLinkedinIn,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://x.com/shikshanation",
+    icon: BsTwitterX,
+    label: "X (Twitter)",
+  },
 ];
 
 const communityLinks = [
-  { href: "https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R", icon: FaWhatsapp, label: "WhatsApp Community" },
-  { href: "https://t.me/shikshanation", icon: FaTelegramPlane, label: "Telegram Channel" },
-  { href: "https://discord.gg/STdUcWU6", icon: FaDiscord, label: "Discord Server" },
+  {
+    href: "https://whatsapp.com/channel/0029VajProt05MUkTqalkU0R",
+    icon: FaWhatsapp,
+    label: "WhatsApp Community",
+  },
+  {
+    href: "https://t.me/shikshanation",
+    icon: FaTelegramPlane,
+    label: "Telegram Channel",
+  },
+  {
+    href: "https://discord.gg/STdUcWU6",
+    icon: FaDiscord,
+    label: "Discord Server",
+  },
 ];
 
 const Footer = () => {
@@ -39,17 +71,17 @@ const Footer = () => {
 
     // Map footer categories to course page categories
     const categoryMap: { [key: string]: string } = {
-      "ShikshaBase": "ShikshaBase",
-      "ShikshaEdge": "ShikshaEdge",
-      "ShikshaQuest": "ShikshaQuest",
-      "ShikshaPro": "ShikshaPro",
+      ShikshaBase: "ShikshaBase",
+      ShikshaEdge: "ShikshaEdge",
+      ShikshaQuest: "ShikshaQuest",
+      ShikshaPro: "ShikshaPro",
       "Class 6": "Class 6th",
       "Class 7": "Class 7th",
       "Class 8": "Class 8th",
       "Class 9": "Class 9th",
       "Class 10": "Class 10th",
-      "JEE": "JEE",
-      "NEET": "NEET"
+      JEE: "JEE",
+      NEET: "NEET",
     };
 
     const mappedCategory = categoryMap[category] || category;
@@ -76,7 +108,7 @@ const Footer = () => {
                 </div>
                 <div className="mb-4">
                   <p className="text-md text-black mb-2 font-medium italic leading-none">
-                    &ldquo;For Bharat, Of Bharat, By Bharat.&rdquo;
+                    &ldquo;For Bharat, By Bharat, Of Bharat.&rdquo;
                   </p>
                   <p className="text-md text-black font-medium leading-none">
                     India&apos;s Own Learning Revolution.
@@ -116,7 +148,9 @@ const Footer = () => {
 
               {/* Social Links */}
               <div>
-                <h4 className="font-semibold text-lg mb-4 text-sky-700">Let&apos;s Get Social</h4>
+                <h4 className="font-semibold text-lg mb-4 text-sky-700">
+                  Let&apos;s Get Social
+                </h4>
                 <div className="flex gap-3">
                   {socialLinks.map((s) => {
                     const IconComponent = s.icon;
@@ -138,7 +172,9 @@ const Footer = () => {
 
               {/* Community Links */}
               <div>
-                <h4 className="font-semibold text-lg mb-4 text-sky-700">Join our Student Community</h4>
+                <h4 className="font-semibold text-lg mb-4 text-sky-700">
+                  Join our Student Community
+                </h4>
                 <div className="flex gap-3">
                   {communityLinks.map((c) => {
                     const IconComponent = c.icon;
@@ -172,7 +208,12 @@ const Footer = () => {
                     Top Categories
                   </h3>
                   <ul className="space-y-2">
-                    {["ShikshaBase", "ShikshaEdge", "ShikshaQuest", "ShikshaPro"].map((item) => (
+                    {[
+                      "ShikshaBase",
+                      "ShikshaEdge",
+                      "ShikshaQuest",
+                      "ShikshaPro",
+                    ].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -288,7 +329,7 @@ const Footer = () => {
                   <ul className="space-y-2">
                     <li className="flex items-center gap-1">
                       <Link
-                        href="/become-instructor"
+                        href="/careers"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
                         Become Instructor
@@ -332,7 +373,9 @@ const Footer = () => {
 
                 {/* Download Now */}
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
+                  <h4 className="font-semibold text-lg mb-4 text-sky-700">
+                    Download Now
+                  </h4>
                   <div className="flex flex-col gap-2">
                     <Link
                       href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
@@ -350,6 +393,10 @@ const Footer = () => {
                     </Link>
                     <Link
                       href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        alert("Coming Soon - Under Development");
+                      }}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
@@ -405,7 +452,12 @@ const Footer = () => {
                     Top Categories
                   </h3>
                   <ul className="space-y-2">
-                    {["ShikshaBase", "ShikshaEdge", "ShikshaQuest", "ShikshaPro"].map((item) => (
+                    {[
+                      "ShikshaBase",
+                      "ShikshaEdge",
+                      "ShikshaQuest",
+                      "ShikshaPro",
+                    ].map((item) => (
                       <li key={item}>
                         <button
                           onClick={() => handleCategoryClick(item)}
@@ -518,7 +570,7 @@ const Footer = () => {
                   <ul className="space-y-2">
                     <li className="flex items-center gap-1">
                       <Link
-                        href="/become-instructor"
+                        href="/careers"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
                         Become Instructor
@@ -562,7 +614,9 @@ const Footer = () => {
 
                 {/* Download Now */}
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg mb-4 text-sky-700">Download Now</h4>
+                  <h4 className="font-semibold text-lg mb-4 text-sky-700">
+                    Download Now
+                  </h4>
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
@@ -580,6 +634,10 @@ const Footer = () => {
                     </Link>
                     <Link
                       href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        alert("Coming Soon - Under Development");
+                      }}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="transition-transform hover:scale-105"
