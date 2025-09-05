@@ -4,7 +4,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 
 const founder = {
   name: 'Saurabh Kumar',
-  title: 'Founder & CEO of Shiksha Nation',
+  title: 'Founder & CEO',
   img: '/saurabh-kumar.png',
   border: 'border-purple-300',
   container: 'bg-purple-100',
@@ -25,7 +25,7 @@ const secondRowTeam = [
   },
   {
     name: 'Gaurav Mittal',
-    title: 'Chief Technology & HR Officer (CTO & HR Head)',
+    title: 'Chief Technology Officer (CTO)',
     img: '/Gaurav-Mittal.png',
     border: 'border-green-300',
     container: 'bg-green-100',
@@ -38,7 +38,7 @@ const secondRowTeam = [
 const thirdRowTeam = [
   {
     name: 'Anurag Mishra',
-    title: 'Vice President, Academics',
+    title: 'VP Academics JEE',
     img: '/anurag.png',
     border: 'border-green-300',
     container: 'bg-green-100',
@@ -47,21 +47,21 @@ const thirdRowTeam = [
   },
   {
     name: 'Dr. NK Sharma',
-    title: 'Vice President, Academics (Biology & NEET)',
+    title: 'VP Academics NEET',
     img: '/NK.png',
     border: 'border-blue-300',
     container: 'bg-blue-100',
-    description: 'Dr. NKS, a medical graduate from LLRM Medical College, has 20+ years in NEET coaching and is author of Master Class in Biology and Pearson Guide for AIPMT. A digital learning pioneer, he now drives AI-powered, student-centric science education at Shiksha Nation.',
+    description: 'Dr. NK. Sharma, a medical graduate from LLRM Medical College, has 20+ years in NEET coaching and is author of Master Class in Biology and Pearson Guide for AIPMT. A digital learning pioneer, he now drives AI-powered, student-centric science education at Shiksha Nation.',
     linkedin: '#'
   },
   {
     name: 'Dr. Gaurav Sharma',
-    title: 'Senior Academic Advisor',
+    title: 'AVP Academics',
     img: '/Gaurav-Sharma.png',
     border: 'border-purple-300',
     container: 'bg-purple-100',
-    description: 'Dr. Gaurav Sharma brings over 20 years of interdisciplinary expertise in neuroscience, chemistry, dentistry, and computer psychology. As Senior Academic Advisor at Shiksha Nation, he has mentored thousands of NEET aspirants and designed innovative learning curricula to help students learn smarter and excel.',
-    linkedin: '#'
+    description: 'Dr. Gaurav Sharma brings over 20 years of interdisciplinary expertise in neuroscience, chemistry, dentistry, and cognitive psychology. As Associate Vice President at Shiksha Nation, he has mentored thousands of NEET aspirants and designed innovative learning curricula to help students learn smarter and excel.',
+    linkedin: 'https://www.linkedin.com/in/drgauravsharma/'
   }
 ];
 
