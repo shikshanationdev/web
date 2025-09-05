@@ -329,7 +329,7 @@ const Footer = () => {
                   <ul className="space-y-2">
                     <li className="flex items-center gap-1">
                       <Link
-                        href="/become-instructor"
+                        href="/careers"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
                         Become Instructor
@@ -570,7 +570,7 @@ const Footer = () => {
                   <ul className="space-y-2">
                     <li className="flex items-center gap-1">
                       <Link
-                        href="/become-instructor"
+                        href="/careers"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
                         Become Instructor
