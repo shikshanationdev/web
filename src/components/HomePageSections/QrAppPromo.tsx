@@ -1,20 +1,19 @@
-import React from 'react';
-import Image from 'next/image';
-
+"use client";
+import React from "react";
+import Image from "next/image";
 
 const QrAppPromo: React.FC = () => {
   return (
     <section className="bg-white px-5">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
           {/* Left Section: Image Mockups */}
           <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
             {/* Device Mockup Image - Using next/image */}
             <Image
               src="/home/phone-tablet-mockup-v2.png"
               width={500}
-              height={500}  
+              height={500}
               alt="Shiksha Nation App on Phone & Tablet"
               className="relative z-10 w-full max-w-md lg:max-w-xl transform transition-transform duration-500 hover:scale-105"
               priority
@@ -24,7 +23,8 @@ const QrAppPromo: React.FC = () => {
           {/* Right Section: Text Content & QR Code */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left ">
             <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-              Learn <span className="text-sky-600">Anytime</span>, <span className="text-green-primary">Anywhere </span>
+              Learn <span className="text-sky-600">Anytime</span>,{" "}
+              <span className="text-green-primary">Anywhere </span>
               with the Shiksha Nation App
             </h1>
 
@@ -39,7 +39,13 @@ const QrAppPromo: React.FC = () => {
 
               {/* App Store Buttons */}
               <div className="flex items-center pt-4 gap-2">
-                <a href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play" className="transform hover:scale-105 transition-transform">
+                <a
+                  href="https://play.google.com/store/apps/details?id=app.shikshanation&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get it on Google Play"
+                  className="transform hover:scale-105 transition-transform"
+                >
                   <Image
                     src="/home/get-it-on-playstore.png"
                     alt="Get it on Google Play"
@@ -47,7 +53,15 @@ const QrAppPromo: React.FC = () => {
                     height={40}
                   />
                 </a>
-                <a href="#app-store" aria-label="Download on the App Store" className="transform hover:scale-105 transition-transform">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("Coming Soon - Under Development");
+                  }}
+                  aria-label="Download on the App Store"
+                  className="transform hover:scale-105 transition-transform"
+                >
                   <Image
                     src="/home/get-it-on-appstore.png"
                     alt="Download on the App Store"
@@ -57,7 +71,13 @@ const QrAppPromo: React.FC = () => {
                 </a>
               </div>
               <div className="flex items-center pt-4 gap-2">
-                <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe" target="_blank" rel="noopener noreferrer" aria-label="Get it on Windows Store" className="transform hover:scale-105 transition-transform">
+                <a
+                  href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Get it on Windows Store"
+                  className="transform hover:scale-105 transition-transform"
+                >
                   <Image
                     src="/home/get-it-on-windows-store.png"
                     alt="Get it on Windows Store"
@@ -65,7 +85,13 @@ const QrAppPromo: React.FC = () => {
                     height={40}
                   />
                 </a>
-                <a href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg" target="_blank" rel="noopener noreferrer" aria-label="Download for macOS" className="transform hover:scale-105 transition-transform">
+                <a
+                  href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.dmg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Download for macOS"
+                  className="transform hover:scale-105 transition-transform"
+                >
                   <Image
                     src="/home/dowload_for_mac_os.png"
                     alt="Download for macOS"
@@ -76,7 +102,6 @@ const QrAppPromo: React.FC = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
