@@ -32,7 +32,7 @@ const AboutWhoWeAre = () => {
 
             {/* Blue text */}
             <p className="text-blue-600 text-lg leading-relaxed font-medium">
-              At Shikshanation, we believe that education is the foundation of national progress.
+              At Shiksha Nation, we believe that education is the foundation of national progress.
               Our bilingual, inclusive, and technology-driven platform bridges urban-rural gaps,
               offering personalized learning experiences that are both academically rigorous and
               future-ready.
@@ -70,7 +70,7 @@ const AboutWhoWeAre = () => {
           <div className="flex justify-end order-1 md:order-2">
             <div className="rounded-lg overflow-hidden p-1">
               <Image
-                src="/about-us/whoweare2.jpg"
+                src="/about-us/whoweare3.jpg"
                 alt="Students group"
                 width={250}
                 height={220}
