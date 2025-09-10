@@ -5,7 +5,7 @@ import TableOfContents from '@/components/refund/TableOfContents'
 
 const RefundPolicyPage = () => {
   return (
-    <div className='min-h-screen bg-gray-50'>
+    <div className='min-h-screen'>
       {/* Banner Section */}
       <Banner
         heading="Refund Policy"
