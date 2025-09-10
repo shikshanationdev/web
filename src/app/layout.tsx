@@ -2,6 +2,7 @@ import { Navbar } from "@/components";
 import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
 import Script from "next/script";
+import Head from "next/head";
 
 import { Footer, FloatingContactWidget, TawkToWidget } from "@/components";
 import { LearningStatsSection } from "@/components/HomePageSections";
@@ -30,7 +31,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexendDeca.className}`}>
+      <Head>
+        <meta name="google-site-verification" content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g" />
         {/* Google Tag Manager */}
         <Script
           id="gtm"
@@ -43,7 +45,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-T75L3CTC');`
           }}
         />
-
+      </Head>
+      <body className={`${lexendDeca.className}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
