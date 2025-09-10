@@ -13,19 +13,24 @@ type Props = {
 };
 
 const FaqsList: React.FC<Props> = ({ items, title }) => {
-  const [openStates, setOpenStates] = useState<boolean[]>(
-    new Array(items.length).fill(false)
-  );
+  // Split items into two columns
+  const leftColumnItems = items.filter((_, index) => index % 2 === 0);
+  const rightColumnItems = items.filter((_, index) => index % 2 === 1);
 
-  const toggleFaq = (index: number) => {
-    setOpenStates(prev =>
-      prev.map((isOpen, i) => i === index ? !isOpen : isOpen)
-    );
+  const [leftColumnOpenIndex, setLeftColumnOpenIndex] = useState<number>(-1);
+  const [rightColumnOpenIndex, setRightColumnOpenIndex] = useState<number>(-1);
+
+  const toggleLeftFaq = (columnIndex: number) => {
+    setLeftColumnOpenIndex(prev => prev === columnIndex ? -1 : columnIndex);
+  };
+
+  const toggleRightFaq = (columnIndex: number) => {
+    setRightColumnOpenIndex(prev => prev === columnIndex ? -1 : columnIndex);
   };
 
   return (
-    <div className="w-full py-16 px-4">
-      <div className="max-w-7xl mx-auto md:px-10">
+    <div className="w-full px-4">
+      <div className="max-w-7xl mx-auto">
         {title && (
           <>
             <h2 className="text-center text-4xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -36,17 +41,32 @@ const FaqsList: React.FC<Props> = ({ items, title }) => {
             </p>
           </>
         )}
-        <div className="columns-1 md:columns-2 gap-6 space-y-6">
-          {items.map((item, idx) => (
-            <div key={idx} className="break-inside-avoid mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          {/* Left Column */}
+          <div className="flex flex-col space-y-6">
+            {leftColumnItems.map((item, columnIndex) => (
               <FaqItem
+                key={`left-${columnIndex}`}
                 q={item.q}
                 a={item.a}
-                isOpen={openStates[idx]}
-                onToggle={() => toggleFaq(idx)}
+                isOpen={leftColumnOpenIndex === columnIndex}
+                onToggle={() => toggleLeftFaq(columnIndex)}
               />
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col space-y-6">
+            {rightColumnItems.map((item, columnIndex) => (
+              <FaqItem
+                key={`right-${columnIndex}`}
+                q={item.q}
+                a={item.a}
+                isOpen={rightColumnOpenIndex === columnIndex}
+                onToggle={() => toggleRightFaq(columnIndex)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -222,7 +222,7 @@ const Navbar = () => {
       </div>
 
       {/* Spacer to prevent page content from being hidden behind fixed navbar */}
-      <div className="h-14 md:h-16 lg:h-20" />
+      <div className="h-14 md:h-16 lg:h-18" />
     </>
   );
 };
