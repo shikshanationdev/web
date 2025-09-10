@@ -3,12 +3,27 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: [
-      "plus.unsplash.com",
-      "images.unsplash.com",
-      "files.wiseapp.live",
-      "cdn.wiseapp.live",
-      "shikshanation.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "files.wiseapp.live",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.wiseapp.live",
+      },
+      {
+        protocol: "https",
+        hostname: "shikshanation.com",
+      },
     ]
   }
 };
