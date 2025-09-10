@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import FaqItem from "./FaqItem";
 
 type Faq = {
@@ -13,12 +13,41 @@ type Props = {
 };
 
 const FaqsList: React.FC<Props> = ({ items, title }) => {
+  const [openStates, setOpenStates] = useState<boolean[]>(
+    new Array(items.length).fill(false)
+  );
+
+  const toggleFaq = (index: number) => {
+    setOpenStates(prev =>
+      prev.map((isOpen, i) => i === index ? !isOpen : isOpen)
+    );
+  };
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {items.map((it, idx) => (
-          <FaqItem key={idx} q={it.q} a={it.a} />
-        ))}
+    <div className="w-full py-16 px-4">
+      <div className="max-w-7xl mx-auto md:px-10">
+        {title && (
+          <>
+            <h2 className="text-center text-4xl md:text-4xl font-bold text-gray-900 mb-4">
+              {title}
+            </h2>
+            <p className="text-center text-gray-600 text-lg mb-10">
+              Here are some of the most common questions we receive.
+            </p>
+          </>
+        )}
+        <div className="columns-1 md:columns-2 gap-6 space-y-6">
+          {items.map((item, idx) => (
+            <div key={idx} className="break-inside-avoid mb-6">
+              <FaqItem
+                q={item.q}
+                a={item.a}
+                isOpen={openStates[idx]}
+                onToggle={() => toggleFaq(idx)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
