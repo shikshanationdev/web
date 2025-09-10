@@ -31,7 +31,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
         <meta name="google-site-verification" content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g" />
         {/* Google Tag Manager */}
         <Script
@@ -45,7 +44,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-T75L3CTC');`
           }}
         />
-      </Head>
       <body className={`${lexendDeca.className}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
