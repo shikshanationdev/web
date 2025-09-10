@@ -1,6 +1,7 @@
 import { Navbar } from "@/components";
 import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
+import Script from "next/script";
 
 import { Footer, FloatingContactWidget, TawkToWidget } from "@/components";
 import { LearningStatsSection } from "@/components/HomePageSections";
@@ -30,6 +31,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lexendDeca.className}`}>
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T75L3CTC');`
+          }}
+        />
+
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T75L3CTC"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <Navbar />
         <Toaster position="bottom-center" />
         {children}

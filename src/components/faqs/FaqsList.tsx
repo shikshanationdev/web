@@ -14,12 +14,7 @@ type Props = {
 
 const FaqsList: React.FC<Props> = ({ items, title }) => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {title && (
-        <h3 className="text-3xl md:text-4xl font-extrabold text-center text-blue-600 mb-10">
-          {title}
-        </h3>
-      )}
+    <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {items.map((it, idx) => (
           <FaqItem key={idx} q={it.q} a={it.a} />

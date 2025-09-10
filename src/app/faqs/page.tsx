@@ -9,7 +9,7 @@ const Page = () => {
       <Banner heading="Frequently Asked Questions" />
 
       <section className="bg-white py-12">
-        <FaqsList items={faqs} title={"Got Questions? We\'ve Got Answers!"} />
+        <FaqsList items={faqs} />
       </section>
     </main>
   );
