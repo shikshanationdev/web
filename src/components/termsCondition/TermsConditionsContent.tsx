@@ -97,7 +97,7 @@ const TermsConditionsContent: React.FC = () => {
             9. Changes to Terms
           </h2>
           <p className="text-gray-700">
-            We may update these Terms & Conditions from time to time. Updated versions will be posted on this page with a revised "Last Updated" date.
+            We may update these Terms & Conditions from time to time. Updated versions will be posted on this page with a revised &quot;Last Updated&quot; date.
           </p>
         </section>
 

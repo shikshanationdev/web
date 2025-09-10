@@ -9,7 +9,7 @@ const RefundPolicyContent: React.FC = () => {
           <strong>Effective Date:</strong> 10 July 2025
         </p>
         <p className="mb-8 text-gray-700">
-          Shiksha Nation ("we", "our", or "us") strives to provide the best experience for our users. This Refund Policy outlines the conditions under which you may request a refund for any purchase made through the Shiksha Nation mobile application ("App").
+          Shiksha Nation (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) strives to provide the best experience for our users. This Refund Policy outlines the conditions under which you may request a refund for any purchase made through the Shiksha Nation mobile application (&quot;App&quot;).
         </p>
 
         <section id="eligibility" className="mb-8">

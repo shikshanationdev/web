@@ -78,7 +78,7 @@ const PrivacyPolicyContent: React.FC = () => {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            6. Children's Privacy
+            6. Children&apos;s Privacy
           </h2>
           <p className="text-gray-700">
             Our platform is designed for students, but if you are under 18 years, you must use the platform under the guidance of a parent or guardian.
@@ -104,7 +104,7 @@ const PrivacyPolicyContent: React.FC = () => {
             8. Changes to This Privacy Policy
           </h2>
           <p className="text-gray-700">
-            We may update this Privacy Policy occasionally. Updates will be posted on this page with a revised "Last Updated" date.
+            We may update this Privacy Policy occasionally. Updates will be posted on this page with a revised &quot;Last Updated&quot; date.
           </p>
         </section>
 
