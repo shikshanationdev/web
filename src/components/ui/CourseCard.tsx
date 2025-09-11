@@ -17,6 +17,7 @@ interface CourseCardProps {
   duration?: string;
   category?: string;
   isPopular?: boolean;
+  status?: 'sold' | 'active' | 'upcoming';
   variant?: 'default' | 'detailed'; // To switch between home page and catalog page versions
 }
 
@@ -34,6 +35,7 @@ const CourseCard = ({
   duration,
   category,
   isPopular = false,
+  status = 'active',
   variant = 'default'
 }: CourseCardProps) => {
   const handleEnrollClick = () => {
@@ -58,6 +60,30 @@ const CourseCard = ({
     ));
   };
 
+  const getButtonText = () => {
+    switch (status) {
+      case 'sold':
+        return 'Sold Out';
+      case 'upcoming':
+        return 'Coming Soon';
+      default:
+        return 'Enroll Now';
+    }
+  };
+
+  const getBadgeText = () => {
+    switch (status) {
+      case 'sold':
+        return 'SOLD OUT';
+      case 'upcoming':
+        return 'COMING SOON';
+      default:
+        return null;
+    }
+  };
+
+  const isDisabled = !enrollLink || enrollLink === "#" || status === 'sold' || status === 'upcoming';
+
   // Default variant (for home page)
   if (variant === 'default') {
     return (
@@ -69,6 +95,14 @@ const CourseCard = ({
             fill
             className="object-cover"
           />
+          {/* Status Badge */}
+          {getBadgeText() && (
+            <div className={`absolute top-3 right-3 text-white text-xs px-2 py-1 rounded-full font-medium z-10 ${status === 'sold' ? 'bg-red-500' :
+                status === 'upcoming' ? 'bg-blue-500' : 'bg-gray-500'
+              }`}>
+              {getBadgeText()}
+            </div>
+          )}
         </div>
         <div className="p-5 flex-1 flex flex-col">
           <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">{title}</h3>
@@ -84,14 +118,14 @@ const CourseCard = ({
           )}
           <button
             onClick={handleEnrollClick}
-            disabled={!enrollLink || enrollLink === "#"}
-            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto ${enrollLink && enrollLink !== "#"
-              ? "bg-sky-700 text-white hover:bg-sky-800 cursor-pointer"
-              : "bg-gray-400 text-white cursor-not-allowed"
+            disabled={isDisabled}
+            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto ${isDisabled
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : "bg-sky-700 text-white hover:bg-sky-800 cursor-pointer"
               }`}
           >
-            Enroll Now
-            <span className="text-lg">→</span>
+            {getButtonText()}
+            {status === 'active' && <span className="text-lg">→</span>}
           </button>
         </div>
       </div>
@@ -112,6 +146,14 @@ const CourseCard = ({
         {isPopular && (
           <div className="absolute top-3 left-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
             POPULAR
+          </div>
+        )}
+        {/* Status Badge */}
+        {getBadgeText() && (
+          <div className={`absolute top-3 right-3 text-white text-xs px-2 py-1 rounded-full font-medium z-10 ${status === 'sold' ? 'bg-red-500' :
+              status === 'upcoming' ? 'bg-blue-500' : 'bg-gray-500'
+            }`}>
+            {getBadgeText()}
           </div>
         )}
       </div>
@@ -172,13 +214,13 @@ const CourseCard = ({
           )}
           <button
             onClick={handleEnrollClick}
-            disabled={!enrollLink || enrollLink === "#"}
-            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${price === 0 ? 'ml-auto' : ''} ${enrollLink && enrollLink !== "#"
-              ? "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
-              : "bg-gray-400 text-white cursor-not-allowed"
+            disabled={isDisabled}
+            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${price === 0 ? 'ml-auto' : ''} ${isDisabled
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
               }`}
           >
-            Enroll Now
+            {getButtonText()}
           </button>
         </div>
       </div>
