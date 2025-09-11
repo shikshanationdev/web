@@ -49,10 +49,10 @@ const CoursesSection = () => {
       });
 
       return selectedCourses;
-    } else if (selectedCategory === "jee") {
-      return coursesData.filter((course) => course.category === "JEE");
     } else if (selectedCategory === "neet") {
       return coursesData.filter((course) => course.category === "NEET");
+    } else if (selectedCategory === "jee") {
+      return coursesData.filter((course) => course.category === "JEE");
     } else if (selectedCategory === "cuet") {
       return coursesData.filter((course) => course.category === "CUET");
     } else if (selectedCategory === "skilling") {
@@ -82,6 +82,24 @@ const CoursesSection = () => {
   };
 
   const visibleCourses = getVisibleCourses();
+
+  // Sort courses to ensure NEET appears before JEE
+  const sortCoursesByPriority = (courses: any[]) => {
+    return [...courses].sort((a, b) => {
+      // Priority order: Class courses, NEET, JEE, CUET, Skill Development
+      const getPriority = (course: any) => {
+        if (course.category.includes("Class")) return 1;
+        if (course.category === "NEET") return 2;
+        if (course.category === "JEE") return 3;
+        if (course.category === "CUET") return 4;
+        if (course.category === "Skill Development") return 5;
+        return 6;
+      };
+      return getPriority(a) - getPriority(b);
+    });
+  };
+
+  const sortedVisibleCourses = sortCoursesByPriority(visibleCourses);
 
   // Scroller speed varies by selected category: make JEE/NEET/CUET faster
   const scrollerSpeed = ["jee", "neet", "skilling"].includes(selectedCategory)
@@ -122,7 +140,7 @@ const CoursesSection = () => {
     });
 
     console.log('Animation setup complete. Total items now:', scrollerInner.children.length);
-  }, [visibleCourses]);
+  }, [sortedVisibleCourses]);
 
   // Get total count for "See More" card display
   const getTotalCourseCount = () => {
@@ -394,7 +412,7 @@ const CoursesSection = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div className={`scroller__inner py-4 flex gap-6 ${isPaused ? 'paused' : ''}`}>
-              {visibleCourses.map((course, idx) => (
+              {sortedVisibleCourses.map((course, idx) => (
                 <div
                   key={`${course.id}-${idx}`}
                   className="w-80 flex-shrink-0"

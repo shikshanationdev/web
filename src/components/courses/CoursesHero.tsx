@@ -29,6 +29,19 @@ const CoursesHero = () => {
     }
   ];
 
+  // Sort courses to ensure NEET appears before JEE
+  const sortedCourses = [...courses].sort((a, b) => {
+    // Priority order: Class courses, NEET, JEE, Skill Development
+    const getPriority = (course: any) => {
+      if (course.title.includes("Class")) return 1;
+      if (course.title === "NEET") return 2;
+      if (course.title === "JEE") return 3;
+      if (course.title === "Skill Development") return 4;
+      return 5;
+    };
+    return getPriority(a) - getPriority(b);
+  });
+
   return (
     <section className="bg-gradient-to-r from-[#0169B6] to-[#68BA4C] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -55,7 +68,7 @@ const CoursesHero = () => {
           {/* Right Content - Course Cards Grid */}
           <div className="lg:w-1/2 w-full max-w-2xl mx-auto lg:mx-0">
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {courses.map((course) => (
+              {sortedCourses.map((course) => (
                 <div
                   key={course.id}
                   className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"

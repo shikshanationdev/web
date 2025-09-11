@@ -121,6 +121,24 @@ const CoursesCatalog = () => {
   const endIndex = startIndex + coursesPerPage;
   const currentCourses = filteredCourses.slice(startIndex, endIndex);
 
+  // Sort courses to ensure NEET appears before JEE
+  const sortCoursesByPriority = (courses: any[]) => {
+    return [...courses].sort((a, b) => {
+      // Priority order: Class courses, NEET, JEE, CUET, Skill Development
+      const getPriority = (course: any) => {
+        if (course.category.includes("Class")) return 1;
+        if (course.category === "NEET") return 2;
+        if (course.category === "JEE") return 3;
+        if (course.category === "CUET") return 4;
+        if (course.category === "Skill Development") return 5;
+        return 6;
+      };
+      return getPriority(a) - getPriority(b);
+    });
+  };
+
+  const sortedCurrentCourses = sortCoursesByPriority(currentCourses);
+
   // Pagination helper functions
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -382,8 +400,8 @@ const CoursesCatalog = () => {
 
             {/* Course Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
-              {currentCourses.length > 0 ? (
-                currentCourses.map((course) => (
+              {sortedCurrentCourses.length > 0 ? (
+                sortedCurrentCourses.map((course) => (
                   <CourseCard
                     key={course.id}
                     title={course.title}
