@@ -83,6 +83,11 @@ const CoursesSection = () => {
 
   const visibleCourses = getVisibleCourses();
 
+  // Scroller speed varies by selected category: make JEE/NEET/CUET faster
+  const scrollerSpeed = ["jee", "neet", "skilling"].includes(selectedCategory)
+    ? "fast"
+    : "slow";
+
   // Duplicate courses in useEffect for infinite scrolling (like MediaMarquee)
   useEffect(() => {
     const scroller = coursesScrollRef.current;
@@ -383,7 +388,7 @@ const CoursesSection = () => {
           <div
             ref={coursesScrollRef}
             className="scroller w-full"
-            data-speed="slow"
+            data-speed={scrollerSpeed}
             data-direction="left"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
