@@ -140,7 +140,7 @@ const CareersForm: React.FC = () => {
             Submit Your Application to Join Our Talent Pool
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Ready to make a difference in education? We'd love to hear from you!
+            Ready to make a difference in education? We&apos;d love to hear from you!
             Submit your application and become part of our mission to democratize quality education.
           </p>
         </div>
@@ -153,7 +153,7 @@ const CareersForm: React.FC = () => {
                 Submit Your Application to Join Our Talent Pool
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Ready to make a difference in education? We'd love to hear from you!
+                Ready to make a difference in education? We&apos;d love to hear from you!
                 Submit your application and become part of our mission to democratize quality education.
               </p>
             </div>
