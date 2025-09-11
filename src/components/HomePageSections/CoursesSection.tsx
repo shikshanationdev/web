@@ -396,7 +396,7 @@ const CoursesSection = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <CourseCard {...course} isSoldOut={course.isSoldOut} />
+                  <CourseCard {...course} status={course.status} />
                 </div>
               ))}
             </div>
