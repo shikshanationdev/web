@@ -17,15 +17,10 @@ const categoryOptions = [
 const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
-  const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
   const coursesScrollRef = useRef<HTMLDivElement>(null);
-  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
   // Get filtered courses based on selected category
@@ -71,7 +66,51 @@ const CoursesSection = () => {
   const filteredCourses = getFilteredCourses();
 
   // Show more courses for horizontal scrolling to accommodate the new selection
-  const visibleCourses = filteredCourses.slice(0, 10);
+  // Show appropriate number of courses for animation based on category
+  const getVisibleCourses = () => {
+    if (selectedCategory === "all") {
+      return filteredCourses; // Show all filtered courses for "all" category
+    } else {
+      // For other categories, show more courses if available to enable smooth animation
+      const courseCount = filteredCourses.length;
+      if (courseCount <= 6) {
+        return filteredCourses; // Show all if 6 or fewer
+      } else {
+        return filteredCourses.slice(0, Math.min(12, courseCount)); // Show up to 12 courses for animation
+      }
+    }
+  };
+
+  const visibleCourses = getVisibleCourses();
+
+  // Duplicate courses in useEffect for infinite scrolling (like MediaMarquee)
+  useEffect(() => {
+    const scroller = coursesScrollRef.current;
+    if (!scroller) return;
+
+    // Check if user hasn't opted for reduced motion
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Add data-animated="true" to enable the animation
+      scroller.setAttribute("data-animated", "true");
+
+      // Make an array from the elements within scroller inner
+      const scrollerInner = scroller.querySelector(".scroller__inner");
+      if (!scrollerInner) return;
+
+      // Clear existing duplicated content
+      const existingDuplicates = scrollerInner.querySelectorAll('[aria-hidden="true"]');
+      existingDuplicates.forEach(item => item.remove());
+
+      const scrollerContent = Array.from(scrollerInner.children);
+
+      // For each item in the array, clone it and add aria-hidden
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true) as HTMLElement;
+        duplicatedItem.setAttribute("aria-hidden", "true");
+        scrollerInner.appendChild(duplicatedItem);
+      });
+    }
+  }, [visibleCourses]);
 
   // Get total count for "See More" card display
   const getTotalCourseCount = () => {
@@ -126,70 +165,6 @@ const CoursesSection = () => {
     setSelectedCategory(categoryValue);
   };
 
-  // Handle course scroll navigation
-  const scrollCourses = (direction: "left" | "right") => {
-    const container = coursesScrollRef.current;
-    if (!container) return;
-
-    // Temporarily pause auto-scroll when user manually scrolls
-    if (isAutoScrolling) {
-      setIsPaused(true);
-      setTimeout(() => setIsPaused(false), 5000); // Resume after 5 seconds
-    }
-
-    const cardWidth = 320; // Width of course card (320px as defined in w-80)
-    const gap = 24; // Gap between cards (gap-6 = 24px)
-    const scrollAmount = cardWidth + gap; // Total space per card including gap
-    const currentScroll = container.scrollLeft;
-
-    const newScroll =
-      direction === "left"
-        ? Math.max(0, currentScroll - scrollAmount)
-        : currentScroll + scrollAmount;
-
-    container.scrollTo({
-      left: newScroll,
-      behavior: "smooth",
-    });
-
-    // Update current scroll index for auto-scroll reference
-    const newIndex = Math.round(newScroll / scrollAmount);
-    setCurrentScrollIndex(newIndex);
-  };
-
-  // Update scroll button states
-  const updateScrollButtons = () => {
-    const container = coursesScrollRef.current;
-    if (!container) return;
-
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
-  };
-
-  // Check scroll buttons on component mount and when courses change
-  useEffect(() => {
-    const container = coursesScrollRef.current;
-    if (!container) return;
-
-    updateScrollButtons();
-    container.addEventListener("scroll", updateScrollButtons);
-
-    return () => container.removeEventListener("scroll", updateScrollButtons);
-  }, [visibleCourses]);
-
-  // Update scroll buttons on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      updateScrollButtons();
-    };
-
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
-
   // Update indicator position and width when category changes
   useEffect(() => {
     const updateIndicator = () => {
@@ -238,70 +213,13 @@ const CoursesSection = () => {
     }
   }, [selectedCategory]);
 
-  // Auto-scroll functionality
-  useEffect(() => {
-    const container = coursesScrollRef.current;
-    if (!container) return;
-
-    // Clear any existing interval
-    if (autoScrollIntervalRef.current) {
-      clearInterval(autoScrollIntervalRef.current);
-      autoScrollIntervalRef.current = null;
-    }
-
-    // Only auto-scroll if we have more than 4 courses (including the "See More" card)
-    const totalCards = visibleCourses.length + 1; // +1 for "See More" card
-    if (totalCards <= 4) {
-      setIsAutoScrolling(false);
-      setCurrentScrollIndex(0);
-      return;
-    }
-
-    setIsAutoScrolling(true);
-
-    // Start auto-scrolling
-    autoScrollIntervalRef.current = setInterval(() => {
-      if (isPaused) return;
-
-      const cardWidth = 320; // Width of course card (w-80 = 320px)
-      const gap = 24; // Gap between cards (gap-6 = 24px)
-      const scrollAmount = cardWidth + gap;
-      const maxScrollIndex = Math.max(0, totalCards - 4); // How many positions we can scroll
-
-      setCurrentScrollIndex((prevIndex) => {
-        const nextIndex = prevIndex >= maxScrollIndex ? 0 : prevIndex + 1;
-
-        // Scroll to the new position
-        const newScrollLeft = nextIndex * scrollAmount;
-        container.scrollTo({
-          left: newScrollLeft,
-          behavior: "smooth",
-        });
-
-        return nextIndex;
-      });
-    }, 3000); // Move every 3 seconds
-
-    // Cleanup interval on unmount or when dependencies change
-    return () => {
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-        autoScrollIntervalRef.current = null;
-      }
-    };
-  }, [visibleCourses.length, isPaused]);
-
-  // Pause/resume auto-scroll handlers
+  // Pause/resume handlers for animation
   const handleMouseEnter = () => {
-    if (isAutoScrolling) {
-      setIsPaused(true);
-    }
+    setIsPaused(true);
   };
 
   const handleMouseLeave = () => {
-    if (isAutoScrolling) {
-      setIsPaused(false);
-    }
+    setIsPaused(false);
   };
 
   return (
@@ -331,8 +249,8 @@ const CoursesSection = () => {
                   tabRefs.current[cat.value] = el;
                 }}
                 className={`pb-3 text-base sm:text-xl md:text-2xl transition-colors duration-300 whitespace-nowrap min-w-max relative z-20 cursor-pointer select-none ${selectedCategory === cat.value
-                    ? "text-green-600 font-semibold"
-                    : "text-gray-500 hover:text-gray-700 font-medium"
+                  ? "text-green-600 font-semibold"
+                  : "text-gray-500 hover:text-gray-700 font-medium"
                   }`}
                 style={{ touchAction: "manipulation" }}
                 onClick={(e) => handleCategoryClick(cat.value, e)}
@@ -367,13 +285,6 @@ const CoursesSection = () => {
             -ms-overflow-style: none;
             scrollbar-width: none;
           }
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-          .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
 
           /* Ensure proper touch handling on mobile */
           button {
@@ -391,80 +302,96 @@ const CoursesSection = () => {
           .relative {
             touch-action: auto;
           }
+
+          /* Infinite scrolling animation styles */
+          .scroller[data-animated="true"] {
+            overflow: hidden;
+            -webkit-mask: linear-gradient(
+              90deg,
+              transparent,
+              white 5%,
+              white 95%,
+              transparent
+            );
+            mask: linear-gradient(
+              90deg,
+              transparent,
+              white 5%,
+              white 95%,
+              transparent
+            );
+          }
+
+          .scroller[data-animated="true"] .scroller__inner {
+            width: max-content;
+            flex-wrap: nowrap;
+            animation: scroll var(--_animation-duration, 40s)
+              var(--_animation-direction, forwards) linear infinite;
+          }
+
+          .scroller[data-direction="right"] {
+            --_animation-direction: reverse;
+          }
+
+          .scroller[data-direction="left"] {
+            --_animation-direction: forwards;
+          }
+
+          .scroller[data-speed="fast"] {
+            --_animation-duration: 20s;
+          }
+
+          .scroller[data-speed="slow"] {
+            --_animation-duration: 60s;
+          }
+
+          .scroller__inner.paused {
+            animation-play-state: paused;
+          }
+
+          @keyframes scroll {
+            to {
+              transform: translate(calc(-50% - 1.5rem));
+            }
+          }
+
+          .scroller__inner {
+            flex-wrap: wrap;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .scroller__inner {
+              flex-wrap: wrap;
+            }
+            .scroller[data-animated="true"] .scroller__inner {
+              animation: none;
+            }
+          }
         `}</style>
-        {/* Courses Horizontal Scroll with Navigation */}
+        {/* Courses Infinite Scroll Container */}
         <div className="relative">
-          {/* Left Arrow - Positioned further out to avoid card content */}
-          <button
-            onClick={() => scrollCourses("left")}
-            disabled={!canScrollLeft}
-            className={`absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollLeft
-                ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300"
-              }`}
-            aria-label="Scroll courses left"
-          >
-            <FiChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
-          {/* Right Arrow - Positioned further out to avoid card content */}
-          <button
-            onClick={() => scrollCourses("right")}
-            disabled={!canScrollRight}
-            className={`absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollRight
-                ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300"
-              }`}
-            aria-label="Scroll courses right"
-          >
-            <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-
           {/* Courses Container */}
           <div
             ref={coursesScrollRef}
-            className="overflow-x-auto pb-6 scrollbar-hide"
-            style={{ scrollbarWidth: "none" }}
+            className="scroller w-full"
+            data-speed="slow"
+            data-direction="left"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="flex gap-6 w-max">
-              {/* Course Cards */}
-              {visibleCourses.map((course) => (
-                <div key={course.id} className="w-80 flex-shrink-0">
+            <div className={`scroller__inner py-4 flex gap-6 ${isPaused ? 'paused' : ''}`}>
+              {visibleCourses.map((course, idx) => (
+                <div
+                  key={`${course.id}-${idx}`}
+                  className="w-80 flex-shrink-0"
+                >
                   <CourseCard {...course} isSoldOut={course.isSoldOut} />
                 </div>
               ))}
-
-              {/* See More Courses Card */}
-              <div
-                className="w-80 flex-shrink-0 cursor-pointer"
-                onClick={handleSeeMoreClick}
-              >
-                <div className="bg-white rounded-xl shadow-md overflow-hidden w-full h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-2 border-dashed border-gray-300 hover:border-sky-500">
-                  <div className="flex-1 flex flex-col items-center justify-center p-8">
-                    <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-4">
-                      <FiArrowRight className="w-8 h-8 text-sky-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
-                      See More Courses
-                    </h3>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Explore All Courses Button (keep as fallback) */}
-        <div className="text-center">
-          <button
-            onClick={handleSeeMoreClick}
-            className="inline-flex items-center px-8 py-3 border-2 border-sky-700 rounded-full text-sky-700 font-semibold hover:bg-sky-800 hover:border-sky-800 hover:text-white transition-all duration-200"
-          >
-            Explore all courses
-          </button>
-        </div>
       </div>
     </section>
   );
