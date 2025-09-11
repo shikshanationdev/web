@@ -17,6 +17,7 @@ interface CourseCardProps {
   duration?: string;
   category?: string;
   isPopular?: boolean;
+  isSoldOut?: boolean;
   variant?: 'default' | 'detailed'; // To switch between home page and catalog page versions
 }
 
@@ -34,6 +35,7 @@ const CourseCard = ({
   duration,
   category,
   isPopular = false,
+  isSoldOut = false,
   variant = 'default'
 }: CourseCardProps) => {
   const handleEnrollClick = () => {
@@ -69,6 +71,12 @@ const CourseCard = ({
             fill
             className="object-cover"
           />
+          {/* Sold Out Badge */}
+          {isSoldOut && (
+            <div className="absolute top-3 right-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium z-10">
+              SOLD OUT
+            </div>
+          )}
         </div>
         <div className="p-5 flex-1 flex flex-col">
           <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">{title}</h3>
@@ -84,14 +92,16 @@ const CourseCard = ({
           )}
           <button
             onClick={handleEnrollClick}
-            disabled={!enrollLink || enrollLink === "#"}
-            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto ${enrollLink && enrollLink !== "#"
-              ? "bg-sky-700 text-white hover:bg-sky-800 cursor-pointer"
-              : "bg-gray-400 text-white cursor-not-allowed"
+            disabled={!enrollLink || enrollLink === "#" || isSoldOut}
+            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto ${isSoldOut
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : enrollLink && enrollLink !== "#"
+                  ? "bg-sky-700 text-white hover:bg-sky-800 cursor-pointer"
+                  : "bg-gray-400 text-white cursor-not-allowed"
               }`}
           >
-            Enroll Now
-            <span className="text-lg">→</span>
+            {isSoldOut ? "Sold Out" : "Enroll Now"}
+            {!isSoldOut && <span className="text-lg">→</span>}
           </button>
         </div>
       </div>
@@ -112,6 +122,12 @@ const CourseCard = ({
         {isPopular && (
           <div className="absolute top-3 left-3 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
             POPULAR
+          </div>
+        )}
+        {/* Sold Out Badge */}
+        {isSoldOut && (
+          <div className="absolute top-3 right-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium z-10">
+            SOLD OUT
           </div>
         )}
       </div>
@@ -172,13 +188,15 @@ const CourseCard = ({
           )}
           <button
             onClick={handleEnrollClick}
-            disabled={!enrollLink || enrollLink === "#"}
-            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${price === 0 ? 'ml-auto' : ''} ${enrollLink && enrollLink !== "#"
-              ? "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
-              : "bg-gray-400 text-white cursor-not-allowed"
+            disabled={!enrollLink || enrollLink === "#" || isSoldOut}
+            className={`text-sm px-4 py-2 rounded-md transition-colors duration-200 ${price === 0 ? 'ml-auto' : ''} ${isSoldOut
+                ? "bg-gray-400 text-white cursor-not-allowed"
+                : enrollLink && enrollLink !== "#"
+                  ? "bg-blue-600 text-white hover:bg-blue-700 cursor-pointer"
+                  : "bg-gray-400 text-white cursor-not-allowed"
               }`}
           >
-            Enroll Now
+            {isSoldOut ? "Sold Out" : "Enroll Now"}
           </button>
         </div>
       </div>

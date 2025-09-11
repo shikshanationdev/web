@@ -399,6 +399,7 @@ const CoursesCatalog = () => {
                     duration={course.duration}
                     category={course.category}
                     isPopular={course.isPopular}
+                    isSoldOut={course.isSoldOut}
                     variant="default"
                   />
                 ))

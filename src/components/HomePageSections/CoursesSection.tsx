@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
-import { coursesData, getPopularCourses } from "@/data/courses";
+import { coursesData, getPopularCourses, getHomepageTopCourses } from "@/data/courses";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const categoryOptions = [
@@ -31,9 +31,29 @@ const CoursesSection = () => {
   // Get filtered courses based on selected category
   const getFilteredCourses = () => {
     if (selectedCategory === "all") {
-      return getPopularCourses(); // Show popular courses for "All Categories"
+      return getHomepageTopCourses(); // Show specific curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
-      return coursesData.filter((course) => course.category.includes("Class"));
+      // Show only core subjects and PDF notes for each class (2 courses per class)
+      const classCategories = ["Class 6th", "Class 7th", "Class 8th", "Class 9th", "Class 10th"];
+      const selectedCourses: any[] = [];
+
+      classCategories.forEach(classCategory => {
+        const classCourses = coursesData.filter(course => course.category === classCategory);
+
+        // Get core subjects course
+        const coreSubjectsCourse = classCourses.find(course =>
+          course.subCategory === "Live Classes" || course.title.includes("Core Subjects")
+        );
+        if (coreSubjectsCourse) selectedCourses.push(coreSubjectsCourse);
+
+        // Get PDF notes course
+        const pdfCourse = classCourses.find(course =>
+          course.subCategory === "Study Material" || course.title.includes("PDF Notes")
+        );
+        if (pdfCourse) selectedCourses.push(pdfCourse);
+      });
+
+      return selectedCourses;
     } else if (selectedCategory === "jee") {
       return coursesData.filter((course) => course.category === "JEE");
     } else if (selectedCategory === "neet") {
@@ -50,16 +70,16 @@ const CoursesSection = () => {
 
   const filteredCourses = getFilteredCourses();
 
-  // Show only first 6 courses for horizontal scrolling
-  const visibleCourses = filteredCourses.slice(0, 6);
+  // Show more courses for horizontal scrolling to accommodate the new selection
+  const visibleCourses = filteredCourses.slice(0, 10);
 
   // Get total count for "See More" card display
   const getTotalCourseCount = () => {
     if (selectedCategory === "all") {
-      return coursesData.length; // Show total courses count for "All Categories"
+      return getHomepageTopCourses().length; // Show count of curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
-      return coursesData.filter((course) => course.category.includes("Class"))
-        .length;
+      // Return count of 2 courses per class (core subjects + PDF notes) = 10 total
+      return 10;
     } else if (selectedCategory === "jee") {
       return coursesData.filter((course) => course.category === "JEE").length;
     } else if (selectedCategory === "neet") {
@@ -310,11 +330,10 @@ const CoursesSection = () => {
                 ref={(el) => {
                   tabRefs.current[cat.value] = el;
                 }}
-                className={`pb-3 text-base sm:text-xl md:text-2xl transition-colors duration-300 whitespace-nowrap min-w-max relative z-20 cursor-pointer select-none ${
-                  selectedCategory === cat.value
+                className={`pb-3 text-base sm:text-xl md:text-2xl transition-colors duration-300 whitespace-nowrap min-w-max relative z-20 cursor-pointer select-none ${selectedCategory === cat.value
                     ? "text-green-600 font-semibold"
                     : "text-gray-500 hover:text-gray-700 font-medium"
-                }`}
+                  }`}
                 style={{ touchAction: "manipulation" }}
                 onClick={(e) => handleCategoryClick(cat.value, e)}
                 onTouchEnd={(e) => handleCategoryClick(cat.value, e)}
@@ -379,11 +398,10 @@ const CoursesSection = () => {
           <button
             onClick={() => scrollCourses("left")}
             disabled={!canScrollLeft}
-            className={`absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${
-              canScrollLeft
+            className={`absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollLeft
                 ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200"
                 : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300"
-            }`}
+              }`}
             aria-label="Scroll courses left"
           >
             <FiChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -393,11 +411,10 @@ const CoursesSection = () => {
           <button
             onClick={() => scrollCourses("right")}
             disabled={!canScrollRight}
-            className={`absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${
-              canScrollRight
+            className={`absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center ${canScrollRight
                 ? "bg-white hover:bg-gray-50 text-gray-700 hover:text-gray-900 cursor-pointer border border-gray-200"
                 : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-300"
-            }`}
+              }`}
             aria-label="Scroll courses right"
           >
             <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -415,7 +432,7 @@ const CoursesSection = () => {
               {/* Course Cards */}
               {visibleCourses.map((course) => (
                 <div key={course.id} className="w-80 flex-shrink-0">
-                  <CourseCard {...course} />
+                  <CourseCard {...course} isSoldOut={course.isSoldOut} />
                 </div>
               ))}
 

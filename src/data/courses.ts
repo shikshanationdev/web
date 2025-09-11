@@ -17,6 +17,7 @@ export interface Course {
   demoLink: string; // To be filled manually
   description: string;
   features: string[];
+  isSoldOut?: boolean; // New field to mark courses as sold out
 }
 
 export const coursesData: Course[] = [
@@ -39,7 +40,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/6th-live-classes-core-subjects-688245d2363ae235afead0cc",
     demoLink: "#",
     description: "Live classes for 6th grade covering Science, Maths, English and Social Science",
-    features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"]
+    features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"],
+    isSoldOut: true
   },
   {
     id: 2,
@@ -59,7 +61,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/6th-live-classes-science-688245aa5440376738521ac9",
     demoLink: "#",
     description: "Dedicated Science live classes for Class 6th students",
-    features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"]
+    features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"],
+    isSoldOut: true
   },
   {
     id: 3,
@@ -79,7 +82,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/6th-live-classes-maths-688245bb2a84aec5d53c977a",
     demoLink: "#",
     description: "Live Mathematics classes for Class 6th with problem-solving focus",
-    features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"]
+    features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"],
+    isSoldOut: true
   },
   {
     id: 4,
@@ -99,7 +103,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/6th-pdf-notes-688620920d763977a73f71f8",
     demoLink: "#",
     description: "Comprehensive PDF study notes for Class 6th all subjects",
-    features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"]
+    features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"],
+    isSoldOut: true
   },
   {
     id: 5,
@@ -119,7 +124,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/6th-mind-maps-6886204d9ec565a1a4434f82",
     demoLink: "#",
     description: "Visual mind maps for better understanding and quick revision",
-    features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"]
+    features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"],
+    isSoldOut: true
   },
   // Class 7th Courses
   {
@@ -140,7 +146,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/7th-live-classes-core-subjects-6882457703f0f6fdf0bf502e",
     demoLink: "#",
     description: "Live classes for 7th grade covering Science, Maths, English and Social Science",
-    features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"]
+    features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"],
+    isSoldOut: true
   },
   {
     id: 7,
@@ -160,7 +167,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/7th-live-classes-science-6882454f03f0f6fdf0bf4849",
     demoLink: "#",
     description: "Dedicated Science live classes for Class 7th students",
-    features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"]
+    features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"],
+    isSoldOut: true
   },
   {
     id: 8,
@@ -180,7 +188,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/7th-live-classes-maths-688245679066fa83dd62a6a7",
     demoLink: "#",
     description: "Live Mathematics classes for Class 7th with problem-solving focus",
-    features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"]
+    features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"],
+    isSoldOut: true
   },
   {
     id: 9,
@@ -200,7 +209,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/7th-pdf-notes-688652406c53469d2b137c4b",
     demoLink: "#",
     description: "Comprehensive PDF study notes for Class 7th all subjects",
-    features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"]
+    features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"],
+    isSoldOut: true
   },
   {
     id: 10,
@@ -220,7 +230,8 @@ export const coursesData: Course[] = [
     enrollLink: "https://courses.shikshanation.com/courses/7th-mind-maps-6886524f4183a9ef3ff44ba1",
     demoLink: "#",
     description: "Visual mind maps for better understanding and quick revision",
-    features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"]
+    features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"],
+    isSoldOut: true
   },
 
   // Class 8th Courses
@@ -998,6 +1009,58 @@ export const getCoursesBySubCategory = (subCategory: string): Course[] => {
 
 export const getPopularCourses = (): Course[] => {
   return coursesData.filter(course => course.isPopular);
+};
+
+// Get specific courses for "All Categories" display in home page
+export const getHomepageTopCourses = (): Course[] => {
+  const selectedCourses: Course[] = [];
+  
+  // Class 8th: Core Subjects + PDF Notes
+  const class8thCourses = coursesData.filter(course => 
+    course.category === "Class 8th" && 
+    (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
+  );
+  selectedCourses.push(...class8thCourses.slice(0, 2));
+  
+  // Class 9th: Core Subjects + PDF Notes
+  const class9thCourses = coursesData.filter(course => 
+    course.category === "Class 9th" && 
+    (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
+  );
+  selectedCourses.push(...class9thCourses.slice(0, 2));
+  
+  // Class 10th: Core Subjects + PDF Notes
+  const class10thCourses = coursesData.filter(course => 
+    course.category === "Class 10th" && 
+    (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
+  );
+  selectedCourses.push(...class10thCourses.slice(0, 2));
+  
+  // JEE: Live Classes only
+  const jeeLiveCourse = coursesData.find(course => 
+    course.category === "JEE" && course.subCategory === "Live Classes"
+  );
+  if (jeeLiveCourse) selectedCourses.push(jeeLiveCourse);
+  
+  // NEET: Live Classes only
+  const neetLiveCourse = coursesData.find(course => 
+    course.category === "NEET" && course.subCategory === "Live Classes"
+  );
+  if (neetLiveCourse) selectedCourses.push(neetLiveCourse);
+  
+  // CUET: General Aptitude
+  const cuetGeneralAptitude = coursesData.find(course => 
+    course.category === "CUET" && course.subCategory === "General Aptitude"
+  );
+  if (cuetGeneralAptitude) selectedCourses.push(cuetGeneralAptitude);
+  
+  // Skill Development: Digital Marketing
+  const digitalMarketingCourse = coursesData.find(course => 
+    course.category === "Skill Development" && course.title === "Digital Marketing"
+  );
+  if (digitalMarketingCourse) selectedCourses.push(digitalMarketingCourse);
+  
+  return selectedCourses;
 };
 
 export const getCourseById = (id: number): Course | undefined => {
