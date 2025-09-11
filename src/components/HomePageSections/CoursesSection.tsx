@@ -88,28 +88,35 @@ const CoursesSection = () => {
     const scroller = coursesScrollRef.current;
     if (!scroller) return;
 
-    // Check if user hasn't opted for reduced motion
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // Add data-animated="true" to enable the animation
-      scroller.setAttribute("data-animated", "true");
+    console.log('Setting up infinite scroll animation...');
 
-      // Make an array from the elements within scroller inner
-      const scrollerInner = scroller.querySelector(".scroller__inner");
-      if (!scrollerInner) return;
+    // Always enable animation, regardless of reduced motion preference for this demo
+    scroller.setAttribute("data-animated", "true");
+    console.log('Added data-animated=true to scroller');
 
-      // Clear existing duplicated content
-      const existingDuplicates = scrollerInner.querySelectorAll('[aria-hidden="true"]');
-      existingDuplicates.forEach(item => item.remove());
-
-      const scrollerContent = Array.from(scrollerInner.children);
-
-      // For each item in the array, clone it and add aria-hidden
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true) as HTMLElement;
-        duplicatedItem.setAttribute("aria-hidden", "true");
-        scrollerInner.appendChild(duplicatedItem);
-      });
+    // Make an array from the elements within scroller inner
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    if (!scrollerInner) {
+      console.log('No scroller__inner found');
+      return;
     }
+
+    // Clear existing duplicated content
+    const existingDuplicates = scrollerInner.querySelectorAll('[aria-hidden="true"]');
+    console.log('Removing', existingDuplicates.length, 'existing duplicates');
+    existingDuplicates.forEach(item => item.remove());
+
+    const scrollerContent = Array.from(scrollerInner.children);
+    console.log('Found', scrollerContent.length, 'original items to duplicate');
+
+    // For each item in the array, clone it and add aria-hidden
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true) as HTMLElement;
+      duplicatedItem.setAttribute("aria-hidden", "true");
+      scrollerInner.appendChild(duplicatedItem);
+    });
+
+    console.log('Animation setup complete. Total items now:', scrollerInner.children.length);
   }, [visibleCourses]);
 
   // Get total count for "See More" card display
@@ -215,10 +222,12 @@ const CoursesSection = () => {
 
   // Pause/resume handlers for animation
   const handleMouseEnter = () => {
+    console.log('Mouse entered - pausing animation');
     setIsPaused(true);
   };
 
   const handleMouseLeave = () => {
+    console.log('Mouse left - resuming animation');
     setIsPaused(false);
   };
 
@@ -329,6 +338,10 @@ const CoursesSection = () => {
               var(--_animation-direction, forwards) linear infinite;
           }
 
+          .scroller[data-animated="true"] .scroller__inner.paused {
+            animation-play-state: paused !important;
+          }
+
           .scroller[data-direction="right"] {
             --_animation-direction: reverse;
           }
@@ -343,10 +356,6 @@ const CoursesSection = () => {
 
           .scroller[data-speed="slow"] {
             --_animation-duration: 60s;
-          }
-
-          .scroller__inner.paused {
-            animation-play-state: paused;
           }
 
           @keyframes scroll {
@@ -384,6 +393,8 @@ const CoursesSection = () => {
                 <div
                   key={`${course.id}-${idx}`}
                   className="w-80 flex-shrink-0"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <CourseCard {...course} isSoldOut={course.isSoldOut} />
                 </div>
