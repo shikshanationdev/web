@@ -44,6 +44,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-T75L3CTC');`
         }}
       />
+
+      {/* JSON-LD Structured Data */}
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `{
+  "@context": "https://schema.org",
+  "@type": "MiddleSchool",
+  "name": "Shiksha Nation",
+  "alternateName": "Shiksha Nation",
+  "url": "https://shikshanation.com/",
+  "logo": "https://shikshanation.com/_next/image?url=%2Fhome%2Flogo.webp&w=256&q=75",
+  "sameAs": [
+    "https://www.facebook.com/shikshanation24/",
+    "https://x.com/shikshanation",
+    "https://www.instagram.com/shikshanation/",
+    "https://www.youtube.com/@Shiksha_Nation",
+    "https://www.linkedin.com/company/shikshanation/"
+  ]
+}`
+        }}
+      />
+
       <body className={`${lexendDeca.className}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
