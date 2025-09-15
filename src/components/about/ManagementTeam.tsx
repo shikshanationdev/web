@@ -65,6 +65,19 @@ const thirdRowTeam = [
   }
 ];
 
+// Fourth row team members
+const fourthRowTeam = [
+  {
+    name: 'Dr. Shubham Dubey',
+    title: 'Chief Operations Officer (COO)',
+    img: '/shubham-dubey.jpeg',
+    border: 'border-orange-300',
+    container: 'bg-orange-100',
+    description: 'At Shiksha Nation, Dr. Shubham Dubey leads operations with a clear focus on making education more impactful and accessible. With years of experience in the education sector at institutions like Narayana, VMC, and PW, he has built systems and processes that help organizations grow efficiently while keeping students at the heart of every decision. A BDS graduate and Certified Implantologist, Dr. Dubey combines precision and discipline with a strategic mindset, creating frameworks that not only optimize operations but also enhance learning experiences. His work is driven by a simple belief: when operations run smoothly, students can truly thrive.',
+    linkedin: 'https://in.linkedin.com/in/docshubhamdubey'
+  }
+];
+
 const ManagementTeam = () => {
   return (
     <section className="w-full max-w-6xl mx-auto py-20 px-4">
@@ -75,7 +88,7 @@ const ManagementTeam = () => {
 
       {/* Founder Section */}
       <div className="flex justify-center mb-12">
-        <div className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row w-full sm:max-w-2xl border ${founder.border} overflow-hidden`}>
+        <div className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row w-full sm:max-w-2xl border ${founder.border} transition-transform hover:scale-105 overflow-hidden`}>
           {/* Circular colored background - positioned top-left, 50% visible */}
           <div className={`${founder.container} absolute -top-16 -left-16 w-32 h-32 rounded-full`}></div>
 
@@ -161,7 +174,7 @@ const ManagementTeam = () => {
       </div>
 
       {/* Third Row - Academic Team */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
         {thirdRowTeam.map((member, idx) => (
           <div
             key={member.name}
@@ -198,6 +211,52 @@ const ManagementTeam = () => {
             {/* Content Section */}
             <div className="flex-1 p-6 pt-0 text-center">
               <h3 className="font-bold text-lg text-gray-900 mb-1">{member.name}</h3>
+
+              <p className="text-gray-700 text-sm font-medium mb-3">{member.title}</p>
+              <p className="text-gray-600 text-xs leading-relaxed">{member.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Fourth Row - Operations Team */}
+      <div className="flex justify-center">
+        {fourthRowTeam.map((member, idx) => (
+          <div
+            key={member.name}
+            className={`rounded-2xl relative bg-white shadow-lg flex flex-col md:flex-row w-full sm:max-w-2xl border ${member.border} transition-transform hover:scale-105 overflow-hidden`}
+          >
+            {/* Circular colored background - positioned top-left, 50% visible */}
+            <div className={`${member.container} absolute -top-16 -left-16 w-32 h-32 rounded-full`}></div>
+
+            {/* Profile Image - vertically centered */}
+            <div className="flex justify-center md:justify-start items-center p-6 md:w-48">
+              <div className="w-28 h-28 md:w-32 md:h-32 relative">
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  fill
+                  className="rounded-full object-cover border-4 border-white"
+                  sizes="(max-width: 768px) 112px, 128px"
+                />
+              </div>
+            </div>
+
+            {/* LinkedIn Icon - positioned top-right for all views */}
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 z-10 bg-sky-600 hover:bg-sky-700 text-white p-2 rounded-lg transition-colors"
+              >
+                <FaLinkedinIn size={16} />
+              </a>
+            )}
+
+            {/* Content Section */}
+            <div className="flex-1 p-6 pt-0 md:pt-6 text-center md:text-left">
+              <h3 className="font-bold text-xl text-gray-900 mb-1">{member.name}</h3>
 
               <p className="text-gray-700 text-sm font-medium mb-3">{member.title}</p>
               <p className="text-gray-600 text-xs leading-relaxed">{member.description}</p>
