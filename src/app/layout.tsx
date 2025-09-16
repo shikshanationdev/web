@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         dangerouslySetInnerHTML={{
           __html: `{
   "@context": "https://schema.org",
-  "@type": "MiddleSchool",
+  "@type": "Organization",
   "name": "Shiksha Nation",
   "alternateName": "Shiksha Nation",
   "url": "https://shikshanation.com/",
