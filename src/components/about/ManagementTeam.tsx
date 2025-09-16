@@ -69,7 +69,7 @@ const thirdRowTeam = [
 const fourthRowTeam = [
   {
     name: 'Dr. Shubham Dubey',
-    title: 'Chief Operations Officer (COO)',
+    title: 'Head of Operations',
     img: '/shubham-dubey.jpeg',
     border: 'border-orange-300',
     container: 'bg-orange-100',
