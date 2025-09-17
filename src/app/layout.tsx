@@ -62,7 +62,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       {/* JSON-LD Structured Data */}
       <head>
-
         <Script
           id="json-ld"
           type="application/ld+json"
@@ -83,7 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               ]
               }`
           }}
-        />
+        ></Script>
       </head>
 
       <body className={`${lexendDeca.className}`}>
