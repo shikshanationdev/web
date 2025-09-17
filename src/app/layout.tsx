@@ -29,28 +29,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <meta name="google-site-verification" content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g" />
-      {/* Google Tag Manager */}
-      <Script
-        id="gtm"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T75L3CTC');`
-        }}
-      />
-
-      {/* JSON-LD Structured Data */}
-      <Script
-        id="json-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: `{
+  const schemaData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Shiksha Nation",
@@ -64,7 +43,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "https://www.youtube.com/@Shiksha_Nation",
     "https://www.linkedin.com/company/shikshanation/"
   ]
-}`
+};
+  return (
+    <html lang="en">
+      <meta name="google-site-verification" content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g" />
+      <Head>
+        {/* JSON-LD Structured Data */}
+         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      </Head>
+      {/* Google Tag Manager */}
+      <Script
+        id="gtm"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T75L3CTC');`
         }}
       />
 
