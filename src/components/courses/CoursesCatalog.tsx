@@ -38,16 +38,22 @@ const CoursesCatalog = () => {
     setIsMobileFiltersOpen(false); // Close mobile filter panel
   };
 
+  // Helper function to sort courses by status
+  const sortCoursesByStatus = (courses: any[]) => {
+    return [...courses].sort((a, b) => {
+      const statusPriority = { active: 1, upcoming: 2, sold: 3 };
+      return statusPriority[a.status] - statusPriority[b.status];
+    });
+  };
+
   // Filter courses based on selected category
   const getFilteredCourses = () => {
+    let filtered: any[] = [];
+
     if (selectedCategory === "All Categories") {
-      // Sort courses by status: active first, then upcoming, then sold
-      return [...coursesData].sort((a, b) => {
-        const statusPriority = { active: 1, upcoming: 2, sold: 3 };
-        return statusPriority[a.status] - statusPriority[b.status];
-      });
+      filtered = coursesData;
     } else if (selectedCategory === "ShikshaBase") {
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === "Class 6th" ||
         course.category === "Class 7th" ||
         course.category === "Class 8th" ||
@@ -55,34 +61,34 @@ const CoursesCatalog = () => {
         course.category === "Class 10th"
       );
     } else if (selectedCategory === "ShikshaEdge") {
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === "JEE" ||
         course.category === "NEET" ||
         course.category === "CUET"
       );
     } else if (selectedCategory === "ShikshaQuest") {
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === "JEE" ||
         course.category === "NEET" ||
         course.category === "CUET"
       );
     } else if (selectedCategory === "ShikshaPro") {
-      return coursesData.filter(course => course.category === "Skill Development");
+      filtered = coursesData.filter(course => course.category === "Skill Development");
     } else if (selectedCategory.includes("Class")) {
-      return coursesData.filter(course => course.category === selectedCategory);
+      filtered = coursesData.filter(course => course.category === selectedCategory);
     } else if (selectedCategory === "JEE" || selectedCategory === "NEET" || selectedCategory === "CUET") {
-      return coursesData.filter(course => course.category === selectedCategory);
+      filtered = coursesData.filter(course => course.category === selectedCategory);
     } else if (selectedCategory === "PCB") {
-      return coursesData.filter(course => course.category === "NEET");
+      filtered = coursesData.filter(course => course.category === "NEET");
     } else if (selectedCategory === "PCM") {
-      return coursesData.filter(course => course.category === "JEE");
+      filtered = coursesData.filter(course => course.category === "JEE");
     } else if (selectedCategory === "Humanities") {
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === "CUET" &&
         (course.subCategory === "Humanities" || course.title === "CUET - Humanities PYQs")
       );
     } else if (selectedCategory === "Commerce") {
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === "CUET" &&
         (course.subCategory === "Commerce" || course.title === "CUET - Commerce PYQs")
       );
@@ -91,13 +97,16 @@ const CoursesCatalog = () => {
       selectedCategory === "Data Analytics" ||
       selectedCategory === "Digital Marketing" ||
       selectedCategory === "UI UX Design") {
-      return coursesData.filter(course => course.title === selectedCategory);
+      filtered = coursesData.filter(course => course.title === selectedCategory);
     } else {
       // For other subcategories or legacy categories
-      return coursesData.filter(course =>
+      filtered = coursesData.filter(course =>
         course.category === selectedCategory || course.subCategory === selectedCategory
       );
     }
+
+    // Sort all filtered courses by status: active first, then upcoming, then sold
+    return sortCoursesByStatus(filtered);
   };
 
   let filteredCourses = getFilteredCourses();
