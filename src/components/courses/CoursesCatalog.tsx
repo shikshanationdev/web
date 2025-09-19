@@ -41,7 +41,11 @@ const CoursesCatalog = () => {
   // Filter courses based on selected category
   const getFilteredCourses = () => {
     if (selectedCategory === "All Categories") {
-      return coursesData;
+      // Sort courses by status: active first, then upcoming, then sold
+      return [...coursesData].sort((a, b) => {
+        const statusPriority = { active: 1, upcoming: 2, sold: 3 };
+        return statusPriority[a.status] - statusPriority[b.status];
+      });
     } else if (selectedCategory === "ShikshaBase") {
       return coursesData.filter(course =>
         course.category === "Class 6th" ||
