@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { MdGridView } from "react-icons/md";
 import CourseCard from "../ui/CourseCard";
-import { coursesData, categories } from "@/data/courses";
+import { coursesData, categories, Course } from "@/data/courses";
 import { LuSettings2 } from "react-icons/lu";
 
 const CoursesCatalog = () => {
@@ -39,16 +39,16 @@ const CoursesCatalog = () => {
   };
 
   // Helper function to sort courses by status
-  const sortCoursesByStatus = (courses: any[]) => {
+  const sortCoursesByStatus = (courses: Course[]) => {
     return [...courses].sort((a, b) => {
-      const statusPriority = { active: 1, upcoming: 2, sold: 3 };
+      const statusPriority: Record<Course['status'], number> = { active: 1, upcoming: 2, sold: 3 };
       return statusPriority[a.status] - statusPriority[b.status];
     });
   };
 
   // Filter courses based on selected category
   const getFilteredCourses = () => {
-    let filtered: any[] = [];
+    let filtered: Course[] = [];
 
     if (selectedCategory === "All Categories") {
       filtered = coursesData;
