@@ -7,7 +7,7 @@ export const faqs = [
   {
     q: "Which classes and exams do you cover?",
     a:
-      "We provide learning content for Classes 1 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
+      "We provide learning content for Classes 6 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
   },
   {
     q: "How can I enroll in a course?",

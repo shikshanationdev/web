@@ -1,0 +1,218 @@
+# Main HTTPS server block for shikshanation.com
+server {
+    listen 443 ssl;
+    server_name shikshanation.com;
+    ssl_session_cache shared:SSL:10m;
+    ssl_certificate /etc/letsencrypt/live/shikshanation.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/shikshanation.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    
+    # Large file upload support
+    client_body_timeout 60s;
+    client_header_timeout 60s;
+    proxy_read_timeout 60s;
+    proxy_connect_timeout 60s;
+    proxy_send_timeout 60s;
+    
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Content-Type-Options "nosniff" always;
+
+    # Next.js assets and API routes (highest priority)
+    location ~ ^/(_next|api)/ {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # phpMyAdmin configuration (high priority to avoid conflicts)
+    location /phpmyadmin {
+        root /var/www;
+        index index.php index.html index.htm;
+        
+        location ~ ^/phpmyadmin/(.+\.php)$ {
+            try_files $uri =404;
+            root /var/www;
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTPS on;
+            fastcgi_param HTTP_X_FORWARDED_PROTO https;
+            include fastcgi_params;
+        }
+        
+        location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+            root /var/www;
+        }
+    }
+    
+    # Deny access to phpMyAdmin libraries and setup
+    location ~ ^/phpmyadmin/(libraries|setup/frames|setup/libs) {
+        deny all;
+        return 404;
+    }
+
+    # WordPress admin and core files
+    location /wp-admin {
+        root /var/www/wp;
+        index index.php index.html;
+        try_files $uri $uri/ /index.php?$args;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTPS on;
+            fastcgi_param HTTP_X_FORWARDED_PROTO https;
+            include fastcgi_params;
+        }
+    }
+    
+    # WordPress content and includes
+    location ~ ^/(wp-content|wp-includes)/ {
+        root /var/www/wp;
+        expires 1y;
+        add_header Cache-Control "public";
+    }
+    
+    # WordPress JSON API
+    location /wp-json {
+        root /var/www/wp;
+        try_files $uri $uri/ /index.php?$args;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTPS on;
+            fastcgi_param HTTP_X_FORWARDED_PROTO https;
+            include fastcgi_params;
+        }
+    }
+    
+    # WordPress login and core PHP files
+    location ~ ^/(wp-login|wp-register|xmlrpc)\.php$ {
+        root /var/www/wp;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS on;
+        fastcgi_param HTTP_X_FORWARDED_PROTO https;
+        include fastcgi_params;
+    }
+
+    # WordPress pages - redirect paths without trailing slash to with trailing slash
+    location ~ ^/(blog)$ {
+        return 301 $scheme://$host$uri/;
+    }
+
+    # WordPress pages with trailing slash
+    location ~ ^/(blog)/ {
+        root /var/www/wp;
+        try_files $uri $uri/ /index.php?$args;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param HTTPS on;
+            fastcgi_param HTTP_X_FORWARDED_PROTO https;
+            include fastcgi_params;
+        }
+    }
+
+    # Handle ALL PHP files for WordPress
+    location ~ \.php$ {
+        root /var/www/wp;
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS on;
+        fastcgi_param HTTP_X_FORWARDED_PROTO https;
+        include fastcgi_params;
+    }
+
+    # Next.js specific routes
+    location ~ ^/(home|contact|about|media|courses)$ {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Handle static files for WordPress first
+    # Next.js assets first
+#location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ { 
+#	root /var/www/wp; 
+#	expires 1y; add_header 
+#	Cache-Control "public, immutable"; 
+#	try_files $uri @nextjs; 
+#}
+
+# WordPress static
+#location @nextjs { 
+#	proxy_pass http://localhost:3000; 
+#	proxy_set_header Host $host; 
+#	proxy_set_header X-Real-IP $remote_addr; 
+#	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+#	proxy_set_header X-Forwarded-Proto $scheme; 
+#}
+
+location ~* ^/_next/ {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+    # Add this if Next.js handles these, not WordPress
+    proxy_pass http://localhost:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
+
+    # Default to Next.js for root and unmatched routes
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+# Redirect all requests from .in to .com
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name shikshanation.in www.shikshanation.in;
+
+    ssl_certificate /etc/letsencrypt/live/shikshanation.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/shikshanation.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    return 301 https://shikshanation.com$request_uri;
+}
