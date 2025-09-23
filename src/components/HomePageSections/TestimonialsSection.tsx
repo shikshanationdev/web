@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const baseTestimonials = [
   {
@@ -9,12 +9,12 @@ const baseTestimonials = [
   },
   {
     name: "Rajesh Kumar",
-    content: "The quality of content is outstanding. My son's confidence in Math and Science has improved significantly. The detailed solutions help him understand concepts he was struggling with in school.!",
+    content: "The quality of content is outstanding. My son's confidence in Math and Science has improved significantly. The detailed solutions help him understand concepts he was struggling with in school.",
     rating: 5,
   },
   {
     name: "Anita Patel",
-    content: "Affordable and comprehensive! The study materials are well-organized and cover the entire syllabus. My daughter loves the easy-to-understand explanations and visual diagrams..",
+    content: "Affordable and comprehensive! The study materials are well-organized and cover the entire syllabus. My daughter loves the easy-to-understand explanations and visual diagrams.",
     rating: 5,
   },
   {
@@ -23,14 +23,6 @@ const baseTestimonials = [
     rating: 5,
   },
 ];
-
-const testimonials = Array.from({ length: 200 }, (_, i) => {
-  const base = baseTestimonials[i % 4];
-  return {
-    id: i + 1,
-    ...base
-  };
-});
 
 const StarRating = ({ rating }: { rating: number }) => {
   return (
@@ -50,31 +42,50 @@ const StarRating = ({ rating }: { rating: number }) => {
   );
 };
 
+const TestimonialCard = ({ testimonial }: { testimonial: typeof baseTestimonials[0] }) => (
+  <div className="testimonial-slide px-4">
+    <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 relative h-full flex flex-col">
+      {/* Quote Icon with Gradient */}
+      <div className="absolute top-4 left-4">
+        <svg
+          className="w-6 h-6"
+          fill="url(#blueGreenGradient)"
+          viewBox="0 0 24 24"
+        >
+          <defs>
+            <linearGradient id="blueGreenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="100%" stopColor="#10B981" />
+            </linearGradient>
+          </defs>
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
+        </svg>
+      </div>
+
+      {/* Content - Takes up remaining space */}
+      <div className="pt-10 flex flex-col h-full">
+        <p className="text-gray-700 text-sm leading-relaxed mb-6 flex-grow overflow-hidden">
+          {testimonial.content}
+        </p>
+
+        {/* Name and Rating - Fixed at bottom */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+          <h4 className="font-semibold text-gray-900 text-sm">
+            {testimonial.name}
+          </h4>
+          <StarRating rating={testimonial.rating} />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 3000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  // Duplicate testimonials for seamless infinite scroll (like the reference code)
+  const duplicatedTestimonials = [...baseTestimonials, ...baseTestimonials];
 
   return (
-    <section className="w-full py-16 px-5 xl:px-0overflow-hidden">
+    <section className="w-full py-16 px-5 xl:px-0 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -86,80 +97,23 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative overflow-hidden py-10">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{
-              transform: `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)`,
-            }}
-          >
-            {/* Duplicate testimonials for infinite scroll */}
-            {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => {
-              const position = index - currentIndex;
-              const centerCard = position === 1;
-
-              return (
-                <div
-                  key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-full md:w-1/3 px-4 transition-all duration-700 ${isMobile
-                      ? 'transform scale-100 z-10'
-                      : centerCard
-                        ? 'transform scale-110 z-10'
-                        : 'transform scale-90 z-0'
-                    } ${!isMobile && !centerCard ? 'md:block' : ''}`}
-                >
-                  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 relative min-h-[280px] flex flex-col mx-auto max-w-md">
-                    {/* Quote Icon with Gradient */}
-                    <div className="absolute top-4 left-4">
-                      <svg
-                        className="w-6 h-6"
-                        fill="url(#blueGreenGradient)"
-                        viewBox="0 0 24 24"
-                      >
-                        <defs>
-                          <linearGradient id="blueGreenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#3B82F6" />
-                            <stop offset="100%" stopColor="#10B981" />
-                          </linearGradient>
-                        </defs>
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                      </svg>
-                    </div>
-
-                    {/* Content */}
-                    <div className="pt-10 flex flex-col flex-grow">
-                      <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">
-                        {testimonial.content}
-                      </p>
-
-                      {/* Name and Rating */}
-                      <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                        <h4 className="font-semibold text-gray-900 text-sm">
-                          {testimonial.name}
-                        </h4>
-                        <StarRating rating={testimonial.rating} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        {/* Infinite Scrolling Testimonials - Following the reference structure */}
+        <div className="testimonials-slider py-10">
+          <div className="testimonials-track">
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={`${testimonial.name}-${index}`}
+                testimonial={testimonial}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Dots indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {testimonials.slice(0, 4).map((_, index) => (
-            <button
-              key={index}
-              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex % 4
-                  ? 'bg-[rgb(var(--color-green-primary))] w-8'
-                  : 'bg-gray-300 w-3'
-                }`}
-              onClick={() => setCurrentIndex(index)}
-            />
-          ))}
+        {/* Description */}
+        <div className="text-center mt-8">
+          <p className="text-sm text-gray-500 max-w-2xl mx-auto">
+            Join thousands of satisfied students and parents who have transformed their learning journey with Shiksha Nation.
+          </p>
         </div>
       </div>
     </section>
