@@ -108,13 +108,6 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
-
-        {/* Description */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-gray-500 max-w-2xl mx-auto">
-            Join thousands of satisfied students and parents who have transformed their learning journey with Shiksha Nation.
-          </p>
-        </div>
       </div>
     </section>
   );
