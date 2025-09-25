@@ -115,28 +115,6 @@
   position: relative;
 }
 
-.testimonials-slider::before,
-.testimonials-slider::after {
-  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-  content: "";
-  height: 100%;
-  position: absolute;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.testimonials-slider::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
-
-.testimonials-slider::before {
-  left: 0;
-  top: 0;
-}
-
 .testimonials-track {
   animation: scrollTestimonials 25s linear infinite;
   display: flex;

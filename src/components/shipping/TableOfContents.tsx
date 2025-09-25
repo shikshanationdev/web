@@ -11,12 +11,10 @@ const TableOfContents: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [tocItems] = useState<TableOfContentsItem[]>([
-    { id: "cancellation-policy", title: "Cancellation Policy", level: 1 },
-    { id: "eligibility", title: "Eligibility for Refund", level: 1 },
-    { id: "non-refundable", title: "Non-Refundable Situations", level: 1 },
-    { id: "how-to-request", title: "How to Request a Refund", level: 1 },
-    { id: "refund-process", title: "Refund Process", level: 1 },
-    { id: "contact", title: "Contact Us", level: 1 },
+    { id: "digital-delivery", title: "Digital-Only Delivery", level: 1 },
+    { id: "no-shipping", title: "No Shipping Policy", level: 1 },
+    { id: "exchange-policy", title: "Exchange Policy", level: 1 },
+    { id: "support", title: "Support", level: 1 },
   ]);
 
   useEffect(() => {

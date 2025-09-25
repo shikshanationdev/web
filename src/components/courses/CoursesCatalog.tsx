@@ -58,13 +58,14 @@ const CoursesCatalog = () => {
         course.category === "Class 7th" ||
         course.category === "Class 8th" ||
         course.category === "Class 9th" ||
-        course.category === "Class 10th"
+        course.category === "Class 10th" ||
+        course.category === "Class 11th" ||
+        course.category === "Class 12th"
       );
     } else if (selectedCategory === "ShikshaEdge") {
       filtered = coursesData.filter(course =>
-        course.category === "JEE" ||
-        course.category === "NEET" ||
-        course.category === "CUET"
+        course.category === "Class 11th" ||
+        course.category === "Class 12th"
       );
     } else if (selectedCategory === "ShikshaQuest") {
       filtered = coursesData.filter(course =>
@@ -74,24 +75,14 @@ const CoursesCatalog = () => {
       );
     } else if (selectedCategory === "ShikshaPro") {
       filtered = coursesData.filter(course => course.category === "Skill Development");
-    } else if (selectedCategory.includes("Class")) {
+    } else if (selectedCategory.includes("Class") || selectedCategory === "Class 11th" || selectedCategory === "Class 12th") {
       filtered = coursesData.filter(course => course.category === selectedCategory);
     } else if (selectedCategory === "JEE" || selectedCategory === "NEET" || selectedCategory === "CUET") {
       filtered = coursesData.filter(course => course.category === selectedCategory);
-    } else if (selectedCategory === "PCB") {
-      filtered = coursesData.filter(course => course.category === "NEET");
-    } else if (selectedCategory === "PCM") {
-      filtered = coursesData.filter(course => course.category === "JEE");
-    } else if (selectedCategory === "Humanities") {
-      filtered = coursesData.filter(course =>
-        course.category === "CUET" &&
-        (course.subCategory === "Humanities" || course.title === "CUET - Humanities PYQs")
-      );
-    } else if (selectedCategory === "Commerce") {
-      filtered = coursesData.filter(course =>
-        course.category === "CUET" &&
-        (course.subCategory === "Commerce" || course.title === "CUET - Commerce PYQs")
-      );
+    } else if (selectedCategory === "11th") {
+      filtered = coursesData.filter(course => course.category === "Class 11th");
+    } else if (selectedCategory === "12th") {
+      filtered = coursesData.filter(course => course.category === "Class 12th");
     } else if (selectedCategory === "Artificial Intelligence - Advanced Program" ||
       selectedCategory === "Artificial Intelligence - Basic Program" ||
       selectedCategory === "Data Analytics" ||
@@ -134,11 +125,26 @@ const CoursesCatalog = () => {
   const endIndex = startIndex + coursesPerPage;
   const currentCourses = filteredCourses.slice(startIndex, endIndex);
 
-  // Sort courses to ensure NEET appears before JEE
+  // Sort courses to prioritize active courses first, then by category priority
   const sortCoursesByPriority = (courses: any[]) => {
     return [...courses].sort((a, b) => {
-      // Priority order: Class courses, NEET, JEE, CUET, Skill Development
-      const getPriority = (course: any) => {
+      // First priority: Active courses come before non-active courses
+      const getStatusPriority = (course: any) => {
+        if (course.status === "active") return 1;
+        if (course.status === "upcoming") return 2;
+        if (course.status === "sold") return 3;
+        return 4;
+      };
+
+      const statusPriorityA = getStatusPriority(a);
+      const statusPriorityB = getStatusPriority(b);
+
+      if (statusPriorityA !== statusPriorityB) {
+        return statusPriorityA - statusPriorityB;
+      }
+
+      // Second priority: Category order (within same status)
+      const getCategoryPriority = (course: any) => {
         if (course.category.includes("Class")) return 1;
         if (course.category === "NEET") return 2;
         if (course.category === "JEE") return 3;
@@ -146,7 +152,8 @@ const CoursesCatalog = () => {
         if (course.category === "Skill Development") return 5;
         return 6;
       };
-      return getPriority(a) - getPriority(b);
+
+      return getCategoryPriority(a) - getCategoryPriority(b);
     });
   };
 

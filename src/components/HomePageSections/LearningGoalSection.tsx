@@ -7,7 +7,7 @@ const TopCategoriesSection = (): React.ReactElement => {
   const topCategories = [
     {
       id: "class-6-12",
-      title: "Class 6th to 10th",
+      title: "Class 6th to 12th",
       subtitle: "ShikshaBase",
       description: "Comprehensive courses for school education",
       buttonText: "Explore Classes",

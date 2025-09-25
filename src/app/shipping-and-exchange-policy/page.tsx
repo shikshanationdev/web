@@ -1,15 +1,15 @@
 import React from 'react'
 import Banner from '@/components/Banner'
-import RefundPolicyContent from '@/components/refund/RefundPolicyContent'
-import TableOfContents from '@/components/refund/TableOfContents'
+import ShippingExchangePolicyContent from '@/components/shipping/ShippingExchangePolicyContent'
+import TableOfContents from '@/components/shipping/TableOfContents'
 
-const RefundPolicyPage = () => {
+const ShippingExchangePolicyPage = () => {
   return (
     <div className='min-h-screen'>
       {/* Banner Section */}
       <Banner
-        heading="Refund Policy"
-        subtitle="Learn about our refund terms and conditions"
+        heading="Shipping and Exchange Policy"
+        subtitle="Learn about our digital delivery and exchange terms"
       />
 
       {/* Main Content */}
@@ -27,8 +27,8 @@ const RefundPolicyPage = () => {
               <TableOfContents />
             </div>
 
-            <div className="bg-white rounded-4xl shadow-sm">
-              <RefundPolicyContent />
+            <div className="bg-white rounded-4xl">
+              <ShippingExchangePolicyContent />
             </div>
           </main>
         </div>
@@ -37,4 +37,4 @@ const RefundPolicyPage = () => {
   )
 }
 
-export default RefundPolicyPage
+export default ShippingExchangePolicyPage

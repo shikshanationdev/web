@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, getPopularCourses, getHomepageTopCourses } from "@/data/courses";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useIntersectionObserver } from "@/hooks";
 
 const categoryOptions = [
   { label: "All Categories", value: "all" },
@@ -18,47 +19,81 @@ const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const [isPaused, setIsPaused] = useState(false);
+  const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
   const coursesScrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  // Use intersection observer to detect when user enters/leaves the section
+  const { targetRef: sectionRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.3, // Start animation when 30% of the section is visible
+    rootMargin: '-50px 0px' // Add some margin to delay the trigger
+  });
+
   // Get filtered courses based on selected category
   const getFilteredCourses = () => {
+    // Helper function to sort courses by status (active first)
+    const sortByStatus = (courses: any[]) => {
+      return courses.sort((a, b) => {
+        const getStatusPriority = (course: any) => {
+          if (course.status === "active") return 1;
+          if (course.status === "upcoming") return 2;
+          if (course.status === "sold") return 3;
+          return 4;
+        };
+        return getStatusPriority(a) - getStatusPriority(b);
+      });
+    };
+
     if (selectedCategory === "all") {
       return getHomepageTopCourses(); // Show specific curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
       // Show only core subjects and PDF notes for each class (2 courses per class)
-      const classCategories = ["Class 6th", "Class 7th", "Class 8th", "Class 9th", "Class 10th"];
+      const classCategories = ["Class 6th", "Class 7th", "Class 8th", "Class 9th", "Class 10th", "Class 11th", "Class 12th"];
       const selectedCourses: any[] = [];
 
       classCategories.forEach(classCategory => {
         const classCourses = coursesData.filter(course => course.category === classCategory);
 
-        // Get core subjects course
-        const coreSubjectsCourse = classCourses.find(course =>
+        // Get core subjects course (prioritize active)
+        const coreSubjectsCourses = classCourses.filter(course =>
           course.subCategory === "Live Classes" || course.title.includes("Core Subjects")
         );
-        if (coreSubjectsCourse) selectedCourses.push(coreSubjectsCourse);
+        const sortedCoreSubjects = sortByStatus(coreSubjectsCourses);
+        if (sortedCoreSubjects.length > 0) {
+          selectedCourses.push(sortedCoreSubjects[0]);
+          console.log(`Added Live Classes course for ${classCategory}:`, sortedCoreSubjects[0].title);
+        }
 
-        // Get PDF notes course
-        const pdfCourse = classCourses.find(course =>
+        // Get PDF notes course (prioritize active)
+        const pdfCourses = classCourses.filter(course =>
           course.subCategory === "Study Material" || course.title.includes("PDF Notes")
         );
-        if (pdfCourse) selectedCourses.push(pdfCourse);
+        const sortedPdfCourses = sortByStatus(pdfCourses);
+        if (sortedPdfCourses.length > 0) {
+          selectedCourses.push(sortedPdfCourses[0]);
+          console.log(`Added Study Material course for ${classCategory}:`, sortedPdfCourses[0].title);
+        }
+
+        console.log(`${classCategory} - Live Classes found: ${coreSubjectsCourses.length}, Study Material found: ${pdfCourses.length}`);
       });
 
       return selectedCourses;
     } else if (selectedCategory === "neet") {
-      return coursesData.filter((course) => course.category === "NEET");
+      const neetCourses = coursesData.filter((course) => course.category === "NEET");
+      return sortByStatus(neetCourses);
     } else if (selectedCategory === "jee") {
-      return coursesData.filter((course) => course.category === "JEE");
+      const jeeCourses = coursesData.filter((course) => course.category === "JEE");
+      return sortByStatus(jeeCourses);
     } else if (selectedCategory === "cuet") {
-      return coursesData.filter((course) => course.category === "CUET");
+      const cuetCourses = coursesData.filter((course) => course.category === "CUET");
+      return sortByStatus(cuetCourses);
     } else if (selectedCategory === "skilling") {
-      return coursesData.filter(
+      const skillCourses = coursesData.filter(
         (course) => course.category === "Skill Development"
       );
+      return sortByStatus(skillCourses);
     }
     return coursesData;
   };
@@ -83,11 +118,26 @@ const CoursesSection = () => {
 
   const visibleCourses = getVisibleCourses();
 
-  // Sort courses to ensure NEET appears before JEE
+  // Sort courses to prioritize active courses first, then by category priority
   const sortCoursesByPriority = (courses: any[]) => {
     return [...courses].sort((a, b) => {
-      // Priority order: Class courses, NEET, JEE, CUET, Skill Development
-      const getPriority = (course: any) => {
+      // First priority: Active courses come before non-active courses
+      const getStatusPriority = (course: any) => {
+        if (course.status === "active") return 1;
+        if (course.status === "upcoming") return 2;
+        if (course.status === "sold") return 3;
+        return 4;
+      };
+
+      const statusPriorityA = getStatusPriority(a);
+      const statusPriorityB = getStatusPriority(b);
+
+      if (statusPriorityA !== statusPriorityB) {
+        return statusPriorityA - statusPriorityB;
+      }
+
+      // Second priority: Category order (within same status)
+      const getCategoryPriority = (course: any) => {
         if (course.category.includes("Class")) return 1;
         if (course.category === "NEET") return 2;
         if (course.category === "JEE") return 3;
@@ -95,7 +145,8 @@ const CoursesSection = () => {
         if (course.category === "Skill Development") return 5;
         return 6;
       };
-      return getPriority(a) - getPriority(b);
+
+      return getCategoryPriority(a) - getCategoryPriority(b);
     });
   };
 
@@ -106,16 +157,17 @@ const CoursesSection = () => {
     ? "fast"
     : "slow";
 
-  // Duplicate courses in useEffect for infinite scrolling (like MediaMarquee)
+  // Control animation based on intersection observer
+  useEffect(() => {
+    setIsAnimationEnabled(isIntersecting);
+  }, [isIntersecting]);
+
+  // Setup infinite scroll structure (separate from animation control)
   useEffect(() => {
     const scroller = coursesScrollRef.current;
     if (!scroller) return;
 
-    console.log('Setting up infinite scroll animation...');
-
-    // Always enable animation, regardless of reduced motion preference for this demo
-    scroller.setAttribute("data-animated", "true");
-    console.log('Added data-animated=true to scroller');
+    console.log('Setting up infinite scroll structure...');
 
     // Make an array from the elements within scroller inner
     const scrollerInner = scroller.querySelector(".scroller__inner");
@@ -139,16 +191,26 @@ const CoursesSection = () => {
       scrollerInner.appendChild(duplicatedItem);
     });
 
-    console.log('Animation setup complete. Total items now:', scrollerInner.children.length);
+    console.log('Structure setup complete. Total items now:', scrollerInner.children.length);
   }, [sortedVisibleCourses]);
+
+  // Control animation state separately (without recreating the structure)
+  useEffect(() => {
+    const scroller = coursesScrollRef.current;
+    if (!scroller) return;
+
+    // Enable animation only when section is visible
+    scroller.setAttribute("data-animated", isAnimationEnabled ? "true" : "false");
+    console.log('Animation state:', isAnimationEnabled ? 'enabled' : 'disabled');
+  }, [isAnimationEnabled]);
 
   // Get total count for "See More" card display
   const getTotalCourseCount = () => {
     if (selectedCategory === "all") {
       return getHomepageTopCourses().length; // Show count of curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
-      // Return count of 2 courses per class (core subjects + PDF notes) = 10 total
-      return 10;
+      // Return count of 2 courses per class (core subjects + PDF notes) = 14 total (7 classes × 2 courses each)
+      return 14;
     } else if (selectedCategory === "jee") {
       return coursesData.filter((course) => course.category === "JEE").length;
     } else if (selectedCategory === "neet") {
@@ -243,19 +305,23 @@ const CoursesSection = () => {
     }
   }, [selectedCategory]);
 
-  // Pause/resume handlers for animation
-  const handleMouseEnter = () => {
-    console.log('Mouse entered - pausing animation');
-    setIsPaused(true);
-  };
+  // Pause/resume handlers for animation - only when section is visible
+  const handleMouseEnter = useCallback(() => {
+    if (isAnimationEnabled && !isPaused) {
+      console.log('Mouse entered - pausing animation');
+      setIsPaused(true);
+    }
+  }, [isAnimationEnabled, isPaused]);
 
-  const handleMouseLeave = () => {
-    console.log('Mouse left - resuming animation');
-    setIsPaused(false);
-  };
+  const handleMouseLeave = useCallback(() => {
+    if (isAnimationEnabled && isPaused) {
+      console.log('Mouse left - resuming animation');
+      setIsPaused(false);
+    }
+  }, [isAnimationEnabled, isPaused]);
 
   return (
-    <section className="w-full py-16">
+    <section ref={sectionRef} className="w-full py-16">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
@@ -263,6 +329,7 @@ const CoursesSection = () => {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
             Our most popular programs, trusted by thousands of learners.
           </p>
+
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
@@ -336,8 +403,17 @@ const CoursesSection = () => {
           }
 
           /* Infinite scrolling animation styles */
+          .scroller {
+            overflow: hidden !important;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .scroller::-webkit-scrollbar {
+            display: none !important;
+          }
+
           .scroller[data-animated="true"] {
-            overflow: hidden;
             -webkit-mask: linear-gradient(
               90deg,
               transparent,
@@ -354,15 +430,31 @@ const CoursesSection = () => {
             );
           }
 
+          .scroller[data-animated="false"] {
+            -webkit-mask: none;
+            mask: none;
+          }
+
           .scroller[data-animated="true"] .scroller__inner {
             width: max-content;
             flex-wrap: nowrap;
             animation: scroll var(--_animation-duration, 40s)
               var(--_animation-direction, forwards) linear infinite;
+            animation-play-state: running;
+          }
+
+          .scroller[data-animated="false"] .scroller__inner {
+            width: max-content;
+            flex-wrap: nowrap;
+            animation: none;
           }
 
           .scroller[data-animated="true"] .scroller__inner.paused {
             animation-play-state: paused !important;
+          }
+
+          .scroller[data-animated="true"] .scroller__inner:not(.paused) {
+            animation-play-state: running !important;
           }
 
           .scroller[data-direction="right"] {
@@ -389,6 +481,22 @@ const CoursesSection = () => {
 
           .scroller__inner {
             flex-wrap: wrap;
+            overflow: visible;
+          }
+
+          /* Ensure smooth pause/resume transitions */
+          .scroller[data-animated="true"] .scroller__inner {
+            transition: none; /* Remove any transition that might interfere with animation */
+          }
+
+          /* Prevent any scrollbar from appearing on the scroller container */
+          .scroller * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .scroller *::-webkit-scrollbar {
+            display: none;
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -401,7 +509,7 @@ const CoursesSection = () => {
           }
         `}</style>
         {/* Courses Infinite Scroll Container */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Courses Container */}
           <div
             ref={coursesScrollRef}
@@ -411,7 +519,7 @@ const CoursesSection = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className={`scroller__inner py-4 flex gap-6 ${isPaused ? 'paused' : ''}`}>
+            <div className={`scroller__inner py-4 flex gap-6 ${isPaused && isAnimationEnabled ? 'paused' : ''}`}>
               {sortedVisibleCourses.map((course, idx) => (
                 <div
                   key={`${course.id}-${idx}`}

@@ -17,7 +17,7 @@ export const faqs = [
   {
     q: "Do you provide both school-level and competitive exam preparation?",
     a:
-      "We provide learning content for Classes 1 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
+      "We provide learning content for Classes 6 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
   },
   {
     q: "What payment methods are accepted?",

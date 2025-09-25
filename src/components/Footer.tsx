@@ -327,15 +327,6 @@ const Footer = () => {
                     Useful Links
                   </h3>
                   <ul className="space-y-2">
-                    <li className="flex items-center gap-1">
-                      <Link
-                        href="/careers"
-                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                      >
-                        Become Instructor
-                      </Link>
-                      <span className="text-sm text-sky-600">→</span>
-                    </li>
                     <li>
                       <Link
                         href="/faqs"
@@ -362,11 +353,21 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="/refund-policy"
+                        href="/cancellation-and-refund-policy"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
-                        Refund Policy
+                        Cancellation and Refund Policy
                       </Link>
+                    </li>
+                    <li>
+                      <Link
+
+                        href="/shipping-and-exchange-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Shipping and Exchange Policy
+                      </Link>
+
                     </li>
                   </ul>
                 </div>
@@ -568,15 +569,6 @@ const Footer = () => {
                     Useful Links
                   </h3>
                   <ul className="space-y-2">
-                    <li className="flex items-center gap-1">
-                      <Link
-                        href="/careers"
-                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
-                      >
-                        Become Instructor
-                      </Link>
-                      <span className="text-sm text-sky-600">→</span>
-                    </li>
                     <li>
                       <Link
                         href="/faqs"
@@ -603,10 +595,18 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="/refund-policy"
+                        href="/cancellation-and-refund-policy"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
-                        Refund Policy
+                        Cancellation and Refund Policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/shipping-and-exchange-policy"
+                        className="hover:underline text-sm transition-colors duration-200 text-sky-600"
+                      >
+                        Shipping and Exchange Policy
                       </Link>
                     </li>
                   </ul>
