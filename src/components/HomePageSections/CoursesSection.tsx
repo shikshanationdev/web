@@ -33,40 +33,67 @@ const CoursesSection = () => {
 
   // Get filtered courses based on selected category
   const getFilteredCourses = () => {
+    // Helper function to sort courses by status (active first)
+    const sortByStatus = (courses: any[]) => {
+      return courses.sort((a, b) => {
+        const getStatusPriority = (course: any) => {
+          if (course.status === "active") return 1;
+          if (course.status === "upcoming") return 2;
+          if (course.status === "sold") return 3;
+          return 4;
+        };
+        return getStatusPriority(a) - getStatusPriority(b);
+      });
+    };
+
     if (selectedCategory === "all") {
       return getHomepageTopCourses(); // Show specific curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
       // Show only core subjects and PDF notes for each class (2 courses per class)
-      const classCategories = ["Class 6th", "Class 7th", "Class 8th", "Class 9th", "Class 10th"];
+      const classCategories = ["Class 6th", "Class 7th", "Class 8th", "Class 9th", "Class 10th", "Class 11th", "Class 12th"];
       const selectedCourses: any[] = [];
 
       classCategories.forEach(classCategory => {
         const classCourses = coursesData.filter(course => course.category === classCategory);
 
-        // Get core subjects course
-        const coreSubjectsCourse = classCourses.find(course =>
+        // Get core subjects course (prioritize active)
+        const coreSubjectsCourses = classCourses.filter(course =>
           course.subCategory === "Live Classes" || course.title.includes("Core Subjects")
         );
-        if (coreSubjectsCourse) selectedCourses.push(coreSubjectsCourse);
+        const sortedCoreSubjects = sortByStatus(coreSubjectsCourses);
+        if (sortedCoreSubjects.length > 0) {
+          selectedCourses.push(sortedCoreSubjects[0]);
+          console.log(`Added Live Classes course for ${classCategory}:`, sortedCoreSubjects[0].title);
+        }
 
-        // Get PDF notes course
-        const pdfCourse = classCourses.find(course =>
+        // Get PDF notes course (prioritize active)
+        const pdfCourses = classCourses.filter(course =>
           course.subCategory === "Study Material" || course.title.includes("PDF Notes")
         );
-        if (pdfCourse) selectedCourses.push(pdfCourse);
+        const sortedPdfCourses = sortByStatus(pdfCourses);
+        if (sortedPdfCourses.length > 0) {
+          selectedCourses.push(sortedPdfCourses[0]);
+          console.log(`Added Study Material course for ${classCategory}:`, sortedPdfCourses[0].title);
+        }
+
+        console.log(`${classCategory} - Live Classes found: ${coreSubjectsCourses.length}, Study Material found: ${pdfCourses.length}`);
       });
 
       return selectedCourses;
     } else if (selectedCategory === "neet") {
-      return coursesData.filter((course) => course.category === "NEET");
+      const neetCourses = coursesData.filter((course) => course.category === "NEET");
+      return sortByStatus(neetCourses);
     } else if (selectedCategory === "jee") {
-      return coursesData.filter((course) => course.category === "JEE");
+      const jeeCourses = coursesData.filter((course) => course.category === "JEE");
+      return sortByStatus(jeeCourses);
     } else if (selectedCategory === "cuet") {
-      return coursesData.filter((course) => course.category === "CUET");
+      const cuetCourses = coursesData.filter((course) => course.category === "CUET");
+      return sortByStatus(cuetCourses);
     } else if (selectedCategory === "skilling") {
-      return coursesData.filter(
+      const skillCourses = coursesData.filter(
         (course) => course.category === "Skill Development"
       );
+      return sortByStatus(skillCourses);
     }
     return coursesData;
   };
@@ -91,11 +118,26 @@ const CoursesSection = () => {
 
   const visibleCourses = getVisibleCourses();
 
-  // Sort courses to ensure NEET appears before JEE
+  // Sort courses to prioritize active courses first, then by category priority
   const sortCoursesByPriority = (courses: any[]) => {
     return [...courses].sort((a, b) => {
-      // Priority order: Class courses, NEET, JEE, CUET, Skill Development
-      const getPriority = (course: any) => {
+      // First priority: Active courses come before non-active courses
+      const getStatusPriority = (course: any) => {
+        if (course.status === "active") return 1;
+        if (course.status === "upcoming") return 2;
+        if (course.status === "sold") return 3;
+        return 4;
+      };
+
+      const statusPriorityA = getStatusPriority(a);
+      const statusPriorityB = getStatusPriority(b);
+
+      if (statusPriorityA !== statusPriorityB) {
+        return statusPriorityA - statusPriorityB;
+      }
+
+      // Second priority: Category order (within same status)
+      const getCategoryPriority = (course: any) => {
         if (course.category.includes("Class")) return 1;
         if (course.category === "NEET") return 2;
         if (course.category === "JEE") return 3;
@@ -103,7 +145,8 @@ const CoursesSection = () => {
         if (course.category === "Skill Development") return 5;
         return 6;
       };
-      return getPriority(a) - getPriority(b);
+
+      return getCategoryPriority(a) - getCategoryPriority(b);
     });
   };
 
@@ -166,8 +209,8 @@ const CoursesSection = () => {
     if (selectedCategory === "all") {
       return getHomepageTopCourses().length; // Show count of curated courses for "All Categories"
     } else if (selectedCategory === "class6-12") {
-      // Return count of 2 courses per class (core subjects + PDF notes) = 10 total
-      return 10;
+      // Return count of 2 courses per class (core subjects + PDF notes) = 14 total (7 classes × 2 courses each)
+      return 14;
     } else if (selectedCategory === "jee") {
       return coursesData.filter((course) => course.category === "JEE").length;
     } else if (selectedCategory === "neet") {
@@ -286,14 +329,7 @@ const CoursesSection = () => {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
             Our most popular programs, trusted by thousands of learners.
           </p>
-          {/* Debug indicator - remove in production */}
-          {process.env.NODE_ENV === 'development' && (
-            <div className="mt-2 text-xs text-gray-500">
-              Animation: {isAnimationEnabled ? 'Active' : 'Inactive'} |
-              Visible: {isIntersecting ? 'Yes' : 'No'} |
-              Paused: {isPaused ? 'Yes' : 'No'}
-            </div>
-          )}
+
         </div>
 
         {/* Category Tabs with Sliding Indicator */}

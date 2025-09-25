@@ -555,6 +555,514 @@ export const coursesData: Course[] = [
     status: "active"
   },
 
+  // Class 11th Courses
+  {
+    id: 44,
+    title: "11th Live Classes - PCM",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 39999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_3ebf19f1-0eb8-4cee-82e5-4bd79fe3d166",
+    category: "Class 11th",
+    subCategory: "Live Classes",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-live-classes-pcm-68d11c9c8279765f4b233485",
+    demoLink: "#",
+    description: "Live classes for 11th grade covering Physics, Chemistry, and Mathematics",
+    features: ["Live Interactive Classes", "Expert Faculty", "PCM Subjects", "Regular Assessments"],
+    status: "upcoming"
+  },
+  {
+    id: 45,
+    title: "11th Live Classes - PCB",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 39999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_190710e9-9bfe-4b47-80f6-896ed6ff8c00",
+    category: "Class 11th",
+    subCategory: "Live Classes",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-live-classes-pcb-68d11cb1fbcfe6a5daa686a5",
+    demoLink: "#",
+    description: "Live classes for 11th grade covering Physics, Chemistry, and Biology",
+    features: ["Live Interactive Classes", "Expert Faculty", "PCB Subjects", "Regular Assessments"],
+    status: "upcoming"
+  },
+  {
+    id: 46,
+    title: "11th Live Classes - Humanities",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 39999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_2d4f5b56-1f20-4175-aa52-45bb48b3a389",
+    category: "Class 11th",
+    subCategory: "Live Classes",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-live-classes-humanities-68d11d179ceebb52e4a7516e",
+    demoLink: "#",
+    description: "Live classes for 11th grade covering History, Geography, Political Science, and Economics",
+    features: ["Live Interactive Classes", "Expert Faculty", "Humanities Subjects", "Regular Assessments"],
+    status: "upcoming"
+  },
+  {
+    id: 47,
+    title: "11th Live Classes - Commerce",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 39999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_899f307b-fac4-4fc0-b0b4-03622742fb3f",
+    category: "Class 11th",
+    subCategory: "Live Classes",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-live-classes-commerce-68d11d9bfd4cf56805383305",
+    demoLink: "#",
+    description: "Live classes for 11th grade covering Accountancy, Business Studies, and Economics",
+    features: ["Live Interactive Classes", "Expert Faculty", "Commerce Subjects", "Regular Assessments"],
+    status: "upcoming"
+  },
+  {
+    id: 48,
+    title: "11th PCM Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_ce861e90-f1b3-42c2-a3db-1e1865aa7cdc",
+    category: "Class 11th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-pcm-mind-maps-68d11e16fd4cf5680538449d",
+    demoLink: "#",
+    description: "Visual mind maps for 11th PCM subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "PCM Topics Covered", "Easy to Remember"],
+    status: "upcoming"
+  },
+  {
+    id: 49,
+    title: "11th PCB Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_b1b01947-69db-4dd7-87ad-8a389011e3c4",
+    category: "Class 11th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-pcb-mind-maps-68d11e32d186e42df2b7be9a",
+    demoLink: "#",
+    description: "Visual mind maps for 11th PCB subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "PCB Topics Covered", "Easy to Remember"],
+    status: "upcoming"
+  },
+  {
+    id: 50,
+    title: "11th Humanities Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_13a99316-21de-4537-bccc-c2e73e2d69c4",
+    category: "Class 11th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-humanities-mind-maps-68d11e52d186e42df2b7c5a5",
+    demoLink: "#",
+    description: "Visual mind maps for 11th Humanities subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "Humanities Topics Covered", "Easy to Remember"],
+    status: "upcoming"
+  },
+  {
+    id: 51,
+    title: "11th Commerce Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_3ba874e1-2fef-426b-b6d8-7547c8e3ea25",
+    category: "Class 11th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-commerce-mind-maps-68d11e67ed3275d802d4b3ec",
+    demoLink: "#",
+    description: "Visual mind maps for 11th Commerce subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "Commerce Topics Covered", "Easy to Remember"],
+    status: "upcoming"
+  },
+  {
+    id: 52,
+    title: "11th PCM PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 2999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_5be8e549-d101-4c61-9227-5fd1eef38011",
+    category: "Class 11th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-pcm-pdf-notes-68d11e7fe3a97ec7327e82af",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 11th PCM subjects",
+    features: ["Detailed Notes", "All PCM Topics", "Easy to Download", "Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 53,
+    title: "11th PCB PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 2999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_43db57db-48ea-4bc1-9656-73c30a9603ae",
+    category: "Class 11th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-pcb-pdf-notes-68d11e9afd4cf568053857b0",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 11th PCB subjects",
+    features: ["Detailed Notes", "All PCB Topics", "Easy to Download", "Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 54,
+    title: "11th Humanities PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 2999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_565c9010-98af-4f04-9d15-02d3c55830d7",
+    category: "Class 11th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-humanities-pdf-notes-68d11ed3fd4cf568053862c1",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 11th Humanities subjects",
+    features: ["Detailed Notes", "All Humanities Topics", "Easy to Download", "Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 55,
+    title: "11th Commerce PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 2999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_60a6fc91-ead6-410f-a4de-1a3ed5d87dd2",
+    category: "Class 11th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/11th-commerce-pdf-notes-68d11ee9fd4cf56805386547",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 11th Commerce subjects",
+    features: ["Detailed Notes", "All Commerce Topics", "Easy to Download", "Exam Ready"],
+    status: "upcoming"
+  },
+
+  // Class 12th Courses
+  {
+    id: 56,
+    title: "12th Live Classes - PCM",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 44999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_683aebc4-d12c-4b65-b8dd-05f8dfa9217f",
+    category: "Class 12th",
+    subCategory: "Live Classes",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-live-classes-pcm-68d11f16ed3275d802d4c887",
+    demoLink: "#",
+    description: "Live classes for 12th grade covering Physics, Chemistry, and Mathematics",
+    features: ["Live Interactive Classes", "Expert Faculty", "PCM Subjects", "Board Exam Preparation"],
+    status: "upcoming"
+  },
+  {
+    id: 57,
+    title: "12th Live Classes - PCB",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 44999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_18f93b10-cda4-429a-b307-0e2736cf00db",
+    category: "Class 12th",
+    subCategory: "Live Classes",
+    isPopular: true,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-live-classes-pcb-68d11f29ed3275d802d4caff",
+    demoLink: "#",
+    description: "Live classes for 12th grade covering Physics, Chemistry, and Biology",
+    features: ["Live Interactive Classes", "Expert Faculty", "PCB Subjects", "Board Exam Preparation"],
+    status: "upcoming"
+  },
+  {
+    id: 58,
+    title: "12th Live Classes - Humanities",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 44999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_e737897f-ff2d-4cc9-a01d-ea9ea4d5bcc7",
+    category: "Class 12th",
+    subCategory: "Live Classes",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-live-classes-humanities-68d11f3ba02e7aec59ae2a80",
+    demoLink: "#",
+    description: "Live classes for 12th grade covering History, Geography, Political Science, and Economics",
+    features: ["Live Interactive Classes", "Expert Faculty", "Humanities Subjects", "Board Exam Preparation"],
+    status: "upcoming"
+  },
+  {
+    id: 59,
+    title: "12th Live Classes - Commerce",
+    instructor: "Expert Faculty",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 44999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Full Year",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_fe902601-5023-4548-a7ed-9808d15bdb59",
+    category: "Class 12th",
+    subCategory: "Live Classes",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-live-classes-commerce-68d11f8a0469868f09f96079",
+    demoLink: "#",
+    description: "Live classes for 12th grade covering Accountancy, Business Studies, and Economics",
+    features: ["Live Interactive Classes", "Expert Faculty", "Commerce Subjects", "Board Exam Preparation"],
+    status: "upcoming"
+  },
+  {
+    id: 60,
+    title: "12th PCM Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_ad6b53b4-cfc3-48ce-8e2f-8a3db8fa0521",
+    category: "Class 12th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-pcm-mind-maps-68d11fada02e7aec59ae44d9",
+    demoLink: "#",
+    description: "Visual mind maps for 12th PCM subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "PCM Topics Covered", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 61,
+    title: "12th PCB Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_35f0df7d-adbd-4f93-9795-6f2f6531b569",
+    category: "Class 12th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-pcb-mind-maps-68d11fc0e3a97ec7327ec491",
+    demoLink: "#",
+    description: "Visual mind maps for 12th PCB subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "PCB Topics Covered", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 62,
+    title: "12th Humanities Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_64a25cb8-869f-4c24-af7c-d6841e48c56a",
+    category: "Class 12th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-humanities-mind-maps-68d11fd3a02e7aec59ae6889",
+    demoLink: "#",
+    description: "Visual mind maps for 12th Humanities subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "Humanities Topics Covered", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 63,
+    title: "12th Commerce Mind Maps",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3999,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_a8127edb-87ec-44fa-afb6-6365081c32a4",
+    category: "Class 12th",
+    subCategory: "Mind Maps",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-commerce-mind-maps-68d11ff60469868f09f98684",
+    demoLink: "#",
+    description: "Visual mind maps for 12th Commerce subjects for better understanding and quick revision",
+    features: ["Visual Learning", "Quick Revision", "Commerce Topics Covered", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 64,
+    title: "12th PCM PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_352531bd-b8aa-4a2d-80fb-6ac5c0d8bef7",
+    category: "Class 12th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-pcm-pdf-notes-68d120110469868f09f98ab8",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 12th PCM subjects",
+    features: ["Detailed Notes", "All PCM Topics", "Easy to Download", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 65,
+    title: "12th PCB PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_a817f5d4-e1f5-4348-a1e0-279761af1e18",
+    category: "Class 12th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-pcb-pdf-notes-68d1204ce3a97ec7327ed668",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 12th PCB subjects",
+    features: ["Detailed Notes", "All PCB Topics", "Easy to Download", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 66,
+    title: "12th Humanities PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_4124280f-583d-43c6-b67b-b2c43912c59d",
+    category: "Class 12th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-humanities-pdf-notes-68d1205ee3a97ec7327ed90a",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 12th Humanities subjects",
+    features: ["Detailed Notes", "All Humanities Topics", "Easy to Download", "Board Exam Ready"],
+    status: "upcoming"
+  },
+  {
+    id: 67,
+    title: "12th Commerce PDF Notes",
+    instructor: "Content Team",
+    rating: 0,
+    reviews: 0,
+    price: 0,
+    oldPrice: 3499,
+    level: 'Advanced',
+    students: 0,
+    duration: "Lifetime Access",
+    image: "https://files.wiseapp.live/upload_files/688083d00933d0d6193bffe5/upload_7ad10509-6641-403e-8e45-1d21177d98b9",
+    category: "Class 12th",
+    subCategory: "Study Material",
+    isPopular: false,
+    enrollLink: "https://courses.shikshanation.com/courses/12th-commerce-pdf-notes-68d120802733c75fcabed53d",
+    demoLink: "#",
+    description: "Comprehensive PDF study notes for 12th Commerce subjects",
+    features: ["Detailed Notes", "All Commerce Topics", "Easy to Download", "Board Exam Ready"],
+    status: "upcoming"
+  },
+
   // JEE Courses
   {
     id: 26,
@@ -948,75 +1456,81 @@ export const coursesData: Course[] = [
 
 // Helper functions to filter courses
 export const getCoursesByCategory = (category: string): Course[] => {
+  // Helper function to sort courses by status (active first)
+  const sortByStatus = (courses: Course[]) => {
+    return courses.sort((a, b) => {
+      const getStatusPriority = (course: Course) => {
+        if (course.status === "active") return 1;
+        if (course.status === "upcoming") return 2;
+        if (course.status === "sold") return 3;
+        return 4;
+      };
+      return getStatusPriority(a) - getStatusPriority(b);
+    });
+  };
+
   if (category === "all" || category === "All Categories") {
-    return coursesData;
+    return sortByStatus(coursesData);
   }
   
   // ShikshaBase - Class 6th to 10th
   if (category === "ShikshaBase") {
-    return coursesData.filter(course => 
+    const courses = coursesData.filter(course => 
       course.category === "Class 6th" ||
       course.category === "Class 7th" ||
       course.category === "Class 8th" ||
       course.category === "Class 9th" ||
       course.category === "Class 10th"
     );
+    return sortByStatus(courses);
   }
   
-  // ShikshaEdge - Competitive exams (PCM, PCB, Humanities, Commerce)
+  // ShikshaEdge - Class 11th and 12th
   if (category === "ShikshaEdge") {
-    return coursesData.filter(course => 
-      course.category === "JEE" || 
-      course.category === "NEET" ||
-      course.category === "CUET"
+    const courses = coursesData.filter(course => 
+      course.category === "Class 11th" || 
+      course.category === "Class 12th"
     );
+    return sortByStatus(courses);
   }
   
-  // ShikshaQuest - Competitive exams
+  // ShikshaQuest - Keep as competitive exams (maintaining backwards compatibility)
   if (category === "ShikshaQuest") {
-    return coursesData.filter(course => 
+    const courses = coursesData.filter(course => 
       course.category === "JEE" || 
       course.category === "NEET" || 
       course.category === "CUET"
     );
+    return sortByStatus(courses);
   }
   
   // ShikshaPro - Skill Development
   if (category === "ShikshaPro") {
-    return coursesData.filter(course => course.category === "Skill Development");
+    const courses = coursesData.filter(course => course.category === "Skill Development");
+    return sortByStatus(courses);
   }
 
   // Handle individual class categories
-  if (category.includes("Class")) {
-    return coursesData.filter(course => course.category === category);
+  if (category.includes("Class") || category === "Class 11th" || category === "Class 12th") {
+    const courses = coursesData.filter(course => course.category === category);
+    return sortByStatus(courses);
   }
   
   // Handle competitive exam categories
   if (category === "JEE" || category === "NEET" || category === "CUET") {
-    return coursesData.filter(course => course.category === category);
+    const courses = coursesData.filter(course => course.category === category);
+    return sortByStatus(courses);
   }
   
   // Handle ShikshaEdge subcategories
-  if (category === "PCB") {
-    return coursesData.filter(course => course.category === "NEET");
+  if (category === "11th") {
+    const courses = coursesData.filter(course => course.category === "Class 11th");
+    return sortByStatus(courses);
   }
   
-  if (category === "PCM") {
-    return coursesData.filter(course => course.category === "JEE");
-  }
-  
-  if (category === "Humanities") {
-    return coursesData.filter(course => 
-      course.category === "CUET" && 
-      (course.subCategory === "Humanities" || course.title === "CUET - Humanities PYQs")
-    );
-  }
-  
-  if (category === "Commerce") {
-    return coursesData.filter(course => 
-      course.category === "CUET" && 
-      (course.subCategory === "Commerce" || course.title === "CUET - Commerce PYQs")
-    );
+  if (category === "12th") {
+    const courses = coursesData.filter(course => course.category === "Class 12th");
+    return sortByStatus(courses);
   }
   
   // Handle ShikshaPro subcategories (specific course titles)
@@ -1025,15 +1539,18 @@ export const getCoursesByCategory = (category: string): Course[] => {
       category === "Data Analytics" ||
       category === "Digital Marketing" ||
       category === "UI UX Design") {
-    return coursesData.filter(course => course.title === category);
+    const courses = coursesData.filter(course => course.title === category);
+    return sortByStatus(courses);
   }
 
   // Handle legacy skill development category
   if (category === "skilling" || category === "Skill Development") {
-    return coursesData.filter(course => course.category === "Skill Development");
+    const courses = coursesData.filter(course => course.category === "Skill Development");
+    return sortByStatus(courses);
   }
   
-  return coursesData.filter(course => course.category === category);
+  const courses = coursesData.filter(course => course.category === category);
+  return sortByStatus(courses);
 };
 
 export const getCoursesBySubCategory = (subCategory: string): Course[] => {
@@ -1048,50 +1565,86 @@ export const getPopularCourses = (): Course[] => {
 export const getHomepageTopCourses = (): Course[] => {
   const selectedCourses: Course[] = [];
   
-  // Class 8th: Core Subjects + PDF Notes
+  // Helper function to sort courses by status (active first)
+  const sortByStatus = (courses: Course[]) => {
+    return courses.sort((a, b) => {
+      const getStatusPriority = (course: Course) => {
+        if (course.status === "active") return 1;
+        if (course.status === "upcoming") return 2;
+        if (course.status === "sold") return 3;
+        return 4;
+      };
+      return getStatusPriority(a) - getStatusPriority(b);
+    });
+  };
+  
+  // Class 8th: Core Subjects + PDF Notes (prioritize active courses)
   const class8thCourses = coursesData.filter(course => 
     course.category === "Class 8th" && 
     (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
   );
-  selectedCourses.push(...class8thCourses.slice(0, 2));
+  const sortedClass8th = sortByStatus(class8thCourses);
+  selectedCourses.push(...sortedClass8th.slice(0, 2));
   
-  // Class 9th: Core Subjects + PDF Notes
+  // Class 9th: Core Subjects + PDF Notes (prioritize active courses)
   const class9thCourses = coursesData.filter(course => 
     course.category === "Class 9th" && 
     (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
   );
-  selectedCourses.push(...class9thCourses.slice(0, 2));
+  const sortedClass9th = sortByStatus(class9thCourses);
+  selectedCourses.push(...sortedClass9th.slice(0, 2));
   
-  // Class 10th: Core Subjects + PDF Notes
+  // Class 10th: Core Subjects + PDF Notes (prioritize active courses)
   const class10thCourses = coursesData.filter(course => 
     course.category === "Class 10th" && 
     (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
   );
-  selectedCourses.push(...class10thCourses.slice(0, 2));
+  const sortedClass10th = sortByStatus(class10thCourses);
+  selectedCourses.push(...sortedClass10th.slice(0, 2));
   
-  // JEE: Live Classes only
-  const jeeLiveCourse = coursesData.find(course => 
+  // Class 11th: Core Subjects + PDF Notes (prioritize active courses)
+  const class11thCourses = coursesData.filter(course => 
+    course.category === "Class 11th" && 
+    (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
+  );
+  const sortedClass11th = sortByStatus(class11thCourses);
+  selectedCourses.push(...sortedClass11th.slice(0, 2));
+  
+  // Class 12th: Core Subjects + PDF Notes (prioritize active courses)
+  const class12thCourses = coursesData.filter(course => 
+    course.category === "Class 12th" && 
+    (course.subCategory === "Live Classes" || course.subCategory === "Study Material")
+  );
+  const sortedClass12th = sortByStatus(class12thCourses);
+  selectedCourses.push(...sortedClass12th.slice(0, 2));
+  
+  // JEE: Live Classes only (prioritize active courses)
+  const jeeLiveCourses = coursesData.filter(course => 
     course.category === "JEE" && course.subCategory === "Live Classes"
   );
-  if (jeeLiveCourse) selectedCourses.push(jeeLiveCourse);
+  const sortedJee = sortByStatus(jeeLiveCourses);
+  if (sortedJee.length > 0) selectedCourses.push(sortedJee[0]);
   
-  // NEET: Live Classes only
-  const neetLiveCourse = coursesData.find(course => 
+  // NEET: Live Classes only (prioritize active courses)
+  const neetLiveCourses = coursesData.filter(course => 
     course.category === "NEET" && course.subCategory === "Live Classes"
   );
-  if (neetLiveCourse) selectedCourses.push(neetLiveCourse);
+  const sortedNeet = sortByStatus(neetLiveCourses);
+  if (sortedNeet.length > 0) selectedCourses.push(sortedNeet[0]);
   
-  // CUET: General Aptitude
-  const cuetGeneralAptitude = coursesData.find(course => 
+  // CUET: General Aptitude (prioritize active courses)
+  const cuetGeneralAptitudeCourses = coursesData.filter(course => 
     course.category === "CUET" && course.subCategory === "General Aptitude"
   );
-  if (cuetGeneralAptitude) selectedCourses.push(cuetGeneralAptitude);
+  const sortedCuet = sortByStatus(cuetGeneralAptitudeCourses);
+  if (sortedCuet.length > 0) selectedCourses.push(sortedCuet[0]);
   
-  // Skill Development: Digital Marketing
-  const digitalMarketingCourse = coursesData.find(course => 
+  // Skill Development: Digital Marketing (prioritize active courses)
+  const digitalMarketingCourses = coursesData.filter(course => 
     course.category === "Skill Development" && course.title === "Digital Marketing"
   );
-  if (digitalMarketingCourse) selectedCourses.push(digitalMarketingCourse);
+  const sortedDigitalMarketing = sortByStatus(digitalMarketingCourses);
+  if (sortedDigitalMarketing.length > 0) selectedCourses.push(sortedDigitalMarketing[0]);
   
   return selectedCourses;
 };
@@ -1135,29 +1688,15 @@ export const categories = [
   { 
     label: "ShikshaEdge", 
     value: "shikshaedge", 
-    count: coursesData.filter(c => c.category === "JEE" || c.category === "NEET" || c.category === "CUET").length,
+    count: coursesData.filter(c => c.category === "Class 11th" || c.category === "Class 12th").length,
     subCategories: [
       { 
-        name: "PCM", 
-        count: coursesData.filter(c => c.category === "JEE").length 
+        name: "11th", 
+        count: coursesData.filter(c => c.category === "Class 11th").length 
       },
       { 
-        name: "PCB", 
-        count: coursesData.filter(c => c.category === "NEET").length 
-      },
-      { 
-        name: "Humanities", 
-        count: coursesData.filter(c => 
-          c.category === "CUET" && 
-          (c.subCategory === "Humanities" || c.title === "CUET - Humanities PYQs")
-        ).length 
-      },
-      { 
-        name: "Commerce", 
-        count: coursesData.filter(c => 
-          c.category === "CUET" && 
-          (c.subCategory === "Commerce" || c.title === "CUET - Commerce PYQs")
-        ).length 
+        name: "12th", 
+        count: coursesData.filter(c => c.category === "Class 12th").length 
       },
     ]
   },
