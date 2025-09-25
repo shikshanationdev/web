@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import CourseCard from "../ui/CourseCard";
 import { coursesData, getPopularCourses, getHomepageTopCourses } from "@/data/courses";
 import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useIntersectionObserver } from "@/hooks";
 
 const categoryOptions = [
   { label: "All Categories", value: "all" },
@@ -18,10 +19,17 @@ const CoursesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [indicatorStyle, setIndicatorStyle] = useState({ width: 0, left: 0 });
   const [isPaused, setIsPaused] = useState(false);
+  const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const containerRef = useRef(null);
   const coursesScrollRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+
+  // Use intersection observer to detect when user enters/leaves the section
+  const { targetRef: sectionRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.3, // Start animation when 30% of the section is visible
+    rootMargin: '-50px 0px' // Add some margin to delay the trigger
+  });
 
   // Get filtered courses based on selected category
   const getFilteredCourses = () => {
@@ -106,16 +114,17 @@ const CoursesSection = () => {
     ? "fast"
     : "slow";
 
-  // Duplicate courses in useEffect for infinite scrolling (like MediaMarquee)
+  // Control animation based on intersection observer
+  useEffect(() => {
+    setIsAnimationEnabled(isIntersecting);
+  }, [isIntersecting]);
+
+  // Setup infinite scroll structure (separate from animation control)
   useEffect(() => {
     const scroller = coursesScrollRef.current;
     if (!scroller) return;
 
-    console.log('Setting up infinite scroll animation...');
-
-    // Always enable animation, regardless of reduced motion preference for this demo
-    scroller.setAttribute("data-animated", "true");
-    console.log('Added data-animated=true to scroller');
+    console.log('Setting up infinite scroll structure...');
 
     // Make an array from the elements within scroller inner
     const scrollerInner = scroller.querySelector(".scroller__inner");
@@ -139,8 +148,18 @@ const CoursesSection = () => {
       scrollerInner.appendChild(duplicatedItem);
     });
 
-    console.log('Animation setup complete. Total items now:', scrollerInner.children.length);
+    console.log('Structure setup complete. Total items now:', scrollerInner.children.length);
   }, [sortedVisibleCourses]);
+
+  // Control animation state separately (without recreating the structure)
+  useEffect(() => {
+    const scroller = coursesScrollRef.current;
+    if (!scroller) return;
+
+    // Enable animation only when section is visible
+    scroller.setAttribute("data-animated", isAnimationEnabled ? "true" : "false");
+    console.log('Animation state:', isAnimationEnabled ? 'enabled' : 'disabled');
+  }, [isAnimationEnabled]);
 
   // Get total count for "See More" card display
   const getTotalCourseCount = () => {
@@ -243,19 +262,23 @@ const CoursesSection = () => {
     }
   }, [selectedCategory]);
 
-  // Pause/resume handlers for animation
-  const handleMouseEnter = () => {
-    console.log('Mouse entered - pausing animation');
-    setIsPaused(true);
-  };
+  // Pause/resume handlers for animation - only when section is visible
+  const handleMouseEnter = useCallback(() => {
+    if (isAnimationEnabled && !isPaused) {
+      console.log('Mouse entered - pausing animation');
+      setIsPaused(true);
+    }
+  }, [isAnimationEnabled, isPaused]);
 
-  const handleMouseLeave = () => {
-    console.log('Mouse left - resuming animation');
-    setIsPaused(false);
-  };
+  const handleMouseLeave = useCallback(() => {
+    if (isAnimationEnabled && isPaused) {
+      console.log('Mouse left - resuming animation');
+      setIsPaused(false);
+    }
+  }, [isAnimationEnabled, isPaused]);
 
   return (
-    <section className="w-full py-16">
+    <section ref={sectionRef} className="w-full py-16">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
@@ -263,6 +286,14 @@ const CoursesSection = () => {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
             Our most popular programs, trusted by thousands of learners.
           </p>
+          {/* Debug indicator - remove in production */}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-2 text-xs text-gray-500">
+              Animation: {isAnimationEnabled ? 'Active' : 'Inactive'} |
+              Visible: {isIntersecting ? 'Yes' : 'No'} |
+              Paused: {isPaused ? 'Yes' : 'No'}
+            </div>
+          )}
         </div>
 
         {/* Category Tabs with Sliding Indicator */}
@@ -336,8 +367,17 @@ const CoursesSection = () => {
           }
 
           /* Infinite scrolling animation styles */
+          .scroller {
+            overflow: hidden !important;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .scroller::-webkit-scrollbar {
+            display: none !important;
+          }
+
           .scroller[data-animated="true"] {
-            overflow: hidden;
             -webkit-mask: linear-gradient(
               90deg,
               transparent,
@@ -354,15 +394,31 @@ const CoursesSection = () => {
             );
           }
 
+          .scroller[data-animated="false"] {
+            -webkit-mask: none;
+            mask: none;
+          }
+
           .scroller[data-animated="true"] .scroller__inner {
             width: max-content;
             flex-wrap: nowrap;
             animation: scroll var(--_animation-duration, 40s)
               var(--_animation-direction, forwards) linear infinite;
+            animation-play-state: running;
+          }
+
+          .scroller[data-animated="false"] .scroller__inner {
+            width: max-content;
+            flex-wrap: nowrap;
+            animation: none;
           }
 
           .scroller[data-animated="true"] .scroller__inner.paused {
             animation-play-state: paused !important;
+          }
+
+          .scroller[data-animated="true"] .scroller__inner:not(.paused) {
+            animation-play-state: running !important;
           }
 
           .scroller[data-direction="right"] {
@@ -389,6 +445,22 @@ const CoursesSection = () => {
 
           .scroller__inner {
             flex-wrap: wrap;
+            overflow: visible;
+          }
+
+          /* Ensure smooth pause/resume transitions */
+          .scroller[data-animated="true"] .scroller__inner {
+            transition: none; /* Remove any transition that might interfere with animation */
+          }
+
+          /* Prevent any scrollbar from appearing on the scroller container */
+          .scroller * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .scroller *::-webkit-scrollbar {
+            display: none;
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -401,7 +473,7 @@ const CoursesSection = () => {
           }
         `}</style>
         {/* Courses Infinite Scroll Container */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Courses Container */}
           <div
             ref={coursesScrollRef}
@@ -411,7 +483,7 @@ const CoursesSection = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className={`scroller__inner py-4 flex gap-6 ${isPaused ? 'paused' : ''}`}>
+            <div className={`scroller__inner py-4 flex gap-6 ${isPaused && isAnimationEnabled ? 'paused' : ''}`}>
               {sortedVisibleCourses.map((course, idx) => (
                 <div
                   key={`${course.id}-${idx}`}
