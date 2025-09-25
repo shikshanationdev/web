@@ -8,8 +8,8 @@ const RefundPolicyPage = () => {
     <div className='min-h-screen'>
       {/* Banner Section */}
       <Banner
-        heading="Refund Policy"
-        subtitle="Learn about our refund terms and conditions"
+        heading="Cancellation and Refund Policy"
+        subtitle="Learn about our cancellation and refund terms and conditions"
       />
 
       {/* Main Content */}

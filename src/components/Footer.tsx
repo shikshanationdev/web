@@ -362,10 +362,10 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="/refund-policy"
+                        href="/cancellation-and-refund-policy"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
-                        Refund Policy
+                        Cancellation and Refund Policy
                       </Link>
                     </li>
                   </ul>
@@ -603,10 +603,10 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        href="/refund-policy"
+                        href="/cancellation-and-refund-policy"
                         className="hover:underline text-sm transition-colors duration-200 text-sky-600"
                       >
-                        Refund Policy
+                        Cancelation and Refund Policy
                       </Link>
                     </li>
                   </ul>

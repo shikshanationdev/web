@@ -6,15 +6,24 @@ const RefundPolicyContent: React.FC = () => {
     <div className="max-w-6xl mx-auto px-10 py-12">
       <div className="max-w-none">
         <p className="mb-8 text-gray-600">
-          <strong>Effective Date:</strong> 10 July 2025
+          <strong>Effective Date:</strong> 24 September 2025
         </p>
-        <p className="mb-8 text-gray-700">
-          Shiksha Nation (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) strives to provide the best experience for our users. This Refund Policy outlines the conditions under which you may request a refund for any purchase made through the Shiksha Nation mobile application (&quot;App&quot;).
-        </p>
+
+        <section id="cancellation-policy" className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4 text-sky-700">
+            1. Cancellation Policy
+          </h2>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <li>Once a course, test series, or subscription has been purchased, it cannot be cancelled under any circumstances.</li>
+            <li>Students are advised to review all course details, content structure, and features before making a purchase decision.</li>
+            <li>No partial or full cancellation requests will be entertained after successful enrollment.</li>
+            <li>By enrolling, you acknowledge and agree that your purchase is final.</li>
+          </ul>
+        </section>
 
         <section id="eligibility" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            1. Eligibility for Refund
+            2. Eligibility for Refund
           </h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>Refunds are available only for purchases made directly through the Shiksha Nation App or website.</li>
@@ -25,7 +34,7 @@ const RefundPolicyContent: React.FC = () => {
 
         <section id="non-refundable" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            2. Non-Refundable Situations
+            3. Non-Refundable Situations
           </h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>Digital goods fully consumed or downloaded.</li>
@@ -36,7 +45,7 @@ const RefundPolicyContent: React.FC = () => {
 
         <section id="how-to-request" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            3. How to Request a Refund
+            4. How to Request a Refund
           </h2>
           <p className="mb-4 text-gray-700">
             To initiate a refund, please email our support team at <a href="mailto:support@shikshanation.com" className="text-sky-600 hover:text-sky-800 font-medium">support@shikshanation.com</a> with the following details:
@@ -53,7 +62,7 @@ const RefundPolicyContent: React.FC = () => {
 
         <section id="refund-process" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            4. Refund Process
+            5. Refund Process
           </h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>If approved, refunds will be processed to your original payment method.</li>
@@ -63,7 +72,7 @@ const RefundPolicyContent: React.FC = () => {
 
         <section id="contact" className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-sky-700">
-            5. Contact Us
+            6. Contact Us
           </h2>
           <p className="mb-4 text-gray-700">
             If you have any questions or need assistance with a refund, feel free to contact us at:

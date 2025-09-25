@@ -11,6 +11,7 @@ const TableOfContents: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [tocItems] = useState<TableOfContentsItem[]>([
+    { id: "cancellation-policy", title: "Cancellation Policy", level: 1 },
     { id: "eligibility", title: "Eligibility for Refund", level: 1 },
     { id: "non-refundable", title: "Non-Refundable Situations", level: 1 },
     { id: "how-to-request", title: "How to Request a Refund", level: 1 },
@@ -85,8 +86,8 @@ const TableOfContents: React.FC = () => {
                     <button
                       onClick={() => scrollToSection(item.id)}
                       className={`text-left w-full px-3 py-2 rounded-md text-sm transition-colors duration-200 hover:bg-sky-50 hover:text-sky-700 ${activeSection === item.id
-                          ? "bg-sky-100 text-sky-700 font-medium"
-                          : "text-gray-600"
+                        ? "bg-sky-100 text-sky-700 font-medium"
+                        : "text-gray-600"
                         }`}
                     >
                       {item.title}
@@ -111,8 +112,8 @@ const TableOfContents: React.FC = () => {
                 <button
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left w-full px-3 py-2 rounded-md text-sm transition-colors duration-200 hover:bg-sky-50 hover:text-sky-700 ${activeSection === item.id
-                      ? "bg-sky-100 text-sky-700 font-medium border-l-3 border-sky-500"
-                      : "text-gray-600"
+                    ? "bg-sky-100 text-sky-700 font-medium border-l-3 border-sky-500"
+                    : "text-gray-600"
                     }`}
                   style={{
                     paddingLeft: `${12 + item.level * 16}px`,
