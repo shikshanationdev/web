@@ -27,7 +27,7 @@ const ShippingExchangePolicyPage = () => {
               <TableOfContents />
             </div>
 
-            <div className="bg-white rounded-4xl shadow-sm">
+            <div className="bg-white rounded-4xl">
               <ShippingExchangePolicyContent />
             </div>
           </main>

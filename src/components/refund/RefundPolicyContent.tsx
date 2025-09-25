@@ -3,7 +3,7 @@ import React from "react";
 
 const RefundPolicyContent: React.FC = () => {
   return (
-    <div className="max-w-6xl mx-auto px-10 py-12">
+    <div className="max-w-6xl mx-auto py-12">
       <div className="max-w-none">
         <p className="mb-8 text-gray-600">
           <strong>Effective Date:</strong> 24 September 2025
