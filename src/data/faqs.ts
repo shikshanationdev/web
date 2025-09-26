@@ -42,7 +42,7 @@ export const faqs = [
   {
     q: "How do I contact your support team for help?",
     a:
-      "You can reach us via email, phone, or the contact form on our website. Our support team is available 24/7.",
+      "You can reach us via email, phone, or the contact form on our website. Our support team is available 10 A.M. To 7 P.M. from Monday to Saturday.",
   },
   {
     q: "Do you offer free trial classes or demo sessions?",

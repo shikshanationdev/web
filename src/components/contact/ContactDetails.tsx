@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: MdAccessTime,
     label: "OFFICE HOURS",
-    content: "10:00 AM - 6:00 PM"
+    content: "10:00 AM - 7:00 PM (Monday - Saturday)"
   }
 ];
 
