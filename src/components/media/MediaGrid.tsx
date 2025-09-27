@@ -3,6 +3,22 @@ import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
   {
+    logo: "/india-today.png",
+    brand: "INDIA TODAY",
+    title: "7 best strategies to score high in JEE Main",
+    desc: "Cracking JEE requires not just hard work, but smart strategy. With JEE 2026 approaching, aspirants need a focused plan for concept mastery and exam efficiency.",
+    date: "23 September, 2025",
+    link: "https://www.indiatoday.in/education-today/tips-and-tricks/story/jee-2026-7-strategies-to-maximise-your-score-2792028-2025-09-23",
+  },
+  {
+    logo: "https://www.hindustantimes.com/static-content/1y/ht/ht_100_logoblack@2x.webp",
+    brand: "HINDUSTAN TIMES",
+    title: "How to prepare for JEE in 3 months : A strategic approach",
+    desc: "Students preparing for the JEE can still make progress in the final 3 months by choosing right mentors, studying selectively, and sticking to structured plan. ",
+    date: "22 September, 2025",
+    link: "https://www.hindustantimes.com/education/competitive-exams/how-to-prepare-for-jee-in-3-months-a-strategic-approach-101758539745230.html",
+  },
+  {
     logo: "https://www.educationtimes.com/EtNewLogo.jpg",
     brand: "EDUCATION TIMES",
     title: "Shiksha Nation launches AI-enabled bilingual learning platform",
