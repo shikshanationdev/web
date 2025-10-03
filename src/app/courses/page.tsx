@@ -1,5 +1,12 @@
-import React, { Suspense } from 'react';
-import { CoursesHero, CoursesCatalog } from '@/components/courses';
+import React, { Suspense } from "react";
+import { CoursesHero, CoursesCatalog } from "@/components/courses";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shiksha Nation Courses | Online Learning for School & Exams",
+  description:
+    "Courses for classes 6–12, JEE, NEET & CUET. Learn from expert teachers with structured lessons and practice material to boost your academic performance.",
+};
 
 // Loading component for CoursesCatalog suspense boundary
 const CoursesCatalogLoader = () => (

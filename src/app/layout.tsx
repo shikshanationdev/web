@@ -17,13 +17,14 @@ const lexendDeca = Lexend_Deca({
 });
 
 export const metadata: Metadata = {
-  title: "Shikshanation - Quality Education for All",
-  description: "Shikshanation provides quality education through online courses, JEE/NEET preparation, and skill development programs.",
+  title: "Best AI-Powered Online Learning Platform | Shiksha Nation",
+  description:
+    "Best AI-based Online courses for classes 6–12, JEE, NEET & CUET. Learn with expert teachers anytime, anywhere to improve academic performance.",
   icons: {
-    icon: '/favicon.ico',
+    icon: "/favicon.ico",
   },
   viewport: {
-    width: 'device-width',
+    width: "device-width",
     initialScale: 1,
     maximumScale: 5,
     userScalable: true,
@@ -33,8 +34,8 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: 'default',
-    title: 'Shikshanation',
+    statusBarStyle: "default",
+    title: "Shikshanation",
   },
 };
 
@@ -46,23 +47,29 @@ export default function RootLayout({
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Shiksha Nation",
-    "alternateName": "Shiksha Nation",
-    "url": "https://shikshanation.com/",
-    "logo": "https://shikshanation.com/_next/image?url=%2Fhome%2Flogo.webp&w=256&q=75",
-    "sameAs": [
+    name: "Shiksha Nation",
+    alternateName: "Shiksha Nation",
+    url: "https://shikshanation.com/",
+    logo: "https://shikshanation.com/_next/image?url=%2Fhome%2Flogo.webp&w=256&q=75",
+    sameAs: [
       "https://www.facebook.com/shikshanation24/",
       "https://x.com/shikshanation",
       "https://www.instagram.com/shikshanation/",
       "https://www.youtube.com/@Shiksha_Nation",
-      "https://www.linkedin.com/company/shikshanation/"
-    ]
+      "https://www.linkedin.com/company/shikshanation/",
+    ],
   };
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+        <meta
+          name="google-site-verification"
+          content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g"
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+        />
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -74,7 +81,7 @@ export default function RootLayout({
           id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(orgSchema)
+            __html: JSON.stringify(orgSchema),
           }}
         />
       </head>
@@ -89,7 +96,7 @@ export default function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T75L3CTC');`
+})(window,document,'script','dataLayer','GTM-T75L3CTC');`,
           }}
         />
 
@@ -99,7 +106,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src="https://www.googletagmanager.com/ns.html?id=GTM-T75L3CTC"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
         <Navbar />
