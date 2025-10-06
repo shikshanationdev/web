@@ -162,14 +162,14 @@ const Hero = () => {
             <div className="md:hidden w-full flex justify-center mb-8">
               <div className="relative w-80 h-80">
                 <Image
-                  src={carouselImages[currentImageIndex]}
+                  src={carouselImages[0]}
                   alt="Learning Platform"
                   width={320}
                   height={320}
                   className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                     }`}
-                  priority={currentImageIndex === 0}
-                  fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
+                  priority
+                  fetchPriority="high"
                 />
               </div>
             </div>
