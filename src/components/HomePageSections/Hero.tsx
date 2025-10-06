@@ -9,10 +9,10 @@ import { toast } from 'react-hot-toast';
 const Hero = () => {
   // Carousel images with the Shiksha series
   const carouselImages = [
-    "/home/ShikshaBase.webp",
-    "/home/ShikshaEdge.webp",
-    "/home/ShikshaQuest.webp",
-    "/home/ShikshaPro.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaBase.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaEdge.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaQuest.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaPro.webp",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -162,14 +162,14 @@ const Hero = () => {
             <div className="md:hidden w-full flex justify-center mb-8">
               <div className="relative w-80 h-80">
                 <Image
-                  src={carouselImages[0]}
+                  src={carouselImages[currentImageIndex]}
                   alt="Learning Platform"
                   width={320}
                   height={320}
                   className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                     }`}
-                  priority
-                  fetchPriority="high"
+                  priority={currentImageIndex === 0}
+                  fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
                 />
               </div>
             </div>
@@ -226,8 +226,6 @@ const Hero = () => {
                 height={340}
                 className={`w-full h-auto object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                   }`}
-                priority={currentImageIndex === 0}
-                fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
               />
             </div>
           </div>

@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "shikshanation.com",
       },
+      {
+        protocol: "https",
+        hostname: "d10ge3ci2b88dm.cloudfront.net",
+      }
     ]
   }
 };

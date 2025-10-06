@@ -14,7 +14,7 @@ const JoinLearnersSection = () => {
         <div className="w-[50vw]  flex items-center justify-center">
           <div className="relative w-[44vw] h-[20vw] max-w-[600px] max-h-[250px]">
             <Image
-              src="/home/banner2.webp"
+              src="https://d10ge3ci2b88dm.cloudfront.net/home/banner2.webp"
               alt="Join over 25,000 learners banner"
               fill
               style={{ objectFit: "cover" }}

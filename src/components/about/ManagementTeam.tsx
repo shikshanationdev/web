@@ -5,7 +5,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 const founder = {
   name: 'Saurabh Kumar',
   title: 'Founder & CEO',
-  img: '/saurabh-kumar2.webp',
+  img: 'https://d10ge3ci2b88dm.cloudfront.net/saurabh-kumar2.webp',
   border: 'border-purple-300',
   container: 'bg-purple-100',
   description: 'A Gold Medalist in Mechanical Engineering, PhD from Germany, and IIM alumnus, Dr. Saurabh Kumar has over 24 years of academic leadership across India and the Middle East. He has held senior roles at VMC, PW, CL Educate, FIITJEE, and pioneered test prep in the MENA region. He has mentored over 1 lakh students including IITians, NEET toppers, Olympiad winners, and board rankers. Now, as Founder & CEO of Shiksha Nation, he is building Bharat’s first AI-powered unified learning platform delivering quality education from Class 6 to Careers in Hindi & English.',
@@ -17,7 +17,7 @@ const secondRowTeam = [
   {
     name: 'Rajat Sharma',
     title: 'Chief Business Officer (CBO)',
-    img: '/rajat-sharma2.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/rajat-sharma2.webp',
     border: 'border-blue-300',
     container: 'bg-blue-100',
     description: 'Rajat Sharma, an IIT Bombay alumnus and Computer Science engineer, has led growth at Flipkart, Vedantu, Toppr, FlipLearn, and Growth School. A certified strategist in business and marketing, he now drives expansion and customer acquisition at Shiksha Nation, building Bharat\'s first AI-powered learning ecosystem.',
@@ -26,7 +26,7 @@ const secondRowTeam = [
   {
     name: 'Gaurav Mittal',
     title: 'Chief Technology Officer (CTO)',
-    img: '/Gaurav-Mittal2.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/Gaurav-Mittal2.webp',
     border: 'border-green-300',
     container: 'bg-green-100',
     description: 'Gaurav Mittal, an MBA from Symbiosis with backgrounds in IT and Commerce, has led tech at HCL Technologies and EXL. At Shiksha Nation, he drives technology and HR, ensuring Bharat\'s AI-powered education platform is scalable, personalized, and built on an ethical, high-performance culture.',
@@ -39,7 +39,7 @@ const thirdRowTeam = [
   {
     name: 'Anurag Mishra',
     title: 'VP Academics JEE',
-    img: '/anurag2.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/anurag2.webp',
     border: 'border-green-300',
     container: 'bg-green-100',
     description: 'Anurag Misra, IIT Roorkee alumnus and renowned Physics author, has over 25 years mentoring JEE/NEET aspirants. As VP-Academics at Shiksha Nation, he leads AI-powered strategies to make learning joyful, simple, and effective for Bharat\'s students.',
@@ -48,7 +48,7 @@ const thirdRowTeam = [
   {
     name: 'Dr. NK Sharma',
     title: 'VP Academics NEET',
-    img: '/NK2.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/NK2.webp',
     border: 'border-blue-300',
     container: 'bg-blue-100',
     description: 'Dr. NK. Sharma, a medical graduate from LLRM Medical College, has 20+ years in NEET coaching and is author of Master Class in Biology and Pearson Guide for AIPMT. A digital learning pioneer, he now drives AI-powered, student-centric science education at Shiksha Nation.',
@@ -57,7 +57,7 @@ const thirdRowTeam = [
   {
     name: 'Dr. Gaurav Sharma',
     title: 'AVP Academics',
-    img: '/Gaurav-Sharma2.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/Gaurav-Sharma2.webp',
     border: 'border-purple-300',
     container: 'bg-purple-100',
     description: 'Dr. Gaurav Sharma brings over 20 years of interdisciplinary expertise in neuroscience, chemistry, dentistry, and cognitive psychology. As Associate Vice President at Shiksha Nation, he has mentored thousands of NEET aspirants and designed innovative learning curricula to help students learn smarter and excel.',
@@ -70,7 +70,7 @@ const fourthRowTeam = [
   {
     name: 'Dr. Shubham Dubey',
     title: 'Head of Operations',
-    img: '/shubham-dubey.webp',
+    img: 'https://d10ge3ci2b88dm.cloudfront.net/shubham-dubey.webp',
     border: 'border-orange-300',
     container: 'bg-orange-100',
     description: 'At Shiksha Nation, Dr. Shubham Dubey leads operations with a clear focus on making education more impactful and accessible. With years of experience in the education sector at institutions like Narayana, VMC, and PW, he has built systems and processes that help organizations grow efficiently while keeping students at the heart of every decision. A BDS graduate and Certified Implantologist, Dr. Dubey combines precision and discipline with a strategic mindset, creating frameworks that not only optimize operations but also enhance learning experiences. His work is driven by a simple belief: when operations run smoothly, students can truly thrive.',

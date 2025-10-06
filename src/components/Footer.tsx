@@ -99,7 +99,7 @@ const Footer = () => {
               <div>
                 <div className="mb-6">
                   <Image
-                    src="/home/logo.webp"
+                    src="https://d10ge3ci2b88dm.cloudfront.net/home/logo.webp"
                     alt="Shiksha Nation Logo"
                     width={200}
                     height={60}
@@ -385,7 +385,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-playstore.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-playstore.webp"
                         alt="Get it on Google Play"
                         width={120}
                         height={36}
@@ -403,7 +403,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-appstore.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-appstore.webp"
                         alt="Download on the App Store"
                         width={120}
                         height={36}
@@ -417,7 +417,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-windows-store.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-windows-store.webp"
                         alt="Get it from Microsoft"
                         width={120}
                         height={36}
@@ -431,7 +431,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/dowload_for_mac_os.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/dowload_for_mac_os.webp"
                         alt="Download for macOS"
                         width={120}
                         height={36}
@@ -625,7 +625,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-playstore.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-playstore.webp"
                         alt="Get it on Google Play"
                         width={100}
                         height={30}
@@ -643,7 +643,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-appstore.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-appstore.webp"
                         alt="Download on the App Store"
                         width={100}
                         height={30}
@@ -657,7 +657,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/get-it-on-windows-store.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-windows-store.webp"
                         alt="Get it from Microsoft"
                         width={100}
                         height={30}
@@ -671,7 +671,7 @@ const Footer = () => {
                       className="transition-transform hover:scale-105"
                     >
                       <Image
-                        src="/home/dowload_for_mac_os.webp"
+                        src="https://d10ge3ci2b88dm.cloudfront.net/home/dowload_for_mac_os.webp"
                         alt="Download for macOS"
                         width={100}
                         height={30}

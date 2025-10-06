@@ -6,25 +6,25 @@ const CoursesHero = () => {
     {
       id: 1,
       title: "Class 6th to 12th",
-      image: "/courses/Shiksha-Base.webp",
+      image: "https://d10ge3ci2b88dm.cloudfront.net/courses/Shiksha-Base.webp",
       description: "Comprehensive curriculum for secondary education"
     },
     {
       id: 2,
       title: "NEET",
-      image: "/courses/Shiksha-Edge.webp",
+      image: "https://d10ge3ci2b88dm.cloudfront.net/courses/Shiksha-Edge.webp",
       description: "Medical entrance exam preparation"
     },
     {
       id: 3,
       title: "JEE",
-      image: "/courses/Shiksha-Pro.webp",
+      image: "https://d10ge3ci2b88dm.cloudfront.net/courses/Shiksha-Pro.webp",
       description: "Engineering entrance exam preparation"
     },
     {
       id: 4,
       title: "Skill Development",
-      image: "/courses/Shiksha-Quest.webp",
+      image: "https://d10ge3ci2b88dm.cloudfront.net/courses/Shiksha-Quest.webp",
       description: "Professional and technical skills"
     }
   ];
