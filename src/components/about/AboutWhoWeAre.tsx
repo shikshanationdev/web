@@ -21,6 +21,8 @@ const AboutWhoWeAre = () => {
                 width={250}
                 height={120}
                 className="object-cover rounded-lg h-64 w-80"
+                priority
+                fetchPriority="high"
               />
             </div>
           </div>

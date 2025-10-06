@@ -168,6 +168,8 @@ const Hero = () => {
                   height={320}
                   className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                     }`}
+                  priority={currentImageIndex === 0}
+                  fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
                 />
               </div>
             </div>
@@ -224,6 +226,8 @@ const Hero = () => {
                 height={340}
                 className={`w-full h-auto object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                   }`}
+                priority={currentImageIndex === 0}
+                fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
               />
             </div>
           </div>
