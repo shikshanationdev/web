@@ -1,7 +1,8 @@
 import { google } from 'googleapis';
-import { JWT } from 'google-auth-library';
 import * as fs from 'fs';
 import * as path from 'path';
+
+type JWT = InstanceType<typeof google.auth.JWT>;
 
 // Google Sheets API configuration
 const sheets = google.sheets('v4');
