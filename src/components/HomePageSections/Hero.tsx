@@ -9,10 +9,10 @@ import { toast } from 'react-hot-toast';
 const Hero = () => {
   // Carousel images with the Shiksha series
   const carouselImages = [
-    "/home/ShikshaBase.png",
-    "/home/ShikshaEdge.png",
-    "/home/ShikshaQuest.png",
-    "/home/ShikshaPro.png",
+    "/home/ShikshaBase.webp",
+    "/home/ShikshaEdge.webp",
+    "/home/ShikshaQuest.webp",
+    "/home/ShikshaPro.webp",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
