@@ -41,7 +41,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Live classes for 6th grade covering Science, Maths, English and Social Science",
     features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 2,
@@ -62,7 +62,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Dedicated Science live classes for Class 6th students",
     features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Live Mathematics classes for Class 6th with problem-solving focus",
     features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Comprehensive PDF study notes for Class 6th all subjects",
     features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 5,
@@ -125,7 +125,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Visual mind maps for better understanding and quick revision",
     features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"],
-    status: "sold"
+    status: "active"
   },
   // Class 7th Courses
   {
@@ -147,7 +147,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Live classes for 7th grade covering Science, Maths, English and Social Science",
     features: ["Live Interactive Classes", "Expert Faculty", "All Core Subjects", "Regular Assessments"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 7,
@@ -168,7 +168,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Dedicated Science live classes for Class 7th students",
     features: ["Live Science Classes", "Practical Demonstrations", "Concept Building", "Regular Tests"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 8,
@@ -189,7 +189,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Live Mathematics classes for Class 7th with problem-solving focus",
     features: ["Live Math Classes", "Problem Solving", "Formula Practice", "Step-by-step Solutions"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 9,
@@ -210,7 +210,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Comprehensive PDF study notes for Class 7th all subjects",
     features: ["PDF Format", "All Subjects", "Easy Download", "Lifetime Access"],
-    status: "sold"
+    status: "active"
   },
   {
     id: 10,
@@ -231,7 +231,7 @@ export const coursesData: Course[] = [
     demoLink: "#",
     description: "Visual mind maps for better understanding and quick revision",
     features: ["Visual Learning", "Quick Revision", "All Topics Covered", "Easy to Remember"],
-    status: "sold"
+    status: "active"
   },
 
   // Class 8th Courses

@@ -43,7 +43,7 @@ const PopupBanner = () => {
   };
 
   const handleBannerClick = () => {
-    window.open('https://courses.shikshanation.com/courses/genetics-live-masterclass-by-dr-n-k-sharma-68a6b3fb25cd370d79a1e9c5', '_blank');
+    window.open('https://courses.shikshanation.com/courses/marks-guarantee-success-program-68e16514adb23bf6bdc7cc47', '_blank');
   };
 
   if (!isVisible) return null;
@@ -66,7 +66,7 @@ const PopupBanner = () => {
           onClick={handleBannerClick}
         >
           <Image
-            src="/banner.png"
+            src="/banner.gif"
             alt="Promotional Banner"
             width={700}
             height={500}
