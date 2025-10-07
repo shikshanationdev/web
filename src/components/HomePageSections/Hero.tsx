@@ -166,6 +166,7 @@ const Hero = () => {
                   alt="Learning Platform"
                   width={320}
                   height={320}
+                  quality={100}
                   className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                     }`}
                   priority={currentImageIndex === 0}
@@ -224,6 +225,7 @@ const Hero = () => {
                 alt="Learning Platform"
                 width={340}
                 height={340}
+                quality={100}
                 className={`w-full h-auto object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                   }`}
               />
