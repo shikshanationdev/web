@@ -25,7 +25,7 @@ const CareersHero: React.FC = () => {
         </div>
 
         <div className="relative w-full h-96 md:h-[520px]">
-          <Image src="/careers/image1.png" alt="careers" fill style={{ objectFit: 'contain' }} />
+          <Image src="https://d10ge3ci2b88dm.cloudfront.net/careers/image1.webp" alt="careers" fill style={{ objectFit: 'contain' }} priority fetchPriority="high" />
         </div>
       </div>
     </section>

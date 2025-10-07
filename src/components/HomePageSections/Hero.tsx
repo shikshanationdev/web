@@ -9,10 +9,10 @@ import { toast } from 'react-hot-toast';
 const Hero = () => {
   // Carousel images with the Shiksha series
   const carouselImages = [
-    "/home/ShikshaBase.png",
-    "/home/ShikshaEdge.png",
-    "/home/ShikshaQuest.png",
-    "/home/ShikshaPro.png",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaBase.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaEdge.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaQuest.webp",
+    "https://d10ge3ci2b88dm.cloudfront.net/home/ShikshaPro.webp",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -166,8 +166,11 @@ const Hero = () => {
                   alt="Learning Platform"
                   width={320}
                   height={320}
+                  quality={100}
                   className={`w-full h-full object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                     }`}
+                  priority={currentImageIndex === 0}
+                  fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
                 />
               </div>
             </div>
@@ -222,6 +225,7 @@ const Hero = () => {
                 alt="Learning Platform"
                 width={340}
                 height={340}
+                quality={100}
                 className={`w-full h-auto object-contain transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"
                   }`}
               />

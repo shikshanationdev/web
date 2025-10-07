@@ -69,7 +69,7 @@ const Navbar = () => {
               </button>
               <Link href="/" className="flex items-center select-none">
                 <Image
-                  src="/home/logo.webp"
+                  src="https://d10ge3ci2b88dm.cloudfront.net/home/logo.webp"
                   alt="Shiksha Nation Logo"
                   width={120}
                   height={40}
@@ -92,7 +92,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center select-none">
               <Image
-                src="/home/logo.webp"
+                src="https://d10ge3ci2b88dm.cloudfront.net/home/logo.webp"
                 alt="Shiksha Nation Logo"
                 width={180}
                 height={60}
@@ -162,7 +162,7 @@ const Navbar = () => {
               {/* Header with Logo and Close Button */}
               <div className="flex items-center justify-center p-6">
                 <Image
-                  src="/home/logo.webp"
+                  src="https://d10ge3ci2b88dm.cloudfront.net/home/logo.webp"
                   alt="Shiksha Nation Logo"
                   width={200}
                   height={40}

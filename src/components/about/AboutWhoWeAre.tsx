@@ -16,11 +16,13 @@ const AboutWhoWeAre = () => {
           <div className="flex justify-start">
             <div className="rounded-lg overflow-hidden p-1">
               <Image
-                src="/about-us/whoweare.jpg"
+                src="https://d10ge3ci2b88dm.cloudfront.net/about-us/whoweare.webp"
                 alt="Graduation celebration"
                 width={250}
                 height={120}
                 className="object-cover rounded-lg h-64 w-80"
+                priority
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -70,7 +72,7 @@ const AboutWhoWeAre = () => {
           <div className="flex justify-end order-1 md:order-2">
             <div className="rounded-lg overflow-hidden p-1">
               <Image
-                src="/about-us/whoweare3.jpg"
+                src="https://d10ge3ci2b88dm.cloudfront.net/about-us/whoweare3.webp"
                 alt="Students group"
                 width={250}
                 height={220}

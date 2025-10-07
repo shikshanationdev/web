@@ -11,7 +11,7 @@ const QrAppPromo: React.FC = () => {
           <div className="relative flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
             {/* Device Mockup Image - Using next/image */}
             <Image
-              src="/home/phone-tablet-mockup-v3.png"
+              src="https://d10ge3ci2b88dm.cloudfront.net/home/phone-tablet-mockup-v3.webp"
               width={500}
               height={500}
               alt="Shiksha Nation App on Phone & Tablet"
@@ -47,10 +47,11 @@ const QrAppPromo: React.FC = () => {
                   className="transform hover:scale-105 transition-transform"
                 >
                   <Image
-                    src="/home/get-it-on-playstore.png"
+                    src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-playstore.webp"
                     alt="Get it on Google Play"
                     width={180}
-                    height={40}
+                    height={60}
+                    className="cursor-pointer"
                   />
                 </a>
                 <a
@@ -63,14 +64,13 @@ const QrAppPromo: React.FC = () => {
                   className="transform hover:scale-105 transition-transform"
                 >
                   <Image
-                    src="/home/get-it-on-appstore.png"
+                    src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-appstore.webp"
                     alt="Download on the App Store"
                     width={180}
-                    height={40}
+                    height={60}
+                    className="cursor-pointer"
                   />
                 </a>
-              </div>
-              <div className="flex items-center pt-4 gap-2">
                 <a
                   href="https://cdn.wiseapp.live/files/lens/shikshanation/Shiksha%20Nation.exe"
                   target="_blank"
@@ -79,10 +79,11 @@ const QrAppPromo: React.FC = () => {
                   className="transform hover:scale-105 transition-transform"
                 >
                   <Image
-                    src="/home/get-it-on-windows-store.png"
+                    src="https://d10ge3ci2b88dm.cloudfront.net/home/get-it-on-windows-store.webp"
                     alt="Get it on Windows Store"
                     width={180}
-                    height={40}
+                    height={60}
+                    className="cursor-pointer"
                   />
                 </a>
                 <a
@@ -93,10 +94,11 @@ const QrAppPromo: React.FC = () => {
                   className="transform hover:scale-105 transition-transform"
                 >
                   <Image
-                    src="/home/dowload_for_mac_os.png"
+                    src="https://d10ge3ci2b88dm.cloudfront.net/home/dowload_for_mac_os.webp"
                     alt="Download for macOS"
                     width={180}
-                    height={40}
+                    height={60}
+                    className="cursor-pointer"
                   />
                 </a>
               </div>

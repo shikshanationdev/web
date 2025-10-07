@@ -3,7 +3,7 @@ import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
   {
-    logo: "/india-today.png",
+    logo: "https://d10ge3ci2b88dm.cloudfront.net/india-today.webp",
     brand: "INDIA TODAY",
     title: "7 best strategies to score high in JEE Main",
     desc: "Cracking JEE requires not just hard work, but smart strategy. With JEE 2026 approaching, aspirants need a focused plan for concept mastery and exam efficiency.",
@@ -75,7 +75,7 @@ const mediaPosts = [
     link: "https://infopost.org/2025/09/06/shiksha-nation/",
   },
   {
-    logo: "/national-biz.png",
+    logo: "https://d10ge3ci2b88dm.cloudfront.net/national-biz.webp",
     brand: "National Bix News",
     title: "Grand Launch of Shiksha Nation – India’s First AI-Enabled Bilingual Learning Platform",
     desc: "Shiksha Nation, India’s first AI-powered bilingual learning platform, was officially launched today at a grand event in the city.",
@@ -83,7 +83,7 @@ const mediaPosts = [
     link: "https://nationalbiznews.com/education/grand-launch-of-shiksha-nation-indias-first-ai-enabled-bilingual-learning-platform/",
   },
   {
-    logo: "/media-bulletins.png",
+    logo: "https://d10ge3ci2b88dm.cloudfront.net/media-bulletins.webp",
     brand: "Media Bulletins",
     title: "Grand Launch of Shiksha Nation – India’s First AI-Enabled Bilingual Learning Platform",
     desc: "Shiksha Nation, India’s first AI-powered bilingual learning platform, was officially launched today at a grand event in the city.",
@@ -171,7 +171,7 @@ const mediaPosts = [
     link: "https://thehindustnexpress.com/index.php/2025/08/30/shiksha-nation-dr-saurabh-kumar/",
   },
   {
-    logo: "/ground.png",
+    logo: "https://d10ge3ci2b88dm.cloudfront.net/ground.webp",
     brand: "FEATURING DAILY",
     title: "Dr. Saurabh Kumar appointed as Founder & CEO at Shiksha Nation",
     desc: "India’s first AI-enabled bilingual learning platform, has announced the appointment ...",
@@ -211,7 +211,7 @@ const mediaPosts = [
     link: "https://foxstoryindia.com/2025/08/30/dr-saurabh-kumar-appointed-founder-ceo-of-shiksha-nation-indias-first-ai-enabled-bilingual-learning-platform/",
   },
   {
-    logo: "/carnival.png",
+    logo: "https://d10ge3ci2b88dm.cloudfront.net/carnival.webp",
     brand: "The City Carnival",
     title: "Shiksha Nation Dr. Saurabh Kumar Leads AI Learning",
     desc: "India’s first AI-enabled bilingual learning platform, has announced the appointment of Dr. Saurabh Kumar as its Founder and Chief Executive Officer.",

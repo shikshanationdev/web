@@ -4,31 +4,31 @@ import Image from "next/image";
 
 const affiliations = [
   {
-    img: "/MSME.png",
+    img: "https://d10ge3ci2b88dm.cloudfront.net/MSME.webp",
     label: "MSME Registered",
     bg: "bg-green-50",
     text: "text-green-600",
   },
   {
-    img: "/startup-india-23.jpg",
+    img: "https://d10ge3ci2b88dm.cloudfront.net/startup-india-23.webp",
     label: "Recognized by Startup India",
     bg: "bg-green-50",
     text: "text-green-600",
   },
   {
-    img: "/images.jpeg",
+    img: "https://d10ge3ci2b88dm.cloudfront.net/images.webp",
     label: "ISO : Certified",
     bg: "bg-green-50",
     text: "text-green-600",
   },
   {
-    img: "/nsdc-logo-ss.jpg",
+    img: "https://d10ge3ci2b88dm.cloudfront.net/nsdc-logo-ss.webp",
     label: "NSDC Certified",
     bg: "bg-green-50",
     text: "text-green-600",
   },
   {
-    img: "/SkillIndia.jpg",
+    img: "https://d10ge3ci2b88dm.cloudfront.net/SkillIndia.webp",
     label: "Skill India Certified",
     bg: "bg-green-50",
     text: "text-green-600",
