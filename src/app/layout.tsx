@@ -59,6 +59,77 @@ export default function RootLayout({
       "https://www.linkedin.com/company/shikshanation/",
     ],
   };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is Shiksha Nation and how does it work?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Shiksha Nation is an online learning platform that offers live classes, recorded lessons, notes, and test series. Students can study anytime, anywhere, using our website or mobile app.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which classes and exams do you cover?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We provide learning content for Classes 6 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How can I enroll in a course?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can explore available courses on our website or app, select your preferred course, and complete the enrollment process online.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you provide both school-level and competitive exam preparation?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We provide learning content for Classes 6 to 12, and prep courses for entrance exams like NEET, JEE, CUET, and more.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What payment methods are accepted?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We accept all major payment methods, including credit/debit cards, UPI, net banking, and wallets.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are your classes live, recorded, or both?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We offer both live interactive classes and pre-recorded video lessons. You can attend live sessions and revisit recorded content anytime.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is there a refund policy if I'm not satisfied?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we have a refund policy. Please check our terms and conditions or contact support for details.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I contact your support team for help?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can reach us via email, phone, or the contact form on our website. Our support team is available 10 A.M. To 7 P.M. (Monday to Saturday).",
+        },
+      },
+    ],
+  };
   return (
     <html lang="en">
       <head>
@@ -78,10 +149,17 @@ export default function RootLayout({
 
         {/* JSON-LD Structured Data */}
         <Script
-          id="json-ld"
+          id="json-ld-org"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(orgSchema),
+          }}
+        />
+        <Script
+          id="json-ld-faq"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
           }}
         />
       </head>
