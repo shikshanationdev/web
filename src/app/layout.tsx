@@ -137,6 +137,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="SqOv08EL3rVNZLaQhI5gjSYn9J8-XDevKVDsdyUKK0g"
         />
+        <meta name="facebook-domain-verification" content="183e7rler627lc2bnlvmadqhtn0q9y" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
