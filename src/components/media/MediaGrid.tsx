@@ -3,6 +3,14 @@ import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
   {
+    logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
+    brand: "THE INDIAN EXPRESS",
+    title: "JEE Main 2026 Registration: Check tentative chapter-wise weightage",
+    desc: "JEE Mains 2026 registration starts soon. Know tentative chapter-wise weightage from past years to strategize your preparation effectively.",
+    date: "12 October, 2025",
+    link: "https://indianexpress.com/article/education/jee-main-2026-registration-date-chapter-wise-weightage-physics-chemistry-math-jee-advanced-10297016/",
+  },
+  {
     logo: "https://d10ge3ci2b88dm.cloudfront.net/india-today.webp",
     brand: "INDIA TODAY",
     title: "7 best strategies to score high in JEE Main",
