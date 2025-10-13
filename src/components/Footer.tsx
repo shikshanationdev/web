@@ -65,7 +65,7 @@ const Footer = () => {
   const handleCategoryClick = (category: string) => {
     // Handle external redirect for Skilling
     if (category === "Skilling") {
-      window.open("https://skilling.shikshanation.com", "_blank");
+      window.open("https://skillo.shikshanation.com", "_blank");
       return;
     }
 
