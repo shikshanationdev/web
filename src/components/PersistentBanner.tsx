@@ -231,10 +231,10 @@ const PersistentBanner = () => {
             {/* Close Button - RIGHT of content */}
             <button
               onClick={handleClose}
-              className="flex-shrink-0 p-1.5 hover:bg-white hover:bg-opacity-20 rounded-full transition-colors duration-200 z-20 bg-white bg-opacity-10 ml-2"
+              className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 shadow-md ml-2"
               aria-label="Close banner"
             >
-              <MdClose size={20} className="text-white" />
+              <MdClose size={20} className="text-gray-700" />
             </button>
           </div>
         </div>
