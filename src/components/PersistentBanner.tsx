@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MdClose } from "react-icons/md";
+import { CiCircleRemove } from "react-icons/ci";
 
 const PersistentBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -231,10 +231,10 @@ const PersistentBanner = () => {
             {/* Close Button - RIGHT of content */}
             <button
               onClick={handleClose}
-              className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 shadow-md ml-2"
+              className="flex-shrink-0 hover:opacity-80 transition-all duration-200 ml-2"
               aria-label="Close banner"
             >
-              <MdClose size={20} className="text-gray-700" />
+              <CiCircleRemove size={32} className="text-white" strokeWidth={1} />
             </button>
           </div>
         </div>
