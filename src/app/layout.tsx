@@ -190,6 +190,7 @@ fbq('track', 'PageView');
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=1065432805513347&ev=PageView&noscript=1"
+            alt=""
           />
         </noscript>
         {/* End Meta Pixel Code */}
