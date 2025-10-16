@@ -195,7 +195,7 @@ const PersistentBanner = () => {
 
                   {/* Main text */}
                   <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
-                    India's Icons of Change & Impact
+                    India&apos;s Icons of Change & Impact
                   </span>
 
                   {/* Custom Arrow SVG */}
