@@ -104,8 +104,13 @@ const PersistentBanner = () => {
       </div>
 
       <div className="max-w-full mx-auto px-6 py-3 sm:py-4 flex items-center justify-center relative">
-        {/* Main Content Container */}
-        <div className="flex items-center justify-center gap-3 sm:gap-4 z-10">
+        {/* Main Content Container - Clickable Link */}
+        <a
+          href="https://timesofindia.indiatimes.com/business/india-business/take-a-look-at-these-inspiring-icons-pioneers-of-change-and-impact/articleshow/124457781.cms"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-3 sm:gap-4 z-10 cursor-pointer hover:opacity-90 transition-opacity duration-200"
+        >
           {/* TOI Logo with red/orange background - LEFT SIDE - SQUARE */}
           <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-lg w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shadow-lg">
             <span className="text-white font-bold text-xl sm:text-2xl tracking-tight" style={{ fontFamily: 'Times New Roman, serif' }}>
@@ -206,7 +211,7 @@ const PersistentBanner = () => {
               </svg>
             </div>
           </div>
-        </div>
+        </a>
 
         {/* Close Button */}
         <button
