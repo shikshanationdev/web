@@ -7,6 +7,7 @@ import Head from "next/head";
 import { Footer, FloatingContactWidget, TawkToWidget } from "@/components";
 import { LearningStatsSection } from "@/components/HomePageSections";
 import CopyrightSection from "@/components/HomePageSections/CopyrightSection";
+import PersistentBanner from "@/components/PersistentBanner";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
@@ -225,6 +226,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <CopyrightSection />
         <FloatingContactWidget />
         <TawkToWidget />
+        <PersistentBanner />
       </body>
     </html>
   );
