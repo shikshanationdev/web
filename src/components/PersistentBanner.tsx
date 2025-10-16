@@ -104,47 +104,107 @@ const PersistentBanner = () => {
       </div>
 
       <div className="max-w-full mx-auto px-6 py-3 sm:py-4 flex items-center justify-center relative">
-        {/* Main Content Container - 2 lines */}
-        <div className="flex flex-col items-center justify-center gap-1 z-10">
-          {/* First Line */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3">
-            {/* Featured by text */}
-            <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
-              Featured by
-            </span>
-
-            {/* Times of India Logo with white background */}
-            <div className="bg-white rounded-md px-2 py-1 flex items-center">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0WcvLXOfB2hy51_D85gaGzw-jioBWtl5ySw&s"
-                alt="Times of India Logo"
-                className="h-5 sm:h-6 w-auto object-contain"
-              />
-            </div>
-
-            {/* The Times of India text */}
-            <span className="text-white font-semibold text-sm sm:text-base whitespace-nowrap">
-              The Times of India
-            </span>
-
-            {/* as one of text */}
-            <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
-              as one of
+        {/* Main Content Container */}
+        <div className="flex items-center justify-center gap-3 sm:gap-4 z-10">
+          {/* TOI Logo with red/orange background - LEFT SIDE - SQUARE */}
+          <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-lg w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold text-xl sm:text-2xl tracking-tight" style={{ fontFamily: 'Times New Roman, serif' }}>
+              TOI
             </span>
           </div>
 
-          {/* Second Line */}
-          <div className="flex items-center justify-center gap-2 sm:gap-3">
-            {/* Flag emoji */}
-            <span className="text-lg sm:text-xl">🇮🇳</span>
+          {/* Content on the RIGHT in 2 lines */}
+          <div className="flex flex-col gap-1">
+            {/* First Line */}
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              {/* Featured by text */}
+              <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
+                Featured by
+              </span>
 
-            {/* Main text */}
-            <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
-              India's Icons of Change & Impact
-            </span>
+              {/* THE TIMES OF INDIA text with Times New Roman font - LARGER and UNDERLINED */}
+              <span className="text-white font-bold text-base sm:text-lg whitespace-nowrap tracking-wide underline" style={{ fontFamily: 'Times New Roman, serif' }}>
+                THE TIMES OF INDIA
+              </span>
 
-            {/* Arrow and emoji */}
-            <span className="text-base sm:text-lg">🎉➜</span>
+              {/* as one of text */}
+              <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
+                as one of
+              </span>
+            </div>
+
+            {/* Second Line */}
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              {/* India Flag SVG */}
+              <svg
+                width="24"
+                height="16"
+                viewBox="0 0 900 600"
+                className="h-4 sm:h-5 w-auto"
+              >
+                {/* Saffron band */}
+                <rect width="900" height="200" fill="#FF9933" />
+                {/* White band */}
+                <rect y="200" width="900" height="200" fill="#FFFFFF" />
+                {/* Green band */}
+                <rect y="400" width="900" height="200" fill="#138808" />
+                {/* Ashoka Chakra */}
+                <g transform="translate(450, 300)">
+                  <circle r="80" fill="none" stroke="#000080" strokeWidth="4" />
+                  {/* 24 spokes */}
+                  {Array.from({ length: 24 }).map((_, i) => {
+                    const angle = (i * 360) / 24;
+                    const rad = (angle * Math.PI) / 180;
+                    const x2 = Math.cos(rad) * 80;
+                    const y2 = Math.sin(rad) * 80;
+                    return (
+                      <line
+                        key={i}
+                        x1="0"
+                        y1="0"
+                        x2={x2}
+                        y2={y2}
+                        stroke="#000080"
+                        strokeWidth="4"
+                      />
+                    );
+                  })}
+                  <circle r="5" fill="#000080" />
+                </g>
+              </svg>
+
+              {/* Main text */}
+              <span className="text-white font-normal text-sm sm:text-base whitespace-nowrap">
+                India's Icons of Change & Impact
+              </span>
+
+              {/* Custom Arrow SVG */}
+              <svg
+                width="32"
+                height="16"
+                viewBox="0 0 32 16"
+                className="w-6 sm:w-8 h-auto"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Arrow line */}
+                <path
+                  d="M2 8 L26 8"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+                {/* Arrow head */}
+                <path
+                  d="M20 3 L28 8 L20 13"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+            </div>
           </div>
         </div>
 
