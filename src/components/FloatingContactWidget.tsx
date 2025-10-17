@@ -15,7 +15,7 @@ const FloatingContactWidget = () => {
   };
 
   return (
-    <div className="fixed bottom-32 left-6 z-[9999]">
+    <div className="fixed bottom-24 left-6 z-[9999]">
       {/* Contact Icons - Always Visible */}
       <div className="flex flex-col gap-2">
         {/* Call Button - Blue (Top) */}
