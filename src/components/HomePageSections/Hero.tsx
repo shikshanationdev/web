@@ -45,7 +45,6 @@ const Hero = () => {
         toast.error(data.message || 'Registration failed. Please try again.');
       }
     } catch (error) {
-      console.error('Join submission error:', error);
       toast.error('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
