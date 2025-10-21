@@ -1,4 +1,4 @@
-import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, TopCategoriesSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection } from "@/components/HomePageSections";
+import { CoursesSection, FaqSection, FeaturesSection, Hero, JoinLearnersSection, TopCategoriesSection, QrAppPromo, StatsSection, TestimonialsSection, WhatYouGetSection, FeaturedMediaSection } from "@/components/HomePageSections";
 import PopupBanner from "@/components/PopupBanner";
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
       <Hero />
       <StatsSection />
       <FeaturesSection />
+      <FeaturedMediaSection />
       <TopCategoriesSection />
       <CoursesSection />
       <WhatYouGetSection />

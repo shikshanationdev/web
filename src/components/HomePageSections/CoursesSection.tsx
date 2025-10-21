@@ -63,7 +63,6 @@ const CoursesSection = () => {
         const sortedCoreSubjects = sortByStatus(coreSubjectsCourses);
         if (sortedCoreSubjects.length > 0) {
           selectedCourses.push(sortedCoreSubjects[0]);
-          console.log(`Added Live Classes course for ${classCategory}:`, sortedCoreSubjects[0].title);
         }
 
         // Get PDF notes course (prioritize active)
@@ -73,10 +72,7 @@ const CoursesSection = () => {
         const sortedPdfCourses = sortByStatus(pdfCourses);
         if (sortedPdfCourses.length > 0) {
           selectedCourses.push(sortedPdfCourses[0]);
-          console.log(`Added Study Material course for ${classCategory}:`, sortedPdfCourses[0].title);
         }
-
-        console.log(`${classCategory} - Live Classes found: ${coreSubjectsCourses.length}, Study Material found: ${pdfCourses.length}`);
       });
 
       return selectedCourses;
@@ -167,22 +163,17 @@ const CoursesSection = () => {
     const scroller = coursesScrollRef.current;
     if (!scroller) return;
 
-    console.log('Setting up infinite scroll structure...');
-
     // Make an array from the elements within scroller inner
     const scrollerInner = scroller.querySelector(".scroller__inner");
     if (!scrollerInner) {
-      console.log('No scroller__inner found');
       return;
     }
 
     // Clear existing duplicated content
     const existingDuplicates = scrollerInner.querySelectorAll('[aria-hidden="true"]');
-    console.log('Removing', existingDuplicates.length, 'existing duplicates');
     existingDuplicates.forEach(item => item.remove());
 
     const scrollerContent = Array.from(scrollerInner.children);
-    console.log('Found', scrollerContent.length, 'original items to duplicate');
 
     // For each item in the array, clone it and add aria-hidden
     scrollerContent.forEach((item) => {
@@ -190,8 +181,6 @@ const CoursesSection = () => {
       duplicatedItem.setAttribute("aria-hidden", "true");
       scrollerInner.appendChild(duplicatedItem);
     });
-
-    console.log('Structure setup complete. Total items now:', scrollerInner.children.length);
   }, [sortedVisibleCourses]);
 
   // Control animation state separately (without recreating the structure)
@@ -201,7 +190,6 @@ const CoursesSection = () => {
 
     // Enable animation only when section is visible
     scroller.setAttribute("data-animated", isAnimationEnabled ? "true" : "false");
-    console.log('Animation state:', isAnimationEnabled ? 'enabled' : 'disabled');
   }, [isAnimationEnabled]);
 
   // Get total count for "See More" card display
@@ -308,14 +296,12 @@ const CoursesSection = () => {
   // Pause/resume handlers for animation - only when section is visible
   const handleMouseEnter = useCallback(() => {
     if (isAnimationEnabled && !isPaused) {
-      console.log('Mouse entered - pausing animation');
       setIsPaused(true);
     }
   }, [isAnimationEnabled, isPaused]);
 
   const handleMouseLeave = useCallback(() => {
     if (isAnimationEnabled && isPaused) {
-      console.log('Mouse left - resuming animation');
       setIsPaused(false);
     }
   }, [isAnimationEnabled, isPaused]);

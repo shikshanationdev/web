@@ -3,6 +3,14 @@ import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
   {
+    logo: "https://static.toiimg.com/photo/92222747.cms",
+    brand: "THE INDIAN EXPRESS",
+    title: "Take a look at these inspiring icons: Pioneers of change and impact",
+    desc: "These visionaries have transformed their fields through innovation, resilience, and leadership. Their contributions have inspired change, uplifted communities ...",
+    date: "16 October, 2025",
+    link: "https://timesofindia.indiatimes.com/business/india-business/take-a-look-at-these-inspiring-icons-pioneers-of-change-and-impact/articleshow/124457781.cms",
+  },
+  {
     logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
     brand: "THE INDIAN EXPRESS",
     title: "JEE Main 2026 Registration: Check tentative chapter-wise weightage",
