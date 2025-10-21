@@ -3,12 +3,20 @@ import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
   {
-    logo: "https://static.toiimg.com/photo/92222747.cms",
+    logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
     brand: "THE INDIAN EXPRESS",
-    title: "Take a look at these inspiring icons: Pioneers of change and impact",
-    desc: "These visionaries have transformed their fields through innovation, resilience, and leadership. Their contributions have inspired change, uplifted communities ...",
+    title: "Stay flexible, yet disciplined: Smart & effective study plan to crack JEE Main 2026",
+    desc: "TJEE Main 2026 Preparation:Make your study method whatever fits best for you - self-study, recorded lectures, or perhaps worked in a group. Right now, what matters is that you are not 'spending' time, but using time effectively.",
+    date: "17 October, 2025",
+    link: "https://indianexpress.com/article/education/jee-main-2026-study-plan-crack-in-3-months-jee-advanced-10309932/",
+  },
+  {
+    logo: "https://static.indiatvnews.com/responsive/images/logo-black.webp",
+    brand: "INDIA TV",
+    title: "How to prepare for JEE Main 2026 in three months? Check expert's tips and tricks",
+    desc: "JEE Main 2026 preparation tips: JEE Main 2026 is scheduled to be held in January. Check these preparation tips by experts to secure cent percentile.",
     date: "16 October, 2025",
-    link: "https://timesofindia.indiatimes.com/business/india-business/take-a-look-at-these-inspiring-icons-pioneers-of-change-and-impact/articleshow/124457781.cms",
+    link: "https://www.indiatvnews.com/education/news/how-to-prepare-for-jee-main-2026-in-three-months-check-expert-s-tips-and-tricks-2025-10-16-1013057",
   },
   {
     logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
