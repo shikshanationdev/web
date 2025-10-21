@@ -43,7 +43,7 @@ const PopupBanner = () => {
   };
 
   const handleBannerClick = () => {
-    window.open('https://courses.shikshanation.com/courses/marks-guarantee-success-program-68e16514adb23bf6bdc7cc47', '_blank');
+    window.open('https://courses.shikshanation.com/courses/national-aptitude-test-68e5f922382752bd68174721', '_blank');
   };
 
   if (!isVisible) return null;
@@ -66,7 +66,7 @@ const PopupBanner = () => {
           onClick={handleBannerClick}
         >
           <Image
-            src="/banner2.gif"
+            src="/banner.png"
             alt="Promotional Banner"
             width={700}
             height={500}
