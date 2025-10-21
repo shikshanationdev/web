@@ -19,12 +19,12 @@ const mediaImages = [
 
 // First article from media page
 const featuredArticle = {
-  logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
+  logo: "https://static.toiimg.com/photo/92222747.cms",
   brand: "THE INDIAN EXPRESS",
-  title: "JEE Main 2026 Registration: Check tentative chapter-wise weightage",
-  desc: "JEE Mains 2026 registration starts soon. Know tentative chapter-wise weightage from past years to strategize your preparation effectively.",
-  date: "12 October, 2025",
-  link: "https://indianexpress.com/article/education/jee-main-2026-registration-date-chapter-wise-weightage-physics-chemistry-math-jee-advanced-10297016/",
+  title: "Take a look at these inspiring icons: Pioneers of change and impact",
+  desc: "These visionaries have transformed their fields through innovation, resilience, and leadership. Their contributions have inspired change, uplifted communities ...",
+  date: "16 October, 2025",
+  link: "https://timesofindia.indiatimes.com/business/india-business/take-a-look-at-these-inspiring-icons-pioneers-of-change-and-impact/articleshow/124457781.cms",
 };
 
 const FeaturedMediaSection = () => {
@@ -60,7 +60,7 @@ const FeaturedMediaSection = () => {
         {/* Main Heading Section */}
         <div className="text-center mb-8">
           <h2 className="text-4xl font-semibold mb-4">
-            Who's talking about us?
+            Who&apos;s talking about us?
           </h2>
           <p className="text-lg text-gray-700 font-medium">
             Explore the stories, features, and voices that highlight Shiksha Nation's impact.
