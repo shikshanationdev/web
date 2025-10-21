@@ -63,7 +63,7 @@ const FeaturedMediaSection = () => {
             Who&apos;s talking about us?
           </h2>
           <p className="text-lg text-gray-700 font-medium">
-            Explore the stories, features, and voices that highlight Shiksha Nation's impact.
+            Explore the stories, features, and voices that highlight Shiksha Nation&apos;s impact.
           </p>
         </div>
 
