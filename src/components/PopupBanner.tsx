@@ -66,7 +66,7 @@ const PopupBanner = () => {
           onClick={handleBannerClick}
         >
           <Image
-            src="/popup-banner.png"
+            src="/popup-banner2.png"
             alt="Promotional Banner"
             width={700}
             height={500}
