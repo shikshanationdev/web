@@ -11,7 +11,7 @@ const CareersHero: React.FC = () => {
           </h3>
 
           <p className="mt-6 text-slate-600 max-w-xl leading-relaxed">
-            <strong className="font-semibold text-slate-700">Shiksha Nation</strong> is India’s first AI-powered, bilingual learning platform—offering high-quality, affordable education from Class 6 to competitive exams and career skills. Built on the philosophy “For Bharat, By Bharat, Of Bharat,” we’re committed to shaping a future-ready generation from every corner of India.
+            <strong className="font-semibold text-slate-700">Shiksha Nation</strong> is India’s first AI-powered, bilingual learning platform—offering high-quality, affordable education from Class 6 to competitive exams and career skills. Built on the philosophy “For Bharat, Of Bharat, By Bharat,” we’re committed to shaping a future-ready generation from every corner of India.
           </p>
 
           <div className="mt-8">
