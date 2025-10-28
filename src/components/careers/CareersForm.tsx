@@ -132,7 +132,7 @@ const CareersForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div id="application-form" className="min-h-screen py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Mobile heading - only visible on mobile */}
         <div className="lg:hidden mb-8 text-center">
