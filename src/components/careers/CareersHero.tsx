@@ -1,7 +1,16 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 
 const CareersHero: React.FC = () => {
+  const handleScrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const formElement = document.getElementById('application-form')
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <section className="max-w-7xl mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
@@ -15,7 +24,11 @@ const CareersHero: React.FC = () => {
           </p>
 
           <div className="mt-8">
-            <a href="/careers/apply" className="inline-flex items-center gap-3 bg-sky-700 text-white px-6 py-3 rounded-full shadow hover:bg-sky-800 transition">
+            <a
+              href="#application-form"
+              onClick={handleScrollToForm}
+              className="inline-flex items-center gap-3 bg-sky-700 text-white px-6 py-3 rounded-full shadow hover:bg-sky-800 transition"
+            >
               Join Team
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
