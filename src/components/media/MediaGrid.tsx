@@ -2,6 +2,14 @@
 import React, { useState, useMemo, useRef } from "react";
 
 const mediaPosts = [
+   {
+    logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
+    brand: "THE INDIAN EXPRESS",
+    title: "JEE Main 2026: Is NCERT enough for preparation?",
+    desc: "To truly achieve success in your JEE Main 2026, you will have to consistently practice, write mock tests, and solve advanced-level problems along with their NCERT learning.",
+    date: "28 October, 2025",
+    link: "https://indianexpress.com/article/education/jee-main-2026-ncert-be-enough-engineering-entrance-test-nit-iiit-admission-jee-advanced-10323748/",
+  },
   {
     logo: "https://indianexpress.com/wp-content/themes/indianexpress/images/indian-express-logo-n.svg",
     brand: "THE INDIAN EXPRESS",
