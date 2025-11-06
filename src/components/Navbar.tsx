@@ -10,7 +10,7 @@ import { MdCall } from "react-icons/md";
 // Navigation items for the mobile and desktop
 const navItems = [
   { label: "Courses", href: "/courses" },
-  { label: "Skilling", href: "https://skillo.shikshanation.com" },
+  { label: "Skilling", href: "https://skillo.live" },
   { label: "Media", href: "/media" },
   { label: "Blog", href: "/blog" },
   { label: "Talk to our expert", href: "tel:+919821115117", phoneNumber: "+91 98211 15117" },
